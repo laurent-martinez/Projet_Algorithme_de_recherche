@@ -1,0 +1,41 @@
+{
+  "name": "webpack_starterpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --watch",
+    "dev": "webpack serve",
+    "lint": "eslint",
+    "sass": "sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laurent-martinez/webpack_starterPack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laurent-martinez/webpack_starterPack/issues"
+  },
+  "homepage": "https://github.com/laurent-martinez/webpack_starterPack#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "axios": "^0.26.1",
+    "babel-loader": "^8.2.4",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.13.0",
+    "html-webpack-plugin": "^5.5.0",
+    "optionator": "^0.9.1",
+    "postcss-loader": "^6.2.1",
+    "sass": "^1.50.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.0",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
+  },
+  "description": ""
+}

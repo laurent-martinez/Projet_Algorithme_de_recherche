@@ -1,0 +1,157 @@
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+img,
+svg {
+  vertical-align:baseline;
+}
+
+    .bg-light {
+        display: flex;
+        background-color: none;
+        justify-content: center;
+        align-items: center;
+        &.navbar > .container-fluid {
+            justify-content: center;
+            & .navbar-brand {
+                display: flex;
+                flex-direction: column;
+                text-decoration: none;
+                justify-content: center;
+                align-items: center;
+                & h1 {
+                    font-size: 36px;
+                    color: #D04F4F;
+                    font-weight: 700
+                    ;
+                    font-family: 'DM Sans', sans-serif;
+                    text-decoration: none;
+                    &:link {
+                        text-decoration: none;
+                    }
+                    &:visited {
+                        text-decoration: none;
+                    }
+                }
+         
+            }
+        }
+    }
+   
+    .form-inline {
+        display: flex;
+        height: 69px;
+        border-radius: 5px;
+        & .form-control {
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            background-color: #e7e7e7;
+            border-radius: 5px 0 0 5px;
+            border: none;
+            outline: none;
+            &:focus {
+                border: none;
+                outline: none;
+            }
+        }
+        & .btn-outline-success {
+            border: none;
+            background-color: #e7e7e7;
+            border-radius: 0px 5px 5px 0px;
+        }
+    }
+
+  .custom-container {
+      margin: 0 150px;
+  }
+  .btn-group {
+      margin-right: 15px;
+  }
+    .dropdown-toggle {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: 'Lato', sans-serif;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+        width: 170px;
+        height: 69px;
+        &::after {
+            appearance: none;
+            border: none;
+            content: "";
+            background: url("../assets/arrow_down.svg") center center no-repeat;
+            width: 16px;
+            height: 10px;
+        }
+    }
+
+    .recipes {
+       display: grid;
+       grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));
+       gap: .25rem;
+       margin-top: 1rem;
+    }
+        .recipe {
+            height: auto;
+            background-color: #E7E7E7;
+            margin: 15px;
+            display: flex;
+            align-items: center;
+            text-overflow: ellipsis;
+            &__title {
+                font-family: Lato;
+                font-size: 22px;
+                font-weight: 400;
+                line-height: 22px;
+                letter-spacing: 0em;
+                text-align: left;
+                white-space: nowrap;
+
+            }
+            &__timer {
+                text-align: right;
+              align-items: center;
+            }
+            &__timing {
+                font-family: Lato;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 22px;
+                letter-spacing: 0em;
+                text-align: left;
+
+            }
+            &__ingredients {
+                font-family: Roboto;
+                width: 100%;
+                font-weight: 400;
+                line-height: 16px;
+                letter-spacing: 0em;
+                text-align: left;
+                white-space: nowrap;
+                &__title {
+                    font-weight: 700;
+                }
+            }
+            &__instructions {
+                font-family: Roboto;
+                width: 100%;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 12px;
+                letter-spacing: 0em;
+                text-align: left;
+                text-align: justify;
+            }
+        }
+    
+
+    .hide {
+        display: none;
+    }
+
