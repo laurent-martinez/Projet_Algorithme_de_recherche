@@ -15,10 +15,9 @@ logoBrand.src = cooking;
 const searchPicture = document.getElementById("search_picture");
 searchPicture.src = magnifying;
 const searchBar = document.querySelector("[data-search]");
-console.log(recipes);
+
 recipeList = recipes.map((recipe) => {
   const card = recipeCardTemplate.content.cloneNode(true).children[0];
-  console.log(card);
   const title = card.querySelector("[data-title]");
   const timing = card.querySelector("[data-timing]");
   const ingredients = card.querySelector("[data-ingredients]");
@@ -45,6 +44,7 @@ recipeList = recipes.map((recipe) => {
     element: card,
   };
 });
+
 searchBar.addEventListener("input", (e) => {
   const value = e.target.value
     .toLowerCase()
@@ -82,7 +82,39 @@ recipesPic.forEach((recip) => {
 });
 
 const logoTimer = document.querySelectorAll("[data-timer-img]");
-console.log(logoTimer);
 logoTimer.forEach((logo) => {
   logo.src = time;
+});
+
+const fillDropdown = (e) => {
+  recipes.map((recipe) => {
+    const ingredient = document.querySelector(".ingredient_menu");
+    const devices = document.querySelector(".device_menu");
+    const ustensils = document.querySelector(".ustensil_menu");
+    const li = document.createElement("li");
+    const lili = document.createElement("li");
+    lili.className = "device_li";
+    const lilili = document.createElement("li");
+
+    recipe.ingredients.forEach((ingred) => {
+      console.log(ingred.ingredient);
+      li.innerHTML += `${ingred.ingredient}<br>`;
+    });
+    lili.textContent += recipe.appliance;
+
+    lilili.innerHTML += `${recipe.ustensils}<br>`;
+
+    ingredient.appendChild(li);
+    devices.appendChild(lili);
+    ustensils.appendChild(lilili);
+  });
+};
+
+fillDropdown();
+const liar = document.querySelectorAll(".device_li");
+console.log(liar);
+liar.forEach((li) => {
+  li.addEventListener("click", (e) => {
+    li.style.backgroundColor = "red";
+  });
 });

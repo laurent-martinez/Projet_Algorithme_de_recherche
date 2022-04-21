@@ -155,3 +155,11 @@ svg {
         display: none;
     }
 
+.device_li {
+    cursor: pointer;
+    list-style-type: none;
+    padding: 5px;
+    &:hover {
+        background-color: #E7E7E7;
+    }
+}
