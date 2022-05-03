@@ -155,11 +155,27 @@ svg {
         display: none;
     }
 
-.device_li {
+.ingredients_li,.device_li,.ustensil_li {
     cursor: pointer;
     list-style-type: none;
     padding: 5px;
     &:hover {
         background-color: #E7E7E7;
     }
+}
+
+.tags {
+ padding: 10px;
+ margin: 10px;
+ outline: none;
+ appearance: none;
+ border: none;
+ border-radius: 5px;
+ background-color:  #3282F7;
+ color: white;
+    &::after {
+        content: "";
+        background: url("../assets/close_arrow.svg");
+    }
+
 }
