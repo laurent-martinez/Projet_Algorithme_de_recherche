@@ -31,7 +31,7 @@
       <form class="form-inline">
         <input
           class="form-control mr-sm-2"
-          type="search"
+          type="button"
           placeholder="Rechercher une recette"
           aria-label="Search"
           data-search
@@ -42,20 +42,19 @@
       </form>
 
       <div class="buttons">
-        <div class="btn-group mt-4" searchable="Search here..">
+        <div class="btn-group mt-4">
           <button
             type="button"
             class="btn btn-primary dropdown-toggle"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            searchable="Search here.."
           >
             Ingrédients
           </button>
           <div class="dropdown-menu ingredients">
             <input
-              class="form-control mr-sm-2"
+              class="form-control mr-sm-2 ingredients_search"
               type="search"
               placeholder="Search"
               aria-label="Search"
@@ -75,7 +74,7 @@
           </button>
           <div class="dropdown-menu device">
             <input
-              class="form-control mr-sm-2"
+              class="form-control mr-sm-2 device_search"
               type="search"
               placeholder="Search"
               aria-label="Search"
@@ -95,7 +94,7 @@
           </button>
           <div class="dropdown-menu ustensils">
             <input
-              class="form-control mr-sm-2"
+              class="form-control mr-sm-2 ustensil_search"
               type="search"
               placeholder="Search"
               aria-label="Search"
