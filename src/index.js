@@ -49,7 +49,8 @@ const buildCard = () => {
     return {
       titre: recipe.name,
       ingred: recipe.ingredients,
-      description: recipe.description,
+      devices: recipe.appliance,
+      ustensils: recipe.ustensils,
       element: card,
     };
   });
@@ -258,12 +259,17 @@ const getCategoriesTag = (category, tabs, typeTags) => {
       if (value) {
         recipeList.forEach((list) => {
           let isVisibleA;
+          console.log(list);
           list.ingred.map((ing) => {
-            isVisibleA = ing.ingredient
-              .toLowerCase()
-              .normalize("NFD")
-              .replace(/\p{Diacritic}/gu, "")
-              .includes(value);
+            isVisibleA =
+              ing.ingredient
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/\p{Diacritic}/gu, "") ===
+              value
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/\p{Diacritic}/gu, "");
           });
 
           list.element.classList.toggle("show", isVisibleA);
