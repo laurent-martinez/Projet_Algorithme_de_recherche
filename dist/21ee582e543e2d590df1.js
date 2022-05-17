@@ -1411,7 +1411,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  width: 100vw;\n  height: 100vh;\n}\n\nimg,\nsvg {\n  vertical-align: baseline;\n}\n\n.bg-light {\n  display: flex;\n  background-color: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid {\n  justify-content: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand {\n  display: flex;\n  flex-direction: column;\n  text-decoration: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1 {\n  font-size: 36px;\n  color: #D04F4F;\n  font-weight: 700;\n  font-family: \"DM Sans\", sans-serif;\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:link {\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:visited {\n  text-decoration: none;\n}\n\n.form-inline {\n  display: flex;\n  height: 69px;\n  border-radius: 5px;\n}\n.form-inline .form-control {\n  font-family: \"Lato\", sans-serif;\n  font-weight: 400;\n  font-size: 18px;\n  background-color: #e7e7e7;\n  border-radius: 5px 0 0 5px;\n  border: none;\n  outline: none;\n}\n.form-inline .form-control:focus {\n  border: none;\n  outline: none;\n}\n.form-inline .btn-outline-success {\n  border: none;\n  background-color: #e7e7e7;\n  border-radius: 0px 5px 5px 0px;\n}\n\n.custom-container {\n  margin: 0 150px;\n}\n\n.btn-group {\n  margin-right: 15px;\n}\n\n.dropdown-toggle {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  font-family: \"Lato\", sans-serif;\n  color: white;\n  font-weight: 700;\n  font-size: 18px;\n  width: 170px;\n  height: 69px;\n}\n.dropdown-toggle::after {\n  appearance: none;\n  border: none;\n  content: \"\";\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") center center no-repeat;\n  width: 16px;\n  height: 10px;\n}\n\n.recipes {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n  gap: 0.25rem;\n  margin-top: 1rem;\n}\n\n.recipe {\n  height: auto;\n  background-color: #E7E7E7;\n  margin: 15px;\n  display: flex;\n  align-items: center;\n  text-overflow: ellipsis;\n}\n.recipe__title {\n  font-family: Lato;\n  font-size: 22px;\n  font-weight: 400;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__timer {\n  text-align: right;\n  align-items: center;\n}\n.recipe__timing {\n  font-family: Lato;\n  font-size: 18px;\n  font-weight: 700;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n}\n.recipe__ingredients {\n  font-family: Roboto;\n  width: 100%;\n  font-weight: 400;\n  line-height: 16px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__ingredients__title {\n  font-weight: 700;\n}\n.recipe__instructions {\n  font-family: Roboto;\n  width: 100%;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 12px;\n  letter-spacing: 0em;\n  text-align: left;\n  text-align: justify;\n}\n\n.hide {\n  display: none;\n}\n\n.ingredients_li, .device_li, .ustensil_li {\n  cursor: pointer;\n  list-style-type: none;\n  padding: 5px;\n}\n.ingredients_li:hover, .device_li:hover, .ustensil_li:hover {\n  background-color: #E7E7E7;\n}\n\n.tags {\n  padding: 15px;\n  margin: 10px;\n  outline: none;\n  appearance: none;\n  border: none;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  padding-left: 10px;\n  background-color: #3282F7;\n  color: white;\n}\n.tags.closeTag {\n  width: 20px;\n  height: 20px;\n  padding-left: 10px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AACA;EACI,YAAA;EACA,aAAA;AAAJ;;AAEA;;EAEE,wBAAA;AACF;;AAEI;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;AACR;AAAQ;EACI,uBAAA;AAEZ;AADY;EACI,aAAA;EACA,sBAAA;EACA,qBAAA;EACA,uBAAA;EACA,mBAAA;AAGhB;AAFgB;EACI,eAAA;EACA,cAAA;EACA,gBAAA;EAEA,kCAAA;EACA,qBAAA;AAGpB;AAFoB;EACI,qBAAA;AAIxB;AAFoB;EACI,qBAAA;AAIxB;;AAII;EACI,aAAA;EACA,YAAA;EACA,kBAAA;AADR;AAEQ;EACI,+BAAA;EACA,gBAAA;EACA,eAAA;EACA,yBAAA;EACA,0BAAA;EACA,YAAA;EACA,aAAA;AAAZ;AACY;EACI,YAAA;EACA,aAAA;AAChB;AAEQ;EACI,YAAA;EACA,yBAAA;EACA,8BAAA;AAAZ;;AAIE;EACI,eAAA;AADN;;AAGE;EACI,kBAAA;AAAN;;AAEI;EACI,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,+BAAA;EACA,YAAA;EACA,gBAAA;EACA,eAAA;EACA,YAAA;EACA,YAAA;AACR;AAAQ;EACI,gBAAA;EACA,YAAA;EACA,WAAA;EACA,2EAAA;EACA,WAAA;EACA,YAAA;AAEZ;;AAEI;EACG,aAAA;EACA,4DAAA;EACA,YAAA;EACA,gBAAA;AACP;;AACQ;EACI,YAAA;EACA,yBAAA;EACA,YAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AAEZ;AADY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAGhB;AAAY;EACI,iBAAA;EACF,mBAAA;AAEd;AAAY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;AAEhB;AACY;EACI,mBAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;AAAgB;EACI,gBAAA;AAEpB;AACY;EACI,mBAAA;EACA,WAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;;AAII;EACI,aAAA;AADR;;AAIA;EACI,eAAA;EACA,qBAAA;EACA,YAAA;AADJ;AAEI;EACI,yBAAA;AAAR;;AAIA;EACC,aAAA;EACA,YAAA;EACA,aAAA;EACA,gBAAA;EACA,YAAA;EACA,kBAAA;EACA,aAAA;EAED,mBAAA;EACA,kBAAA;EACA,yBAAA;EACC,YAAA;AAFD;AAII;EACI,WAAA;EACA,YAAA;EACA,kBAAA;AAFR","sourcesContent":["\nbody {\n    width: 100vw;\n    height: 100vh;\n}\nimg,\nsvg {\n  vertical-align:baseline;\n}\n\n    .bg-light {\n        display: flex;\n        background-color: none;\n        justify-content: center;\n        align-items: center;\n        &.navbar > .container-fluid {\n            justify-content: center;\n            & .navbar-brand {\n                display: flex;\n                flex-direction: column;\n                text-decoration: none;\n                justify-content: center;\n                align-items: center;\n                & h1 {\n                    font-size: 36px;\n                    color: #D04F4F;\n                    font-weight: 700\n                    ;\n                    font-family: 'DM Sans', sans-serif;\n                    text-decoration: none;\n                    &:link {\n                        text-decoration: none;\n                    }\n                    &:visited {\n                        text-decoration: none;\n                    }\n                }\n         \n            }\n        }\n    }\n   \n    .form-inline {\n        display: flex;\n        height: 69px;\n        border-radius: 5px;\n        & .form-control {\n            font-family: 'Lato', sans-serif;\n            font-weight: 400;\n            font-size: 18px;\n            background-color: #e7e7e7;\n            border-radius: 5px 0 0 5px;\n            border: none;\n            outline: none;\n            &:focus {\n                border: none;\n                outline: none;\n            }\n        }\n        & .btn-outline-success {\n            border: none;\n            background-color: #e7e7e7;\n            border-radius: 0px 5px 5px 0px;\n        }\n    }\n\n  .custom-container {\n      margin: 0 150px;\n  }\n  .btn-group {\n      margin-right: 15px;\n  }\n    .dropdown-toggle {\n        display: flex;\n        justify-content: space-around;\n        align-items: center;\n        font-family: 'Lato', sans-serif;\n        color: white;\n        font-weight: 700;\n        font-size: 18px;\n        width: 170px;\n        height: 69px;\n        &::after {\n            appearance: none;\n            border: none;\n            content: \"\";\n            background: url(\"../assets/arrow_down.svg\") center center no-repeat;\n            width: 16px;\n            height: 10px;\n        }\n    }\n\n    .recipes {\n       display: grid;\n       grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n       gap: .25rem;\n       margin-top: 1rem;\n    }\n        .recipe {\n            height: auto;\n            background-color: #E7E7E7;\n            margin: 15px;\n            display: flex;\n            align-items: center;\n            text-overflow: ellipsis;\n            &__title {\n                font-family: Lato;\n                font-size: 22px;\n                font-weight: 400;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n\n            }\n            &__timer {\n                text-align: right;\n              align-items: center;\n            }\n            &__timing {\n                font-family: Lato;\n                font-size: 18px;\n                font-weight: 700;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n\n            }\n            &__ingredients {\n                font-family: Roboto;\n                width: 100%;\n                font-weight: 400;\n                line-height: 16px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n                &__title {\n                    font-weight: 700;\n                }\n            }\n            &__instructions {\n                font-family: Roboto;\n                width: 100%;\n                font-size: 12px;\n                font-weight: 400;\n                line-height: 12px;\n                letter-spacing: 0em;\n                text-align: left;\n                text-align: justify;\n            }\n        }\n    \n\n    .hide {\n        display: none;\n    }\n\n.ingredients_li,.device_li,.ustensil_li {\n    cursor: pointer;\n    list-style-type: none;\n    padding: 5px;\n    &:hover {\n        background-color: #E7E7E7;\n    }\n}\n\n.tags {\n padding: 15px;\n margin: 10px;\n outline: none;\n appearance: none;\n border: none;\n border-radius: 5px;\n display: flex;\n \nalign-items: center;\npadding-left: 10px;\nbackground-color:  #3282F7;\n color: white;\n    \n    &.closeTag {\n        width: 20px;\n        height: 20px;\n        padding-left: 10px;\n    }\n\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  width: 100vw;\n  height: 100vh;\n}\n\nimg,\nsvg {\n  vertical-align: baseline;\n}\n\n.bg-light {\n  display: flex;\n  background-color: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid {\n  justify-content: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand {\n  display: flex;\n  flex-direction: column;\n  text-decoration: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1 {\n  font-size: 36px;\n  color: #D04F4F;\n  font-weight: 700;\n  font-family: \"DM Sans\", sans-serif;\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:link {\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:visited {\n  text-decoration: none;\n}\n\n.form-inline {\n  display: flex;\n  height: 69px;\n  border-radius: 5px;\n}\n.form-inline .form-control {\n  font-family: \"Lato\", sans-serif;\n  font-weight: 400;\n  font-size: 18px;\n  background-color: #e7e7e7;\n  border-radius: 5px 0 0 5px;\n  border: none;\n  outline: none;\n}\n.form-inline .form-control:focus {\n  border: none;\n  outline: none;\n}\n.form-inline .btn-outline-success {\n  border: none;\n  background-color: #e7e7e7;\n  border-radius: 0px 5px 5px 0px;\n}\n\n.custom-container {\n  margin: 0 150px;\n}\n\n.btn-group {\n  margin-right: 15px;\n}\n\n.dropdown-toggle {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  font-family: \"Lato\", sans-serif;\n  color: white;\n  font-weight: 700;\n  font-size: 18px;\n  width: 170px;\n  height: 69px;\n}\n.dropdown-toggle::after {\n  appearance: none;\n  border: none;\n  content: \"\";\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") center center no-repeat;\n  width: 16px;\n  height: 10px;\n}\n\n.recipes {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n  gap: 0.25rem;\n  margin-top: 1rem;\n}\n\n.recipe {\n  height: auto;\n  background-color: #E7E7E7;\n  margin: 15px;\n  display: none;\n  align-items: center;\n  text-overflow: ellipsis;\n}\n.recipe__title {\n  font-family: Lato;\n  font-size: 22px;\n  font-weight: 400;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__timer {\n  text-align: right;\n  align-items: center;\n}\n.recipe__timing {\n  font-family: Lato;\n  font-size: 18px;\n  font-weight: 700;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n}\n.recipe__ingredients {\n  font-family: Roboto;\n  width: 100%;\n  font-weight: 400;\n  line-height: 16px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__ingredients__title {\n  font-weight: 700;\n}\n.recipe__instructions {\n  font-family: Roboto;\n  width: 100%;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 12px;\n  letter-spacing: 0em;\n  text-align: left;\n  text-align: justify;\n}\n\n.show {\n  display: flex;\n}\n\n.ingredients_li, .device_li, .ustensil_li {\n  cursor: pointer;\n  list-style-type: none;\n  padding: 5px;\n}\n.ingredients_li:hover, .device_li:hover, .ustensil_li:hover {\n  background-color: #E7E7E7;\n}\n\n.tags {\n  padding: 15px;\n  margin: 10px;\n  outline: none;\n  appearance: none;\n  border: none;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  padding-left: 10px;\n  background-color: #3282F7;\n  color: white;\n}\n.tags.closeTag {\n  width: 20px;\n  height: 20px;\n  padding-left: 10px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AACA;EACI,YAAA;EACA,aAAA;AAAJ;;AAEA;;EAEE,wBAAA;AACF;;AAEI;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;AACR;AAAQ;EACI,uBAAA;AAEZ;AADY;EACI,aAAA;EACA,sBAAA;EACA,qBAAA;EACA,uBAAA;EACA,mBAAA;AAGhB;AAFgB;EACI,eAAA;EACA,cAAA;EACA,gBAAA;EAEA,kCAAA;EACA,qBAAA;AAGpB;AAFoB;EACI,qBAAA;AAIxB;AAFoB;EACI,qBAAA;AAIxB;;AAII;EACI,aAAA;EACA,YAAA;EACA,kBAAA;AADR;AAEQ;EACI,+BAAA;EACA,gBAAA;EACA,eAAA;EACA,yBAAA;EACA,0BAAA;EACA,YAAA;EACA,aAAA;AAAZ;AACY;EACI,YAAA;EACA,aAAA;AAChB;AAEQ;EACI,YAAA;EACA,yBAAA;EACA,8BAAA;AAAZ;;AAIE;EACI,eAAA;AADN;;AAGE;EACI,kBAAA;AAAN;;AAEI;EACI,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,+BAAA;EACA,YAAA;EACA,gBAAA;EACA,eAAA;EACA,YAAA;EACA,YAAA;AACR;AAAQ;EACI,gBAAA;EACA,YAAA;EACA,WAAA;EACA,2EAAA;EACA,WAAA;EACA,YAAA;AAEZ;;AAEI;EACG,aAAA;EACA,4DAAA;EACA,YAAA;EACA,gBAAA;AACP;;AACQ;EACI,YAAA;EACA,yBAAA;EACA,YAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AAEZ;AADY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAGhB;AAAY;EACI,iBAAA;EACF,mBAAA;AAEd;AAAY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;AAEhB;AACY;EACI,mBAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;AAAgB;EACI,gBAAA;AAEpB;AACY;EACI,mBAAA;EACA,WAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;;AAII;EACI,aAAA;AADR;;AAIA;EACI,eAAA;EACA,qBAAA;EACA,YAAA;AADJ;AAEI;EACI,yBAAA;AAAR;;AAIA;EACC,aAAA;EACA,YAAA;EACA,aAAA;EACA,gBAAA;EACA,YAAA;EACA,kBAAA;EACA,aAAA;EAED,mBAAA;EACA,kBAAA;EACA,yBAAA;EACC,YAAA;AAFD;AAII;EACI,WAAA;EACA,YAAA;EACA,kBAAA;AAFR","sourcesContent":["\nbody {\n    width: 100vw;\n    height: 100vh;\n}\nimg,\nsvg {\n  vertical-align:baseline;\n}\n\n    .bg-light {\n        display: flex;\n        background-color: none;\n        justify-content: center;\n        align-items: center;\n        &.navbar > .container-fluid {\n            justify-content: center;\n            & .navbar-brand {\n                display: flex;\n                flex-direction: column;\n                text-decoration: none;\n                justify-content: center;\n                align-items: center;\n                & h1 {\n                    font-size: 36px;\n                    color: #D04F4F;\n                    font-weight: 700\n                    ;\n                    font-family: 'DM Sans', sans-serif;\n                    text-decoration: none;\n                    &:link {\n                        text-decoration: none;\n                    }\n                    &:visited {\n                        text-decoration: none;\n                    }\n                }\n         \n            }\n        }\n    }\n   \n    .form-inline {\n        display: flex;\n        height: 69px;\n        border-radius: 5px;\n        & .form-control {\n            font-family: 'Lato', sans-serif;\n            font-weight: 400;\n            font-size: 18px;\n            background-color: #e7e7e7;\n            border-radius: 5px 0 0 5px;\n            border: none;\n            outline: none;\n            &:focus {\n                border: none;\n                outline: none;\n            }\n        }\n        & .btn-outline-success {\n            border: none;\n            background-color: #e7e7e7;\n            border-radius: 0px 5px 5px 0px;\n        }\n    }\n\n  .custom-container {\n      margin: 0 150px;\n  }\n  .btn-group {\n      margin-right: 15px;\n  }\n    .dropdown-toggle {\n        display: flex;\n        justify-content: space-around;\n        align-items: center;\n        font-family: 'Lato', sans-serif;\n        color: white;\n        font-weight: 700;\n        font-size: 18px;\n        width: 170px;\n        height: 69px;\n        &::after {\n            appearance: none;\n            border: none;\n            content: \"\";\n            background: url(\"../assets/arrow_down.svg\") center center no-repeat;\n            width: 16px;\n            height: 10px;\n        }\n    }\n\n    .recipes {\n       display: grid;\n       grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n       gap: .25rem;\n       margin-top: 1rem;\n    }\n        .recipe {\n            height: auto;\n            background-color: #E7E7E7;\n            margin: 15px;\n            display: none;\n            align-items: center;\n            text-overflow: ellipsis;\n            &__title {\n                font-family: Lato;\n                font-size: 22px;\n                font-weight: 400;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n\n            }\n            &__timer {\n                text-align: right;\n              align-items: center;\n            }\n            &__timing {\n                font-family: Lato;\n                font-size: 18px;\n                font-weight: 700;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n\n            }\n            &__ingredients {\n                font-family: Roboto;\n                width: 100%;\n                font-weight: 400;\n                line-height: 16px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n                &__title {\n                    font-weight: 700;\n                }\n            }\n            &__instructions {\n                font-family: Roboto;\n                width: 100%;\n                font-size: 12px;\n                font-weight: 400;\n                line-height: 12px;\n                letter-spacing: 0em;\n                text-align: left;\n                text-align: justify;\n            }\n        }\n    \n\n    .show {\n        display: flex;\n    }\n\n.ingredients_li,.device_li,.ustensil_li {\n    cursor: pointer;\n    list-style-type: none;\n    padding: 5px;\n    &:hover {\n        background-color: #E7E7E7;\n    }\n}\n\n.tags {\n padding: 15px;\n margin: 10px;\n outline: none;\n appearance: none;\n border: none;\n border-radius: 5px;\n display: flex;\n \nalign-items: center;\npadding-left: 10px;\nbackground-color:  #3282F7;\n color: white;\n    \n    &.closeTag {\n        width: 20px;\n        height: 20px;\n        padding-left: 10px;\n    }\n\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2221,15 +2221,13 @@ var buildCard = function buildCard() {
   });
 };
 
-buildCard();
+buildCard(); // select card with input search value //
+
 searchBar.addEventListener("input", function (e) {
   var value = e.target.value.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "");
-  console.log(value);
   recipeList.forEach(function (list) {
     var isVisible;
     list.ingred.forEach(function (ing) {
-      console.log(ing);
-      console.log(list);
       isVisible = list.titre.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "").includes(value) || ing.ingredient.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "").includes(value) || list.description.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "").includes(value);
 
       if (value === ing.ingredient) {
@@ -2238,7 +2236,7 @@ searchBar.addEventListener("input", function (e) {
         });
       }
     });
-    list.element.classList.toggle("hide", !isVisible);
+    list.element.classList.toggle("show", isVisible);
   });
 });
 var recipesPic = document.querySelectorAll("[data-img]");
@@ -2248,106 +2246,31 @@ recipesPic.forEach(function (recip) {
 var logoTimer = document.querySelectorAll("[data-timer-img]");
 logoTimer.forEach(function (logo) {
   logo.src = _assets_timer_svg__WEBPACK_IMPORTED_MODULE_5__;
-}); // const fillDropdown = (e) => {
-//   recipes.map((recipe) => {
-//     const ingredient = document.querySelector(".ingredient_menu");
-//     const devices = document.querySelector(".device_menu");
-//     const ustensils = document.querySelector(".ustensil_menu");
-//     const li = document.createElement("li");
-//     const lili = document.createElement("li");
-//     lili.className = "device_li";
-//     const lilili = document.createElement("li");
-//     recipe.ingredients.forEach((ingred) => {
-//       console.log(ingred.ingredient);
-//       li.innerHTML += `${ingred.ingredient
-//         .toLowerCase()
-//         .replace(/\p{Diacritic}/gu, "")}<br>`;
-//     });
-//     lili.textContent += recipe.appliance;
-//     lilili.innerHTML += `${recipe.ustensils}<br>`;
-//     ingredient.appendChild(li);
-//     devices.appendChild(lili);
-//     ustensils.appendChild(lilili);
-//   });
-// };
-// fillDropdown();
-// const liar = document.querySelectorAll(".device_li");
-// console.log(liar);
-// liar.forEach((li) => {
-//   li.addEventListener("click", (e) => {
-//     li.style.backgroundColor = "red";
-//   });
-// });
-// get the ingredients list //
-// recipes.forEach((recipe) => {
-//   const allIngredients = [];
-//   const devices = document.querySelector(".device_menu");
-//   const ustensils = document.querySelector(".ustensil_menu");
-//   const ingredientari = document.querySelector(".ingredient_menu");
-//   const li = document.createElement("li");
-//   const lili = document.createElement("li");
-//   const lilili = document.createElement("li");
-//   li.className = "ingredients_li";
-//   let ingredients = recipe.ingredients;
-//   ingredients.map((ing) =>
-//     allIngredients.push(
-//       ing.ingredient.toLowerCase()c
-//     )
-//   );
-//   let ingredientNoRepeat = [].concat([...new Set(allIngredients)]);
-//   let ingredientJoined = ingredientNoRepeat.flat();
-//   console.log(allIngredients);
-//   console.log(ingredientJoined);
-//   ingredientJoined.map((ing) => (li.innerHTML += `${ing}<br>`));
-//   ingredientari.appendChild(li);
-// });
-// const liar = document.getElementsByClassName(".ingredients_li");
-// console.log(liar);
-// liar.forEach((li) => {
-//   li.addEventListener("click", (e) => {
-//     li.style.backgroundColor = "red";
-//   });
-// });
-// DOM //
+}); // DOM //
 
-var ingredientMenu = document.querySelector(".ingredient_menu");
+var ingredientMenu = document.querySelector(".ingredient_menu"); // create ingredient list//
+
 var allIngredients = [];
 
 var getIngredientsList = function getIngredientsList() {
   _recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.forEach(function (recipe) {
-    recipe.ingredients.forEach(function (object) {
+    recipe.ingredients.map(function (object) {
       allIngredients.push(object.ingredient.toLowerCase().replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, ""));
     });
   });
   allIngredients = _toConsumableArray(new Set(allIngredients));
-  allIngredients.forEach(function (finalList) {
+  allIngredients.map(function (ing) {
     var li = document.createElement("li");
     li.className = "ingredients_li";
-    li.innerHTML += finalList;
+    li.innerHTML += ing;
     ingredientMenu.appendChild(li);
   });
 };
 
-getIngredientsList(); // const handleTag = document.querySelectorAll(".ingredients_li");
-// console.log(handleTag);
-// handleTag.forEach((tag) => {
-//   tag.addEventListener("click", (e) => {
-//     recipeList.forEach((list) => {
-//       let isVisible;
-//       list.ingred.forEach((ing) => {
-//         isVisible = ing.ingredient
-//           .toLowerCase()
-//           .normalize("NFD")
-//           .replace(/\p{Diacritic}/gu, "")
-//           .includes(value);
-//       });
-//       list.element.classList.toggle("hide", !isVisible);
-//     });
-//   });
-// });
-//DOM //
+getIngredientsList(); //DOM //
 
-var devices = document.querySelector(".device_menu");
+var devices = document.querySelector(".device_menu"); // create devices list //
+
 var allAppliances = [];
 
 var getAppliancesList = function getAppliancesList() {
@@ -2367,7 +2290,7 @@ var getAppliancesList = function getAppliancesList() {
 getAppliancesList(); //DOM //
 
 var ustensilsM = document.querySelector(".ustensil_menu");
-var allUstensils = [];
+var allUstensils = []; // create ustensils list //
 
 var getUstensilList = function getUstensilList() {
   _recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.map(function (recipe) {
@@ -2380,67 +2303,12 @@ var getUstensilList = function getUstensilList() {
   allUstensils.forEach(function (object) {
     var ustensil_li = document.createElement("li");
     ustensil_li.className = "ustensil_li";
-    ustensil_li.innerHTML += "".concat(object);
+    ustensil_li.innerHTML += object;
     ustensilsM.appendChild(ustensil_li);
   });
 };
 
-getUstensilList(); // const getCategoriesTag = (category) => {
-//   const categories = document.getElementsByClassName(`${category}_li`);
-//   const buttons = document.querySelector(".buttons");
-//   const firstChild = buttons.firstChild;
-//   for (let item of categories) {
-//     item.addEventListener("click", () => {
-//       let tag = document.createElement("button");
-//       tag.className = "tags";
-//       tag.textContent = item.textContent;
-//       console.log(item);
-//       let closeTag = document.createElement("img");
-//       closeTag.className = "closeTag";
-//       closeTag.src = closeArrow;
-//       buttons.insertBefore(tag, firstChild);
-//       buttons.appendChild(tag);
-//       tag.appendChild(closeTag);
-//       if (!(tag.style.display === "none")) {
-//         item.style.display = "none";
-//       } else {
-//         item.style.display = "";
-//       }
-//       let clsTag = document.querySelectorAll(".closeTag");
-//       for (let item of clsTag) {
-//         item.addEventListener("click", () => {
-//           tag.style.display = "none";
-//           item.style.display = "";
-//         });
-//       }
-//       let value =
-//         tag.innerText
-//           .toLowerCase()
-//           .normalize("NFD")
-//           .replace(/\p{Diacritic}/gu, "") ||
-//         tag.textContent
-//           .toLowerCase()
-//           .normalize("NFD")
-//           .replace(/\p{Diacritic}/gu, "");
-//       if (!(tag.style.display === "none")) {
-//         recipeList.forEach((list) => {
-//           let isVisible;
-//           for (let ing of list.ingred) {
-//             console.log(ing.ingredient);
-//             isVisible = ing.ingredient
-//               .toLowerCase()
-//               .normalize("NFD")
-//               .replace(/\p{Diacritic}/gu, "")
-//               .includes(value);
-//           }
-//           list.element.classList.toggle("hide", !isVisible);
-//         });
-//       }
-//     });
-//   }
-// };
-// getCategoriesTag("ingredients");
-// find the tags who match the search//
+getUstensilList(); // find the tags who match the search//
 
 var searchTags = function searchTags(category) {
   var searchBox = document.querySelector(".".concat(category, "_search"));
@@ -2479,9 +2347,11 @@ searchTags("ingredients");
 searchTags("device");
 searchTags("ustensil"); // create tags and erase it & remove unmatched cards//
 
-console.log(allIngredients);
+var ingredientTags = [],
+    deviceTags = [],
+    ustensilTags = [];
 
-var getCategoriesTag = function getCategoriesTag(category, tabs) {
+var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
   var categories = document.getElementsByClassName("".concat(category, "_li"));
   var buttons = document.querySelector(".buttons");
   var firstChild = buttons.firstChild;
@@ -2491,6 +2361,7 @@ var getCategoriesTag = function getCategoriesTag(category, tabs) {
       var tag = document.createElement("button");
       tag.className = "tags";
       tag.textContent = categories[i].textContent;
+      typeTags.push(tag.textContent);
       var closeTag = document.createElement("img");
       closeTag.className = "closeTag";
       closeTag.src = _assets_close_arrow_svg__WEBPACK_IMPORTED_MODULE_6__;
@@ -2498,12 +2369,12 @@ var getCategoriesTag = function getCategoriesTag(category, tabs) {
       buttons.appendChild(tag);
       tag.appendChild(closeTag);
       var filterIng = tag.textContent;
+      console.log(typeTags.length);
 
       if (tag) {
-        var index = tabs.findIndex(function (el) {
-          return el === filterIng;
+        tabs = tabs.filter(function (el) {
+          return el !== tag.textContent;
         });
-        tabs.splice(index, 1);
       }
 
       var clsTag = document.querySelectorAll(".closeTag");
@@ -2515,9 +2386,12 @@ var getCategoriesTag = function getCategoriesTag(category, tabs) {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var item = _step2.value;
           item.addEventListener("click", function (e) {
+            tabs.push(tag.textContent);
+            typeTags = typeTags.filter(function (el) {
+              return el !== tag.textContent;
+            });
+            console.log(typeTags.length);
             tag.remove();
-            tabs.unshift(tag.textContent);
-            console.log(tabs);
           });
         }
       } catch (err) {
@@ -2529,16 +2403,15 @@ var getCategoriesTag = function getCategoriesTag(category, tabs) {
       tabs = tabs.filter(function (e, i) {
         return tabs.indexOf(e) == i;
       });
-      console.log(tabs);
       var value = tag.innerText.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "") || tag.textContent.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "");
 
       if (value) {
         recipeList.forEach(function (list) {
           var isVisibleA;
-          list.ingred.forEach(function (ing) {
+          list.ingred.map(function (ing) {
             isVisibleA = ing.ingredient.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "").includes(value);
           });
-          list.element.classList.toggle("hide", !isVisibleA);
+          list.element.classList.toggle("show", isVisibleA);
         });
       }
     });
@@ -2551,11 +2424,11 @@ var getCategoriesTag = function getCategoriesTag(category, tabs) {
   return tabs;
 };
 
-getCategoriesTag("ingredients", allIngredients);
-getCategoriesTag("device", allAppliances);
-getCategoriesTag("ustensil", allUstensils);
+getCategoriesTag("ingredients", allIngredients, ingredientTags);
+getCategoriesTag("device", allAppliances, deviceTags);
+getCategoriesTag("ustensil", allUstensils, ustensilTags);
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=2e671572bea5a995a14d.js.map
+//# sourceMappingURL=21ee582e543e2d590df1.js.map

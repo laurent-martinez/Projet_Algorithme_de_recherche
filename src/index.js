@@ -12,6 +12,7 @@ const recipeCardTemplate = document.querySelector("[data-recipe-template]");
 const recipeCardsContainer = document.querySelector("[data-cards-container]");
 
 // Create the search bar //
+
 const searchBar = document.querySelector("[data-search]");
 const buildSearchBar = () => {
   const logoBrand = document.getElementById("logo");
@@ -55,17 +56,17 @@ const buildCard = () => {
 };
 buildCard();
 
+// select card with input search value //
+
 searchBar.addEventListener("input", (e) => {
   const value = e.target.value
     .toLowerCase()
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "");
-  console.log(value);
+
   recipeList.forEach((list) => {
     let isVisible;
     list.ingred.forEach((ing) => {
-      console.log(ing);
-      console.log(list);
       isVisible =
         list.titre
           .toLowerCase()
@@ -86,7 +87,7 @@ searchBar.addEventListener("input", (e) => {
         allIngredients = allIngredients.filter((el) => el !== ing.ingredient);
       }
     });
-    list.element.classList.toggle("hide", !isVisible);
+    list.element.classList.toggle("show", isVisible);
   });
 });
 
@@ -100,117 +101,33 @@ logoTimer.forEach((logo) => {
   logo.src = time;
 });
 
-// const fillDropdown = (e) => {
-//   recipes.map((recipe) => {
-//     const ingredient = document.querySelector(".ingredient_menu");
-//     const devices = document.querySelector(".device_menu");
-//     const ustensils = document.querySelector(".ustensil_menu");
-//     const li = document.createElement("li");
-//     const lili = document.createElement("li");
-//     lili.className = "device_li";
-//     const lilili = document.createElement("li");
-
-//     recipe.ingredients.forEach((ingred) => {
-//       console.log(ingred.ingredient);
-//       li.innerHTML += `${ingred.ingredient
-//         .toLowerCase()
-//         .replace(/\p{Diacritic}/gu, "")}<br>`;
-//     });
-//     lili.textContent += recipe.appliance;
-
-//     lilili.innerHTML += `${recipe.ustensils}<br>`;
-
-//     ingredient.appendChild(li);
-//     devices.appendChild(lili);
-//     ustensils.appendChild(lilili);
-//   });
-// };
-
-// fillDropdown();
-// const liar = document.querySelectorAll(".device_li");
-// console.log(liar);
-// liar.forEach((li) => {
-//   li.addEventListener("click", (e) => {
-//     li.style.backgroundColor = "red";
-//   });
-// });
-
-// get the ingredients list //
-
-// recipes.forEach((recipe) => {
-//   const allIngredients = [];
-//   const devices = document.querySelector(".device_menu");
-//   const ustensils = document.querySelector(".ustensil_menu");
-//   const ingredientari = document.querySelector(".ingredient_menu");
-//   const li = document.createElement("li");
-//   const lili = document.createElement("li");
-//   const lilili = document.createElement("li");
-//   li.className = "ingredients_li";
-//   let ingredients = recipe.ingredients;
-//   ingredients.map((ing) =>
-//     allIngredients.push(
-//       ing.ingredient.toLowerCase()c
-//     )
-//   );
-//   let ingredientNoRepeat = [].concat([...new Set(allIngredients)]);
-//   let ingredientJoined = ingredientNoRepeat.flat();
-//   console.log(allIngredients);
-//   console.log(ingredientJoined);
-//   ingredientJoined.map((ing) => (li.innerHTML += `${ing}<br>`));
-//   ingredientari.appendChild(li);
-// });
-
-// const liar = document.getElementsByClassName(".ingredients_li");
-// console.log(liar);
-// liar.forEach((li) => {
-//   li.addEventListener("click", (e) => {
-//     li.style.backgroundColor = "red";
-//   });
-// });
-
 // DOM //
 const ingredientMenu = document.querySelector(".ingredient_menu");
+
+// create ingredient list//
 
 let allIngredients = [];
 const getIngredientsList = () => {
   recipes.forEach((recipe) => {
-    recipe.ingredients.forEach((object) => {
+    recipe.ingredients.map((object) => {
       allIngredients.push(
         object.ingredient.toLowerCase().replace(/\p{Diacritic}/gu, "")
       );
     });
   });
   allIngredients = [...new Set(allIngredients)];
-  allIngredients.forEach((finalList) => {
+  allIngredients.map((ing) => {
     const li = document.createElement("li");
     li.className = "ingredients_li";
-    li.innerHTML += finalList;
+    li.innerHTML += ing;
     ingredientMenu.appendChild(li);
   });
 };
 getIngredientsList();
 
-// const handleTag = document.querySelectorAll(".ingredients_li");
-// console.log(handleTag);
-// handleTag.forEach((tag) => {
-//   tag.addEventListener("click", (e) => {
-//     recipeList.forEach((list) => {
-//       let isVisible;
-//       list.ingred.forEach((ing) => {
-//         isVisible = ing.ingredient
-//           .toLowerCase()
-//           .normalize("NFD")
-//           .replace(/\p{Diacritic}/gu, "")
-//           .includes(value);
-//       });
-
-//       list.element.classList.toggle("hide", !isVisible);
-//     });
-//   });
-// });
-
 //DOM //
 const devices = document.querySelector(".device_menu");
+// create devices list //
 
 let allAppliances = [];
 
@@ -235,6 +152,8 @@ getAppliancesList();
 const ustensilsM = document.querySelector(".ustensil_menu");
 let allUstensils = [];
 
+// create ustensils list //
+
 const getUstensilList = () => {
   recipes.map((recipe) => {
     recipe.ustensils.forEach((object) => {
@@ -246,74 +165,11 @@ const getUstensilList = () => {
   allUstensils.forEach((object) => {
     const ustensil_li = document.createElement("li");
     ustensil_li.className = "ustensil_li";
-    ustensil_li.innerHTML += `${object}`;
+    ustensil_li.innerHTML += object;
     ustensilsM.appendChild(ustensil_li);
   });
 };
 getUstensilList();
-
-// const getCategoriesTag = (category) => {
-//   const categories = document.getElementsByClassName(`${category}_li`);
-//   const buttons = document.querySelector(".buttons");
-//   const firstChild = buttons.firstChild;
-
-//   for (let item of categories) {
-//     item.addEventListener("click", () => {
-//       let tag = document.createElement("button");
-//       tag.className = "tags";
-//       tag.textContent = item.textContent;
-//       console.log(item);
-//       let closeTag = document.createElement("img");
-//       closeTag.className = "closeTag";
-//       closeTag.src = closeArrow;
-
-//       buttons.insertBefore(tag, firstChild);
-//       buttons.appendChild(tag);
-//       tag.appendChild(closeTag);
-
-//       if (!(tag.style.display === "none")) {
-//         item.style.display = "none";
-//       } else {
-//         item.style.display = "";
-//       }
-
-//       let clsTag = document.querySelectorAll(".closeTag");
-//       for (let item of clsTag) {
-//         item.addEventListener("click", () => {
-//           tag.style.display = "none";
-//           item.style.display = "";
-//         });
-//       }
-
-//       let value =
-//         tag.innerText
-//           .toLowerCase()
-//           .normalize("NFD")
-//           .replace(/\p{Diacritic}/gu, "") ||
-//         tag.textContent
-//           .toLowerCase()
-//           .normalize("NFD")
-//           .replace(/\p{Diacritic}/gu, "");
-
-//       if (!(tag.style.display === "none")) {
-//         recipeList.forEach((list) => {
-//           let isVisible;
-//           for (let ing of list.ingred) {
-//             console.log(ing.ingredient);
-//             isVisible = ing.ingredient
-//               .toLowerCase()
-//               .normalize("NFD")
-//               .replace(/\p{Diacritic}/gu, "")
-//               .includes(value);
-//           }
-
-//           list.element.classList.toggle("hide", !isVisible);
-//         });
-//       }
-//     });
-//   }
-// };
-// getCategoriesTag("ingredients");
 
 // find the tags who match the search//
 const searchTags = (category) => {
@@ -349,8 +205,11 @@ searchTags("device");
 searchTags("ustensil");
 
 // create tags and erase it & remove unmatched cards//
-console.log(allIngredients);
-const getCategoriesTag = (category, tabs) => {
+
+let ingredientTags = [],
+  deviceTags = [],
+  ustensilTags = [];
+const getCategoriesTag = (category, tabs, typeTags) => {
   const categories = document.getElementsByClassName(`${category}_li`);
   const buttons = document.querySelector(".buttons");
   const firstChild = buttons.firstChild;
@@ -360,6 +219,7 @@ const getCategoriesTag = (category, tabs) => {
       let tag = document.createElement("button");
       tag.className = "tags";
       tag.textContent = categories[i].textContent;
+      typeTags.push(tag.textContent);
       let closeTag = document.createElement("img");
       closeTag.className = "closeTag";
       closeTag.src = closeArrow;
@@ -368,21 +228,23 @@ const getCategoriesTag = (category, tabs) => {
       buttons.appendChild(tag);
       tag.appendChild(closeTag);
       let filterIng = tag.textContent;
+      console.log(typeTags.length);
       if (tag) {
-        let index = tabs.findIndex((el) => el === filterIng);
-        tabs.splice(index, 1);
+        tabs = tabs.filter((el) => el !== tag.textContent);
       }
 
       let clsTag = document.querySelectorAll(".closeTag");
       for (let item of clsTag) {
         item.addEventListener("click", (e) => {
+          tabs.push(tag.textContent);
+          typeTags = typeTags.filter((el) => el !== tag.textContent);
+          console.log(typeTags.length);
           tag.remove();
-          tabs.unshift(tag.textContent);
-          console.log(tabs);
         });
       }
+
       tabs = tabs.filter((e, i) => tabs.indexOf(e) == i);
-      console.log(tabs);
+
       let value =
         tag.innerText
           .toLowerCase()
@@ -396,7 +258,7 @@ const getCategoriesTag = (category, tabs) => {
       if (value) {
         recipeList.forEach((list) => {
           let isVisibleA;
-          list.ingred.forEach((ing) => {
+          list.ingred.map((ing) => {
             isVisibleA = ing.ingredient
               .toLowerCase()
               .normalize("NFD")
@@ -404,13 +266,13 @@ const getCategoriesTag = (category, tabs) => {
               .includes(value);
           });
 
-          list.element.classList.toggle("hide", !isVisibleA);
+          list.element.classList.toggle("show", isVisibleA);
         });
       }
     });
   }
   return tabs;
 };
-getCategoriesTag("ingredients", allIngredients);
-getCategoriesTag("device", allAppliances);
-getCategoriesTag("ustensil", allUstensils);
+getCategoriesTag("ingredients", allIngredients, ingredientTags);
+getCategoriesTag("device", allAppliances, deviceTags);
+getCategoriesTag("ustensil", allUstensils, ustensilTags);
