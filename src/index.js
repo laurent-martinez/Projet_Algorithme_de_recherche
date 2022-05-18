@@ -51,6 +51,7 @@ const buildCard = () => {
       ingred: recipe.ingredients,
       devices: recipe.appliance,
       ustensils: recipe.ustensils,
+      description: recipe.description,
       element: card,
     };
   });
@@ -63,7 +64,8 @@ searchBar.addEventListener("input", (e) => {
   const value = e.target.value
     .toLowerCase()
     .normalize("NFD")
-    .replace(/\p{Diacritic}/gu, "");
+    .replace(/\p{Diacritic}/gu, "")
+    .trim();
 
   recipeList.forEach((list) => {
     let isVisible;
@@ -85,7 +87,7 @@ searchBar.addEventListener("input", (e) => {
           .replace(/\p{Diacritic}/gu, "")
           .includes(value);
       if (value === ing.ingredient) {
-        allIngredients = allIngredients.filter((el) => el !== ing.ingredient);
+        allIngredients = allIngredients.filter((el) => el === ing.ingredient);
       }
     });
     list.element.classList.toggle("show", isVisible);
@@ -109,13 +111,13 @@ const ingredientMenu = document.querySelector(".ingredient_menu");
 
 let allIngredients = [];
 const getIngredientsList = () => {
-  recipes.forEach((recipe) => {
+  for (let recipe of recipes) {
     recipe.ingredients.map((object) => {
       allIngredients.push(
         object.ingredient.toLowerCase().replace(/\p{Diacritic}/gu, "")
       );
     });
-  });
+  }
   allIngredients = [...new Set(allIngredients)];
   allIngredients.map((ing) => {
     const li = document.createElement("li");
@@ -133,12 +135,12 @@ const devices = document.querySelector(".device_menu");
 let allAppliances = [];
 
 const getAppliancesList = () => {
-  recipes.map((recipe) => {
+  for (let recipe of recipes) {
     let appliances = recipe.appliance
       .toLowerCase()
       .replace(/\p{Diacritic}/gu, "");
     allAppliances.push(appliances);
-  });
+  }
   allAppliances = [...new Set(allAppliances)];
   allAppliances.forEach((object) => {
     const device_li = document.createElement("li");
@@ -156,11 +158,11 @@ let allUstensils = [];
 // create ustensils list //
 
 const getUstensilList = () => {
-  recipes.map((recipe) => {
-    recipe.ustensils.forEach((object) => {
+  for (let recipe of recipes) {
+    recipe.ustensils.map((object) => {
       allUstensils.push(object.toLowerCase().replace(/\p{Diacritic}/gu, ""));
     });
-  });
+  }
   allUstensils = [...allUstensils];
   allUstensils = [...new Set(allUstensils)];
   allUstensils.forEach((object) => {
@@ -210,6 +212,7 @@ searchTags("ustensil");
 let ingredientTags = [],
   deviceTags = [],
   ustensilTags = [];
+
 const getCategoriesTag = (category, tabs, typeTags) => {
   const categories = document.getElementsByClassName(`${category}_li`);
   const buttons = document.querySelector(".buttons");
@@ -229,17 +232,23 @@ const getCategoriesTag = (category, tabs, typeTags) => {
       buttons.appendChild(tag);
       tag.appendChild(closeTag);
       let filterIng = tag.textContent;
-      console.log(typeTags.length);
+      console.log(tabs.length);
       if (tag) {
-        tabs = tabs.filter((el) => el !== tag.textContent);
+        tabs = tabs.filter(
+          (el) =>
+            el !==
+            filterIng
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/\p{Diacritic}/gu, "")
+        );
       }
-
+      console.log(tabs.length);
       let clsTag = document.querySelectorAll(".closeTag");
       for (let item of clsTag) {
         item.addEventListener("click", (e) => {
           tabs.push(tag.textContent);
           typeTags = typeTags.filter((el) => el !== tag.textContent);
-          console.log(typeTags.length);
           tag.remove();
         });
       }
@@ -255,21 +264,38 @@ const getCategoriesTag = (category, tabs, typeTags) => {
           .toLowerCase()
           .normalize("NFD")
           .replace(/\p{Diacritic}/gu, "");
-
       if (value) {
         recipeList.forEach((list) => {
-          let isVisibleA;
-          console.log(list);
-          list.ingred.map((ing) => {
-            isVisibleA =
+          let isVisibleA = false;
+          list.ingred.forEach((ing) => {
+            if (
               ing.ingredient
                 .toLowerCase()
                 .normalize("NFD")
-                .replace(/\p{Diacritic}/gu, "") ===
-              value
+                .replace(/\p{Diacritic}/gu, "") === value
+            ) {
+              isVisibleA = true;
+            }
+          });
+          if (
+            value ===
+            list.devices
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/\p{Diacritic}/gu, "")
+          ) {
+            isVisibleA = true;
+          }
+          list.ustensils.forEach((ustensils) => {
+            if (
+              value ===
+              ustensils
                 .toLowerCase()
                 .normalize("NFD")
-                .replace(/\p{Diacritic}/gu, "");
+                .replace(/\p{Diacritic}/gu, "")
+            ) {
+              isVisibleA = true;
+            }
           });
 
           list.element.classList.toggle("show", isVisibleA);
