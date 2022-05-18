@@ -2491,4 +2491,4 @@ getCategoriesTag("ustensil", allUstensils, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=32fb3da60d83797bc878.js.map
+//# sourceMappingURL=de040567c315417f2b71.js.map

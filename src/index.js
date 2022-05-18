@@ -29,7 +29,6 @@ const buildSearchBar = () => {
 buildSearchBar();
 
 // Build the cards //
-
 const buildCard = (data) => {
   recipeList = recipes.map((recipe) => {
     const card = recipeCardTemplate.content.cloneNode(true).children[0];
