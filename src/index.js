@@ -7,7 +7,7 @@ import time from "./assets/timer.svg";
 import closeArrow from "./assets/close_arrow.svg";
 
 let recipeList = [];
-
+let searchReduceArray = [];
 const recipeCardTemplate = document.querySelector("[data-recipe-template]");
 const recipeCardsContainer = document.querySelector("[data-cards-container]");
 
@@ -24,7 +24,7 @@ buildSearchBar();
 
 // Build the cards //
 
-const buildCard = () => {
+const buildCard = (data) => {
   recipeList = recipes.map((recipe) => {
     const card = recipeCardTemplate.content.cloneNode(true).children[0];
     const title = card.querySelector("[data-title]");
@@ -59,41 +59,47 @@ const buildCard = () => {
 buildCard();
 
 // select card with input search value //
-
-searchBar.addEventListener("input", (e) => {
-  const value = e.target.value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/\p{Diacritic}/gu, "")
-    .trim();
-
-  recipeList.forEach((list) => {
-    let isVisible;
-    list.ingred.forEach((ing) => {
-      isVisible =
-        list.titre
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/\p{Diacritic}/gu, "")
-          .includes(value) ||
-        ing.ingredient
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/\p{Diacritic}/gu, "")
-          .includes(value) ||
-        list.description
+const searchFilter = () => {
+  searchBar.addEventListener("input", (e) => {
+    const value = e.target.value
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "");
+    console.log(recipeList);
+    recipeList.forEach((list) => {
+      let isVisible;
+      list.ingred.forEach((ing) => {
+        isVisible = ing.ingredient
           .toLowerCase()
           .normalize("NFD")
           .replace(/\p{Diacritic}/gu, "")
           .includes(value);
-      if (value === ing.ingredient) {
-        allIngredients = allIngredients.filter((el) => el === ing.ingredient);
+      });
+      let titreConf = list.titre
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "")
+        .includes(value);
+      if (titreConf) {
+        isVisible = true;
+        searchReduceArray = recipeList.filter((el) => el === titreConf);
       }
+      if (
+        list.description
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/\p{Diacritic}/gu, "")
+          .includes(value)
+      ) {
+        isVisible = true;
+      }
+      list.element.classList.toggle("show", isVisible);
     });
-    list.element.classList.toggle("show", isVisible);
   });
-});
+};
+setTimeout(searchFilter, 2500);
 
+console.log(searchReduceArray);
 const recipesPic = document.querySelectorAll("[data-img]");
 recipesPic.forEach((recip) => {
   recip.src = food;
