@@ -7,10 +7,16 @@ import time from "./assets/timer.svg";
 import closeArrow from "./assets/close_arrow.svg";
 
 let recipeList = [];
-let searchReduceArray = [];
+let searchReduceArray = [].concat(recipeList);
 const recipeCardTemplate = document.querySelector("[data-recipe-template]");
 const recipeCardsContainer = document.querySelector("[data-cards-container]");
 
+const normalize = (variable) => {
+  return variable
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
+};
 // Create the search bar //
 
 const searchBar = document.querySelector("[data-search]");
@@ -61,36 +67,18 @@ buildCard();
 // select card with input search value //
 const searchFilter = () => {
   searchBar.addEventListener("input", (e) => {
-    const value = e.target.value
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/\p{Diacritic}/gu, "");
-    console.log(recipeList);
+    const value = normalize(e.target.value);
     recipeList.forEach((list) => {
       let isVisible;
       list.ingred.forEach((ing) => {
-        isVisible = ing.ingredient
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/\p{Diacritic}/gu, "")
-          .includes(value);
+        isVisible = normalize(ing.ingredient).includes(value);
       });
-      let titreConf = list.titre
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/\p{Diacritic}/gu, "")
-        .includes(value);
+      let titreConf = normalize(list.titre).includes(value);
       if (titreConf) {
         isVisible = true;
-        searchReduceArray = recipeList.filter((el) => el === titreConf);
       }
-      if (
-        list.description
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/\p{Diacritic}/gu, "")
-          .includes(value)
-      ) {
+
+      if (normalize(list.description).includes(value)) {
         isVisible = true;
       }
       list.element.classList.toggle("show", isVisible);
@@ -98,7 +86,6 @@ const searchFilter = () => {
   });
 };
 setTimeout(searchFilter, 2500);
-
 console.log(searchReduceArray);
 const recipesPic = document.querySelectorAll("[data-img]");
 recipesPic.forEach((recip) => {
@@ -119,9 +106,7 @@ let allIngredients = [];
 const getIngredientsList = () => {
   for (let recipe of recipes) {
     recipe.ingredients.map((object) => {
-      allIngredients.push(
-        object.ingredient.toLowerCase().replace(/\p{Diacritic}/gu, "")
-      );
+      allIngredients.push(normalize(object.ingredient));
     });
   }
   allIngredients = [...new Set(allIngredients)];
@@ -142,9 +127,7 @@ let allAppliances = [];
 
 const getAppliancesList = () => {
   for (let recipe of recipes) {
-    let appliances = recipe.appliance
-      .toLowerCase()
-      .replace(/\p{Diacritic}/gu, "");
+    let appliances = normalize(recipe.appliance);
     allAppliances.push(appliances);
   }
   allAppliances = [...new Set(allAppliances)];
@@ -166,7 +149,7 @@ let allUstensils = [];
 const getUstensilList = () => {
   for (let recipe of recipes) {
     recipe.ustensils.map((object) => {
-      allUstensils.push(object.toLowerCase().replace(/\p{Diacritic}/gu, ""));
+      allUstensils.push(normalize(object));
     });
   }
   allUstensils = [...allUstensils];
@@ -186,21 +169,10 @@ const searchTags = (category) => {
   const ingredient_menu = document.querySelector(".ingredient_menu");
   const items = document.querySelectorAll(`.${category}_li`);
   for (let item of items) {
-    let valuue =
-      item.textContent
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/\p{Diacritic}/gu, "") ||
-      item.innerHTML
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/\p{Diacritic}/gu, "");
+    let valuue = normalize(item.textContent) || normalize(item.innerHTML);
 
     searchBox.addEventListener("input", (element) => {
-      let value = element.target.value
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/\p{Diacritic}/gu, "");
+      let value = normalize(element.target.value);
       if (valuue.includes(value)) {
         item.style.display = "";
       } else {
@@ -238,18 +210,11 @@ const getCategoriesTag = (category, tabs, typeTags) => {
       buttons.appendChild(tag);
       tag.appendChild(closeTag);
       let filterIng = tag.textContent;
-      console.log(tabs.length);
+
       if (tag) {
-        tabs = tabs.filter(
-          (el) =>
-            el !==
-            filterIng
-              .toLowerCase()
-              .normalize("NFD")
-              .replace(/\p{Diacritic}/gu, "")
-        );
+        tabs = tabs.filter((el) => el !== normalize(filterIng));
       }
-      console.log(tabs.length);
+
       let clsTag = document.querySelectorAll(".closeTag");
       for (let item of clsTag) {
         item.addEventListener("click", (e) => {
@@ -261,45 +226,20 @@ const getCategoriesTag = (category, tabs, typeTags) => {
 
       tabs = tabs.filter((e, i) => tabs.indexOf(e) == i);
 
-      let value =
-        tag.innerText
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/\p{Diacritic}/gu, "") ||
-        tag.textContent
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/\p{Diacritic}/gu, "");
+      let value = normalize(tag.innerText) || normalize(tag.textContent);
       if (value) {
         recipeList.forEach((list) => {
           let isVisibleA = false;
           list.ingred.forEach((ing) => {
-            if (
-              ing.ingredient
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/\p{Diacritic}/gu, "") === value
-            ) {
+            if (normalize(ing.ingredient) === value) {
               isVisibleA = true;
             }
           });
-          if (
-            value ===
-            list.devices
-              .toLowerCase()
-              .normalize("NFD")
-              .replace(/\p{Diacritic}/gu, "")
-          ) {
+          if (value === normalize(list.devices)) {
             isVisibleA = true;
           }
           list.ustensils.forEach((ustensils) => {
-            if (
-              value ===
-              ustensils
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/\p{Diacritic}/gu, "")
-            ) {
+            if (value === normalize(ustensils)) {
               isVisibleA = true;
             }
           });
