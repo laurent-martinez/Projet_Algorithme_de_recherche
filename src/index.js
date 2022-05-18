@@ -44,6 +44,7 @@ recipeList = recipes.map((recipe) => {
     element: card,
   };
 });
+console.log(recipeList);
 
 searchBar.addEventListener("input", (e) => {
   const value = e.target.value
