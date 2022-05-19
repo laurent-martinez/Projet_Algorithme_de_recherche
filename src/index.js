@@ -129,9 +129,14 @@ const searchFilter = (initialArray) => {
   searchBar.addEventListener("input", (e) => {
     e.preventDefault();
     const value = normalize(e.target.value);
-    searchReduceArray = initialArray.filter(
-      (el) => normalize(el.appliance) === normalize(value)
+    initialArray.forEach((el) =>
+      el.ingredients.map((e) =>
+        normalize(e.ingredient) === normalize(value)
+          ? searchReduceArray.push(el)
+          : null
+      )
     );
+
     buildCard(searchReduceArray);
     getIngredientsList(searchReduceArray);
     getAppliancesList(searchReduceArray);

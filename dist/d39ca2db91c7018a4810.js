@@ -2293,8 +2293,10 @@ var searchFilter = function searchFilter(initialArray) {
   searchBar.addEventListener("input", function (e) {
     e.preventDefault();
     var value = normalize(e.target.value);
-    searchReduceArray = initialArray.filter(function (el) {
-      return normalize(el.appliance) === normalize(value);
+    initialArray.forEach(function (el) {
+      return el.ingredients.map(function (e) {
+        return normalize(e.ingredient) === normalize(value) ? searchReduceArray.push(el) : null;
+      });
     });
     buildCard(searchReduceArray);
     getIngredientsList(searchReduceArray);
@@ -2525,4 +2527,4 @@ getCategoriesTag("ustensil", allUstensils, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=1abb2ff0215c6f48eec8.js.map
+//# sourceMappingURL=d39ca2db91c7018a4810.js.map
