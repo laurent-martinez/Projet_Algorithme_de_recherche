@@ -2150,6 +2150,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_magnifying_glass_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/magnifying_glass.svg */ "./src/assets/magnifying_glass.svg");
 /* harmony import */ var _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/food.svg */ "./src/assets/food.svg");
 /* harmony import */ var _assets_timer_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/timer.svg */ "./src/assets/timer.svg");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './assets/close_arrow.svg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
 
 
 
@@ -2157,45 +2173,79 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var recipeList = [];
+var searchReduceArray = [];
 var recipeCardTemplate = document.querySelector("[data-recipe-template]");
 var recipeCardsContainer = document.querySelector("[data-cards-container]");
-var logoBrand = document.getElementById("logo");
-logoBrand.src = _assets_cooking_hat_svg__WEBPACK_IMPORTED_MODULE_2__;
-var searchPicture = document.getElementById("search_picture");
-searchPicture.src = _assets_magnifying_glass_svg__WEBPACK_IMPORTED_MODULE_3__;
+
+var normalize = function normalize(variable) {
+  return variable.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "");
+}; // Create the search bar //
+
+
 var searchBar = document.querySelector("[data-search]");
-recipeList = _recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.map(function (recipe) {
-  var card = recipeCardTemplate.content.cloneNode(true).children[0];
-  var title = card.querySelector("[data-title]");
-  var timing = card.querySelector("[data-timing]");
-  var ingredients = card.querySelector("[data-ingredients]");
-  var instructions = card.querySelector("[data-instructions]");
-  title.textContent = recipe.name;
-  timing.textContent = recipe.time;
-  var ingredientso = recipe.ingredients;
-  ingredientso.forEach(function (ing) {
-    ingredients.innerHTML += "<span class=\"recipe__ingredients__title\">".concat(ing.ingredient, " : </span> ").concat(parseInt(ing.quantity) + ing.unit || parseInt(ing.quantity) || "", " <br>");
-  });
-  instructions.textContent = recipe.description;
-  recipeCardsContainer.append(card);
-  return {
-    titre: recipe.name,
-    ingred: recipe.ingredients,
-    description: recipe.description,
-    element: card
-  };
-});
-console.log(recipeList);
-searchBar.addEventListener("input", function (e) {
-  var value = e.target.value.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "");
-  recipeList.forEach(function (list) {
-    var isVisible;
-    list.ingred.forEach(function (ing) {
-      isVisible = list.titre.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "").includes(value) || ing.ingredient.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "").includes(value) || list.description.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "").includes(value);
+
+var buildSearchBar = function buildSearchBar() {
+  var logoBrand = document.getElementById("logo");
+  logoBrand.src = _assets_cooking_hat_svg__WEBPACK_IMPORTED_MODULE_2__;
+  var searchPicture = document.getElementById("search_picture");
+  searchPicture.src = _assets_magnifying_glass_svg__WEBPACK_IMPORTED_MODULE_3__;
+};
+
+buildSearchBar(); // Build the cards //
+
+var buildCard = function buildCard(data) {
+  recipeList = _recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.map(function (recipe) {
+    var card = recipeCardTemplate.content.cloneNode(true).children[0];
+    var title = card.querySelector("[data-title]");
+    var timing = card.querySelector("[data-timing]");
+    var ingredients = card.querySelector("[data-ingredients]");
+    var instructions = card.querySelector("[data-instructions]");
+    title.textContent = recipe.name;
+    timing.textContent = recipe.time;
+    var ingredientso = recipe.ingredients;
+    ingredientso.forEach(function (ing) {
+      ingredients.innerHTML += "<span class=\"recipe__ingredients__title\">".concat(ing.ingredient, " : </span> ").concat(parseInt(ing.quantity) + ing.unit || parseInt(ing.quantity) || "", " <br>");
     });
-    list.element.classList.toggle("hide", !isVisible);
+    instructions.textContent = recipe.description;
+    recipeCardsContainer.append(card);
+    return {
+      titre: recipe.name,
+      ingred: recipe.ingredients,
+      devices: recipe.appliance,
+      ustensils: recipe.ustensils,
+      description: recipe.description,
+      element: card
+    };
   });
-});
+};
+
+buildCard(); // select card with input search value //
+
+var searchFilter = function searchFilter() {
+  searchBar.addEventListener("input", function (e) {
+    e.preventDefault();
+    var value = normalize(e.target.value);
+    recipeList.forEach(function (list) {
+      var isVisible;
+      list.ingred.forEach(function (ing) {
+        isVisible = normalize(ing.ingredient).includes(value);
+      });
+      var titreConf = normalize(list.titre).includes(value);
+
+      if (titreConf) {
+        isVisible = true;
+      }
+
+      if (normalize(list.description).includes(value)) {
+        isVisible = true;
+      }
+
+      list.element.classList.toggle("show", isVisible);
+    });
+  });
+};
+
+setTimeout(searchFilter, 2500);
 var recipesPic = document.querySelectorAll("[data-img]");
 recipesPic.forEach(function (recip) {
   recip.src = _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__;
@@ -2203,39 +2253,231 @@ recipesPic.forEach(function (recip) {
 var logoTimer = document.querySelectorAll("[data-timer-img]");
 logoTimer.forEach(function (logo) {
   logo.src = _assets_timer_svg__WEBPACK_IMPORTED_MODULE_5__;
-});
+}); // DOM //
 
-var fillDropdown = function fillDropdown(e) {
-  _recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.map(function (recipe) {
-    var ingredient = document.querySelector(".ingredient_menu");
-    var devices = document.querySelector(".device_menu");
-    var ustensils = document.querySelector(".ustensil_menu");
+var ingredientMenu = document.querySelector(".ingredient_menu"); // create ingredient list//
+
+var allIngredients = [];
+
+var getIngredientsList = function getIngredientsList() {
+  var _iterator = _createForOfIteratorHelper(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var recipe = _step.value;
+      recipe.ingredients.map(function (object) {
+        allIngredients.push(normalize(object.ingredient));
+      });
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  allIngredients = _toConsumableArray(new Set(allIngredients));
+  allIngredients.map(function (ing) {
     var li = document.createElement("li");
-    var lili = document.createElement("li");
-    lili.className = "device_li";
-    var lilili = document.createElement("li");
-    recipe.ingredients.forEach(function (ingred) {
-      console.log(ingred.ingredient);
-      li.innerHTML += "".concat(ingred.ingredient, "<br>");
-    });
-    lili.textContent += recipe.appliance;
-    lilili.innerHTML += "".concat(recipe.ustensils, "<br>");
-    ingredient.appendChild(li);
-    devices.appendChild(lili);
-    ustensils.appendChild(lilili);
+    li.className = "ingredients_li";
+    li.innerHTML += ing;
+    ingredientMenu.appendChild(li);
   });
 };
 
-fillDropdown();
-var liar = document.querySelectorAll(".device_li");
-console.log(liar);
-liar.forEach(function (li) {
-  li.addEventListener("click", function (e) {
-    li.style.backgroundColor = "red";
+getIngredientsList(); //DOM //
+
+var devices = document.querySelector(".device_menu"); // create devices list //
+
+var allAppliances = [];
+
+var getAppliancesList = function getAppliancesList() {
+  var _iterator2 = _createForOfIteratorHelper(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes),
+      _step2;
+
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var recipe = _step2.value;
+      var appliances = normalize(recipe.appliance);
+      allAppliances.push(appliances);
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+
+  allAppliances = _toConsumableArray(new Set(allAppliances));
+  allAppliances.forEach(function (object) {
+    var device_li = document.createElement("li");
+    device_li.className = "device_li";
+    device_li.innerHTML += object;
+    devices.appendChild(device_li);
   });
-});
+};
+
+getAppliancesList(); //DOM //
+
+var ustensilsM = document.querySelector(".ustensil_menu");
+var allUstensils = []; // create ustensils list //
+
+var getUstensilList = function getUstensilList() {
+  var _iterator3 = _createForOfIteratorHelper(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes),
+      _step3;
+
+  try {
+    for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+      var recipe = _step3.value;
+      recipe.ustensils.map(function (object) {
+        allUstensils.push(normalize(object));
+      });
+    }
+  } catch (err) {
+    _iterator3.e(err);
+  } finally {
+    _iterator3.f();
+  }
+
+  allUstensils = _toConsumableArray(allUstensils);
+  allUstensils = _toConsumableArray(new Set(allUstensils));
+  allUstensils.forEach(function (object) {
+    var ustensil_li = document.createElement("li");
+    ustensil_li.className = "ustensil_li";
+    ustensil_li.innerHTML += object;
+    ustensilsM.appendChild(ustensil_li);
+  });
+};
+
+getUstensilList(); // find the tags who match the search//
+
+var searchTags = function searchTags(category) {
+  var searchBox = document.querySelector(".".concat(category, "_search"));
+  var items = document.querySelectorAll(".".concat(category, "_li"));
+
+  var _iterator4 = _createForOfIteratorHelper(items),
+      _step4;
+
+  try {
+    var _loop = function _loop() {
+      var item = _step4.value;
+      var valuue = normalize(item.textContent) || normalize(item.innerHTML);
+      searchBox.addEventListener("input", function (element) {
+        var value = normalize(element.target.value);
+
+        if (valuue.includes(value)) {
+          item.style.display = "";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    };
+
+    for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+      _loop();
+    }
+  } catch (err) {
+    _iterator4.e(err);
+  } finally {
+    _iterator4.f();
+  }
+};
+
+searchTags("ingredients");
+searchTags("device");
+searchTags("ustensil"); // create tags and erase it & remove unmatched cards//
+
+var ingredientTags = [],
+    deviceTags = [],
+    ustensilTags = [];
+
+var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
+  var categories = document.getElementsByClassName("".concat(category, "_li"));
+  var buttons = document.querySelector(".buttons");
+  var firstChild = buttons.firstChild;
+
+  var _loop2 = function _loop2(i) {
+    categories[i].addEventListener("click", function () {
+      var tag = document.createElement("button");
+      tag.className = "tags";
+      tag.textContent = categories[i].textContent;
+      typeTags.push(tag.textContent);
+      var closeTag = document.createElement("img");
+      closeTag.className = "closeTag";
+      closeTag.src = Object(function webpackMissingModule() { var e = new Error("Cannot find module './assets/close_arrow.svg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+      buttons.insertBefore(tag, firstChild);
+      buttons.appendChild(tag);
+      tag.appendChild(closeTag);
+      var filterIng = tag.textContent;
+
+      if (tag) {
+        tabs = tabs.filter(function (el) {
+          return el !== normalize(filterIng);
+        });
+      }
+
+      var clsTag = document.querySelectorAll(".closeTag");
+
+      var _iterator5 = _createForOfIteratorHelper(clsTag),
+          _step5;
+
+      try {
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var item = _step5.value;
+          item.addEventListener("click", function (e) {
+            tabs.push(tag.textContent);
+            typeTags = typeTags.filter(function (el) {
+              return el !== tag.textContent;
+            });
+            tag.remove();
+          });
+        }
+      } catch (err) {
+        _iterator5.e(err);
+      } finally {
+        _iterator5.f();
+      }
+
+      tabs = tabs.filter(function (e, i) {
+        return tabs.indexOf(e) == i;
+      });
+      var value = normalize(tag.innerText) || normalize(tag.textContent);
+
+      if (value) {
+        recipeList.forEach(function (list) {
+          var isVisibleA = false;
+          list.ingred.forEach(function (ing) {
+            if (normalize(ing.ingredient) === value) {
+              isVisibleA = true;
+            }
+          });
+
+          if (value === normalize(list.devices)) {
+            isVisibleA = true;
+          }
+
+          list.ustensils.forEach(function (ustensils) {
+            if (value === normalize(ustensils)) {
+              isVisibleA = true;
+            }
+          });
+          list.element.classList.toggle("show", isVisibleA);
+        });
+      }
+    });
+  };
+
+  for (var i = 0; i < categories.length; i++) {
+    _loop2(i);
+  }
+
+  return tabs;
+};
+
+getCategoriesTag("ingredients", allIngredients, ingredientTags);
+getCategoriesTag("device", allAppliances, deviceTags);
+getCategoriesTag("ustensil", allUstensils, ustensilTags);
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=b863e5b2e30882c36f6d.js.map
+//# sourceMappingURL=d67dd7e7a2fa8fd54182.js.map
