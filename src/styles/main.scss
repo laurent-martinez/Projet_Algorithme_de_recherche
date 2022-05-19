@@ -100,7 +100,7 @@ svg {
             height: auto;
             background-color: #E7E7E7;
             margin: 15px;
-            display: none;
+            display: flex;
             align-items: center;
             text-overflow: ellipsis;
             &__title {
@@ -151,9 +151,7 @@ svg {
         }
     
 
-    .show {
-        display: flex;
-    }
+
 
 .ingredients_li,.device_li,.ustensil_li {
     cursor: pointer;

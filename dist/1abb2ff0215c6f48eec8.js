@@ -1411,7 +1411,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  width: 100vw;\n  height: 100vh;\n}\n\nimg,\nsvg {\n  vertical-align: baseline;\n}\n\n.bg-light {\n  display: flex;\n  background-color: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid {\n  justify-content: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand {\n  display: flex;\n  flex-direction: column;\n  text-decoration: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1 {\n  font-size: 36px;\n  color: #D04F4F;\n  font-weight: 700;\n  font-family: \"DM Sans\", sans-serif;\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:link {\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:visited {\n  text-decoration: none;\n}\n\n.form-inline {\n  display: flex;\n  height: 69px;\n  border-radius: 5px;\n}\n.form-inline .form-control {\n  font-family: \"Lato\", sans-serif;\n  font-weight: 400;\n  font-size: 18px;\n  background-color: #e7e7e7;\n  border-radius: 5px 0 0 5px;\n  border: none;\n  outline: none;\n}\n.form-inline .form-control:focus {\n  border: none;\n  outline: none;\n}\n.form-inline .btn-outline-success {\n  border: none;\n  background-color: #e7e7e7;\n  border-radius: 0px 5px 5px 0px;\n}\n\n.custom-container {\n  margin: 0 150px;\n}\n\n.btn-group {\n  margin-right: 15px;\n}\n\n.dropdown-toggle {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  font-family: \"Lato\", sans-serif;\n  color: white;\n  font-weight: 700;\n  font-size: 18px;\n  width: 170px;\n  height: 69px;\n}\n.dropdown-toggle::after {\n  appearance: none;\n  border: none;\n  content: \"\";\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") center center no-repeat;\n  width: 16px;\n  height: 10px;\n}\n\n.recipes {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n  gap: 0.25rem;\n  margin-top: 1rem;\n}\n\n.recipe {\n  height: auto;\n  background-color: #E7E7E7;\n  margin: 15px;\n  display: none;\n  align-items: center;\n  text-overflow: ellipsis;\n}\n.recipe__title {\n  font-family: Lato;\n  font-size: 22px;\n  font-weight: 400;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__timer {\n  text-align: right;\n  align-items: center;\n}\n.recipe__timing {\n  font-family: Lato;\n  font-size: 18px;\n  font-weight: 700;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n}\n.recipe__ingredients {\n  font-family: Roboto;\n  width: 100%;\n  font-weight: 400;\n  line-height: 16px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__ingredients__title {\n  font-weight: 700;\n}\n.recipe__instructions {\n  font-family: Roboto;\n  width: 100%;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 12px;\n  letter-spacing: 0em;\n  text-align: left;\n  text-align: justify;\n}\n\n.show {\n  display: flex;\n}\n\n.ingredients_li, .device_li, .ustensil_li {\n  cursor: pointer;\n  list-style-type: none;\n  padding: 5px;\n}\n.ingredients_li:hover, .device_li:hover, .ustensil_li:hover {\n  background-color: #E7E7E7;\n}\n\n.tags {\n  padding: 15px;\n  margin: 10px;\n  outline: none;\n  appearance: none;\n  border: none;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  padding-left: 10px;\n  background-color: #3282F7;\n  color: white;\n}\n.tags.closeTag {\n  width: 20px;\n  height: 20px;\n  padding-left: 10px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AACA;EACI,YAAA;EACA,aAAA;AAAJ;;AAEA;;EAEE,wBAAA;AACF;;AAEI;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;AACR;AAAQ;EACI,uBAAA;AAEZ;AADY;EACI,aAAA;EACA,sBAAA;EACA,qBAAA;EACA,uBAAA;EACA,mBAAA;AAGhB;AAFgB;EACI,eAAA;EACA,cAAA;EACA,gBAAA;EAEA,kCAAA;EACA,qBAAA;AAGpB;AAFoB;EACI,qBAAA;AAIxB;AAFoB;EACI,qBAAA;AAIxB;;AAII;EACI,aAAA;EACA,YAAA;EACA,kBAAA;AADR;AAEQ;EACI,+BAAA;EACA,gBAAA;EACA,eAAA;EACA,yBAAA;EACA,0BAAA;EACA,YAAA;EACA,aAAA;AAAZ;AACY;EACI,YAAA;EACA,aAAA;AAChB;AAEQ;EACI,YAAA;EACA,yBAAA;EACA,8BAAA;AAAZ;;AAIE;EACI,eAAA;AADN;;AAGE;EACI,kBAAA;AAAN;;AAEI;EACI,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,+BAAA;EACA,YAAA;EACA,gBAAA;EACA,eAAA;EACA,YAAA;EACA,YAAA;AACR;AAAQ;EACI,gBAAA;EACA,YAAA;EACA,WAAA;EACA,2EAAA;EACA,WAAA;EACA,YAAA;AAEZ;;AAEI;EACG,aAAA;EACA,4DAAA;EACA,YAAA;EACA,gBAAA;AACP;;AACQ;EACI,YAAA;EACA,yBAAA;EACA,YAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AAEZ;AADY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAGhB;AAAY;EACI,iBAAA;EACF,mBAAA;AAEd;AAAY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;AAEhB;AACY;EACI,mBAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;AAAgB;EACI,gBAAA;AAEpB;AACY;EACI,mBAAA;EACA,WAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;;AAII;EACI,aAAA;AADR;;AAIA;EACI,eAAA;EACA,qBAAA;EACA,YAAA;AADJ;AAEI;EACI,yBAAA;AAAR;;AAIA;EACC,aAAA;EACA,YAAA;EACA,aAAA;EACA,gBAAA;EACA,YAAA;EACA,kBAAA;EACA,aAAA;EAED,mBAAA;EACA,kBAAA;EACA,yBAAA;EACC,YAAA;AAFD;AAII;EACI,WAAA;EACA,YAAA;EACA,kBAAA;AAFR","sourcesContent":["\nbody {\n    width: 100vw;\n    height: 100vh;\n}\nimg,\nsvg {\n  vertical-align:baseline;\n}\n\n    .bg-light {\n        display: flex;\n        background-color: none;\n        justify-content: center;\n        align-items: center;\n        &.navbar > .container-fluid {\n            justify-content: center;\n            & .navbar-brand {\n                display: flex;\n                flex-direction: column;\n                text-decoration: none;\n                justify-content: center;\n                align-items: center;\n                & h1 {\n                    font-size: 36px;\n                    color: #D04F4F;\n                    font-weight: 700\n                    ;\n                    font-family: 'DM Sans', sans-serif;\n                    text-decoration: none;\n                    &:link {\n                        text-decoration: none;\n                    }\n                    &:visited {\n                        text-decoration: none;\n                    }\n                }\n         \n            }\n        }\n    }\n   \n    .form-inline {\n        display: flex;\n        height: 69px;\n        border-radius: 5px;\n        & .form-control {\n            font-family: 'Lato', sans-serif;\n            font-weight: 400;\n            font-size: 18px;\n            background-color: #e7e7e7;\n            border-radius: 5px 0 0 5px;\n            border: none;\n            outline: none;\n            &:focus {\n                border: none;\n                outline: none;\n            }\n        }\n        & .btn-outline-success {\n            border: none;\n            background-color: #e7e7e7;\n            border-radius: 0px 5px 5px 0px;\n        }\n    }\n\n  .custom-container {\n      margin: 0 150px;\n  }\n  .btn-group {\n      margin-right: 15px;\n  }\n    .dropdown-toggle {\n        display: flex;\n        justify-content: space-around;\n        align-items: center;\n        font-family: 'Lato', sans-serif;\n        color: white;\n        font-weight: 700;\n        font-size: 18px;\n        width: 170px;\n        height: 69px;\n        &::after {\n            appearance: none;\n            border: none;\n            content: \"\";\n            background: url(\"../assets/arrow_down.svg\") center center no-repeat;\n            width: 16px;\n            height: 10px;\n        }\n    }\n\n    .recipes {\n       display: grid;\n       grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n       gap: .25rem;\n       margin-top: 1rem;\n    }\n        .recipe {\n            height: auto;\n            background-color: #E7E7E7;\n            margin: 15px;\n            display: none;\n            align-items: center;\n            text-overflow: ellipsis;\n            &__title {\n                font-family: Lato;\n                font-size: 22px;\n                font-weight: 400;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n\n            }\n            &__timer {\n                text-align: right;\n              align-items: center;\n            }\n            &__timing {\n                font-family: Lato;\n                font-size: 18px;\n                font-weight: 700;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n\n            }\n            &__ingredients {\n                font-family: Roboto;\n                width: 100%;\n                font-weight: 400;\n                line-height: 16px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n                &__title {\n                    font-weight: 700;\n                }\n            }\n            &__instructions {\n                font-family: Roboto;\n                width: 100%;\n                font-size: 12px;\n                font-weight: 400;\n                line-height: 12px;\n                letter-spacing: 0em;\n                text-align: left;\n                text-align: justify;\n            }\n        }\n    \n\n    .show {\n        display: flex;\n    }\n\n.ingredients_li,.device_li,.ustensil_li {\n    cursor: pointer;\n    list-style-type: none;\n    padding: 5px;\n    &:hover {\n        background-color: #E7E7E7;\n    }\n}\n\n.tags {\n padding: 15px;\n margin: 10px;\n outline: none;\n appearance: none;\n border: none;\n border-radius: 5px;\n display: flex;\n \nalign-items: center;\npadding-left: 10px;\nbackground-color:  #3282F7;\n color: white;\n    \n    &.closeTag {\n        width: 20px;\n        height: 20px;\n        padding-left: 10px;\n    }\n\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  width: 100vw;\n  height: 100vh;\n}\n\nimg,\nsvg {\n  vertical-align: baseline;\n}\n\n.bg-light {\n  display: flex;\n  background-color: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid {\n  justify-content: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand {\n  display: flex;\n  flex-direction: column;\n  text-decoration: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1 {\n  font-size: 36px;\n  color: #D04F4F;\n  font-weight: 700;\n  font-family: \"DM Sans\", sans-serif;\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:link {\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:visited {\n  text-decoration: none;\n}\n\n.form-inline {\n  display: flex;\n  height: 69px;\n  border-radius: 5px;\n}\n.form-inline .form-control {\n  font-family: \"Lato\", sans-serif;\n  font-weight: 400;\n  font-size: 18px;\n  background-color: #e7e7e7;\n  border-radius: 5px 0 0 5px;\n  border: none;\n  outline: none;\n}\n.form-inline .form-control:focus {\n  border: none;\n  outline: none;\n}\n.form-inline .btn-outline-success {\n  border: none;\n  background-color: #e7e7e7;\n  border-radius: 0px 5px 5px 0px;\n}\n\n.custom-container {\n  margin: 0 150px;\n}\n\n.btn-group {\n  margin-right: 15px;\n}\n\n.dropdown-toggle {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  font-family: \"Lato\", sans-serif;\n  color: white;\n  font-weight: 700;\n  font-size: 18px;\n  width: 170px;\n  height: 69px;\n}\n.dropdown-toggle::after {\n  appearance: none;\n  border: none;\n  content: \"\";\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") center center no-repeat;\n  width: 16px;\n  height: 10px;\n}\n\n.recipes {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n  gap: 0.25rem;\n  margin-top: 1rem;\n}\n\n.recipe {\n  height: auto;\n  background-color: #E7E7E7;\n  margin: 15px;\n  display: flex;\n  align-items: center;\n  text-overflow: ellipsis;\n}\n.recipe__title {\n  font-family: Lato;\n  font-size: 22px;\n  font-weight: 400;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__timer {\n  text-align: right;\n  align-items: center;\n}\n.recipe__timing {\n  font-family: Lato;\n  font-size: 18px;\n  font-weight: 700;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n}\n.recipe__ingredients {\n  font-family: Roboto;\n  width: 100%;\n  font-weight: 400;\n  line-height: 16px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__ingredients__title {\n  font-weight: 700;\n}\n.recipe__instructions {\n  font-family: Roboto;\n  width: 100%;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 12px;\n  letter-spacing: 0em;\n  text-align: left;\n  text-align: justify;\n}\n\n.ingredients_li, .device_li, .ustensil_li {\n  cursor: pointer;\n  list-style-type: none;\n  padding: 5px;\n}\n.ingredients_li:hover, .device_li:hover, .ustensil_li:hover {\n  background-color: #E7E7E7;\n}\n\n.tags {\n  padding: 15px;\n  margin: 10px;\n  outline: none;\n  appearance: none;\n  border: none;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  padding-left: 10px;\n  background-color: #3282F7;\n  color: white;\n}\n.tags.closeTag {\n  width: 20px;\n  height: 20px;\n  padding-left: 10px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AACA;EACI,YAAA;EACA,aAAA;AAAJ;;AAEA;;EAEE,wBAAA;AACF;;AAEI;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;AACR;AAAQ;EACI,uBAAA;AAEZ;AADY;EACI,aAAA;EACA,sBAAA;EACA,qBAAA;EACA,uBAAA;EACA,mBAAA;AAGhB;AAFgB;EACI,eAAA;EACA,cAAA;EACA,gBAAA;EAEA,kCAAA;EACA,qBAAA;AAGpB;AAFoB;EACI,qBAAA;AAIxB;AAFoB;EACI,qBAAA;AAIxB;;AAII;EACI,aAAA;EACA,YAAA;EACA,kBAAA;AADR;AAEQ;EACI,+BAAA;EACA,gBAAA;EACA,eAAA;EACA,yBAAA;EACA,0BAAA;EACA,YAAA;EACA,aAAA;AAAZ;AACY;EACI,YAAA;EACA,aAAA;AAChB;AAEQ;EACI,YAAA;EACA,yBAAA;EACA,8BAAA;AAAZ;;AAIE;EACI,eAAA;AADN;;AAGE;EACI,kBAAA;AAAN;;AAEI;EACI,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,+BAAA;EACA,YAAA;EACA,gBAAA;EACA,eAAA;EACA,YAAA;EACA,YAAA;AACR;AAAQ;EACI,gBAAA;EACA,YAAA;EACA,WAAA;EACA,2EAAA;EACA,WAAA;EACA,YAAA;AAEZ;;AAEI;EACG,aAAA;EACA,4DAAA;EACA,YAAA;EACA,gBAAA;AACP;;AACQ;EACI,YAAA;EACA,yBAAA;EACA,YAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AAEZ;AADY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAGhB;AAAY;EACI,iBAAA;EACF,mBAAA;AAEd;AAAY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;AAEhB;AACY;EACI,mBAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;AAAgB;EACI,gBAAA;AAEpB;AACY;EACI,mBAAA;EACA,WAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;;AAMA;EACI,eAAA;EACA,qBAAA;EACA,YAAA;AAHJ;AAII;EACI,yBAAA;AAFR;;AAMA;EACC,aAAA;EACA,YAAA;EACA,aAAA;EACA,gBAAA;EACA,YAAA;EACA,kBAAA;EACA,aAAA;EAED,mBAAA;EACA,kBAAA;EACA,yBAAA;EACC,YAAA;AAJD;AAMI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;AAJR","sourcesContent":["\nbody {\n    width: 100vw;\n    height: 100vh;\n}\nimg,\nsvg {\n  vertical-align:baseline;\n}\n\n    .bg-light {\n        display: flex;\n        background-color: none;\n        justify-content: center;\n        align-items: center;\n        &.navbar > .container-fluid {\n            justify-content: center;\n            & .navbar-brand {\n                display: flex;\n                flex-direction: column;\n                text-decoration: none;\n                justify-content: center;\n                align-items: center;\n                & h1 {\n                    font-size: 36px;\n                    color: #D04F4F;\n                    font-weight: 700\n                    ;\n                    font-family: 'DM Sans', sans-serif;\n                    text-decoration: none;\n                    &:link {\n                        text-decoration: none;\n                    }\n                    &:visited {\n                        text-decoration: none;\n                    }\n                }\n         \n            }\n        }\n    }\n   \n    .form-inline {\n        display: flex;\n        height: 69px;\n        border-radius: 5px;\n        & .form-control {\n            font-family: 'Lato', sans-serif;\n            font-weight: 400;\n            font-size: 18px;\n            background-color: #e7e7e7;\n            border-radius: 5px 0 0 5px;\n            border: none;\n            outline: none;\n            &:focus {\n                border: none;\n                outline: none;\n            }\n        }\n        & .btn-outline-success {\n            border: none;\n            background-color: #e7e7e7;\n            border-radius: 0px 5px 5px 0px;\n        }\n    }\n\n  .custom-container {\n      margin: 0 150px;\n  }\n  .btn-group {\n      margin-right: 15px;\n  }\n    .dropdown-toggle {\n        display: flex;\n        justify-content: space-around;\n        align-items: center;\n        font-family: 'Lato', sans-serif;\n        color: white;\n        font-weight: 700;\n        font-size: 18px;\n        width: 170px;\n        height: 69px;\n        &::after {\n            appearance: none;\n            border: none;\n            content: \"\";\n            background: url(\"../assets/arrow_down.svg\") center center no-repeat;\n            width: 16px;\n            height: 10px;\n        }\n    }\n\n    .recipes {\n       display: grid;\n       grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n       gap: .25rem;\n       margin-top: 1rem;\n    }\n        .recipe {\n            height: auto;\n            background-color: #E7E7E7;\n            margin: 15px;\n            display: flex;\n            align-items: center;\n            text-overflow: ellipsis;\n            &__title {\n                font-family: Lato;\n                font-size: 22px;\n                font-weight: 400;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n\n            }\n            &__timer {\n                text-align: right;\n              align-items: center;\n            }\n            &__timing {\n                font-family: Lato;\n                font-size: 18px;\n                font-weight: 700;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n\n            }\n            &__ingredients {\n                font-family: Roboto;\n                width: 100%;\n                font-weight: 400;\n                line-height: 16px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n                &__title {\n                    font-weight: 700;\n                }\n            }\n            &__instructions {\n                font-family: Roboto;\n                width: 100%;\n                font-size: 12px;\n                font-weight: 400;\n                line-height: 12px;\n                letter-spacing: 0em;\n                text-align: left;\n                text-align: justify;\n            }\n        }\n    \n\n\n\n.ingredients_li,.device_li,.ustensil_li {\n    cursor: pointer;\n    list-style-type: none;\n    padding: 5px;\n    &:hover {\n        background-color: #E7E7E7;\n    }\n}\n\n.tags {\n padding: 15px;\n margin: 10px;\n outline: none;\n appearance: none;\n border: none;\n border-radius: 5px;\n display: flex;\n \nalign-items: center;\npadding-left: 10px;\nbackground-color:  #3282F7;\n color: white;\n    \n    &.closeTag {\n        width: 20px;\n        height: 20px;\n        padding-left: 10px;\n    }\n\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2161,17 +2161,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/food.svg */ "./src/assets/food.svg");
 /* harmony import */ var _assets_timer_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/timer.svg */ "./src/assets/timer.svg");
 /* harmony import */ var _assets_close_arrow_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/close_arrow.svg */ "./src/assets/close_arrow.svg");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
@@ -2181,16 +2181,51 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+ //*********tabs******************//
 
-var recipeList = [];
+var initialArray = [];
+var initialIngArray = [];
+var initialDeviceArray = [];
+var initialUstensilArray = [];
+var initialTags = {
+  IngTags: [],
+  DeviceTags: [],
+  UstensilTags: []
+};
 var searchReduceArray = [];
-var recipeCardTemplate = document.querySelector("[data-recipe-template]");
-var recipeCardsContainer = document.querySelector("[data-cards-container]");
+var reducedIngArray = [];
+var reducedDeviceArray = [];
+var reducedUstensilArray = [];
+var reducedTags = {
+  reducedIngTags: [],
+  reducedDeviceTags: [],
+  reducedUstensilTags: []
+}; //*******Fill initial tabs*****//
+
+var fillInitialTabs = function fillInitialTabs() {
+  _recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.forEach(function (recipe) {
+    initialArray.push(recipe);
+    initialDeviceArray.push(recipe.appliance);
+    initialDeviceArray = _toConsumableArray(new Set(initialDeviceArray));
+    recipe.ustensils.map(function (item) {
+      initialUstensilArray.push(item);
+      initialUstensilArray = _toConsumableArray(new Set(initialUstensilArray));
+    });
+    recipe.ingredients.forEach(function (item) {
+      initialIngArray.push(item.ingredient);
+      initialIngArray = _toConsumableArray(new Set(initialIngArray));
+    });
+  });
+  initialTags.IngTags = [].concat(initialIngArray);
+  initialTags.DeviceTags = [].concat(initialDeviceArray);
+  initialTags.UstensilTags = [].concat(initialUstensilArray);
+};
+
+fillInitialTabs(); //******* helper functions ********************************************************************//
 
 var normalize = function normalize(variable) {
   return variable.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "");
-}; // Create the search bar //
-
+};
 
 var ingList = []; // recipes.forEach((each) => arr.push(each.ingredients));
 // console.log(arr);
@@ -2204,14 +2239,17 @@ var getIngList = function getIngList(arrList) {
   return ingList;
 };
 
-console.log(getIngList(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes)); // const flatArray = (arr) => {
-//   let flatArr = [].concat(...arr);
-//   return flatArr;
-// };
-// console.log(flatArray(ingList));
-// let ingredients = ingredients;
-// let x = flatArray(getList(recipes, ingredients));
-// console.log(x);
+var flatArray = function flatArray(arr) {
+  var _ref;
+
+  var flatArr = (_ref = []).concat.apply(_ref, _toConsumableArray(arr));
+
+  return flatArr;
+}; //****Builds ************************************************************************************/
+
+
+var recipeCardTemplate = document.querySelector("[data-recipe-template]");
+var recipeCardsContainer = document.querySelector("[data-cards-container]"); // build  the search bar //
 
 var searchBar = document.querySelector("[data-search]");
 
@@ -2231,48 +2269,41 @@ var buildCard = function buildCard(data) {
     var timing = card.querySelector("[data-timing]");
     var ingredients = card.querySelector("[data-ingredients]");
     var instructions = card.querySelector("[data-instructions]");
-    title.textContent = data.name;
-    timing.textContent = data.time;
-    var ingredientso = data.ingredients;
+    title.textContent = recipe.name;
+    timing.textContent = recipe.time;
+    var ingredientso = recipe.ingredients;
     ingredientso.forEach(function (ing) {
       ingredients.innerHTML += "<span class=\"recipe__ingredients__title\">".concat(ing.ingredient, " : </span> ").concat(parseInt(ing.quantity) + ing.unit || parseInt(ing.quantity) || "", " <br>");
     });
-    instructions.textContent = data.description;
+    var recipesPic = document.querySelectorAll("[data-img]");
+    recipesPic.forEach(function (recip) {
+      recip.src = _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__;
+    });
+    instructions.textContent = recipe.description;
     recipeCardsContainer.append(card);
-    return card;
+    return {
+      element: card,
+      title: recipe.name
+    };
   });
 }; // select card with input search value //
 
 
-var searchFilter = function searchFilter(recipes) {
+var searchFilter = function searchFilter(initialArray) {
   searchBar.addEventListener("input", function (e) {
     e.preventDefault();
     var value = normalize(e.target.value);
-    recipes.forEach(function (recipe) {
-      var isVisible;
-      ingList.forEach(function (ing) {
-        isVisible = normalize(ing).includes(value);
-      });
-      var titreConf = normalize(list.titre).includes(value);
-
-      if (titreConf) {
-        isVisible = true;
-      }
-
-      if (normalize(list.description).includes(value)) {
-        isVisible = true;
-      }
-
-      console.log(isVisible);
+    searchReduceArray = initialArray.filter(function (el) {
+      return normalize(el.appliance) === normalize(value);
     });
+    buildCard(searchReduceArray);
+    getIngredientsList(searchReduceArray);
+    getAppliancesList(searchReduceArray);
+    getUstensilList(searchReduceArray);
   });
 };
 
-searchFilter(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
-var recipesPic = document.querySelectorAll("[data-img]");
-recipesPic.forEach(function (recip) {
-  recip.src = _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__;
-});
+searchFilter(initialArray);
 var logoTimer = document.querySelectorAll("[data-timer-img]");
 logoTimer.forEach(function (logo) {
   logo.src = _assets_timer_svg__WEBPACK_IMPORTED_MODULE_5__;
@@ -2282,8 +2313,8 @@ var ingredientMenu = document.querySelector(".ingredient_menu"); // create ingre
 
 var allIngredients = [];
 
-var getIngredientsList = function getIngredientsList() {
-  var _iterator = _createForOfIteratorHelper(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes),
+var getIngredientsList = function getIngredientsList(data) {
+  var _iterator = _createForOfIteratorHelper(data),
       _step;
 
   try {
@@ -2306,16 +2337,15 @@ var getIngredientsList = function getIngredientsList() {
     li.innerHTML += ing;
     ingredientMenu.appendChild(li);
   });
-};
+}; //DOM //
 
-getIngredientsList(); //DOM //
 
 var devices = document.querySelector(".device_menu"); // create devices list //
 
 var allAppliances = [];
 
-var getAppliancesList = function getAppliancesList() {
-  var _iterator2 = _createForOfIteratorHelper(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes),
+var getAppliancesList = function getAppliancesList(data) {
+  var _iterator2 = _createForOfIteratorHelper(data),
       _step2;
 
   try {
@@ -2337,15 +2367,14 @@ var getAppliancesList = function getAppliancesList() {
     device_li.innerHTML += object;
     devices.appendChild(device_li);
   });
-};
+}; //DOM //
 
-getAppliancesList(); //DOM //
 
 var ustensilsM = document.querySelector(".ustensil_menu");
 var allUstensils = []; // create ustensils list //
 
-var getUstensilList = function getUstensilList() {
-  var _iterator3 = _createForOfIteratorHelper(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes),
+var getUstensilList = function getUstensilList(data) {
+  var _iterator3 = _createForOfIteratorHelper(data),
       _step3;
 
   try {
@@ -2369,9 +2398,8 @@ var getUstensilList = function getUstensilList() {
     ustensil_li.innerHTML += object;
     ustensilsM.appendChild(ustensil_li);
   });
-};
+}; // find the tags who match the search//
 
-getUstensilList(); // find the tags who match the search//
 
 var searchTags = function searchTags(category) {
   var searchBox = document.querySelector(".".concat(category, "_search"));
@@ -2466,12 +2494,9 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
       var value = normalize(tag.innerText) || normalize(tag.textContent);
 
       if (value) {
-        recipeList.forEach(function (list) {
-          var isVisibleA = false;
-          list.ingred.forEach(function (ing) {
-            if (normalize(ing.ingredient) === value) {
-              isVisibleA = true;
-            }
+        searchReduceArray.forEach(function (list) {
+          list.ingredients.forEach(function (ing) {
+            if (normalize(ing.ingredient) === value) {}
           });
 
           if (value === normalize(list.devices)) {
@@ -2479,11 +2504,8 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
           }
 
           list.ustensils.forEach(function (ustensils) {
-            if (value === normalize(ustensils)) {
-              isVisibleA = true;
-            }
+            if (value === normalize(ustensils)) {}
           });
-          list.element.classList.toggle("show", isVisibleA);
         });
       }
     });
@@ -2503,4 +2525,4 @@ getCategoriesTag("ustensil", allUstensils, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=ac27ddd4e8dea693fa37.js.map
+//# sourceMappingURL=1abb2ff0215c6f48eec8.js.map

@@ -6,11 +6,50 @@ import food from "./assets/food.svg";
 import time from "./assets/timer.svg";
 import closeArrow from "./assets/close_arrow.svg";
 
-let recipeList = [];
-let searchReduceArray = [];
+//*********tabs******************//
+let initialArray = [];
+let initialIngArray = [];
+let initialDeviceArray = [];
+let initialUstensilArray = [];
+let initialTags = { IngTags: [], DeviceTags: [], UstensilTags: [] };
 
-const recipeCardTemplate = document.querySelector("[data-recipe-template]");
-const recipeCardsContainer = document.querySelector("[data-cards-container]");
+let searchReduceArray = [];
+let reducedIngArray = [];
+let reducedDeviceArray = [];
+let reducedUstensilArray = [];
+let reducedTags = {
+  reducedIngTags: [],
+  reducedDeviceTags: [],
+  reducedUstensilTags: [],
+};
+
+//*******Fill initial tabs*****//
+
+const fillInitialTabs = () => {
+  recipes.forEach((recipe) => {
+    initialArray.push(recipe);
+
+    initialDeviceArray.push(recipe.appliance);
+    initialDeviceArray = [...new Set(initialDeviceArray)];
+
+    recipe.ustensils.map((item) => {
+      initialUstensilArray.push(item);
+      initialUstensilArray = [...new Set(initialUstensilArray)];
+    });
+
+    recipe.ingredients.forEach((item) => {
+      initialIngArray.push(item.ingredient);
+      initialIngArray = [...new Set(initialIngArray)];
+    });
+  });
+
+  initialTags.IngTags = [].concat(initialIngArray);
+  initialTags.DeviceTags = [].concat(initialDeviceArray);
+  initialTags.UstensilTags = [].concat(initialUstensilArray);
+};
+fillInitialTabs();
+
+//******* helper functions ********************************************************************//
 
 const normalize = (variable) => {
   return variable
@@ -18,7 +57,6 @@ const normalize = (variable) => {
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "");
 };
-// Create the search bar //
 
 let ingList = [];
 // recipes.forEach((each) => arr.push(each.ingredients));
@@ -31,15 +69,17 @@ const getIngList = (arrList) => {
   return ingList;
 };
 
-console.log(getIngList(recipes));
-// const flatArray = (arr) => {
-//   let flatArr = [].concat(...arr);
-//   return flatArr;
-// };
-// console.log(flatArray(ingList));
-// let ingredients = ingredients;
-// let x = flatArray(getList(recipes, ingredients));
-// console.log(x);
+const flatArray = (arr) => {
+  let flatArr = [].concat(...arr);
+  return flatArr;
+};
+
+//****Builds ************************************************************************************/
+
+const recipeCardTemplate = document.querySelector("[data-recipe-template]");
+const recipeCardsContainer = document.querySelector("[data-cards-container]");
+
+// build  the search bar //
 
 const searchBar = document.querySelector("[data-search]");
 const buildSearchBar = () => {
@@ -51,6 +91,7 @@ const buildSearchBar = () => {
 buildSearchBar();
 
 // Build the cards //
+
 const buildCard = (data) => {
   data.map((recipe) => {
     const card = recipeCardTemplate.content.cloneNode(true).children[0];
@@ -58,9 +99,9 @@ const buildCard = (data) => {
     const timing = card.querySelector("[data-timing]");
     const ingredients = card.querySelector("[data-ingredients]");
     const instructions = card.querySelector("[data-instructions]");
-    title.textContent = data.name;
-    timing.textContent = data.time;
-    const ingredientso = data.ingredients;
+    title.textContent = recipe.name;
+    timing.textContent = recipe.time;
+    const ingredientso = recipe.ingredients;
 
     ingredientso.forEach((ing) => {
       ingredients.innerHTML += `<span class="recipe__ingredients__title">${
@@ -69,42 +110,35 @@ const buildCard = (data) => {
         parseInt(ing.quantity) + ing.unit || parseInt(ing.quantity) || ""
       } <br>`;
     });
+    const recipesPic = document.querySelectorAll("[data-img]");
+    recipesPic.forEach((recip) => {
+      recip.src = food;
+    });
 
-    instructions.textContent = data.description;
+    instructions.textContent = recipe.description;
     recipeCardsContainer.append(card);
 
-    return card;
+    return {
+      element: card,
+      title: recipe.name,
+    };
   });
 };
-
 // select card with input search value //
-const searchFilter = (recipes) => {
+const searchFilter = (initialArray) => {
   searchBar.addEventListener("input", (e) => {
     e.preventDefault();
     const value = normalize(e.target.value);
-    recipes.forEach((recipe) => {
-      let isVisible;
-      ingList.forEach((ing) => {
-        isVisible = normalize(ing).includes(value);
-      });
-      let titreConf = normalize(list.titre).includes(value);
-      if (titreConf) {
-        isVisible = true;
-      }
-
-      if (normalize(list.description).includes(value)) {
-        isVisible = true;
-      }
-      console.log(isVisible);
-    });
+    searchReduceArray = initialArray.filter(
+      (el) => normalize(el.appliance) === normalize(value)
+    );
+    buildCard(searchReduceArray);
+    getIngredientsList(searchReduceArray);
+    getAppliancesList(searchReduceArray);
+    getUstensilList(searchReduceArray);
   });
 };
-searchFilter(recipes);
-
-const recipesPic = document.querySelectorAll("[data-img]");
-recipesPic.forEach((recip) => {
-  recip.src = food;
-});
+searchFilter(initialArray);
 
 const logoTimer = document.querySelectorAll("[data-timer-img]");
 logoTimer.forEach((logo) => {
@@ -117,8 +151,8 @@ const ingredientMenu = document.querySelector(".ingredient_menu");
 // create ingredient list//
 
 let allIngredients = [];
-const getIngredientsList = () => {
-  for (let recipe of recipes) {
+const getIngredientsList = (data) => {
+  for (let recipe of data) {
     recipe.ingredients.map((object) => {
       allIngredients.push(normalize(object.ingredient));
     });
@@ -131,7 +165,6 @@ const getIngredientsList = () => {
     ingredientMenu.appendChild(li);
   });
 };
-getIngredientsList();
 
 //DOM //
 const devices = document.querySelector(".device_menu");
@@ -139,8 +172,8 @@ const devices = document.querySelector(".device_menu");
 
 let allAppliances = [];
 
-const getAppliancesList = () => {
-  for (let recipe of recipes) {
+const getAppliancesList = (data) => {
+  for (let recipe of data) {
     let appliances = normalize(recipe.appliance);
     allAppliances.push(appliances);
   }
@@ -152,7 +185,6 @@ const getAppliancesList = () => {
     devices.appendChild(device_li);
   });
 };
-getAppliancesList();
 
 //DOM //
 const ustensilsM = document.querySelector(".ustensil_menu");
@@ -160,8 +192,8 @@ let allUstensils = [];
 
 // create ustensils list //
 
-const getUstensilList = () => {
-  for (let recipe of recipes) {
+const getUstensilList = (data) => {
+  for (let recipe of data) {
     recipe.ustensils.map((object) => {
       allUstensils.push(normalize(object));
     });
@@ -175,7 +207,6 @@ const getUstensilList = () => {
     ustensilsM.appendChild(ustensil_li);
   });
 };
-getUstensilList();
 
 // find the tags who match the search//
 const searchTags = (category) => {
@@ -241,11 +272,9 @@ const getCategoriesTag = (category, tabs, typeTags) => {
 
       let value = normalize(tag.innerText) || normalize(tag.textContent);
       if (value) {
-        recipeList.forEach((list) => {
-          let isVisibleA = false;
-          list.ingred.forEach((ing) => {
+        searchReduceArray.forEach((list) => {
+          list.ingredients.forEach((ing) => {
             if (normalize(ing.ingredient) === value) {
-              isVisibleA = true;
             }
           });
           if (value === normalize(list.devices)) {
@@ -253,11 +282,8 @@ const getCategoriesTag = (category, tabs, typeTags) => {
           }
           list.ustensils.forEach((ustensils) => {
             if (value === normalize(ustensils)) {
-              isVisibleA = true;
             }
           });
-
-          list.element.classList.toggle("show", isVisibleA);
         });
       }
     });
