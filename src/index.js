@@ -20,6 +20,27 @@ const normalize = (variable) => {
 };
 // Create the search bar //
 
+let ingList = [];
+// recipes.forEach((each) => arr.push(each.ingredients));
+// console.log(arr);
+const getIngList = (arrList) => {
+  arrList.forEach((each) =>
+    each.ingredients.map((ing) => ingList.push(ing.ingredient))
+  );
+
+  return ingList;
+};
+
+console.log(getIngList(recipes));
+// const flatArray = (arr) => {
+//   let flatArr = [].concat(...arr);
+//   return flatArr;
+// };
+// console.log(flatArray(ingList));
+// let ingredients = ingredients;
+// let x = flatArray(getList(recipes, ingredients));
+// console.log(x);
+
 const searchBar = document.querySelector("[data-search]");
 const buildSearchBar = () => {
   const logoBrand = document.getElementById("logo");
@@ -30,7 +51,7 @@ const buildSearchBar = () => {
 buildSearchBar();
 
 // Build the cards //
-const buildCard = (data) => {
+const buildCard = () => {
   recipeList = recipes.map((recipe) => {
     const card = recipeCardTemplate.content.cloneNode(true).children[0];
     const title = card.querySelector("[data-title]");
@@ -63,7 +84,6 @@ const buildCard = (data) => {
   });
 };
 buildCard();
-
 // select card with input search value //
 const searchFilter = () => {
   searchBar.addEventListener("input", (e) => {
@@ -87,7 +107,7 @@ const searchFilter = () => {
     });
   });
 };
-setTimeout(searchFilter, 2500);
+searchFilter();
 
 const recipesPic = document.querySelectorAll("[data-img]");
 recipesPic.forEach((recip) => {

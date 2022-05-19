@@ -2192,6 +2192,27 @@ var normalize = function normalize(variable) {
 }; // Create the search bar //
 
 
+var ingList = []; // recipes.forEach((each) => arr.push(each.ingredients));
+// console.log(arr);
+
+var getIngList = function getIngList(arrList) {
+  arrList.forEach(function (each) {
+    return each.ingredients.map(function (ing) {
+      return ingList.push(ing.ingredient);
+    });
+  });
+  return ingList;
+};
+
+console.log(getIngList(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes)); // const flatArray = (arr) => {
+//   let flatArr = [].concat(...arr);
+//   return flatArr;
+// };
+// console.log(flatArray(ingList));
+// let ingredients = ingredients;
+// let x = flatArray(getList(recipes, ingredients));
+// console.log(x);
+
 var searchBar = document.querySelector("[data-search]");
 
 var buildSearchBar = function buildSearchBar() {
@@ -2203,7 +2224,7 @@ var buildSearchBar = function buildSearchBar() {
 
 buildSearchBar(); // Build the cards //
 
-var buildCard = function buildCard(data) {
+var buildCard = function buildCard() {
   recipeList = _recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.map(function (recipe) {
     var card = recipeCardTemplate.content.cloneNode(true).children[0];
     var title = card.querySelector("[data-title]");
@@ -2255,7 +2276,7 @@ var searchFilter = function searchFilter() {
   });
 };
 
-setTimeout(searchFilter, 2500);
+searchFilter();
 var recipesPic = document.querySelectorAll("[data-img]");
 recipesPic.forEach(function (recip) {
   recip.src = _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__;
@@ -2490,4 +2511,4 @@ getCategoriesTag("ustensil", allUstensils, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=0d233dd601856b936e1c.js.map
+//# sourceMappingURL=21c56d7e773c61cb1b76.js.map
