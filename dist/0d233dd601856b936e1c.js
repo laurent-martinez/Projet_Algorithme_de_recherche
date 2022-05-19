@@ -2183,7 +2183,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 var recipeList = [];
-var searchReduceArray = [].concat(recipeList);
+var searchReduceArray = [];
 var recipeCardTemplate = document.querySelector("[data-recipe-template]");
 var recipeCardsContainer = document.querySelector("[data-cards-container]");
 
@@ -2233,6 +2233,7 @@ buildCard(); // select card with input search value //
 
 var searchFilter = function searchFilter() {
   searchBar.addEventListener("input", function (e) {
+    e.preventDefault();
     var value = normalize(e.target.value);
     recipeList.forEach(function (list) {
       var isVisible;
@@ -2255,7 +2256,6 @@ var searchFilter = function searchFilter() {
 };
 
 setTimeout(searchFilter, 2500);
-console.log(searchReduceArray);
 var recipesPic = document.querySelectorAll("[data-img]");
 recipesPic.forEach(function (recip) {
   recip.src = _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__;
@@ -2362,7 +2362,6 @@ getUstensilList(); // find the tags who match the search//
 
 var searchTags = function searchTags(category) {
   var searchBox = document.querySelector(".".concat(category, "_search"));
-  var ingredient_menu = document.querySelector(".ingredient_menu");
   var items = document.querySelectorAll(".".concat(category, "_li"));
 
   var _iterator4 = _createForOfIteratorHelper(items),
@@ -2491,4 +2490,4 @@ getCategoriesTag("ustensil", allUstensils, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=de040567c315417f2b71.js.map
+//# sourceMappingURL=0d233dd601856b936e1c.js.map

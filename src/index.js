@@ -7,7 +7,8 @@ import time from "./assets/timer.svg";
 import closeArrow from "./assets/close_arrow.svg";
 
 let recipeList = [];
-let searchReduceArray = [].concat(recipeList);
+let searchReduceArray = [];
+
 const recipeCardTemplate = document.querySelector("[data-recipe-template]");
 const recipeCardsContainer = document.querySelector("[data-cards-container]");
 
@@ -66,6 +67,7 @@ buildCard();
 // select card with input search value //
 const searchFilter = () => {
   searchBar.addEventListener("input", (e) => {
+    e.preventDefault();
     const value = normalize(e.target.value);
     recipeList.forEach((list) => {
       let isVisible;
@@ -80,12 +82,13 @@ const searchFilter = () => {
       if (normalize(list.description).includes(value)) {
         isVisible = true;
       }
+
       list.element.classList.toggle("show", isVisible);
     });
   });
 };
 setTimeout(searchFilter, 2500);
-console.log(searchReduceArray);
+
 const recipesPic = document.querySelectorAll("[data-img]");
 recipesPic.forEach((recip) => {
   recip.src = food;
@@ -165,7 +168,6 @@ getUstensilList();
 // find the tags who match the search//
 const searchTags = (category) => {
   const searchBox = document.querySelector(`.${category}_search`);
-  const ingredient_menu = document.querySelector(".ingredient_menu");
   const items = document.querySelectorAll(`.${category}_li`);
   for (let item of items) {
     let valuue = normalize(item.textContent) || normalize(item.innerHTML);
