@@ -2192,6 +2192,27 @@ var normalize = function normalize(variable) {
 }; // Create the search bar //
 
 
+var ingList = []; // recipes.forEach((each) => arr.push(each.ingredients));
+// console.log(arr);
+
+var getIngList = function getIngList(arrList) {
+  arrList.forEach(function (each) {
+    return each.ingredients.map(function (ing) {
+      return ingList.push(ing.ingredient);
+    });
+  });
+  return ingList;
+};
+
+console.log(getIngList(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes)); // const flatArray = (arr) => {
+//   let flatArr = [].concat(...arr);
+//   return flatArr;
+// };
+// console.log(flatArray(ingList));
+// let ingredients = ingredients;
+// let x = flatArray(getList(recipes, ingredients));
+// console.log(x);
+
 var searchBar = document.querySelector("[data-search]");
 
 var buildSearchBar = function buildSearchBar() {
@@ -2204,41 +2225,33 @@ var buildSearchBar = function buildSearchBar() {
 buildSearchBar(); // Build the cards //
 
 var buildCard = function buildCard(data) {
-  recipeList = _recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.map(function (recipe) {
+  data.map(function (recipe) {
     var card = recipeCardTemplate.content.cloneNode(true).children[0];
     var title = card.querySelector("[data-title]");
     var timing = card.querySelector("[data-timing]");
     var ingredients = card.querySelector("[data-ingredients]");
     var instructions = card.querySelector("[data-instructions]");
-    title.textContent = recipe.name;
-    timing.textContent = recipe.time;
-    var ingredientso = recipe.ingredients;
+    title.textContent = data.name;
+    timing.textContent = data.time;
+    var ingredientso = data.ingredients;
     ingredientso.forEach(function (ing) {
       ingredients.innerHTML += "<span class=\"recipe__ingredients__title\">".concat(ing.ingredient, " : </span> ").concat(parseInt(ing.quantity) + ing.unit || parseInt(ing.quantity) || "", " <br>");
     });
-    instructions.textContent = recipe.description;
+    instructions.textContent = data.description;
     recipeCardsContainer.append(card);
-    return {
-      titre: recipe.name,
-      ingred: recipe.ingredients,
-      devices: recipe.appliance,
-      ustensils: recipe.ustensils,
-      description: recipe.description,
-      element: card
-    };
+    return card;
   });
-};
+}; // select card with input search value //
 
-buildCard(); // select card with input search value //
 
-var searchFilter = function searchFilter() {
+var searchFilter = function searchFilter(recipes) {
   searchBar.addEventListener("input", function (e) {
     e.preventDefault();
     var value = normalize(e.target.value);
-    recipeList.forEach(function (list) {
+    recipes.forEach(function (recipe) {
       var isVisible;
-      list.ingred.forEach(function (ing) {
-        isVisible = normalize(ing.ingredient).includes(value);
+      ingList.forEach(function (ing) {
+        isVisible = normalize(ing).includes(value);
       });
       var titreConf = normalize(list.titre).includes(value);
 
@@ -2250,12 +2263,12 @@ var searchFilter = function searchFilter() {
         isVisible = true;
       }
 
-      list.element.classList.toggle("show", isVisible);
+      console.log(isVisible);
     });
   });
 };
 
-setTimeout(searchFilter, 2500);
+searchFilter(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
 var recipesPic = document.querySelectorAll("[data-img]");
 recipesPic.forEach(function (recip) {
   recip.src = _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__;
@@ -2490,4 +2503,4 @@ getCategoriesTag("ustensil", allUstensils, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=0d233dd601856b936e1c.js.map
+//# sourceMappingURL=ac27ddd4e8dea693fa37.js.map
