@@ -1968,6 +1968,16 @@ module.exports = __webpack_require__.p + "arrow_down.svg";
 
 /***/ }),
 
+/***/ "./src/assets/close_arrow.svg":
+/*!************************************!*\
+  !*** ./src/assets/close_arrow.svg ***!
+  \************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "close_arrow.svg";
+
+/***/ }),
+
 /***/ "./src/assets/cooking_hat.svg":
 /*!************************************!*\
   !*** ./src/assets/cooking_hat.svg ***!
@@ -2150,7 +2160,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_magnifying_glass_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/magnifying_glass.svg */ "./src/assets/magnifying_glass.svg");
 /* harmony import */ var _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/food.svg */ "./src/assets/food.svg");
 /* harmony import */ var _assets_timer_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/timer.svg */ "./src/assets/timer.svg");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './assets/close_arrow.svg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _assets_close_arrow_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/close_arrow.svg */ "./src/assets/close_arrow.svg");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2403,7 +2413,7 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
       typeTags.push(tag.textContent);
       var closeTag = document.createElement("img");
       closeTag.className = "closeTag";
-      closeTag.src = Object(function webpackMissingModule() { var e = new Error("Cannot find module './assets/close_arrow.svg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+      closeTag.src = _assets_close_arrow_svg__WEBPACK_IMPORTED_MODULE_6__;
       buttons.insertBefore(tag, firstChild);
       buttons.appendChild(tag);
       tag.appendChild(closeTag);
@@ -2480,4 +2490,4 @@ getCategoriesTag("ustensil", allUstensils, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=3c3fc70931c4d6ed3b43.js.map
+//# sourceMappingURL=0d233dd601856b936e1c.js.map
