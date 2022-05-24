@@ -91,7 +91,9 @@ const searchFilter = () => {
     recipeList.forEach((list) => {
       let isVisible = false;
       list.ingred.forEach((ing) => {
-        let ingSearch = normalize(ing.ingredient) === value;
+        let ingSearch =
+          normalize(ing.ingredient).includes(value) ||
+          ing.ingredient.length === value.length;
         if (ingSearch) {
           isVisible = true;
         }
@@ -105,25 +107,20 @@ const searchFilter = () => {
       });
       list.element.classList.toggle("show", isVisible);
     });
+    if (value.length >= 3) {
+      searchReduceArray = recipeList.filter(
+        (e) =>
+          e.ingred.map((item) => normalize(item.ingredient)).includes(value) ||
+          e.titre.includes(value) ||
+          e.description.includes(value)
+      );
+    }
 
-    searchReduceArray = recipeList.filter(
-      (e) =>
-        e.ingred.map((item) => normalize(item.ingredient)).includes(value) ||
-        e.titre.includes(value) ||
-        e.description.includes(value)
-    );
-    setTimeout(getAppliancesList, 350);
-    setTimeout(getIngredientsList, 350);
-    setTimeout(getUstensilList, 350);
     console.log(searchReduceArray);
   });
 };
-searchFilter();
-let timeout;
-const displayList = () => {
-  timeout = setTimeout(getIngredientsList, 300);
-};
-displayList();
+setTimeout(searchFilter, 250);
+
 const recipesPic = document.querySelectorAll("[data-img]");
 recipesPic.forEach((recip) => {
   recip.src = food;
@@ -140,8 +137,8 @@ const ingredientMenu = document.querySelector(".ingredient_menu");
 // create ingredient list//
 let allIngredients = [];
 const getIngredientsList = () => {
-  for (let recipe of searchReduceArray) {
-    recipe.ingred.map((object) => {
+  for (let recipe of initialArray) {
+    recipe.ingredients.map((object) => {
       allIngredients.push(normalize(object.ingredient));
     });
   }
@@ -153,7 +150,7 @@ const getIngredientsList = () => {
     ingredientMenu.appendChild(li);
   });
 };
-
+getIngredientsList();
 //DOM //
 const devices = document.querySelector(".device_menu");
 // create devices list //
@@ -161,8 +158,8 @@ const devices = document.querySelector(".device_menu");
 let allAppliances = [];
 
 const getAppliancesList = () => {
-  for (let recipe of searchReduceArray) {
-    let appliances = normalize(recipe.devices);
+  for (let recipe of initialArray) {
+    let appliances = normalize(recipe.appliance);
     allAppliances.push(appliances);
   }
   allAppliances = [...new Set(allAppliances)];
@@ -173,7 +170,7 @@ const getAppliancesList = () => {
     devices.appendChild(device_li);
   });
 };
-
+getAppliancesList();
 //DOM //
 const ustensilsM = document.querySelector(".ustensil_menu");
 let allUstensils = [];
@@ -181,7 +178,7 @@ let allUstensils = [];
 // create ustensils list //
 
 const getUstensilList = () => {
-  for (let recipe of searchReduceArray) {
+  for (let recipe of initialArray) {
     recipe.ustensils.map((object) => {
       allUstensils.push(normalize(object));
     });
@@ -195,6 +192,7 @@ const getUstensilList = () => {
     ustensilsM.appendChild(ustensil_li);
   });
 };
+getUstensilList();
 // find the tags who match the search//
 const searchTags = (category) => {
   const searchBox = document.querySelector(`.${category}_search`);
@@ -260,6 +258,7 @@ const getCategoriesTag = (category, tabs, typeTags) => {
       let value = normalize(tag.innerText) || normalize(tag.textContent);
       if (value) {
         searchReduceArray.forEach((list) => {
+          console.log(list);
           let isVisibleA = false;
           list.ingred.forEach((ing) => {
             if (normalize(ing.ingredient) === value) {
