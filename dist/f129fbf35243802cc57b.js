@@ -2293,15 +2293,23 @@ var searchFilter = function searchFilter(initialArray) {
   searchBar.addEventListener("input", function (e) {
     e.preventDefault();
     var value = normalize(e.target.value);
+    console.log(value);
     initialArray.forEach(function (el) {
       return el.ingredients.map(function (e) {
         return normalize(e.ingredient) === normalize(value) ? searchReduceArray.push(el) : null;
       });
     });
-    buildCard(searchReduceArray);
-    getIngredientsList(searchReduceArray);
-    getAppliancesList(searchReduceArray);
-    getUstensilList(searchReduceArray);
+
+    if (value) {
+      buildCard(searchReduceArray);
+      getIngredientsList(searchReduceArray);
+      getAppliancesList(searchReduceArray);
+      getUstensilList(searchReduceArray);
+    } else {
+      getIngredientsList(initialArray);
+      getAppliancesList(initialArray);
+      getUstensilList(initialArray);
+    }
   });
 };
 
@@ -2313,8 +2321,6 @@ logoTimer.forEach(function (logo) {
 
 var ingredientMenu = document.querySelector(".ingredient_menu"); // create ingredient list//
 
-var allIngredients = [];
-
 var getIngredientsList = function getIngredientsList(data) {
   var _iterator = _createForOfIteratorHelper(data),
       _step;
@@ -2323,7 +2329,7 @@ var getIngredientsList = function getIngredientsList(data) {
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
       var recipe = _step.value;
       recipe.ingredients.map(function (object) {
-        allIngredients.push(normalize(object.ingredient));
+        reducedIngArray.push(normalize(object.ingredient));
       });
     }
   } catch (err) {
@@ -2332,8 +2338,8 @@ var getIngredientsList = function getIngredientsList(data) {
     _iterator.f();
   }
 
-  allIngredients = _toConsumableArray(new Set(allIngredients));
-  allIngredients.map(function (ing) {
+  reducedIngArray = _toConsumableArray(new Set(reducedIngArray));
+  reducedIngArray.map(function (ing) {
     var li = document.createElement("li");
     li.className = "ingredients_li";
     li.innerHTML += ing;
@@ -2344,8 +2350,6 @@ var getIngredientsList = function getIngredientsList(data) {
 
 var devices = document.querySelector(".device_menu"); // create devices list //
 
-var allAppliances = [];
-
 var getAppliancesList = function getAppliancesList(data) {
   var _iterator2 = _createForOfIteratorHelper(data),
       _step2;
@@ -2354,7 +2358,7 @@ var getAppliancesList = function getAppliancesList(data) {
     for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
       var recipe = _step2.value;
       var appliances = normalize(recipe.appliance);
-      allAppliances.push(appliances);
+      reducedDeviceArray.push(appliances);
     }
   } catch (err) {
     _iterator2.e(err);
@@ -2362,8 +2366,8 @@ var getAppliancesList = function getAppliancesList(data) {
     _iterator2.f();
   }
 
-  allAppliances = _toConsumableArray(new Set(allAppliances));
-  allAppliances.forEach(function (object) {
+  reducedDeviceArray = _toConsumableArray(new Set(reducedDeviceArray));
+  reducedDeviceArray.forEach(function (object) {
     var device_li = document.createElement("li");
     device_li.className = "device_li";
     device_li.innerHTML += object;
@@ -2372,8 +2376,7 @@ var getAppliancesList = function getAppliancesList(data) {
 }; //DOM //
 
 
-var ustensilsM = document.querySelector(".ustensil_menu");
-var allUstensils = []; // create ustensils list //
+var ustensilsM = document.querySelector(".ustensil_menu"); // create ustensils list //
 
 var getUstensilList = function getUstensilList(data) {
   var _iterator3 = _createForOfIteratorHelper(data),
@@ -2383,7 +2386,7 @@ var getUstensilList = function getUstensilList(data) {
     for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
       var recipe = _step3.value;
       recipe.ustensils.map(function (object) {
-        allUstensils.push(normalize(object));
+        reducedUstensilArray.push(normalize(object));
       });
     }
   } catch (err) {
@@ -2392,13 +2395,14 @@ var getUstensilList = function getUstensilList(data) {
     _iterator3.f();
   }
 
-  allUstensils = _toConsumableArray(allUstensils);
-  allUstensils = _toConsumableArray(new Set(allUstensils));
-  allUstensils.forEach(function (object) {
+  reducedUstensilArray = _toConsumableArray(reducedUstensilArray);
+  reducedUstensilArray = _toConsumableArray(new Set(reducedUstensilArray));
+  reducedUstensilArray.forEach(function (object) {
     var ustensil_li = document.createElement("li");
     ustensil_li.className = "ustensil_li";
     ustensil_li.innerHTML += object;
     ustensilsM.appendChild(ustensil_li);
+    return ustensil_li;
   });
 }; // find the tags who match the search//
 
@@ -2449,7 +2453,9 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
   var firstChild = buttons.firstChild;
 
   var _loop2 = function _loop2(i) {
+    console.log(categories[i]);
     categories[i].addEventListener("click", function () {
+      console.log("ok");
       var tag = document.createElement("button");
       tag.className = "tags";
       tag.textContent = categories[i].textContent;
@@ -2494,22 +2500,6 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
         return tabs.indexOf(e) == i;
       });
       var value = normalize(tag.innerText) || normalize(tag.textContent);
-
-      if (value) {
-        searchReduceArray.forEach(function (list) {
-          list.ingredients.forEach(function (ing) {
-            if (normalize(ing.ingredient) === value) {}
-          });
-
-          if (value === normalize(list.devices)) {
-            isVisibleA = true;
-          }
-
-          list.ustensils.forEach(function (ustensils) {
-            if (value === normalize(ustensils)) {}
-          });
-        });
-      }
     });
   };
 
@@ -2520,11 +2510,11 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
   return tabs;
 };
 
-getCategoriesTag("ingredients", allIngredients, ingredientTags);
-getCategoriesTag("device", allAppliances, deviceTags);
-getCategoriesTag("ustensil", allUstensils, ustensilTags);
+getCategoriesTag("ingredients", reducedIngArray, ingredientTags);
+getCategoriesTag("device", reducedDeviceArray, deviceTags);
+getCategoriesTag("ustensil", reducedUstensilArray, ustensilTags);
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=d39ca2db91c7018a4810.js.map
+//# sourceMappingURL=f129fbf35243802cc57b.js.map

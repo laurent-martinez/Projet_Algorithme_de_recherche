@@ -128,7 +128,10 @@ const buildCard = (data) => {
 const searchFilter = (initialArray) => {
   searchBar.addEventListener("input", (e) => {
     e.preventDefault();
+
     const value = normalize(e.target.value);
+    console.log(value);
+
     initialArray.forEach((el) =>
       el.ingredients.map((e) =>
         normalize(e.ingredient) === normalize(value)
@@ -136,11 +139,16 @@ const searchFilter = (initialArray) => {
           : null
       )
     );
-
-    buildCard(searchReduceArray);
-    getIngredientsList(searchReduceArray);
-    getAppliancesList(searchReduceArray);
-    getUstensilList(searchReduceArray);
+    if (value) {
+      buildCard(searchReduceArray);
+      getIngredientsList(searchReduceArray);
+      getAppliancesList(searchReduceArray);
+      getUstensilList(searchReduceArray);
+    } else {
+      getIngredientsList(initialArray);
+      getAppliancesList(initialArray);
+      getUstensilList(initialArray);
+    }
   });
 };
 searchFilter(initialArray);
@@ -155,15 +163,14 @@ const ingredientMenu = document.querySelector(".ingredient_menu");
 
 // create ingredient list//
 
-let allIngredients = [];
 const getIngredientsList = (data) => {
   for (let recipe of data) {
     recipe.ingredients.map((object) => {
-      allIngredients.push(normalize(object.ingredient));
+      reducedIngArray.push(normalize(object.ingredient));
     });
   }
-  allIngredients = [...new Set(allIngredients)];
-  allIngredients.map((ing) => {
+  reducedIngArray = [...new Set(reducedIngArray)];
+  reducedIngArray.map((ing) => {
     const li = document.createElement("li");
     li.className = "ingredients_li";
     li.innerHTML += ing;
@@ -175,15 +182,13 @@ const getIngredientsList = (data) => {
 const devices = document.querySelector(".device_menu");
 // create devices list //
 
-let allAppliances = [];
-
 const getAppliancesList = (data) => {
   for (let recipe of data) {
     let appliances = normalize(recipe.appliance);
-    allAppliances.push(appliances);
+    reducedDeviceArray.push(appliances);
   }
-  allAppliances = [...new Set(allAppliances)];
-  allAppliances.forEach((object) => {
+  reducedDeviceArray = [...new Set(reducedDeviceArray)];
+  reducedDeviceArray.forEach((object) => {
     const device_li = document.createElement("li");
     device_li.className = "device_li";
     device_li.innerHTML += object;
@@ -193,23 +198,23 @@ const getAppliancesList = (data) => {
 
 //DOM //
 const ustensilsM = document.querySelector(".ustensil_menu");
-let allUstensils = [];
 
 // create ustensils list //
 
 const getUstensilList = (data) => {
   for (let recipe of data) {
     recipe.ustensils.map((object) => {
-      allUstensils.push(normalize(object));
+      reducedUstensilArray.push(normalize(object));
     });
   }
-  allUstensils = [...allUstensils];
-  allUstensils = [...new Set(allUstensils)];
-  allUstensils.forEach((object) => {
+  reducedUstensilArray = [...reducedUstensilArray];
+  reducedUstensilArray = [...new Set(reducedUstensilArray)];
+  reducedUstensilArray.forEach((object) => {
     const ustensil_li = document.createElement("li");
     ustensil_li.className = "ustensil_li";
     ustensil_li.innerHTML += object;
     ustensilsM.appendChild(ustensil_li);
+    return ustensil_li;
   });
 };
 
@@ -246,7 +251,9 @@ const getCategoriesTag = (category, tabs, typeTags) => {
   const firstChild = buttons.firstChild;
 
   for (let i = 0; i < categories.length; i++) {
+    console.log(categories[i]);
     categories[i].addEventListener("click", () => {
+      console.log("ok");
       let tag = document.createElement("button");
       tag.className = "tags";
       tag.textContent = categories[i].textContent;
@@ -276,25 +283,10 @@ const getCategoriesTag = (category, tabs, typeTags) => {
       tabs = tabs.filter((e, i) => tabs.indexOf(e) == i);
 
       let value = normalize(tag.innerText) || normalize(tag.textContent);
-      if (value) {
-        searchReduceArray.forEach((list) => {
-          list.ingredients.forEach((ing) => {
-            if (normalize(ing.ingredient) === value) {
-            }
-          });
-          if (value === normalize(list.devices)) {
-            isVisibleA = true;
-          }
-          list.ustensils.forEach((ustensils) => {
-            if (value === normalize(ustensils)) {
-            }
-          });
-        });
-      }
     });
   }
   return tabs;
 };
-getCategoriesTag("ingredients", allIngredients, ingredientTags);
-getCategoriesTag("device", allAppliances, deviceTags);
-getCategoriesTag("ustensil", allUstensils, ustensilTags);
+getCategoriesTag("ingredients", reducedIngArray, ingredientTags);
+getCategoriesTag("device", reducedDeviceArray, deviceTags);
+getCategoriesTag("ustensil", reducedUstensilArray, ustensilTags);
