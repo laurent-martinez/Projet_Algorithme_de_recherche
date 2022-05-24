@@ -2202,9 +2202,7 @@ var getIngList = function getIngList(arrList) {
     });
   });
   return ingList;
-};
-
-console.log(getIngList(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes)); // const flatArray = (arr) => {
+}; // const flatArray = (arr) => {
 //   let flatArr = [].concat(...arr);
 //   return flatArr;
 // };
@@ -2212,6 +2210,7 @@ console.log(getIngList(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes)); // co
 // let ingredients = ingredients;
 // let x = flatArray(getList(recipes, ingredients));
 // console.log(x);
+
 
 var searchBar = document.querySelector("[data-search]");
 
@@ -2260,18 +2259,26 @@ var searchFilter = function searchFilter() {
       var isVisible;
       list.ingred.forEach(function (ing) {
         isVisible = normalize(ing.ingredient).includes(value);
+        var titreConf = normalize(list.titre).includes(value);
+
+        if (titreConf) {
+          isVisible = true;
+        }
+
+        searchReduceArray = recipeList.filter(function (e) {
+          return e.titre.includes(value);
+        });
+
+        if (normalize(list.description).includes(value)) {
+          isVisible = true;
+        }
+
+        searchReduceArray = recipeList.filter(function (e) {
+          return e.description.includes(value);
+        });
+        console.log("searchR", searchReduceArray);
+        list.element.classList.toggle("show", isVisible);
       });
-      var titreConf = normalize(list.titre).includes(value);
-
-      if (titreConf) {
-        isVisible = true;
-      }
-
-      if (normalize(list.description).includes(value)) {
-        isVisible = true;
-      }
-
-      list.element.classList.toggle("show", isVisible);
     });
   });
 };
@@ -2474,7 +2481,7 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
       var value = normalize(tag.innerText) || normalize(tag.textContent);
 
       if (value) {
-        recipeList.forEach(function (list) {
+        searchReduceArray.forEach(function (list) {
           var isVisibleA = false;
           list.ingred.forEach(function (ing) {
             if (normalize(ing.ingredient) === value) {
@@ -2511,4 +2518,4 @@ getCategoriesTag("ustensil", allUstensils, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=21c56d7e773c61cb1b76.js.map
+//# sourceMappingURL=abe175ef320eab368b57.js.map

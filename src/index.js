@@ -31,7 +31,6 @@ const getIngList = (arrList) => {
   return ingList;
 };
 
-console.log(getIngList(recipes));
 // const flatArray = (arr) => {
 //   let flatArr = [].concat(...arr);
 //   return flatArr;
@@ -93,17 +92,21 @@ const searchFilter = () => {
       let isVisible;
       list.ingred.forEach((ing) => {
         isVisible = normalize(ing.ingredient).includes(value);
+
+        let titreConf = normalize(list.titre).includes(value);
+        if (titreConf) {
+          isVisible = true;
+        }
+        searchReduceArray = recipeList.filter((e) => e.titre.includes(value));
+        if (normalize(list.description).includes(value)) {
+          isVisible = true;
+        }
+        searchReduceArray = recipeList.filter((e) =>
+          e.description.includes(value)
+        );
+        console.log("searchR", searchReduceArray);
+        list.element.classList.toggle("show", isVisible);
       });
-      let titreConf = normalize(list.titre).includes(value);
-      if (titreConf) {
-        isVisible = true;
-      }
-
-      if (normalize(list.description).includes(value)) {
-        isVisible = true;
-      }
-
-      list.element.classList.toggle("show", isVisible);
     });
   });
 };
@@ -249,7 +252,7 @@ const getCategoriesTag = (category, tabs, typeTags) => {
 
       let value = normalize(tag.innerText) || normalize(tag.textContent);
       if (value) {
-        recipeList.forEach((list) => {
+        searchReduceArray.forEach((list) => {
           let isVisibleA = false;
           list.ingred.forEach((ing) => {
             if (normalize(ing.ingredient) === value) {
