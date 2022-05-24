@@ -128,17 +128,26 @@ const buildCard = (data) => {
 const searchFilter = (initialArray) => {
   searchBar.addEventListener("input", (e) => {
     e.preventDefault();
-
     const value = normalize(e.target.value);
     console.log(value);
-
     initialArray.forEach((el) =>
       el.ingredients.map((e) =>
         normalize(e.ingredient) === normalize(value)
           ? searchReduceArray.push(el)
-          : null
+          : searchReduceArray
       )
     );
+    initialArray.map((el) =>
+      normalize(el.name).includes(value)
+        ? searchReduceArray.push(el)
+        : searchReduceArray
+    );
+    initialArray.map((el) =>
+      normalize(el.description).includes(value)
+        ? searchReduceArray.push(el)
+        : searchReduceArray
+    );
+
     if (value) {
       buildCard(searchReduceArray);
       getIngredientsList(searchReduceArray);

@@ -2296,8 +2296,14 @@ var searchFilter = function searchFilter(initialArray) {
     console.log(value);
     initialArray.forEach(function (el) {
       return el.ingredients.map(function (e) {
-        return normalize(e.ingredient) === normalize(value) ? searchReduceArray.push(el) : null;
+        return normalize(e.ingredient) === normalize(value) ? searchReduceArray.push(el) : searchReduceArray;
       });
+    });
+    initialArray.map(function (el) {
+      return normalize(el.name).includes(value) ? searchReduceArray.push(el) : searchReduceArray;
+    });
+    initialArray.map(function (el) {
+      return normalize(el.description).includes(value) ? searchReduceArray.push(el) : searchReduceArray;
     });
 
     if (value) {
@@ -2517,4 +2523,4 @@ getCategoriesTag("ustensil", reducedUstensilArray, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=f129fbf35243802cc57b.js.map
+//# sourceMappingURL=12c5d4ce0afd8b127141.js.map
