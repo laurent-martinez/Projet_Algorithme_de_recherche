@@ -2184,6 +2184,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 var recipeList = [];
 var searchReduceArray = [];
+var initialArray = [].concat(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
 var recipeCardTemplate = document.querySelector("[data-recipe-template]");
 var recipeCardsContainer = document.querySelector("[data-cards-container]");
 
@@ -2256,30 +2257,38 @@ var searchFilter = function searchFilter() {
     e.preventDefault();
     var value = normalize(e.target.value);
     recipeList.forEach(function (list) {
-      var isVisible;
+      var isVisible = false;
       list.ingred.forEach(function (ing) {
-        isVisible = normalize(ing.ingredient).includes(value);
+        var ingSearch = normalize(ing.ingredient) === value;
+
+        if (ingSearch) {
+          isVisible = true;
+        }
+
         var titreConf = normalize(list.titre).includes(value);
 
         if (titreConf) {
           isVisible = true;
         }
 
-        searchReduceArray = recipeList.filter(function (e) {
-          return e.titre.includes(value);
-        });
-
         if (normalize(list.description).includes(value)) {
           isVisible = true;
         }
 
-        searchReduceArray = recipeList.filter(function (e) {
-          return e.description.includes(value);
-        });
-        console.log("searchR", searchReduceArray);
         list.element.classList.toggle("show", isVisible);
       });
     });
+    searchReduceArray = recipeList.filter(function (e) {
+      return e.ingred.map(function (item) {
+        return normalize(item.ingredient);
+      }).includes(value) || e.titre.includes(value) || e.description.includes(value);
+    });
+    searchReduceArray.forEach(function (e) {
+      return console.log(e.devices);
+    });
+    getAppliancesList(searchReduceArray);
+    getUstensilList();
+    getIngredientsList();
   });
 };
 
@@ -2298,13 +2307,13 @@ var ingredientMenu = document.querySelector(".ingredient_menu"); // create ingre
 var allIngredients = [];
 
 var getIngredientsList = function getIngredientsList() {
-  var _iterator = _createForOfIteratorHelper(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes),
+  var _iterator = _createForOfIteratorHelper(searchReduceArray),
       _step;
 
   try {
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
       var recipe = _step.value;
-      recipe.ingredients.map(function (object) {
+      recipe.ingred.map(function (object) {
         allIngredients.push(normalize(object.ingredient));
       });
     }
@@ -2321,22 +2330,21 @@ var getIngredientsList = function getIngredientsList() {
     li.innerHTML += ing;
     ingredientMenu.appendChild(li);
   });
-};
+}; //DOM //
 
-getIngredientsList(); //DOM //
 
 var devices = document.querySelector(".device_menu"); // create devices list //
 
 var allAppliances = [];
 
-var getAppliancesList = function getAppliancesList() {
-  var _iterator2 = _createForOfIteratorHelper(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes),
+var getAppliancesList = function getAppliancesList(data) {
+  var _iterator2 = _createForOfIteratorHelper(data),
       _step2;
 
   try {
     for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
       var recipe = _step2.value;
-      var appliances = normalize(recipe.appliance);
+      var appliances = normalize(recipe.devices);
       allAppliances.push(appliances);
     }
   } catch (err) {
@@ -2352,15 +2360,14 @@ var getAppliancesList = function getAppliancesList() {
     device_li.innerHTML += object;
     devices.appendChild(device_li);
   });
-};
+}; //DOM //
 
-getAppliancesList(); //DOM //
 
 var ustensilsM = document.querySelector(".ustensil_menu");
 var allUstensils = []; // create ustensils list //
 
 var getUstensilList = function getUstensilList() {
-  var _iterator3 = _createForOfIteratorHelper(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes),
+  var _iterator3 = _createForOfIteratorHelper(searchReduceArray),
       _step3;
 
   try {
@@ -2384,9 +2391,8 @@ var getUstensilList = function getUstensilList() {
     ustensil_li.innerHTML += object;
     ustensilsM.appendChild(ustensil_li);
   });
-};
+}; // find the tags who match the search//
 
-getUstensilList(); // find the tags who match the search//
 
 var searchTags = function searchTags(category) {
   var searchBox = document.querySelector(".".concat(category, "_search"));
@@ -2518,4 +2524,4 @@ getCategoriesTag("ustensil", allUstensils, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=abe175ef320eab368b57.js.map
+//# sourceMappingURL=9afb27b369cbbb1ad795.js.map
