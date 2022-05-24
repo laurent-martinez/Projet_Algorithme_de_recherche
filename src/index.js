@@ -102,9 +102,8 @@ const searchFilter = () => {
         if (normalize(list.description).includes(value)) {
           isVisible = true;
         }
-
-        list.element.classList.toggle("show", isVisible);
       });
+      list.element.classList.toggle("show", isVisible);
     });
 
     searchReduceArray = recipeList.filter(
@@ -113,14 +112,18 @@ const searchFilter = () => {
         e.titre.includes(value) ||
         e.description.includes(value)
     );
-    searchReduceArray.forEach((e) => console.log(e.devices));
-    getAppliancesList(searchReduceArray);
-    getUstensilList();
-    getIngredientsList();
+    setTimeout(getAppliancesList, 350);
+    setTimeout(getIngredientsList, 350);
+    setTimeout(getUstensilList, 350);
+    console.log(searchReduceArray);
   });
 };
 searchFilter();
-
+let timeout;
+const displayList = () => {
+  timeout = setTimeout(getIngredientsList, 300);
+};
+displayList();
 const recipesPic = document.querySelectorAll("[data-img]");
 recipesPic.forEach((recip) => {
   recip.src = food;
@@ -157,8 +160,8 @@ const devices = document.querySelector(".device_menu");
 
 let allAppliances = [];
 
-const getAppliancesList = (data) => {
-  for (let recipe of data) {
+const getAppliancesList = () => {
+  for (let recipe of searchReduceArray) {
     let appliances = normalize(recipe.devices);
     allAppliances.push(appliances);
   }
@@ -192,7 +195,6 @@ const getUstensilList = () => {
     ustensilsM.appendChild(ustensil_li);
   });
 };
-
 // find the tags who match the search//
 const searchTags = (category) => {
   const searchBox = document.querySelector(`.${category}_search`);

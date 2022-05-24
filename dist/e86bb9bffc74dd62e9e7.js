@@ -2274,25 +2274,29 @@ var searchFilter = function searchFilter() {
         if (normalize(list.description).includes(value)) {
           isVisible = true;
         }
-
-        list.element.classList.toggle("show", isVisible);
       });
+      list.element.classList.toggle("show", isVisible);
     });
     searchReduceArray = recipeList.filter(function (e) {
       return e.ingred.map(function (item) {
         return normalize(item.ingredient);
       }).includes(value) || e.titre.includes(value) || e.description.includes(value);
     });
-    searchReduceArray.forEach(function (e) {
-      return console.log(e.devices);
-    });
-    getAppliancesList(searchReduceArray);
-    getUstensilList();
-    getIngredientsList();
+    setTimeout(getAppliancesList, 350);
+    setTimeout(getIngredientsList, 350);
+    setTimeout(getUstensilList, 350);
+    console.log(searchReduceArray);
   });
 };
 
 searchFilter();
+var timeout;
+
+var displayList = function displayList() {
+  timeout = setTimeout(getIngredientsList, 300);
+};
+
+displayList();
 var recipesPic = document.querySelectorAll("[data-img]");
 recipesPic.forEach(function (recip) {
   recip.src = _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__;
@@ -2337,8 +2341,8 @@ var devices = document.querySelector(".device_menu"); // create devices list //
 
 var allAppliances = [];
 
-var getAppliancesList = function getAppliancesList(data) {
-  var _iterator2 = _createForOfIteratorHelper(data),
+var getAppliancesList = function getAppliancesList() {
+  var _iterator2 = _createForOfIteratorHelper(searchReduceArray),
       _step2;
 
   try {
@@ -2524,4 +2528,4 @@ getCategoriesTag("ustensil", allUstensils, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=9afb27b369cbbb1ad795.js.map
+//# sourceMappingURL=e86bb9bffc74dd62e9e7.js.map
