@@ -2185,6 +2185,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 var recipeList = [];
 var initialArray = [].concat(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
 var searchReduceArray = [];
+var allIngredients = [];
+var allAppliances = [];
+var allUstensils = [];
 var recipeCardTemplate = document.querySelector("[data-recipe-template]");
 var recipeCardsContainer = document.querySelector("[data-cards-container]");
 
@@ -2193,6 +2196,7 @@ var normalize = function normalize(variable) {
 }; // Create the search bar //
 
 
+console.log(searchReduceArray.length);
 var ingList = []; // recipes.forEach((each) => arr.push(each.ingredients));
 // console.log(arr);
 
@@ -2312,14 +2316,12 @@ var searchFilter = function searchFilter() {
       });
     }
 
-    console.log(searchReduceArray);
+    console.log(searchReduceArray.length);
   });
 }; // DOM //
 
 
 var ingredientMenu = document.querySelector(".ingredient_menu"); // create ingredient list//
-
-var allIngredients = [];
 
 var getIngredientsList = function getIngredientsList(data) {
   var _iterator = _createForOfIteratorHelper(data),
@@ -2350,8 +2352,6 @@ var getIngredientsList = function getIngredientsList(data) {
 
 var devices = document.querySelector(".device_menu"); // create devices list //
 
-var allAppliances = [];
-
 var getAppliancesList = function getAppliancesList(data) {
   var _iterator2 = _createForOfIteratorHelper(data),
       _step2;
@@ -2378,8 +2378,7 @@ var getAppliancesList = function getAppliancesList(data) {
 }; //DOM //
 
 
-var ustensilsM = document.querySelector(".ustensil_menu");
-var allUstensils = []; // create ustensils list //
+var ustensilsM = document.querySelector(".ustensil_menu"); // create ustensils list //
 
 var getUstensilList = function getUstensilList(data) {
   var _iterator3 = _createForOfIteratorHelper(data),
@@ -2401,7 +2400,6 @@ var getUstensilList = function getUstensilList(data) {
   allUstensils = _toConsumableArray(allUstensils);
   allUstensils = _toConsumableArray(new Set(allUstensils.sort()));
   allUstensils.forEach(function (object) {
-    console.log(object);
     var ustensil_li = document.createElement("li");
     ustensil_li.className = "ustensil_li";
     ustensil_li.innerHTML += object;
@@ -2532,7 +2530,7 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
               return normalize(item);
             }).includes(value);
           });
-          console.log(searchReduceArray);
+          console.log(searchReduceArray.length);
           list.element.classList.toggle("show", isVisibleA);
         });
       }
@@ -2549,4 +2547,4 @@ init();
 
 /******/ })()
 ;
-//# sourceMappingURL=92c5f6600e7b3e5c2bf6.js.map
+//# sourceMappingURL=f87c898758ea9efe7455.js.map

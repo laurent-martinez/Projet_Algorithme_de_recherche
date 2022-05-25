@@ -9,6 +9,9 @@ import closeArrow from "./assets/close_arrow.svg";
 let recipeList = [];
 let initialArray = [].concat(recipes);
 let searchReduceArray = [];
+let allIngredients = [];
+let allAppliances = [];
+let allUstensils = [];
 const recipeCardTemplate = document.querySelector("[data-recipe-template]");
 const recipeCardsContainer = document.querySelector("[data-cards-container]");
 
@@ -19,7 +22,7 @@ const normalize = (variable) => {
     .replace(/\p{Diacritic}/gu, "");
 };
 // Create the search bar //
-
+console.log(searchReduceArray.length);
 let ingList = [];
 // recipes.forEach((each) => arr.push(each.ingredients));
 // console.log(arr);
@@ -139,7 +142,7 @@ const searchFilter = () => {
           e.description.includes(value)
       );
     }
-    console.log(searchReduceArray);
+    console.log(searchReduceArray.length);
   });
 };
 
@@ -148,7 +151,6 @@ const ingredientMenu = document.querySelector(".ingredient_menu");
 
 // create ingredient list//
 
-let allIngredients = [];
 const getIngredientsList = (data) => {
   for (let recipe of data) {
     recipe.ingred.map((object) => {
@@ -168,8 +170,6 @@ const getIngredientsList = (data) => {
 const devices = document.querySelector(".device_menu");
 // create devices list //
 
-let allAppliances = [];
-
 const getAppliancesList = (data) => {
   for (let recipe of data) {
     let appliances = normalize(recipe.devices);
@@ -186,7 +186,6 @@ const getAppliancesList = (data) => {
 
 //DOM //
 const ustensilsM = document.querySelector(".ustensil_menu");
-let allUstensils = [];
 
 // create ustensils list //
 
@@ -199,7 +198,6 @@ const getUstensilList = (data) => {
   allUstensils = [...allUstensils];
   allUstensils = [...new Set(allUstensils.sort())];
   allUstensils.forEach((object) => {
-    console.log(object);
     const ustensil_li = document.createElement("li");
     ustensil_li.className = "ustensil_li";
     ustensil_li.innerHTML += object;
@@ -307,7 +305,7 @@ const getCategoriesTag = (category, tabs, typeTags) => {
               normalize(e.devices).includes(value) ||
               e.ustensils.map((item) => normalize(item)).includes(value)
           );
-          console.log(searchReduceArray);
+          console.log(searchReduceArray.length);
           list.element.classList.toggle("show", isVisibleA);
         });
       }
