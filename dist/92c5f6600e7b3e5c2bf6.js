@@ -2217,9 +2217,9 @@ var init = function init() {
     getIngredientsList(recipeList);
     getUstensilList(recipeList);
   } else {
-    getAppliancesList(searchReduceArray);
-    getIngredientsList(searchReduceArray);
-    getUstensilList(searchReduceArray);
+    setTimeout(getAppliancesList(searchReduceArray), 250);
+    setTimeout(getUstensilList(searchReduceArray), 250);
+    setTimeout(getIngList(searchReduceArray), 250);
   }
 
   searchTags("ingredients");
@@ -2338,7 +2338,7 @@ var getIngredientsList = function getIngredientsList(data) {
     _iterator.f();
   }
 
-  allIngredients = _toConsumableArray(new Set(allIngredients));
+  allIngredients = _toConsumableArray(new Set(allIngredients.sort()));
   allIngredients.map(function (ing) {
     var li = document.createElement("li");
     li.className = "ingredients_li";
@@ -2368,7 +2368,7 @@ var getAppliancesList = function getAppliancesList(data) {
     _iterator2.f();
   }
 
-  allAppliances = _toConsumableArray(new Set(allAppliances));
+  allAppliances = _toConsumableArray(new Set(allAppliances.sort()));
   allAppliances.forEach(function (object) {
     var device_li = document.createElement("li");
     device_li.className = "device_li";
@@ -2399,8 +2399,9 @@ var getUstensilList = function getUstensilList(data) {
   }
 
   allUstensils = _toConsumableArray(allUstensils);
-  allUstensils = _toConsumableArray(new Set(allUstensils));
+  allUstensils = _toConsumableArray(new Set(allUstensils.sort()));
   allUstensils.forEach(function (object) {
+    console.log(object);
     var ustensil_li = document.createElement("li");
     ustensil_li.className = "ustensil_li";
     ustensil_li.innerHTML += object;
@@ -2447,6 +2448,7 @@ var ingredientTags = [],
     ustensilTags = [];
 
 var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
+  // create the tag //
   var categories = document.getElementsByClassName("".concat(category, "_li"));
   var buttons = document.querySelector(".buttons");
   var firstChild = buttons.firstChild;
@@ -2466,6 +2468,8 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
       //   tabs = tabs.filter((el) => el !== normalize(filterIng));
       // }
 
+      var value = normalize(tag.innerText) || normalize(tag.textContent); // erase the tags //
+
       var clsTag = document.querySelectorAll(".closeTag");
 
       var _iterator5 = _createForOfIteratorHelper(clsTag),
@@ -2475,18 +2479,32 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
         for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
           var item = _step5.value;
           item.addEventListener("click", function (e) {
-            tabs.push(tag.textContent);
+            recipeList.forEach(function (e) {
+              e.ingred.map(function (item) {
+                if (normalize(item.ingredient).includes(value)) {
+                  searchReduceArray.push(e);
+                }
+              });
+              e.ustensils.map(function (item) {
+                if (normalize(item).includes(value)) {
+                  searchReduceArray.push(e);
+                }
+              });
+
+              if (normalize(e.devices).includes(value)) {
+                searchReduceArray.push(e);
+              }
+            });
             tag.remove();
           });
         } // tabs = tabs.filter((e, i) => tabs.indexOf(e) == i);
+        // hide the cards who doesn't match the tags//
 
       } catch (err) {
         _iterator5.e(err);
       } finally {
         _iterator5.f();
       }
-
-      var value = normalize(tag.innerText) || normalize(tag.textContent);
 
       if (value) {
         searchReduceArray.forEach(function (list) {
@@ -2505,7 +2523,8 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
             if (value === normalize(ustensils)) {
               isVisibleA = true;
             }
-          });
+          }); // filter searchReduceArray with the tags//
+
           searchReduceArray = searchReduceArray.filter(function (e) {
             return e.ingred.map(function (item) {
               return normalize(item.ingredient);
@@ -2530,4 +2549,4 @@ init();
 
 /******/ })()
 ;
-//# sourceMappingURL=1c6e4010011d4d2923a2.js.map
+//# sourceMappingURL=92c5f6600e7b3e5c2bf6.js.map
