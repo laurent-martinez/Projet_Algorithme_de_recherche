@@ -7,8 +7,8 @@ import time from "./assets/timer.svg";
 import closeArrow from "./assets/close_arrow.svg";
 
 let recipeList = [];
-let searchReduceArray = [];
 let initialArray = [].concat(recipes);
+let searchReduceArray = [];
 const recipeCardTemplate = document.querySelector("[data-recipe-template]");
 const recipeCardsContainer = document.querySelector("[data-cards-container]");
 
@@ -31,14 +31,28 @@ const getIngList = (arrList) => {
   return ingList;
 };
 
-// const flatArray = (arr) => {
-//   let flatArr = [].concat(...arr);
-//   return flatArr;
-// };
-// console.log(flatArray(ingList));
-// let ingredients = ingredients;
-// let x = flatArray(getList(recipes, ingredients));
-// console.log(x);
+/*****centralisation de toutes les fonctions *******/
+const init = () => {
+  buildSearchBar();
+  searchFilter();
+  buildCard();
+  if (searchReduceArray.length <= 0) {
+    getAppliancesList(recipeList);
+    getIngredientsList(recipeList);
+    getUstensilList(recipeList);
+  } else {
+    getAppliancesList(searchReduceArray);
+    getIngredientsList(searchReduceArray);
+    getUstensilList(searchReduceArray);
+  }
+  searchTags("ingredients");
+  searchTags("device");
+  searchTags("ustensil");
+  getCategoriesTag("ingredients", allIngredients, ingredientTags);
+  getCategoriesTag("device", allAppliances, deviceTags);
+  getCategoriesTag("ustensil", allUstensils, ustensilTags);
+};
+//**création de la barre de recherche***********/
 
 const searchBar = document.querySelector("[data-search]");
 const buildSearchBar = () => {
@@ -47,12 +61,21 @@ const buildSearchBar = () => {
   const searchPicture = document.getElementById("search_picture");
   searchPicture.src = magnifying;
 };
-buildSearchBar();
 
 // Build the cards //
+
 const buildCard = () => {
   recipeList = recipes.map((recipe) => {
     const card = recipeCardTemplate.content.cloneNode(true).children[0];
+    const recipesPic = document.querySelectorAll("[data-img]");
+    recipesPic.forEach((recip) => {
+      recip.src = food;
+    });
+
+    const logoTimer = document.querySelectorAll("[data-timer-img]");
+    logoTimer.forEach((logo) => {
+      logo.src = time;
+    });
     const title = card.querySelector("[data-title]");
     const timing = card.querySelector("[data-timing]");
     const ingredients = card.querySelector("[data-ingredients]");
@@ -82,18 +105,17 @@ const buildCard = () => {
     };
   });
 };
-buildCard();
+
 // select card with input search value //
 const searchFilter = () => {
   searchBar.addEventListener("input", (e) => {
     e.preventDefault();
     const value = normalize(e.target.value);
+    //faire apparaitre les cards//
     recipeList.forEach((list) => {
       let isVisible = false;
       list.ingred.forEach((ing) => {
-        let ingSearch =
-          normalize(ing.ingredient).includes(value) ||
-          ing.ingredient.length === value.length;
+        let ingSearch = normalize(ing.ingredient).includes(value);
         if (ingSearch) {
           isVisible = true;
         }
@@ -105,8 +127,10 @@ const searchFilter = () => {
           isVisible = true;
         }
       });
+      // cache les éléments non séléctionnés du dom//
       list.element.classList.toggle("show", isVisible);
     });
+    // filtrer le tableau et garder les éléments sélectionnés//
     if (value.length >= 3) {
       searchReduceArray = recipeList.filter(
         (e) =>
@@ -115,30 +139,19 @@ const searchFilter = () => {
           e.description.includes(value)
       );
     }
-
     console.log(searchReduceArray);
   });
 };
-setTimeout(searchFilter, 250);
-
-const recipesPic = document.querySelectorAll("[data-img]");
-recipesPic.forEach((recip) => {
-  recip.src = food;
-});
-
-const logoTimer = document.querySelectorAll("[data-timer-img]");
-logoTimer.forEach((logo) => {
-  logo.src = time;
-});
 
 // DOM //
 const ingredientMenu = document.querySelector(".ingredient_menu");
 
 // create ingredient list//
+
 let allIngredients = [];
-const getIngredientsList = () => {
-  for (let recipe of initialArray) {
-    recipe.ingredients.map((object) => {
+const getIngredientsList = (data) => {
+  for (let recipe of data) {
+    recipe.ingred.map((object) => {
       allIngredients.push(normalize(object.ingredient));
     });
   }
@@ -150,16 +163,16 @@ const getIngredientsList = () => {
     ingredientMenu.appendChild(li);
   });
 };
-getIngredientsList();
+
 //DOM //
 const devices = document.querySelector(".device_menu");
 // create devices list //
 
 let allAppliances = [];
 
-const getAppliancesList = () => {
-  for (let recipe of initialArray) {
-    let appliances = normalize(recipe.appliance);
+const getAppliancesList = (data) => {
+  for (let recipe of data) {
+    let appliances = normalize(recipe.devices);
     allAppliances.push(appliances);
   }
   allAppliances = [...new Set(allAppliances)];
@@ -170,15 +183,15 @@ const getAppliancesList = () => {
     devices.appendChild(device_li);
   });
 };
-getAppliancesList();
+
 //DOM //
 const ustensilsM = document.querySelector(".ustensil_menu");
 let allUstensils = [];
 
 // create ustensils list //
 
-const getUstensilList = () => {
-  for (let recipe of initialArray) {
+const getUstensilList = (data) => {
+  for (let recipe of data) {
     recipe.ustensils.map((object) => {
       allUstensils.push(normalize(object));
     });
@@ -192,7 +205,7 @@ const getUstensilList = () => {
     ustensilsM.appendChild(ustensil_li);
   });
 };
-getUstensilList();
+
 // find the tags who match the search//
 const searchTags = (category) => {
   const searchBox = document.querySelector(`.${category}_search`);
@@ -210,9 +223,6 @@ const searchTags = (category) => {
     });
   }
 };
-searchTags("ingredients");
-searchTags("device");
-searchTags("ustensil");
 
 // create tags and erase it & remove unmatched cards//
 
@@ -238,27 +248,24 @@ const getCategoriesTag = (category, tabs, typeTags) => {
       buttons.insertBefore(tag, firstChild);
       buttons.appendChild(tag);
       tag.appendChild(closeTag);
-      let filterIng = tag.textContent;
 
-      if (tag) {
-        tabs = tabs.filter((el) => el !== normalize(filterIng));
-      }
+      // if (tag) {
+      //   tabs = tabs.filter((el) => el !== normalize(filterIng));
+      // }
 
       let clsTag = document.querySelectorAll(".closeTag");
       for (let item of clsTag) {
         item.addEventListener("click", (e) => {
           tabs.push(tag.textContent);
-          typeTags = typeTags.filter((el) => el !== tag.textContent);
           tag.remove();
         });
       }
 
-      tabs = tabs.filter((e, i) => tabs.indexOf(e) == i);
+      // tabs = tabs.filter((e, i) => tabs.indexOf(e) == i);
 
       let value = normalize(tag.innerText) || normalize(tag.textContent);
       if (value) {
         searchReduceArray.forEach((list) => {
-          console.log(list);
           let isVisibleA = false;
           list.ingred.forEach((ing) => {
             if (normalize(ing.ingredient) === value) {
@@ -273,14 +280,20 @@ const getCategoriesTag = (category, tabs, typeTags) => {
               isVisibleA = true;
             }
           });
-
+          searchReduceArray = searchReduceArray.filter(
+            (e) =>
+              e.ingred
+                .map((item) => normalize(item.ingredient))
+                .includes(value) ||
+              normalize(e.devices).includes(value) ||
+              e.ustensils.map((item) => normalize(item)).includes(value)
+          );
+          console.log(searchReduceArray);
           list.element.classList.toggle("show", isVisibleA);
         });
       }
     });
   }
-  return tabs;
 };
-getCategoriesTag("ingredients", allIngredients, ingredientTags);
-getCategoriesTag("device", allAppliances, deviceTags);
-getCategoriesTag("ustensil", allUstensils, ustensilTags);
+
+init();
