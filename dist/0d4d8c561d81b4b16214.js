@@ -2294,28 +2294,17 @@ var searchFilter = function searchFilter(initialArray) {
     e.preventDefault();
     var value = normalize(e.target.value);
     console.log(value);
-    initialArray.forEach(function (el) {
-      return el.ingredients.map(function (e) {
-        return normalize(e.ingredient) === normalize(value) ? searchReduceArray.push(el) : searchReduceArray;
-      });
-    });
-    initialArray.map(function (el) {
-      return normalize(el.name).includes(value) ? searchReduceArray.push(el) : searchReduceArray;
-    });
-    initialArray.map(function (el) {
-      return normalize(el.description).includes(value) ? searchReduceArray.push(el) : searchReduceArray;
-    });
 
-    if (value) {
-      buildCard(searchReduceArray);
-      getIngredientsList(searchReduceArray);
-      getAppliancesList(searchReduceArray);
-      getUstensilList(searchReduceArray);
-    } else {
-      getIngredientsList(initialArray);
-      getAppliancesList(initialArray);
-      getUstensilList(initialArray);
+    if (value.length >= 3) {
+      searchReduceArray = initialArray.filter(function (e) {
+        return e.ingredients.map(function (item) {
+          return normalize(item.ingredient);
+        }).includes(value) || e.name.includes(value) || e.description.includes(value);
+      });
     }
+
+    console.log(searchReduceArray);
+    buildCard(searchReduceArray);
   });
 };
 
@@ -2410,8 +2399,11 @@ var getUstensilList = function getUstensilList(data) {
     ustensilsM.appendChild(ustensil_li);
     return ustensil_li;
   });
-}; // find the tags who match the search//
+};
 
+getIngredientsList(searchReduceArray);
+getAppliancesList(searchReduceArray);
+getUstensilList(searchReduceArray); // find the tags who match the search//
 
 var searchTags = function searchTags(category) {
   var searchBox = document.querySelector(".".concat(category, "_search"));
@@ -2523,4 +2515,4 @@ getCategoriesTag("ustensil", reducedUstensilArray, ustensilTags);
 
 /******/ })()
 ;
-//# sourceMappingURL=12c5d4ce0afd8b127141.js.map
+//# sourceMappingURL=0d4d8c561d81b4b16214.js.map

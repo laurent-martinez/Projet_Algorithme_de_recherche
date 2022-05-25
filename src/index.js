@@ -130,34 +130,18 @@ const searchFilter = (initialArray) => {
     e.preventDefault();
     const value = normalize(e.target.value);
     console.log(value);
-    initialArray.forEach((el) =>
-      el.ingredients.map((e) =>
-        normalize(e.ingredient) === normalize(value)
-          ? searchReduceArray.push(el)
-          : searchReduceArray
-      )
-    );
-    initialArray.map((el) =>
-      normalize(el.name).includes(value)
-        ? searchReduceArray.push(el)
-        : searchReduceArray
-    );
-    initialArray.map((el) =>
-      normalize(el.description).includes(value)
-        ? searchReduceArray.push(el)
-        : searchReduceArray
-    );
-
-    if (value) {
-      buildCard(searchReduceArray);
-      getIngredientsList(searchReduceArray);
-      getAppliancesList(searchReduceArray);
-      getUstensilList(searchReduceArray);
-    } else {
-      getIngredientsList(initialArray);
-      getAppliancesList(initialArray);
-      getUstensilList(initialArray);
+    if (value.length >= 3) {
+      searchReduceArray = initialArray.filter(
+        (e) =>
+          e.ingredients
+            .map((item) => normalize(item.ingredient))
+            .includes(value) ||
+          e.name.includes(value) ||
+          e.description.includes(value)
+      );
     }
+    console.log(searchReduceArray);
+    buildCard(searchReduceArray);
   });
 };
 searchFilter(initialArray);
@@ -226,6 +210,9 @@ const getUstensilList = (data) => {
     return ustensil_li;
   });
 };
+getIngredientsList(searchReduceArray);
+getAppliancesList(searchReduceArray);
+getUstensilList(searchReduceArray);
 
 // find the tags who match the search//
 const searchTags = (category) => {
