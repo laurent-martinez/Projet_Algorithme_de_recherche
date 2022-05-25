@@ -22,7 +22,7 @@ const normalize = (variable) => {
     .replace(/\p{Diacritic}/gu, "");
 };
 // Create the search bar //
-console.log(searchReduceArray.length);
+console.log("array avant la searchbar", searchReduceArray);
 let ingList = [];
 // recipes.forEach((each) => arr.push(each.ingredients));
 // console.log(arr);
@@ -142,7 +142,7 @@ const searchFilter = () => {
           e.description.includes(value)
       );
     }
-    console.log(searchReduceArray.length);
+    console.log("array après la reccherche searchBar", searchReduceArray);
   });
 };
 
@@ -305,7 +305,7 @@ const getCategoriesTag = (category, tabs, typeTags) => {
               normalize(e.devices).includes(value) ||
               e.ustensils.map((item) => normalize(item)).includes(value)
           );
-          console.log(searchReduceArray.length);
+          console.log("array après la sélection des tags", searchReduceArray);
           list.element.classList.toggle("show", isVisibleA);
         });
       }

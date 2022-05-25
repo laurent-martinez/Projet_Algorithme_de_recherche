@@ -2196,7 +2196,7 @@ var normalize = function normalize(variable) {
 }; // Create the search bar //
 
 
-console.log(searchReduceArray.length);
+console.log("array avant la searchbar", searchReduceArray);
 var ingList = []; // recipes.forEach((each) => arr.push(each.ingredients));
 // console.log(arr);
 
@@ -2316,7 +2316,7 @@ var searchFilter = function searchFilter() {
       });
     }
 
-    console.log(searchReduceArray.length);
+    console.log("array après la reccherche searchBar", searchReduceArray);
   });
 }; // DOM //
 
@@ -2530,7 +2530,7 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
               return normalize(item);
             }).includes(value);
           });
-          console.log(searchReduceArray.length);
+          console.log("array après la sélection des tags", searchReduceArray);
           list.element.classList.toggle("show", isVisibleA);
         });
       }
@@ -2547,4 +2547,4 @@ init();
 
 /******/ })()
 ;
-//# sourceMappingURL=f87c898758ea9efe7455.js.map
+//# sourceMappingURL=c08a04639875ee2bba17.js.map
