@@ -161,7 +161,7 @@ const getIngredientsList = (data) => {
   allIngredients.map((ing) => {
     const li = document.createElement("li");
     li.className = "ingredients_li";
-    li.innerHTML += ing;
+    li.innerHTML = ing;
     ingredientMenu.appendChild(li);
   });
 };
@@ -179,7 +179,7 @@ const getAppliancesList = (data) => {
   allAppliances.forEach((object) => {
     const device_li = document.createElement("li");
     device_li.className = "device_li";
-    device_li.innerHTML += object;
+    device_li.innerHTML = object;
     devices.appendChild(device_li);
   });
 };
@@ -200,7 +200,7 @@ const getUstensilList = (data) => {
   allUstensils.forEach((object) => {
     const ustensil_li = document.createElement("li");
     ustensil_li.className = "ustensil_li";
-    ustensil_li.innerHTML += object;
+    ustensil_li.innerHTML = object;
     ustensilsM.appendChild(ustensil_li);
   });
 };

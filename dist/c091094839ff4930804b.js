@@ -2344,7 +2344,7 @@ var getIngredientsList = function getIngredientsList(data) {
   allIngredients.map(function (ing) {
     var li = document.createElement("li");
     li.className = "ingredients_li";
-    li.innerHTML += ing;
+    li.innerHTML = ing;
     ingredientMenu.appendChild(li);
   });
 }; //DOM //
@@ -2372,7 +2372,7 @@ var getAppliancesList = function getAppliancesList(data) {
   allAppliances.forEach(function (object) {
     var device_li = document.createElement("li");
     device_li.className = "device_li";
-    device_li.innerHTML += object;
+    device_li.innerHTML = object;
     devices.appendChild(device_li);
   });
 }; //DOM //
@@ -2402,7 +2402,7 @@ var getUstensilList = function getUstensilList(data) {
   allUstensils.forEach(function (object) {
     var ustensil_li = document.createElement("li");
     ustensil_li.className = "ustensil_li";
-    ustensil_li.innerHTML += object;
+    ustensil_li.innerHTML = object;
     ustensilsM.appendChild(ustensil_li);
   });
 }; // find the tags who match the search//
@@ -2547,4 +2547,4 @@ init();
 
 /******/ })()
 ;
-//# sourceMappingURL=c08a04639875ee2bba17.js.map
+//# sourceMappingURL=c091094839ff4930804b.js.map
