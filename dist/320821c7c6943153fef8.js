@@ -2212,12 +2212,9 @@ var init = function init() {
   buildSearchBar();
   buildCard();
   searchFilter();
-  searchTags("ingredients");
-  searchTags("device");
-  searchTags("ustensil");
-  getCategoriesTag("ingredients", allIngredients, ingredientTags);
-  getCategoriesTag("device", allAppliances, deviceTags);
-  getCategoriesTag("ustensil", allUstensils, ustensilTags);
+  getIngredientsList();
+  getAppliancesList();
+  getUstensilList();
 }; //**création de la barre de recherche***********/
 
 
@@ -2294,13 +2291,15 @@ var searchFilter = function searchFilter() {
       list.element.classList.toggle("show", isVisible);
     }); // filtrer le tableau et garder les éléments sélectionnés//
 
-    if (value.length >= 3) {
-      searchReduceArray = recipeList.filter(function (e) {
-        return e.ingred.map(function (item) {
-          return normalize(item.ingredient);
-        }).includes(value) || e.titre.includes(value) || e.description.includes(value);
-      });
-    }
+    setTimeout(function () {
+      if (value.length >= 3) {
+        searchReduceArray = recipeList.filter(function (e) {
+          return e.ingred.map(function (item) {
+            return normalize(item.ingredient);
+          }).includes(value) || e.titre.includes(value) || e.description.includes(value);
+        });
+      }
+    }, 500);
 
     var _iterator = _createForOfIteratorHelper(searchReduceArray),
         _step;
@@ -2328,6 +2327,12 @@ var searchFilter = function searchFilter() {
     getAppliancesList();
     getUstensilList();
     getIngredientsList();
+    searchTags("ingredients");
+    searchTags("device");
+    searchTags("ustensil");
+    getCategoriesTag("ingredients", allIngredients, ingredientTags);
+    getCategoriesTag("device", allAppliances, deviceTags);
+    getCategoriesTag("ustensil", allUstensils, ustensilTags);
     console.log("array après la reccherche searchBar", searchReduceArray);
   });
 }; // DOM //
@@ -2416,7 +2421,7 @@ var ingredientTags = [],
     deviceTags = [],
     ustensilTags = [];
 
-var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
+var getCategoriesTag = function getCategoriesTag(category, typeTags) {
   // create the tag //
   var categories = document.getElementsByClassName("".concat(category, "_li"));
   var buttons = document.querySelectorAll(".buttons");
@@ -2435,13 +2440,6 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
       buttons.insertBefore(tag, firstChild);
       buttons.appendChild(tag);
       tag.appendChild(closeTag);
-
-      if (tag) {
-        tabs = tabs.filter(function (e, i) {
-          return tabs.indexOf(e) == i;
-        });
-      }
-
       var value = normalize(tag.innerText) || normalize(tag.textContent); // erase the tags //
 
       var clsTag = document.querySelectorAll(".closeTag");
@@ -2453,20 +2451,20 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
         for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
           var item = _step3.value;
           item.addEventListener("click", function (e) {
-            recipeList.forEach(function (e) {
+            searchReduceArray.forEach(function (e) {
               e.ingred.map(function (item) {
                 if (normalize(item.ingredient).includes(value)) {
-                  searchReduceArray.push(e);
+                  allIngredients.push(item.ingredient);
                 }
               });
               e.ustensils.map(function (item) {
                 if (normalize(item).includes(value)) {
-                  searchReduceArray.push(e);
+                  allUstensils.push(item);
                 }
               });
 
               if (normalize(e.devices).includes(value)) {
-                searchReduceArray.push(e);
+                allAppliances.push(e.devices);
               }
             });
             tag.remove();
@@ -2481,7 +2479,7 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, typeTags) {
       }
 
       if (value) {
-        searchReduceArray.forEach(function (list) {
+        recipeList.forEach(function (list) {
           var isVisibleA = false;
           list.ingred.forEach(function (ing) {
             if (normalize(ing.ingredient) === value) {
@@ -2523,4 +2521,4 @@ init();
 
 /******/ })()
 ;
-//# sourceMappingURL=385548f3b7d74666e2f3.js.map
+//# sourceMappingURL=320821c7c6943153fef8.js.map

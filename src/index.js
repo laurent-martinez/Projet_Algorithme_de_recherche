@@ -39,13 +39,9 @@ const init = () => {
   buildSearchBar();
   buildCard();
   searchFilter();
-
-  searchTags("ingredients");
-  searchTags("device");
-  searchTags("ustensil");
-  getCategoriesTag("ingredients", allIngredients, ingredientTags);
-  getCategoriesTag("device", allAppliances, deviceTags);
-  getCategoriesTag("ustensil", allUstensils, ustensilTags);
+  getIngredientsList();
+  getAppliancesList();
+  getUstensilList();
 };
 //**création de la barre de recherche***********/
 
@@ -126,14 +122,18 @@ const searchFilter = () => {
       list.element.classList.toggle("show", isVisible);
     });
     // filtrer le tableau et garder les éléments sélectionnés//
-    if (value.length >= 3) {
-      searchReduceArray = recipeList.filter(
-        (e) =>
-          e.ingred.map((item) => normalize(item.ingredient)).includes(value) ||
-          e.titre.includes(value) ||
-          e.description.includes(value)
-      );
-    }
+    setTimeout(() => {
+      if (value.length >= 3) {
+        searchReduceArray = recipeList.filter(
+          (e) =>
+            e.ingred
+              .map((item) => normalize(item.ingredient))
+              .includes(value) ||
+            e.titre.includes(value) ||
+            e.description.includes(value)
+        );
+      }
+    }, 500);
     for (let recipe of searchReduceArray) {
       recipe.ingred.map((object) =>
         allIngredients.push(normalize(object.ingredient))
@@ -148,6 +148,12 @@ const searchFilter = () => {
     getAppliancesList();
     getUstensilList();
     getIngredientsList();
+    searchTags("ingredients");
+    searchTags("device");
+    searchTags("ustensil");
+    getCategoriesTag("ingredients", allIngredients, ingredientTags);
+    getCategoriesTag("device", allAppliances, deviceTags);
+    getCategoriesTag("ustensil", allUstensils, ustensilTags);
     console.log("array après la reccherche searchBar", searchReduceArray);
   });
 };
@@ -225,7 +231,7 @@ let ingredientTags = [],
   deviceTags = [],
   ustensilTags = [];
 
-const getCategoriesTag = (category, tabs, typeTags) => {
+const getCategoriesTag = (category, typeTags) => {
   // create the tag //
   const categories = document.getElementsByClassName(`${category}_li`);
   const buttons = document.querySelectorAll(".buttons");
@@ -246,28 +252,25 @@ const getCategoriesTag = (category, tabs, typeTags) => {
       buttons.appendChild(tag);
       tag.appendChild(closeTag);
 
-      if (tag) {
-        tabs = tabs.filter((e, i) => tabs.indexOf(e) == i);
-      }
       let value = normalize(tag.innerText) || normalize(tag.textContent);
 
       // erase the tags //
       let clsTag = document.querySelectorAll(".closeTag");
       for (let item of clsTag) {
         item.addEventListener("click", (e) => {
-          recipeList.forEach((e) => {
+          searchReduceArray.forEach((e) => {
             e.ingred.map((item) => {
               if (normalize(item.ingredient).includes(value)) {
-                searchReduceArray.push(e);
+                allIngredients.push(item.ingredient);
               }
             });
             e.ustensils.map((item) => {
               if (normalize(item).includes(value)) {
-                searchReduceArray.push(e);
+                allUstensils.push(item);
               }
             });
             if (normalize(e.devices).includes(value)) {
-              searchReduceArray.push(e);
+              allAppliances.push(e.devices);
             }
           });
           tag.remove();
@@ -278,7 +281,7 @@ const getCategoriesTag = (category, tabs, typeTags) => {
 
       // hide the cards who doesn't match the tags//
       if (value) {
-        searchReduceArray.forEach((list) => {
+        recipeList.forEach((list) => {
           let isVisibleA = false;
           list.ingred.forEach((ing) => {
             if (normalize(ing.ingredient) === value) {
