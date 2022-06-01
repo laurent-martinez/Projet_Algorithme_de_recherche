@@ -2221,9 +2221,9 @@ var init = function init() {
     getIngredientsList(recipeList);
     getUstensilList(recipeList);
   } else {
-    setTimeout(getAppliancesList(searchReduceArray), 250);
-    setTimeout(getUstensilList(searchReduceArray), 250);
-    setTimeout(getIngList(searchReduceArray), 250);
+    getAppliancesList(searchReduceArray);
+    getUstensilList(searchReduceArray);
+    getIngList(searchReduceArray);
   }
 
   searchTags("ingredients");
@@ -2308,14 +2308,15 @@ var searchFilter = function searchFilter() {
       list.element.classList.toggle("show", isVisible);
     }); // filtrer le tableau et garder les éléments sélectionnés//
 
-    if (value.length >= 3) {
-      searchReduceArray = recipeList.filter(function (e) {
-        return e.ingred.map(function (item) {
-          return normalize(item.ingredient);
-        }).includes(value) || e.titre.includes(value) || e.description.includes(value);
-      });
-    }
-
+    setTimeout(function () {
+      if (value.length >= 3) {
+        searchReduceArray = recipeList.filter(function (e) {
+          return e.ingred.map(function (item) {
+            return normalize(item.ingredient);
+          }).includes(value) || e.titre.includes(value) || e.description.includes(value);
+        });
+      }
+    }, 500);
     console.log("array après la reccherche searchBar", searchReduceArray);
   });
 }; // DOM //
@@ -2547,4 +2548,4 @@ init();
 
 /******/ })()
 ;
-//# sourceMappingURL=c091094839ff4930804b.js.map
+//# sourceMappingURL=d20ff74b35177d54a4cb.js.map

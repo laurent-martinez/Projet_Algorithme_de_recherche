@@ -44,9 +44,9 @@ const init = () => {
     getIngredientsList(recipeList);
     getUstensilList(recipeList);
   } else {
-    setTimeout(getAppliancesList(searchReduceArray), 250);
-    setTimeout(getUstensilList(searchReduceArray), 250);
-    setTimeout(getIngList(searchReduceArray), 250);
+    getAppliancesList(searchReduceArray);
+    getUstensilList(searchReduceArray);
+    getIngList(searchReduceArray);
   }
   searchTags("ingredients");
   searchTags("device");
@@ -134,14 +134,18 @@ const searchFilter = () => {
       list.element.classList.toggle("show", isVisible);
     });
     // filtrer le tableau et garder les éléments sélectionnés//
-    if (value.length >= 3) {
-      searchReduceArray = recipeList.filter(
-        (e) =>
-          e.ingred.map((item) => normalize(item.ingredient)).includes(value) ||
-          e.titre.includes(value) ||
-          e.description.includes(value)
-      );
-    }
+    setTimeout(() => {
+      if (value.length >= 3) {
+        searchReduceArray = recipeList.filter(
+          (e) =>
+            e.ingred
+              .map((item) => normalize(item.ingredient))
+              .includes(value) ||
+            e.titre.includes(value) ||
+            e.description.includes(value)
+        );
+      }
+    }, 500);
     console.log("array après la reccherche searchBar", searchReduceArray);
   });
 };
