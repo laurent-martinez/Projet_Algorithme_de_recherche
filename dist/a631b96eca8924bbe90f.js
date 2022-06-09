@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/recipes.js":
-/*!************************!*\
-  !*** ./src/recipes.js ***!
-  \************************/
+/***/ "./src/data/recipes.js":
+/*!*****************************!*\
+  !*** ./src/data/recipes.js ***!
+  \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1387,6 +1387,111 @@ var recipes = [{
 
 /***/ }),
 
+/***/ "./src/display/displayCard.js":
+/*!************************************!*\
+  !*** ./src/display/displayCard.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "displayCard": () => (/* binding */ displayCard)
+/* harmony export */ });
+// DOM
+var $searchResult = document.querySelector("#search-result");
+var displayCard = function displayCard(recipe) {
+  var ingredients = recipe.ingredients.map(function (ingredient) {
+    var _ingredient$quantity, _ingredient$unit;
+
+    return "<li>".concat(ingredient.ingredient, " : ").concat((_ingredient$quantity = ingredient === null || ingredient === void 0 ? void 0 : ingredient.quantity) !== null && _ingredient$quantity !== void 0 ? _ingredient$quantity : "", " ").concat((_ingredient$unit = ingredient === null || ingredient === void 0 ? void 0 : ingredient.unit) !== null && _ingredient$unit !== void 0 ? _ingredient$unit : "", "</li>");
+  }).join("");
+  $searchResult.insertAdjacentHTML("beforeend", "\n      <div class=\"recipe\">\n          <div class=\"recipe-image\"></div>\n          <div class=\"recipe-body\">\n              <div class=\"recipe-header\">\n                  <div class=\"recipe-title\">\n                      <h2>".concat(recipe.name, "</h2>\n                  </div>\n                  <div class=\"recipe-time\">\n                      <p><i class=\"far fa-clock fa-sm\"></i></p>\n                      <p>").concat(recipe.time, " min</p>\n                  </div>\n              </div>\n              <div class=\"recipe-content\">\n                  <div class=\"recipe-ingredients\">").concat(ingredients, "</div>\n                  <p class=\"recipe-describe \">").concat(recipe.description, "</p>\n              </div>\n          </div>\n      </div>\n      "));
+};
+
+/***/ }),
+
+/***/ "./src/scripts/class/Filter.js":
+/*!*************************************!*\
+  !*** ./src/scripts/class/Filter.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Filter": () => (/* binding */ Filter)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+var Filter = /*#__PURE__*/function () {
+  function Filter(recipes) {
+    _classCallCheck(this, Filter);
+
+    this.recipes = recipes;
+  }
+
+  _createClass(Filter, [{
+    key: "bySearch",
+    value: function bySearch(input) {
+      this.recipes = this.recipes.filter(function (recipe) {
+        // filter : me retourne tous les éléments trouvés correspondant
+        //console.log("recettes :", recipe)
+        return recipe.name.toLowerCase().includes(input.toLowerCase()) || recipe.description.toLowerCase().includes(input.toLowerCase()) || recipe.ingredients.some(function (ingredient) {
+          return ingredient.ingredient.toLowerCase().includes(input.toLowerCase());
+        });
+      });
+
+      if (this.recipes.length == 0) {
+        var $searchResult = document.querySelector("#search-result");
+        var result = document.createElement("p");
+        result.classList.add("no-result");
+        result.textContent = "Aucune recette ne correspond à votre recherche";
+        $searchResult.appendChild(result);
+      } else {
+        return this.recipes;
+      }
+    }
+  }, {
+    key: "byTags",
+    value: function byTags(tag) {
+      switch (tag.type // je viens chercher la valeur type de mon objet tag
+      ) {
+        case "ingredients":
+          this.recipes = this.recipes.filter(function (recipe) {
+            return recipe.ingredients.some(function (ingredient) {
+              return ingredient.ingredient.toLowerCase().includes(tag.value.toLowerCase());
+            });
+          });
+          break;
+
+        case "devices":
+          this.recipes = this.recipes.filter(function (recipe) {
+            return recipe.appliance.toLowerCase().includes(tag.value.toLowerCase());
+          });
+          break;
+
+        case "utensils":
+          this.recipes = this.recipes.filter(function (recipe) {
+            return recipe.ustensils.some(function (ustensil) {
+              return ustensil.toLowerCase().includes(tag.value.toLowerCase());
+            });
+          });
+          break;
+      } //console.log("tag", this.recipes)
+
+
+      return this.recipes;
+    }
+  }]);
+
+  return Filter;
+}();
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.scss":
 /*!*********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.scss ***!
@@ -1407,11 +1512,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../assets/arrow_down.svg */ "./src/assets/arrow_down.svg"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../assets/magnifying_glass.svg */ "./src/assets/magnifying_glass.svg"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  width: 100vw;\n  height: 100vh;\n}\n\nimg,\nsvg {\n  vertical-align: baseline;\n}\n\n.bg-light {\n  display: flex;\n  background-color: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid {\n  justify-content: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand {\n  display: flex;\n  flex-direction: column;\n  text-decoration: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1 {\n  font-size: 36px;\n  color: #D04F4F;\n  font-weight: 700;\n  font-family: \"DM Sans\", sans-serif;\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:link {\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:visited {\n  text-decoration: none;\n}\n\n.form-inline {\n  display: flex;\n  height: 69px;\n  border-radius: 5px;\n}\n.form-inline .form-control {\n  font-family: \"Lato\", sans-serif;\n  font-weight: 400;\n  font-size: 18px;\n  background-color: #e7e7e7;\n  border-radius: 5px 0 0 5px;\n  border: none;\n  outline: none;\n}\n.form-inline .form-control:focus {\n  border: none;\n  outline: none;\n}\n.form-inline .btn-outline-success {\n  border: none;\n  background-color: #e7e7e7;\n  border-radius: 0px 5px 5px 0px;\n}\n\n.custom-container {\n  margin: 0 150px;\n}\n\n.btn-group {\n  margin-right: 15px;\n}\n\n.dropdown-toggle {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  font-family: \"Lato\", sans-serif;\n  color: white;\n  font-weight: 700;\n  font-size: 18px;\n  width: 170px;\n  height: 69px;\n}\n.dropdown-toggle::after {\n  appearance: none;\n  border: none;\n  content: \"\";\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") center center no-repeat;\n  width: 16px;\n  height: 10px;\n}\n\n.recipes {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n  gap: 0.25rem;\n  margin-top: 1rem;\n}\n\n.recipe {\n  height: auto;\n  background-color: #E7E7E7;\n  margin: 15px;\n  display: flex;\n  align-items: center;\n  text-overflow: ellipsis;\n}\n.recipe__title {\n  font-family: Lato;\n  font-size: 22px;\n  font-weight: 400;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__timer {\n  text-align: right;\n  align-items: center;\n}\n.recipe__timing {\n  font-family: Lato;\n  font-size: 18px;\n  font-weight: 700;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n}\n.recipe__ingredients {\n  font-family: Roboto;\n  width: 100%;\n  font-weight: 400;\n  line-height: 16px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__ingredients__title {\n  font-weight: 700;\n}\n.recipe__instructions {\n  font-family: Roboto;\n  width: 100%;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 12px;\n  letter-spacing: 0em;\n  text-align: left;\n  text-align: justify;\n}\n\n.ingredients_li, .device_li, .ustensil_li {\n  cursor: pointer;\n  list-style-type: none;\n  padding: 5px;\n}\n.ingredients_li:hover, .device_li:hover, .ustensil_li:hover {\n  background-color: #E7E7E7;\n}\n\n.tags {\n  padding: 15px;\n  margin: 10px;\n  outline: none;\n  appearance: none;\n  border: none;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  padding-left: 10px;\n  background-color: #3282F7;\n  color: white;\n}\n.tags.closeTag {\n  width: 20px;\n  height: 20px;\n  padding-left: 10px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AACA;EACI,YAAA;EACA,aAAA;AAAJ;;AAEA;;EAEE,wBAAA;AACF;;AAEI;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;AACR;AAAQ;EACI,uBAAA;AAEZ;AADY;EACI,aAAA;EACA,sBAAA;EACA,qBAAA;EACA,uBAAA;EACA,mBAAA;AAGhB;AAFgB;EACI,eAAA;EACA,cAAA;EACA,gBAAA;EAEA,kCAAA;EACA,qBAAA;AAGpB;AAFoB;EACI,qBAAA;AAIxB;AAFoB;EACI,qBAAA;AAIxB;;AAII;EACI,aAAA;EACA,YAAA;EACA,kBAAA;AADR;AAEQ;EACI,+BAAA;EACA,gBAAA;EACA,eAAA;EACA,yBAAA;EACA,0BAAA;EACA,YAAA;EACA,aAAA;AAAZ;AACY;EACI,YAAA;EACA,aAAA;AAChB;AAEQ;EACI,YAAA;EACA,yBAAA;EACA,8BAAA;AAAZ;;AAIE;EACI,eAAA;AADN;;AAGE;EACI,kBAAA;AAAN;;AAEI;EACI,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,+BAAA;EACA,YAAA;EACA,gBAAA;EACA,eAAA;EACA,YAAA;EACA,YAAA;AACR;AAAQ;EACI,gBAAA;EACA,YAAA;EACA,WAAA;EACA,2EAAA;EACA,WAAA;EACA,YAAA;AAEZ;;AAEI;EACG,aAAA;EACA,4DAAA;EACA,YAAA;EACA,gBAAA;AACP;;AACQ;EACI,YAAA;EACA,yBAAA;EACA,YAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AAEZ;AADY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAGhB;AAAY;EACI,iBAAA;EACF,mBAAA;AAEd;AAAY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;AAEhB;AACY;EACI,mBAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;AAAgB;EACI,gBAAA;AAEpB;AACY;EACI,mBAAA;EACA,WAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;;AAMA;EACI,eAAA;EACA,qBAAA;EACA,YAAA;AAHJ;AAII;EACI,yBAAA;AAFR;;AAMA;EACC,aAAA;EACA,YAAA;EACA,aAAA;EACA,gBAAA;EACA,YAAA;EACA,kBAAA;EACA,aAAA;EAED,mBAAA;EACA,kBAAA;EACA,yBAAA;EACC,YAAA;AAJD;AAMI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;AAJR","sourcesContent":["\nbody {\n    width: 100vw;\n    height: 100vh;\n}\nimg,\nsvg {\n  vertical-align:baseline;\n}\n\n    .bg-light {\n        display: flex;\n        background-color: none;\n        justify-content: center;\n        align-items: center;\n        &.navbar > .container-fluid {\n            justify-content: center;\n            & .navbar-brand {\n                display: flex;\n                flex-direction: column;\n                text-decoration: none;\n                justify-content: center;\n                align-items: center;\n                & h1 {\n                    font-size: 36px;\n                    color: #D04F4F;\n                    font-weight: 700\n                    ;\n                    font-family: 'DM Sans', sans-serif;\n                    text-decoration: none;\n                    &:link {\n                        text-decoration: none;\n                    }\n                    &:visited {\n                        text-decoration: none;\n                    }\n                }\n         \n            }\n        }\n    }\n   \n    .form-inline {\n        display: flex;\n        height: 69px;\n        border-radius: 5px;\n        & .form-control {\n            font-family: 'Lato', sans-serif;\n            font-weight: 400;\n            font-size: 18px;\n            background-color: #e7e7e7;\n            border-radius: 5px 0 0 5px;\n            border: none;\n            outline: none;\n            &:focus {\n                border: none;\n                outline: none;\n            }\n        }\n        & .btn-outline-success {\n            border: none;\n            background-color: #e7e7e7;\n            border-radius: 0px 5px 5px 0px;\n        }\n    }\n\n  .custom-container {\n      margin: 0 150px;\n  }\n  .btn-group {\n      margin-right: 15px;\n  }\n    .dropdown-toggle {\n        display: flex;\n        justify-content: space-around;\n        align-items: center;\n        font-family: 'Lato', sans-serif;\n        color: white;\n        font-weight: 700;\n        font-size: 18px;\n        width: 170px;\n        height: 69px;\n        &::after {\n            appearance: none;\n            border: none;\n            content: \"\";\n            background: url(\"../assets/arrow_down.svg\") center center no-repeat;\n            width: 16px;\n            height: 10px;\n        }\n    }\n\n    .recipes {\n       display: grid;\n       grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n       gap: .25rem;\n       margin-top: 1rem;\n    }\n        .recipe {\n            height: auto;\n            background-color: #E7E7E7;\n            margin: 15px;\n            display: flex;\n            align-items: center;\n            text-overflow: ellipsis;\n            &__title {\n                font-family: Lato;\n                font-size: 22px;\n                font-weight: 400;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n\n            }\n            &__timer {\n                text-align: right;\n              align-items: center;\n            }\n            &__timing {\n                font-family: Lato;\n                font-size: 18px;\n                font-weight: 700;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n\n            }\n            &__ingredients {\n                font-family: Roboto;\n                width: 100%;\n                font-weight: 400;\n                line-height: 16px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n                &__title {\n                    font-weight: 700;\n                }\n            }\n            &__instructions {\n                font-family: Roboto;\n                width: 100%;\n                font-size: 12px;\n                font-weight: 400;\n                line-height: 12px;\n                letter-spacing: 0em;\n                text-align: left;\n                text-align: justify;\n            }\n        }\n    \n\n\n\n.ingredients_li,.device_li,.ustensil_li {\n    cursor: pointer;\n    list-style-type: none;\n    padding: 5px;\n    &:hover {\n        background-color: #E7E7E7;\n    }\n}\n\n.tags {\n padding: 15px;\n margin: 10px;\n outline: none;\n appearance: none;\n border: none;\n border-radius: 5px;\n display: flex;\n \nalign-items: center;\npadding-left: 10px;\nbackground-color:  #3282F7;\n color: white;\n    \n    &.closeTag {\n        width: 20px;\n        height: 20px;\n        padding-left: 10px;\n    }\n\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n/***************************************************\nGLOBAL\n***************************************************/\n* {\n  box-sizing: border-box;\n  margin: 0;\n}\n\n.flex {\n  display: flex;\n}\n\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n\n.clearfix:after {\n  clear: both;\n}\n\nimg,\niframe,\nvideo {\n  max-width: 100%;\n  vertical-align: middle;\n}\n\nnav ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\na {\n  text-decoration: none;\n  color: rgb(6, 143, 177);\n  transition: all 0.5s ease;\n}\n\n/***************************************************\nSTRUCTURE\n***************************************************/\n#container {\n  display: flex;\n  flex-direction: column;\n  width: 80%;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n\n/***************************************************\nTYPO\n***************************************************/\n.btn {\n  background-color: rgba(0, 0, 0, 0.3);\n  border: none;\n  font-size: 0.75rem;\n  padding: 0.7rem 1.25rem;\n  font-weight: 700;\n  color: rgb(255, 255, 255);\n  line-height: 100%;\n  border-radius: 20px;\n  text-align: center;\n  text-transform: uppercase;\n  cursor: pointer;\n}\n\n/***************************************************\nTABLETTE\n***************************************************/\n@media screen and (max-width: 768px) {\n  .container {\n    width: 100%;\n  }\n\n  #search-result {\n    grid-template-columns: repeat(2, 1fr) !important;\n  }\n}\n/***************************************************\nMOBILE\n***************************************************/\n@media screen and (max-width: 425px) {\n  #list-ingredients-result {\n    width: 300px !important;\n  }\n\n  #list-utensils-result {\n    width: 280px !important;\n  }\n\n  #search-result {\n    grid-template-columns: auto !important;\n  }\n}\n:root {\n  --primary: #3282f7;\n  --secondary: #69d9a4;\n  --tertiary: #ed6454;\n  --white: #fff;\n  /* nuance */\n  --primary-shade: #2c72d8;\n  --secondary-shade: #5cbe90;\n  --tertiary-shade: #cf584a;\n  /* teinte */\n  --primary-hue: hsl(216, 29%, 84%);\n  --secondary-hue: hsl(151, 17%, 86%);\n  --tertiary-hue: hsl(6, 23%, 86%);\n  --error: rgb(167, 25, 25);\n}\n\nbody {\n  margin: 0;\n}\n\nheader {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-bottom: 20px;\n}\n\n#title {\n  color: #d04f4f;\n  font-weight: bold;\n}\n\nli {\n  list-style: none;\n}\n\n#inputs {\n  display: flex;\n  flex-wrap: wrap;\n  /* gère l'espace entre les box row & column */\n  gap: 0px 20px;\n}\n\ninput {\n  outline: none;\n  border: none;\n  border-radius: 5px;\n  padding: 0px;\n  margin: 20px 0px;\n}\n\n#search-input {\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat right 10px bottom 40%;\n  background-color: #e7e7e7;\n  display: inline-block;\n  width: 100%;\n  padding: 15px;\n  font-weight: 600;\n}\n\n#search-input::placeholder {\n  color: #adadad;\n}\n\n.all::placeholder {\n  color: rgb(152, 192, 251);\n}\n\n#search-ingredients::placeholder,\n#search-apparatus::placeholder,\n#search-utensils::placeholder {\n  color: var(--white);\n}\n\n#search-ingredients,\n#search-apparatus,\n#search-utensils {\n  padding: 15px 15px 15px 10px;\n  color: var(--white);\n  font-weight: 600;\n  width: 100%;\n}\n\n#search-ingredients {\n  background-color: var(--primary);\n}\n\n#search-apparatus {\n  background-color: var(--secondary);\n}\n\n#search-utensils {\n  background-color: var(--tertiary);\n}\n\n#ingredients, #apparatus, #utensils {\n  position: relative;\n  cursor: pointer;\n}\n\n#chevron-ingredients, #chevron-apparatus, #chevron-utensils {\n  position: absolute;\n  right: 10px;\n  top: 38px;\n}\n\n.chevron-down {\n  transform: rotate(180deg);\n}\n\n.recipe {\n  height: 400px;\n}\n\n.recipe-image {\n  background-color: #c7bebe;\n  width: 100%;\n  height: 50%;\n  border-radius: 5px 5px 0px 0px;\n}\n\n.recipe-body {\n  padding: 0 10px;\n  margin-bottom: 20px;\n  background-color: #e7e7e7;\n  height: 50%;\n  padding: 15px 15px;\n  border-radius: 0px 0px 5px 5px;\n  overflow: hidden;\n}\n\n.recipe-header {\n  display: flex;\n  justify-content: space-between;\n}\n\n.recipe-title h2 {\n  font-size: 1rem;\n  font-weight: 500;\n}\n\n.recipe-time {\n  display: flex;\n  position: relative;\n  font-weight: bold;\n}\n\n.recipe-time p {\n  width: 60px;\n  text-align: end;\n}\n\n.recipe-content {\n  display: flex;\n  justify-content: space-between;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 0.7rem;\n  max-height: 140px;\n}\n\n.recipe-ingredients,\n.recipe-describe {\n  width: 50%;\n}\n\n.recipe-ingredients {\n  font-weight: bolder;\n  font-size: 0.7rem;\n}\n\n.recipe-describe {\n  font-weight: 500;\n  padding-left: 15px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 10;\n  -webkit-box-orient: vertical;\n  word-wrap: break-word;\n}\n\nul #search-result {\n  margin: 0;\n}\n\ni {\n  text-transform: lowercase;\n}\n\n#list-ingredients-result {\n  background-color: var(--primary);\n  width: 420px;\n  height: 290px;\n  overflow-x: scroll;\n}\n\n#list-apparatus-result {\n  background-color: var(--secondary);\n  width: 230px;\n  height: 290px;\n}\n\n#list-utensils-result {\n  background-color: var(--tertiary);\n  width: 440px;\n  height: 290px;\n  overflow-x: scroll;\n}\n\n#ingredients {\n  display: flex;\n  flex-direction: column;\n}\n\n.list-result {\n  display: none;\n  flex-direction: column;\n  flex-wrap: wrap;\n  border-radius: 0px 0px 5px 5px;\n  color: var(--white);\n  margin: -20px 0px 20px 0px;\n}\n\n#search-result {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 40px;\n  border-radius: 20px;\n}\n\n.no-result {\n  background-color: rgb(167, 25, 25);\n  position: fixed;\n  margin-top: 20px;\n  padding: 10px;\n  color: white;\n}\n\n.item-list {\n  padding: 5px 10px 5px 10px;\n  color: rgb(240, 245, 250);\n  display: inline-block;\n}\n\n.item-ingredients:hover {\n  background-color: var(--primary-shade);\n}\n\n.item-apparatus:hover {\n  background-color: var(--secondary-shade);\n}\n\n.item-utensils:hover {\n  background-color: var(--tertiary-shade);\n}\n\n.show-list {\n  display: block;\n}\n\n#tags {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.tag {\n  color: var(--white);\n  padding: 10px 15px 10px 15px;\n  border-radius: 5px;\n  border-style: none;\n  margin: 5px 10px 5px 0px;\n  align-items: center;\n}\n\n.close-tag {\n  height: 20px;\n  width: 20px;\n  display: block;\n  cursor: pointer;\n}\n\n.tag-ingredients {\n  background-color: var(--primary);\n}\n\n.tag-apparatus {\n  background-color: var(--secondary);\n}\n\n.tag-utensils {\n  background-color: var(--tertiary);\n}\n\n.fa-xmark {\n  color: white;\n  border: 2px solid white;\n  border-radius: 50%;\n  display: flex;\n  margin-left: 10px;\n}\n\n.fa-xmark::before {\n  /* centrage */\n  line-height: 16px;\n}\n\n/* je relie les deux class */\n.combo-box.open .list-result {\n  display: flex;\n}\n\n.combo-box.open .chevron {\n  transform: rotate(180deg);\n  transition: transform 0.2s;\n}\n\n.combo-box.open input {\n  border-radius: 5px 5px 0px 0px;\n}\n\n.combo-box.open .i::placeholder {\n  color: var(--primary-hue) !important;\n}\n\n.combo-box.open .a::placeholder {\n  color: var(--secondary-hue) !important;\n}\n\n.combo-box.open .u::placeholder {\n  color: var(--tertiary-hue) !important;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"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","sourcesContent":["/***************************************************\nGLOBAL\n***************************************************/\n* {\n    box-sizing: border-box;\n    margin: 0;\n}\n\n.flex {\n    display: flex;\n}\n\n.clearfix:before,\n.clearfix:after {\n    content: \"\";\n    display: table;\n}\n\n.clearfix:after {\n    clear: both;\n}\n\nimg,\niframe,\nvideo {\n    max-width: 100%;\n    vertical-align: middle;\n}\n\nnav ul {\n    list-style: none;\n    padding: 0;\n    margin: 0;\n}\n\na {\n    text-decoration: none;\n    color:rgb(6, 143, 177);\n    transition: all .5s ease;\n}\n/***************************************************\nSTRUCTURE\n***************************************************/\n#container{\n    display: flex;\n    flex-direction: column;\n    width: 80%;\n    max-width: 1200px;\n    margin: 0 auto; \n}\n/***************************************************\nTYPO\n***************************************************/\n\n.btn{\n    background-color: rgba(0, 0, 0, 0.3);\n    border:none;\n    font-size: .75rem;\n    padding: .7rem 1.25rem;\n    font-weight: 700;\n    color: rgb(255, 255, 255);\n    line-height: 100%;\n    border-radius: 20px;\n    text-align: center;\n    text-transform: uppercase;\n    cursor: pointer;\n}\n/***************************************************\nTABLETTE\n***************************************************/\n@media screen and (max-width:768px){\n    .container{\n        width: 100%;\n    }\n    #search-result {\n        grid-template-columns: repeat(2,1fr) !important;\n    }\n}\n/***************************************************\nMOBILE\n***************************************************/\n@media screen and (max-width: 425px){\n\n    #list-ingredients-result {\n        width: 300px !important;\n    }\n    #list-utensils-result {\n        width: 280px !important;\n    }\n    #search-result {\n        grid-template-columns: auto !important;\n    }\n}\n\n\n:root {\n    --primary: #3282f7;\n    --secondary: #69d9a4;\n    --tertiary: #ed6454;\n    --white: #fff;\n  \n    /* nuance */\n    --primary-shade: #2c72d8;\n    --secondary-shade: #5cbe90;\n    --tertiary-shade: #cf584a;\n  \n    /* teinte */\n    --primary-hue: hsl(216, 29%, 84%);\n    --secondary-hue: hsl(151, 17%, 86%);\n    --tertiary-hue: hsl(6, 23%, 86%);\n  \n    --error: rgb(167, 25, 25);\n  }\n  \n  body {\n    margin: 0;\n  }\n  \n  header {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding-bottom: 20px;\n  }\n  \n  #title {\n    color: #d04f4f;\n    font-weight: bold;\n  }\n  \n  li {\n    list-style: none;\n  }\n  \n  #inputs {\n    display: flex;\n    flex-wrap: wrap;\n    /* gère l'espace entre les box row & column */\n    gap: 0px 20px;\n    \n  }\n  \n  input {\n    outline: none;\n    border: none;\n    border-radius: 5px;\n    padding: 0px;\n    margin: 20px 0px;\n  }\n  \n  #search-input {\n    background: url(../assets/magnifying_glass.svg) no-repeat right 10px bottom 40%;\n    background-color: #e7e7e7;\n    display: inline-block;\n    width: 100%;\n    padding: 15px;\n    font-weight: 600;\n  }\n  \n  #search-input::placeholder {\n    color: #adadad;\n  }\n  \n  .all::placeholder {\n    color: rgb(152,192,251)\n  }\n  \n  #search-ingredients::placeholder,\n  #search-apparatus::placeholder,\n  #search-utensils::placeholder {\n    color: var(--white);\n  }\n  \n  #search-ingredients,\n  #search-apparatus,\n  #search-utensils {\n    padding: 15px 15px 15px 10px;\n    color: var(--white);\n    font-weight: 600;\n    width: 100%;\n  }\n  \n  #search-ingredients {\n    background-color: var(--primary);\n  }\n  \n  #search-apparatus {\n    background-color: var(--secondary);\n  }\n  \n  #search-utensils {\n    background-color: var(--tertiary);\n  }\n  \n  #ingredients, #apparatus, #utensils {\n    position: relative;\n    cursor: pointer;\n  }\n  \n  #chevron-ingredients, #chevron-apparatus, #chevron-utensils {\n    position: absolute;\n    right: 10px;\n    top: 38px;\n  }\n  \n  .chevron-down {\n    transform: rotate(180deg);\n  }\n\n  .recipe {\n    height: 400px;\n  }\n  \n  .recipe-image {\n    background-color: #c7bebe;\n    width: 100%;\n    height: 50%;\n    border-radius: 5px 5px 0px 0px;\n  }\n  \n  .recipe-body {\n    padding: 0 10px;\n    margin-bottom: 20px;\n    background-color: #e7e7e7;\n    height: 50%;\n    padding: 15px 15px;\n    border-radius: 0px 0px 5px 5px;\n    overflow: hidden;\n  }\n  \n  .recipe-header {\n    display: flex;\n    justify-content: space-between;\n  }\n  \n  .recipe-title h2 {\n    font-size: 1rem;\n    font-weight: 500;\n  }\n  \n  .recipe-time {\n    display: flex;\n    position: relative;\n    font-weight: bold;\n  }\n  \n  .recipe-time p {\n    width: 60px;\n    text-align: end;\n  }\n  \n  .recipe-content {\n    display: flex;\n    justify-content: space-between;\n    padding-top: 10px;\n    padding-bottom: 10px;\n    font-size: 0.7rem;\n    max-height: 140px;\n  }\n  \n  .recipe-ingredients,\n  .recipe-describe {\n    width: 50%;\n  }\n  \n  .recipe-ingredients {\n    font-weight: bolder;\n    font-size: 0.7rem;\n  }\n  \n  .recipe-describe {\n    font-weight: 500;\n    padding-left: 15px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: -webkit-box;\n    -webkit-line-clamp: 10;\n    -webkit-box-orient: vertical;\n    word-wrap: break-word;\n  }\n  \n  ul #search-result {\n    margin: 0;\n  }\n  \n  i {\n    text-transform: lowercase;\n  }\n  \n  #list-ingredients-result {\n    background-color: var(--primary);\n    width: 420px;\n    height: 290px;\n    overflow-x: scroll;\n  }\n  \n  #list-apparatus-result {\n    background-color: var(--secondary);\n    width: 230px;\n    height: 290px;\n  }\n  \n  #list-utensils-result {\n    background-color: var(--tertiary);\n    width: 440px;\n    height: 290px;\n    overflow-x: scroll;\n  }\n  \n  #ingredients {\n    display: flex;\n    flex-direction: column;\n  }\n  \n  .list-result {\n    display: none;\n    flex-direction: column;\n    flex-wrap: wrap;\n    border-radius: 0px 0px 5px 5px;\n    color: var(--white);\n    margin: -20px 0px 20px 0px;\n  }\n  \n  #search-result {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    grid-gap: 40px;\n    border-radius: 20px;\n  }\n  \n  .no-result {\n    background-color: rgb(167, 25, 25);\n    position: fixed;\n    margin-top: 20px;\n    padding: 10px;\n    color: white;\n  }\n  \n  .item-list {\n    padding: 5px 10px 5px 10px;\n    color: rgb(240, 245, 250);\n    display: inline-block;\n  }\n  \n  .item-ingredients:hover {\n    background-color: var(--primary-shade);\n  }\n  \n  .item-apparatus:hover {\n    background-color: var(--secondary-shade);\n  }\n  \n  .item-utensils:hover {\n    background-color: var(--tertiary-shade);\n  }\n  \n  .show-list {\n    display: block;\n  }\n  \n  #tags {\n    display: flex;\n    flex-wrap: wrap;\n  }\n  \n  .tag {\n    color: var(--white);\n    padding: 10px 15px 10px 15px;\n    border-radius: 5px;\n    border-style: none;\n    margin: 5px 10px 5px 0px;\n    align-items: center;\n  }\n  \n  .close-tag {\n    height: 20px;\n    width: 20px;\n    display: block;\n    cursor: pointer;\n  }\n  \n  .tag-ingredients {\n    background-color: var(--primary);\n  }\n  \n  .tag-apparatus {\n    background-color: var(--secondary);\n  }\n  \n  .tag-utensils {\n    background-color: var(--tertiary);\n  }\n  \n  .fa-xmark {\n    color: white;\n    border: 2px solid white;\n    border-radius: 50%;\n    display: flex;\n    margin-left: 10px;\n  }\n  \n  .fa-xmark::before {\n    /* centrage */\n    line-height: 16px;\n  }\n  \n  /* je relie les deux class */\n  .combo-box.open .list-result {\n    display: flex;\n  }\n  \n  .combo-box.open .chevron {\n    transform: rotate(180deg);\n    transition: transform 0.2s;\n  }\n  \n  .combo-box.open input {\n    border-radius: 5px 5px 0px 0px;\n  }\n  \n  .combo-box.open .i::placeholder {\n    color: var(--primary-hue) !important;\n  }\n  \n  .combo-box.open .a::placeholder {\n    color: var(--secondary-hue) !important;\n  }\n  .combo-box.open .u::placeholder {\n    color: var(--tertiary-hue) !important;\n  }\n    "],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1958,46 +2063,6 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/assets/arrow_down.svg":
-/*!***********************************!*\
-  !*** ./src/assets/arrow_down.svg ***!
-  \***********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "arrow_down.svg";
-
-/***/ }),
-
-/***/ "./src/assets/close_arrow.svg":
-/*!************************************!*\
-  !*** ./src/assets/close_arrow.svg ***!
-  \************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "close_arrow.svg";
-
-/***/ }),
-
-/***/ "./src/assets/cooking_hat.svg":
-/*!************************************!*\
-  !*** ./src/assets/cooking_hat.svg ***!
-  \************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "cooking_hat.svg";
-
-/***/ }),
-
-/***/ "./src/assets/food.svg":
-/*!*****************************!*\
-  !*** ./src/assets/food.svg ***!
-  \*****************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "food.svg";
-
-/***/ }),
-
 /***/ "./src/assets/magnifying_glass.svg":
 /*!*****************************************!*\
   !*** ./src/assets/magnifying_glass.svg ***!
@@ -2005,16 +2070,6 @@ module.exports = __webpack_require__.p + "food.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "magnifying_glass.svg";
-
-/***/ }),
-
-/***/ "./src/assets/timer.svg":
-/*!******************************!*\
-  !*** ./src/assets/timer.svg ***!
-  \******************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "timer.svg";
 
 /***/ })
 
@@ -2155,370 +2210,25 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
-/* harmony import */ var _recipes_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./recipes.js */ "./src/recipes.js");
-/* harmony import */ var _assets_cooking_hat_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/cooking_hat.svg */ "./src/assets/cooking_hat.svg");
-/* harmony import */ var _assets_magnifying_glass_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/magnifying_glass.svg */ "./src/assets/magnifying_glass.svg");
-/* harmony import */ var _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/food.svg */ "./src/assets/food.svg");
-/* harmony import */ var _assets_timer_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/timer.svg */ "./src/assets/timer.svg");
-/* harmony import */ var _assets_close_arrow_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/close_arrow.svg */ "./src/assets/close_arrow.svg");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+/* harmony import */ var _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data/recipes.js */ "./src/data/recipes.js");
+/* harmony import */ var _display_displayCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./display/displayCard */ "./src/display/displayCard.js");
+/* harmony import */ var _scripts_class_Filter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scripts/class/Filter */ "./src/scripts/class/Filter.js");
 
 
 
+ // CLASS
 
+var filter = new _scripts_class_Filter__WEBPACK_IMPORTED_MODULE_3__.Filter(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
 
-
-
-
-var recipeList = [];
-var initialArray = [].concat(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
-var searchReduceArray = [].concat(recipeList);
-var allIngredients = [];
-var allAppliances = [];
-var allUstensils = [];
-var recipeCardTemplate = document.querySelector("[data-recipe-template]");
-var recipeCardsContainer = document.querySelector("[data-cards-container]");
-
-var normalize = function normalize(variable) {
-  return variable.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "");
-}; // Create the search bar //
-
-
-console.log("array avant la searchbar", searchReduceArray); // let ingList = [];
-// // recipes.forEach((each) => arr.push(each.ingredients));
-// // console.log(arr);
-// const getIngList = (arrList) => {
-// arrList.forEach((each) =>
-// each.ingredients.map((ing) => ingList.push(ing.ingredient))
-// );
-// return ingList;
-// };
-
-/*****centralisation de toutes les fonctions *******/
-
-var init = function init() {
-  buildSearchBar();
-  buildCard();
-  searchFilter();
-  getIngredientsList();
-  getAppliancesList();
-  getUstensilList();
-}; //**création de la barre de recherche***********/
-
-
-var searchBar = document.querySelector("[data-search]");
-
-var buildSearchBar = function buildSearchBar() {
-  var logoBrand = document.getElementById("logo");
-  logoBrand.src = _assets_cooking_hat_svg__WEBPACK_IMPORTED_MODULE_2__;
-  var searchPicture = document.getElementById("search_picture");
-  searchPicture.src = _assets_magnifying_glass_svg__WEBPACK_IMPORTED_MODULE_3__;
-}; // Build the cards //
-
-
-var buildCard = function buildCard() {
-  recipeList = _recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.map(function (recipe) {
-    var card = recipeCardTemplate.content.cloneNode(true).children[0];
-    var recipesPic = document.querySelectorAll("[data-img]");
-    recipesPic.forEach(function (recip) {
-      recip.src = _assets_food_svg__WEBPACK_IMPORTED_MODULE_4__;
-    });
-    var logoTimer = document.querySelectorAll("[data-timer-img]");
-    logoTimer.forEach(function (logo) {
-      logo.src = _assets_timer_svg__WEBPACK_IMPORTED_MODULE_5__;
-    });
-    var title = card.querySelector("[data-title]");
-    var timing = card.querySelector("[data-timing]");
-    var ingredients = card.querySelector("[data-ingredients]");
-    var instructions = card.querySelector("[data-instructions]");
-    title.textContent = recipe.name;
-    timing.textContent = recipe.time;
-    var ingredientso = recipe.ingredients;
-    ingredientso.forEach(function (ing) {
-      ingredients.innerHTML += "<span class=\"recipe__ingredients__title\">".concat(ing.ingredient, " : </span> ").concat(parseInt(ing.quantity) + ing.unit || parseInt(ing.quantity) || "", " <br>");
-    });
-    instructions.textContent = recipe.description;
-    recipeCardsContainer.append(card);
-    return {
-      titre: recipe.name,
-      ingred: recipe.ingredients,
-      devices: recipe.appliance,
-      ustensils: recipe.ustensils,
-      description: recipe.description,
-      element: card
-    };
+var displayCards = function displayCards(recipes) {
+  recipes === null || recipes === void 0 ? void 0 : recipes.forEach(function (recipe) {
+    (0,_display_displayCard__WEBPACK_IMPORTED_MODULE_2__.displayCard)(recipe);
   });
-}; // select card with input search value //
-
-
-var searchFilter = function searchFilter() {
-  searchBar.addEventListener("input", function (e) {
-    e.preventDefault();
-    var value = normalize(e.target.value); //faire apparaitre les cards//
-
-    recipeList.forEach(function (list) {
-      var isVisible = false;
-      list.ingred.forEach(function (ing) {
-        var ingSearch = normalize(ing.ingredient).includes(value);
-
-        if (ingSearch) {
-          isVisible = true;
-        }
-
-        var titreConf = normalize(list.titre).includes(value);
-
-        if (titreConf) {
-          isVisible = true;
-        }
-
-        if (normalize(list.description).includes(value)) {
-          isVisible = true;
-        }
-      }); // cache les éléments non séléctionnés du dom//
-
-      list.element.classList.toggle("show", isVisible);
-    }); // filtrer le tableau et garder les éléments sélectionnés//
-
-    setTimeout(function () {
-      if (value.length >= 3) {
-        searchReduceArray = recipeList.filter(function (e) {
-          return e.ingred.map(function (item) {
-            return normalize(item.ingredient);
-          }).includes(value) || e.titre.includes(value) || e.description.includes(value);
-        });
-      }
-    }, 500);
-
-    var _iterator = _createForOfIteratorHelper(searchReduceArray),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var recipe = _step.value;
-        recipe.ingred.map(function (object) {
-          return allIngredients.push(normalize(object.ingredient));
-        });
-        allAppliances.push(normalize(recipe.devices));
-        recipe.ustensils.map(function (object) {
-          return allUstensils.push(normalize(object));
-        });
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-
-    allIngredients = allIngredients.filter(function (e, i) {
-      return allIngredients.indexOf(e == i);
-    });
-    getAppliancesList();
-    getUstensilList();
-    getIngredientsList();
-    searchTags("ingredients");
-    searchTags("device");
-    searchTags("ustensil");
-    getCategoriesTag("ingredients", allIngredients, ingredientTags);
-    getCategoriesTag("device", allAppliances, deviceTags);
-    getCategoriesTag("ustensil", allUstensils, ustensilTags);
-    console.log("array après la reccherche searchBar", searchReduceArray);
-  });
-}; // DOM //
-
-
-var ingredientMenu = document.querySelector(".ingredient_menu"); // create ingredient list//
-
-console.log(allIngredients);
-
-var getIngredientsList = function getIngredientsList() {
-  allIngredients = _toConsumableArray(new Set(allIngredients.sort()));
-  console.log("two times", allIngredients);
-  allIngredients.forEach(function (ing) {
-    var li = document.createElement("li");
-    li.className = "ingredients_li";
-    li.innerHTML += ing;
-    ingredientMenu.appendChild(li);
-  });
-}; //DOM //
-
-
-var devices = document.querySelector(".device_menu"); // create devices list //
-
-var getAppliancesList = function getAppliancesList() {
-  allAppliances = _toConsumableArray(new Set(allAppliances.sort()));
-  allAppliances = allAppliances.filter(function (e, i) {
-    return allAppliances.indexOf(e === i);
-  });
-  allAppliances.forEach(function (object) {
-    var device_li = document.createElement("li");
-    device_li.className = "device_li";
-    device_li.innerHTML += object;
-    devices.appendChild(device_li);
-  });
-}; //DOM //
-
-
-var ustensilsM = document.querySelector(".ustensil_menu"); // create ustensils list //
-
-var getUstensilList = function getUstensilList() {
-  allUstensils = _toConsumableArray(allUstensils);
-  allUstensils = _toConsumableArray(new Set(allUstensils.sort()));
-  allUstensils.forEach(function (object) {
-    var ustensil_li = document.createElement("li");
-    ustensil_li.className = "ustensil_li";
-    ustensil_li.innerHTML += object;
-    ustensilsM.appendChild(ustensil_li);
-  });
-}; // find the tags who match the search//
-
-
-var searchTags = function searchTags(category) {
-  var searchBox = document.querySelector(".".concat(category, "_search"));
-  var items = document.querySelectorAll(".".concat(category, "_li"));
-
-  var _iterator2 = _createForOfIteratorHelper(items),
-      _step2;
-
-  try {
-    var _loop = function _loop() {
-      var item = _step2.value;
-      var valuue = normalize(item.textContent) || normalize(item.innerHTML);
-      searchBox.addEventListener("input", function (element) {
-        var value = normalize(element.target.value);
-
-        if (valuue.includes(value)) {
-          item.style.display = "";
-        } else {
-          item.style.display = "none";
-        }
-      });
-    };
-
-    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-      _loop();
-    }
-  } catch (err) {
-    _iterator2.e(err);
-  } finally {
-    _iterator2.f();
-  }
-}; // create tags and erase it & remove unmatched cards//
-
-
-var ingredientTags = [],
-    deviceTags = [],
-    ustensilTags = [];
-
-var getCategoriesTag = function getCategoriesTag(category, typeTags) {
-  // create the tag //
-  var categories = document.getElementsByClassName("".concat(category, "_li"));
-  var buttons = document.querySelectorAll(".buttons");
-  var firstChild = buttons.firstChild;
-
-  var _loop2 = function _loop2(i) {
-    categories[i].addEventListener("click", function (e) {
-      console.log(e);
-      var tag = document.createElement("button");
-      tag.className = "tags";
-      tag.textContent = categories[i].textContent;
-      typeTags.push(tag.textContent);
-      var closeTag = document.createElement("img");
-      closeTag.className = "closeTag";
-      closeTag.src = _assets_close_arrow_svg__WEBPACK_IMPORTED_MODULE_6__;
-      buttons.insertBefore(tag, firstChild);
-      buttons.appendChild(tag);
-      tag.appendChild(closeTag);
-      var value = normalize(tag.innerText) || normalize(tag.textContent); // erase the tags //
-
-      var clsTag = document.querySelectorAll(".closeTag");
-
-      var _iterator3 = _createForOfIteratorHelper(clsTag),
-          _step3;
-
-      try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var item = _step3.value;
-          item.addEventListener("click", function (e) {
-            searchReduceArray.forEach(function (e) {
-              e.ingred.map(function (item) {
-                if (normalize(item.ingredient).includes(value)) {
-                  allIngredients.push(item.ingredient);
-                }
-              });
-              e.ustensils.map(function (item) {
-                if (normalize(item).includes(value)) {
-                  allUstensils.push(item);
-                }
-              });
-
-              if (normalize(e.devices).includes(value)) {
-                allAppliances.push(e.devices);
-              }
-            });
-            tag.remove();
-          });
-        } // tabs = tabs.filter((e, i) => tabs.indexOf(e) == i);
-        // hide the cards who doesn't match the tags//
-
-      } catch (err) {
-        _iterator3.e(err);
-      } finally {
-        _iterator3.f();
-      }
-
-      if (value) {
-        recipeList.forEach(function (list) {
-          var isVisibleA = false;
-          list.ingred.forEach(function (ing) {
-            if (normalize(ing.ingredient) === value) {
-              isVisibleA = true;
-            }
-          });
-
-          if (value === normalize(list.devices)) {
-            isVisibleA = true;
-          }
-
-          list.ustensils.forEach(function (ustensils) {
-            if (value === normalize(ustensils)) {
-              isVisibleA = true;
-            }
-          }); // filter searchReduceArray with the tags//
-
-          searchReduceArray = searchReduceArray.filter(function (e) {
-            return e.ingred.map(function (item) {
-              return normalize(item.ingredient);
-            }).includes(value) || normalize(e.devices).includes(value) || e.ustensils.map(function (item) {
-              return normalize(item);
-            }).includes(value);
-          });
-          console.log("array après la sélection des tags", searchReduceArray);
-          list.element.classList.toggle("show", isVisibleA);
-        });
-      }
-    });
-  };
-
-  for (var i = 0; i < categories.length; i++) {
-    _loop2(i);
-  }
 };
 
-init();
+displayCards(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=320821c7c6943153fef8.js.map
+//# sourceMappingURL=a631b96eca8924bbe90f.js.map

@@ -13,116 +13,44 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img
-            alt=""
-            width=""
-            height=""
-            class="d-inline-block align-text-top"
-            id="logo"
-          />
-          <h1>Les petits plats</h1>
-        </a>
+    <div id="container">
+      <header>
+          <svg width="52" height="47" viewBox="0 0 52 47" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M39.5082 25.3424V35.1415H12.4023V25.3424C7.99762 25.3424 4.60939 21.9635 4.60939 17.5708C4.60939 13.1781 7.99762 9.79908 12.4023 9.79908C15.4517 9.79908 18.1623 11.4886 19.5176 14.1918L22.9059 12.5023C21.8894 10.8128 20.8729 9.12328 19.1788 8.10958C20.5341 5.74429 22.9059 4.05479 25.9553 4.05479C30.36 4.05479 33.7482 7.43378 33.7482 11.8265C33.7482 13.1781 33.4094 14.5297 32.7317 15.8813L36.12 17.9087C37.1365 16.2192 37.8141 14.1918 37.8141 11.8265C37.8141 11.1507 37.8141 10.8128 37.8141 10.137C38.4918 9.79908 39.1694 9.79908 39.847 9.79908C44.2518 9.79908 47.64 13.1781 47.64 17.5708C47.64 21.9635 43.9129 25.3424 39.5082 25.3424ZM39.5082 42.9132H12.4023V39.1963H39.5082V42.9132ZM39.5082 6.08219C38.4918 6.08219 37.4753 6.42009 36.12 6.42009C34.087 2.70319 30.36 0 25.9553 0C21.5506 0 17.4847 2.36529 15.7906 6.42009C14.7741 6.08219 13.7576 6.08219 12.4023 6.08219C5.96468 6.08219 0.882324 11.1507 0.882324 17.5708C0.882324 22.6393 4.27056 27.0319 8.67527 28.3835V46.2922H43.5741V28.7214C47.9788 27.0319 51.3671 22.9772 51.3671 17.9087C51.3671 11.4886 45.9459 6.08219 39.5082 6.08219ZM22.2282 31.0867H18.5012V23.653H22.2282V31.0867ZM33.7482 31.0867H30.0212V23.653H33.7482V31.0867Z"
+                  fill="#D04F4F" />
+          </svg>
+          <h1 id="title">Les petits plats</h1>
+      </header></p>
+      <div id="search">
+          <input id="search-input" type="text" placeholder="Rechercher une recette">
       </div>
-    </nav>
-    <div class="custom-container">
-      <form class="form-inline">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Rechercher une recette"
-          aria-label="Search"
-          data-search
-        />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="button">
-          <img id="search_picture" alt="" />
-        </button>
-      </form>
-
-      <div class="buttons">
-        <div class="btn-group mt-4">
-          <button
-            type="button"
-            class="btn btn-primary dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Ingrédients
-          </button>
-          <div class="dropdown-menu ingredients">
-            <input
-              class="form-control mr-sm-2 ingredients_search"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <ul class="ingredient_menu"></ul>
-          </div>
-        </div>
-        <div class="btn-group mt-4">
-          <button
-            type="button"
-            class="btn btn-success dropdown-toggle ml-4"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Appareils
-          </button>
-          <div class="dropdown-menu device">
-            <input
-              class="form-control mr-sm-2 device_search"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <ul class="device_menu"></ul>
-          </div>
-        </div>
-        <div class="btn-group mt-4 mr-3">
-          <button
-            type="button"
-            class="btn btn-danger dropdown-toggle ml-4"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Ustensiles
-          </button>
-          <div class="dropdown-menu ustensils">
-            <input
-              class="form-control mr-sm-2 ustensil_search"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <ul class="ustensil_menu"></ul>
-          </div>
-        </div>
-      </div>
-      <div class="recipes" data-cards-container></div>
-      <template data-recipe-template>
-        <div class="card recipe">
-          <img src="" class="card-img-top" alt="..." data-img />
-          <div class="card-body">
-            <div class="row mb-4">
-              <div class="col recipe__title" data-title></div>
-              <div class="col recipe__timer">
-                <img src="" alt="" data-timer-img />
+      <p id="tags"></p>
+      <div id="inputs">
+          <div id="ingredients" class="combo-box">
+              <div class="content-input">
+                  <input id="search-ingredients" type="text" class="i" data-type="Ingredients" data-search-type="ingrédient" placeholder="Ingredients">
+    
               </div>
-              <div class="col recipe__timing" data-timing></div>
-            </div>
-            <div class="row">
-              <div class="col recipe__ingredients" data-ingredients></div>
-              <div class="col recipes__instructions" data-instructions></div>
-            </div>
+              <div id="list-ingredients-result" class="list-result" data-type="ingredients"></div>
           </div>
-        </div>
-      </template>
-    </div>
+          <div id="apparatus" class="combo-box">
+              <div class="content-input">
+                  <input id="search-apparatus" type="text" class="a" data-type="Appareils" data-search-type="appareil" placeholder="Appareils">
+  
+              </div>
+              <div id="list-apparatus-result"  class="list-result"  data-type="apparatus"></div>
+          </div>
+          <div id="utensils" class="combo-box">
+              <div class="content-input">
+                  <input id="search-utensils" type="text" class="u" data-type="Ustensiles" data-search-type="ustensile" placeholder="Ustensiles">
+              
+              </div>
+              <div id="list-utensils-result"  class="list-result"  data-type="utensils"></div>
+          </div>
+      </div>
+      <div id="search-result"></div>
+  </div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
