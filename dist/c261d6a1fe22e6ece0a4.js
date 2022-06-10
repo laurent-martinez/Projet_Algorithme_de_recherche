@@ -2231,4 +2231,4 @@ displayCards(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
 
 /******/ })()
 ;
-//# sourceMappingURL=a631b96eca8924bbe90f.js.map
+//# sourceMappingURL=c261d6a1fe22e6ece0a4.js.map
