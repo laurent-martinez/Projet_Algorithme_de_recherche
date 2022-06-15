@@ -2181,13 +2181,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+ // let recipeList = [];
 
-var recipeList = [];
 var initialArray = [].concat(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
-var searchReduceArray = [];
+var searchReduceArray = [].concat(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
 var allIngredients = [];
 var allAppliances = [];
 var allUstensils = [];
+var tagList = [];
 var recipeCardTemplate = document.querySelector("[data-recipe-template]");
 var recipeCardsContainer = document.querySelector("[data-cards-container]");
 
@@ -2203,10 +2204,16 @@ var normalize = function normalize(variable) {
 
 var init = function init() {
   buildSearchBar();
-  buildCard();
+  buildCard(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
+  getAppliancesList(initialArray);
+  getUstensilList(initialArray);
+  getIngredientsList(initialArray);
+  searchTags("ingredients");
+  searchTags("device");
+  searchTags("ustensil");
   searchFilter();
   getCategoriesTag("ingredients", allIngredients);
-  getCategoriesTag("device", allIngredients);
+  getCategoriesTag("device", allAppliances);
   getCategoriesTag("ustensil", allUstensils);
 }; //**création de la barre de recherche***********/
 
@@ -2221,8 +2228,9 @@ var buildSearchBar = function buildSearchBar() {
 }; // Build the cards //
 
 
-var buildCard = function buildCard() {
-  recipeList = _recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.map(function (recipe) {
+var buildCard = function buildCard(recipes) {
+  recipeCardsContainer.innerHTML = "";
+  recipes.map(function (recipe) {
     var card = recipeCardTemplate.content.cloneNode(true).children[0];
     var recipesPic = document.querySelectorAll("[data-img]");
     recipesPic.forEach(function (recip) {
@@ -2244,14 +2252,6 @@ var buildCard = function buildCard() {
     });
     instructions.textContent = recipe.description;
     recipeCardsContainer.append(card);
-    return {
-      titre: recipe.name,
-      ingred: recipe.ingredients,
-      devices: recipe.appliance,
-      ustensils: recipe.ustensils,
-      description: recipe.description,
-      element: card
-    };
   });
 }; // select card with input search value //
 
@@ -2260,43 +2260,47 @@ var searchFilter = function searchFilter() {
   searchBar.addEventListener("input", function (e) {
     e.preventDefault();
     var value = normalize(e.target.value); //faire apparaitre les cards//
-
-    recipeList.forEach(function (list) {
-      list.element.classList.add("hide");
-      var isVisible = false;
-      var ingSearch = list.ingred.some(function (ing) {
-        return normalize(ing.ingredient).includes(value);
-      });
-      var titreConf = normalize(list.titre).includes(value);
-
-      if (normalize(list.description).includes(value) || titreConf || ingSearch) {
-        isVisible = true;
-      } // cache les éléments non séléctionnés du dom//
-
-
-      list.element.classList.toggle("hide", !isVisible);
-    }); // filtrer le tableau et garder les éléments sélectionnés//
+    // recipes.forEach((list) => {
+    //   list.element.classList.add("hide");
+    //   let isVisible = false;
+    //   let ingSearch = list.ingred.some((ing) =>
+    //     normalize(ing.ingredient).includes(value)
+    //   );
+    //   let titreConf = normalize(list.titre).includes(value);
+    //   if (
+    //     normalize(list.description).includes(value) ||
+    //     titreConf ||
+    //     ingSearch
+    //   ) {
+    //     isVisible = true;
+    //   }
+    //   // cache les éléments non séléctionnés du dom//
+    //   list.element.classList.toggle("hide", !isVisible);
+    // });
+    // filtrer le tableau et garder les éléments sélectionnés//
 
     setTimeout(function () {
       if (value.length >= 3) {
-        searchReduceArray = recipeList.filter(function (e) {
-          return e.ingred.map(function (item) {
+        searchReduceArray = searchReduceArray.filter(function (recipe) {
+          return recipe.ingredients.map(function (item) {
             return normalize(item.ingredient);
-          }).includes(value) || e.titre.includes(value) || e.description.includes(value);
+          }).includes(value) || recipe.name.includes(value) || recipe.description.includes(value);
         });
+        getAppliancesList(searchReduceArray);
+        getUstensilList(searchReduceArray);
+        getIngredientsList(searchReduceArray);
+        buildCard(searchReduceArray);
+        console.log("array après la recherche searchBar", searchReduceArray);
+        searchTags("ingredients");
+        searchTags("device");
+        searchTags("ustensil");
+        getCategoriesTag("ingredients", allIngredients, ingredientMenu);
+        getCategoriesTag("device", allAppliances, devices);
+        getCategoriesTag("ustensil", allUstensils, ustensilsM);
+      } else {
+        buildCard(_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
       }
     }, 650);
-    getAppliancesList(searchReduceArray);
-    getUstensilList(searchReduceArray);
-    getIngredientsList(searchReduceArray);
-    console.log(allIngredients);
-    searchTags("ingredients");
-    searchTags("device");
-    searchTags("ustensil");
-    getCategoriesTag("ingredients", allIngredients, ingredientMenu);
-    getCategoriesTag("device", allAppliances, devices);
-    getCategoriesTag("ustensil", allUstensils, ustensilsM);
-    console.log("array après la recherche searchBar", searchReduceArray);
   });
 }; // DOM //
 
@@ -2305,7 +2309,6 @@ var ingredientMenu = document.querySelector(".ingredient_menu"); // create ingre
 
 var getIngredientsList = function getIngredientsList(data) {
   ingredientMenu.innerHTML = "";
-  allIngredients = [];
 
   var _iterator = _createForOfIteratorHelper(data),
       _step;
@@ -2313,7 +2316,7 @@ var getIngredientsList = function getIngredientsList(data) {
   try {
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
       var recipe = _step.value;
-      recipe.ingred.map(function (object) {
+      recipe.ingredients.map(function (object) {
         allIngredients.push(normalize(object.ingredient));
       });
     }
@@ -2325,9 +2328,14 @@ var getIngredientsList = function getIngredientsList(data) {
 
   allIngredients = _toConsumableArray(new Set(allIngredients.sort()));
   allIngredients.map(function (ing) {
+    tagList.map(function (tag) {
+      allIngredients = allIngredients.filter(function (item) {
+        return item.includes(tag);
+      });
+    });
     var li = document.createElement("li");
     li.className = "ingredients_li";
-    li.innerHTML = ing;
+    li.innerHTML += ing;
     ingredientMenu.appendChild(li);
   });
 }; //DOM //
@@ -2337,7 +2345,6 @@ var devices = document.querySelector(".device_menu"); // create devices list //
 
 var getAppliancesList = function getAppliancesList(data) {
   devices.innerHTML = "";
-  allAppliances = [];
 
   var _iterator2 = _createForOfIteratorHelper(data),
       _step2;
@@ -2345,7 +2352,7 @@ var getAppliancesList = function getAppliancesList(data) {
   try {
     for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
       var recipe = _step2.value;
-      var appliances = normalize(recipe.devices);
+      var appliances = normalize(recipe.appliance);
       allAppliances.push(appliances);
     }
   } catch (err) {
@@ -2358,7 +2365,7 @@ var getAppliancesList = function getAppliancesList(data) {
   allAppliances.forEach(function (object) {
     var device_li = document.createElement("li");
     device_li.className = "device_li";
-    device_li.innerHTML = object;
+    device_li.innerHTML += object;
     devices.appendChild(device_li);
   });
 }; //DOM //
@@ -2368,7 +2375,6 @@ var ustensilsM = document.querySelector(".ustensil_menu"); // create ustensils l
 
 var getUstensilList = function getUstensilList(data) {
   ustensilsM.innerHTML = "";
-  allUstensils = [];
 
   var _iterator3 = _createForOfIteratorHelper(data),
       _step3;
@@ -2391,7 +2397,7 @@ var getUstensilList = function getUstensilList(data) {
   allUstensils.forEach(function (object) {
     var ustensil_li = document.createElement("li");
     ustensil_li.className = "ustensil_li";
-    ustensil_li.innerHTML = object;
+    ustensil_li.innerHTML += object;
     ustensilsM.appendChild(ustensil_li);
   });
 }; // find the tags who match the search//
@@ -2449,81 +2455,81 @@ var getCategoriesTag = function getCategoriesTag(category, tabs, menu) {
       tabs = tabs.filter(function (item, index) {
         return tabs.indexOf(item) == index;
       });
-      console.log(categories[i]);
       categories[i].innerHTML = "";
       var value = normalize(tag.innerText) || normalize(tag.textContent);
-      console.log(tabs); // erase the tags //
+      tagList.push(value);
+      console.log(tagList); // erase the tags //
 
-      var clsTag = document.querySelectorAll(".closeTag");
+      tabs = tabs.filter(function (e, i) {
+        return tabs.indexOf(e) == i;
+      }); // hide the cards who doesn't match the tags//
+      // if (value) {
+      //   searchReduceArray.forEach((list) => {
+      //     let isVisibleA = false;
+      //     let ingTag = list.ingredients.some((ing) =>
+      //       normalize(ing.ingredient).includes(value)
+      //     );
+      //     if (ingTag) {
+      //       return (isVisibleA = true);
+      //     }
+      //     if (normalize(list.appliance).includes(value)) {
+      //       return (isVisibleA = true);
+      //     }
+      //     let ustensilsTag = list.ustensils.some(
+      //       (ustensils) => value == normalize(ustensils)
+      //     );
+      //     if (ustensilsTag) {
+      //       return (isVisibleA = true);
+      //     }
 
-      var _iterator5 = _createForOfIteratorHelper(clsTag),
-          _step5;
+      removeTags(tabs); // filter searchReduceArray with the tags//
 
-      try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var item = _step5.value;
-          item.addEventListener("click", function (e) {
-            tag.remove();
-            console.log("tabs avant", tabs);
-            console.log(value);
-            tabs.push(value);
-            tabs = _toConsumableArray(new Set(tabs.sort()));
-            console.log("tabs après", tabs);
-            categories[i].innerHTML = value;
-            value = null;
-            getCategoriesTag("ingredients", allIngredients, ingredientMenu);
-            getCategoriesTag("device", allAppliances, devices);
-            getCategoriesTag("ustensil", allUstensils, ustensilsM);
-          });
-        } // tabs = tabs.filter((e, i) => tabs.indexOf(e) == i);
-        // hide the cards who doesn't match the tags//
-
-      } catch (err) {
-        _iterator5.e(err);
-      } finally {
-        _iterator5.f();
-      }
-
-      if (value) {
-        searchReduceArray.forEach(function (list) {
-          var isVisibleA = false;
-          var ingTag = list.ingred.some(function (ing) {
-            return normalize(ing.ingredient) === value;
-          });
-
-          if (ingTag) {
-            return isVisibleA = true;
-          }
-
-          if (value === normalize(list.devices)) {
-            return isVisibleA = true;
-          }
-
-          var ustensilsTag = list.ustensils.forEach(function (ustensils) {
-            return value === normalize(ustensils);
-          });
-
-          if (ustensilsTag) {
-            return isVisibleA = true;
-          } // filter searchReduceArray with the tags//
-
-
-          searchReduceArray = searchReduceArray.filter(function (e) {
-            return e.ingred.map(function (item) {
-              return normalize(item.ingredient);
-            }).includes(value) || normalize(e.devices).includes(value) || e.ustensils.map(function (item) {
-              return normalize(item);
-            }).includes(value);
-          });
-          console.log("array après la sélection des tags", searchReduceArray);
-          list.element.classList.toggle("hide", !isVisibleA);
+      searchReduceArray = searchReduceArray.filter(function (e) {
+        return e.ingredients.some(function (item) {
+          return normalize(item.ingredient).includes(value);
+        }) || normalize(e.appliance).includes(value) || e.ustensils.some(function (item) {
+          return normalize(item).includes(value);
         });
-      }
-    });
+      });
+      console.log("array après la sélection des tags", searchReduceArray);
+      console.log(tabs);
+      buildCard(searchReduceArray);
+      console.log(tabs); // list.element.classList.toggle("hide", !isVisibleA);
+    }); // }
+    // });
   };
 
   for (var i = 0; i < categories.length; i++) {
     _loop2(i);
+  }
+};
+
+var removeTags = function removeTags(tabs) {
+  var clsTag = document.querySelectorAll(".closeTag");
+
+  var _iterator5 = _createForOfIteratorHelper(clsTag),
+      _step5;
+
+  try {
+    for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+      var item = _step5.value;
+      item.addEventListener("click", function (e) {
+        console.log(tabs);
+        console.log(e.target.closest(".tags").textContent);
+        e.target.closest(".tags").remove();
+        tabs = _toConsumableArray(new Set(tabs.sort()));
+        tabs.push(e.target.closest(".tags").textContent);
+        console.log("tabs après", tabs);
+        buildCard(searchReduceArray);
+        getAppliancesList(searchReduceArray);
+        getUstensilList(searchReduceArray);
+        getIngredientsList(searchReduceArray);
+      });
+    }
+  } catch (err) {
+    _iterator5.e(err);
+  } finally {
+    _iterator5.f();
   }
 };
 
@@ -2532,4 +2538,4 @@ init();
 
 /******/ })()
 ;
-//# sourceMappingURL=52d020f6700d08ce36ee.js.map
+//# sourceMappingURL=b7891b7305c1eaa43b61.js.map
