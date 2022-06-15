@@ -166,13 +166,13 @@ MOBILE
   }
   
   #search-ingredients::placeholder,
-  #search-apparatus::placeholder,
+  #search-appliance::placeholder,
   #search-utensils::placeholder {
     color: var(--white);
   }
   
   #search-ingredients,
-  #search-apparatus,
+  #search-appliance,
   #search-utensils {
     padding: 15px 15px 15px 10px;
     color: var(--white);
@@ -184,7 +184,7 @@ MOBILE
     background-color: var(--primary);
   }
   
-  #search-apparatus {
+  #search-appliance {
     background-color: var(--secondary);
   }
   
@@ -192,12 +192,12 @@ MOBILE
     background-color: var(--tertiary);
   }
   
-  #ingredients, #apparatus, #utensils {
+  #ingredients, #appliance, #utensils {
     position: relative;
     cursor: pointer;
   }
   
-  #chevron-ingredients, #chevron-apparatus, #chevron-utensils {
+  #chevron-ingredients, #chevron-appliance, #chevron-utensils {
     position: absolute;
     right: 10px;
     top: 38px;
@@ -288,20 +288,20 @@ MOBILE
   }
   
   #list-ingredients-result {
-    background-color: var(--primary);
+    // background-color: var(--primary);
     width: 420px;
     height: 290px;
     overflow-x: scroll;
   }
   
-  #list-apparatus-result {
-    background-color: var(--secondary);
+  #list-appliance-result {
+    // background-color: var(--secondary);
     width: 230px;
     height: 290px;
   }
   
   #list-utensils-result {
-    background-color: var(--tertiary);
+    // background-color: var(--tertiary);
     width: 440px;
     height: 290px;
     overflow-x: scroll;
@@ -338,7 +338,8 @@ MOBILE
   
   .item-list {
     padding: 5px 10px 5px 10px;
-    color: rgb(240, 245, 250);
+    // color: rgb(240, 245, 250);
+    color: black;
     display: inline-block;
   }
   
@@ -346,7 +347,7 @@ MOBILE
     background-color: var(--primary-shade);
   }
   
-  .item-apparatus:hover {
+  .item-appliance:hover {
     background-color: var(--secondary-shade);
   }
   
@@ -383,7 +384,7 @@ MOBILE
     background-color: var(--primary);
   }
   
-  .tag-apparatus {
+  .tag-appliance {
     background-color: var(--secondary);
   }
   

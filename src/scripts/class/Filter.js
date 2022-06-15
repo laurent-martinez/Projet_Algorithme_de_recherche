@@ -5,8 +5,6 @@ export class Filter {
 
   bySearch(input) {
     this.recipes = this.recipes.filter((recipe) => {
-      // filter : me retourne tous les éléments trouvés correspondant
-      //console.log("recettes :", recipe)
       return (
         recipe.name.toLowerCase().includes(input.toLowerCase()) ||
         recipe.description.toLowerCase().includes(input.toLowerCase()) ||
@@ -27,9 +25,7 @@ export class Filter {
   }
 
   byTags(tag) {
-    switch (
-      tag.type // je viens chercher la valeur type de mon objet tag
-    ) {
+    switch (tag.type) {
       case "ingredients":
         this.recipes = this.recipes.filter((recipe) => {
           return recipe.ingredients.some((ingredient) => {
@@ -40,7 +36,7 @@ export class Filter {
         });
         break;
 
-      case "devices":
+      case "appliance":
         this.recipes = this.recipes.filter((recipe) => {
           return recipe.appliance
             .toLowerCase()
@@ -56,7 +52,7 @@ export class Filter {
         });
         break;
     }
-    //console.log("tag", this.recipes)
+
     return this.recipes;
   }
 }

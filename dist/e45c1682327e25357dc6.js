@@ -1410,6 +1410,98 @@ var displayCard = function displayCard(recipe) {
 
 /***/ }),
 
+/***/ "./src/display/displayCategory.js":
+/*!****************************************!*\
+  !*** ./src/display/displayCategory.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "displayAppliance": () => (/* binding */ displayAppliance),
+/* harmony export */   "displayIngredients": () => (/* binding */ displayIngredients),
+/* harmony export */   "displayUtensils": () => (/* binding */ displayUtensils)
+/* harmony export */ });
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+// DOM
+var $ingredientsResult = document.querySelector("#list-ingredients-result");
+var $applianceResult = document.querySelector("#list-appliance-result");
+var $utensilsResult = document.querySelector("#list-utensils-result");
+var displayIngredients = function displayIngredients(recipes, tagIngredients) {
+  $ingredientsResult.innerHTML = "";
+  var ingredientsArray = [];
+  recipes.forEach(function (recipe) {
+    var ingredients = recipe.ingredients;
+    var itemsIngredients = ingredients.map(function (ings) {
+      return ings.ingredient;
+    });
+    itemsIngredients.forEach(function (item) {
+      return ingredientsArray.push(item);
+    });
+  });
+
+  var ingredientsList = _toConsumableArray(new Set(ingredientsArray)).sort();
+
+  var inputIngredients = document.querySelector("#search-ingredients").value;
+  ingredientsList = ingredientsList.filter(function (ingredient) {
+    return !tagIngredients.includes(ingredient) && ingredient.toLowerCase().includes(inputIngredients.toLowerCase());
+  });
+  ingredientsList.forEach(function (ingredient) {
+    $ingredientsResult.insertAdjacentHTML("beforeend", "<p class=\"item-list item-ingredients\">".concat(ingredient, "</p>"));
+  });
+};
+var displayAppliance = function displayAppliance(recipes, tagAppliance) {
+  $applianceResult.innerHTML = "";
+  var applianceArray = [];
+  recipes.filter(function (recipe) {
+    var appliance = recipe.appliance;
+    applianceArray.push(appliance);
+  });
+
+  var applianceList = _toConsumableArray(new Set(applianceArray)).sort();
+
+  var inputAppliance = document.querySelector("#search-appliance").value;
+  applianceList = applianceList.filter(function (appliance) {
+    return !tagAppliance.includes(appliance) && appliance.toLowerCase().includes(inputAppliance.toLowerCase());
+  });
+  applianceList.forEach(function (appliance) {
+    $applianceResult.insertAdjacentHTML("beforeend", "<p class=\"item-list item-appliance\">".concat(appliance, "</p>"));
+  });
+};
+var displayUtensils = function displayUtensils(recipes, tagUtensils) {
+  $utensilsResult.innerHTML = "";
+  var utensilsArray = [];
+  recipes.map(function (recipe) {
+    var utensils = recipe.ustensils;
+    utensils.forEach(function (utensil) {
+      return utensilsArray.push(utensil);
+    });
+  });
+
+  var utensilsList = _toConsumableArray(new Set(utensilsArray)).sort();
+
+  var inputUtensils = document.querySelector("#search-utensils").value;
+  utensilsList = utensilsList.filter(function (utensil) {
+    return !tagUtensils.includes(utensil) && utensil.toLowerCase().includes(inputUtensils.toLowerCase());
+  });
+  utensilsList.forEach(function (utensil) {
+    $utensilsResult.insertAdjacentHTML("beforeend", "<p class=\"item-list item-utensils\">".concat(utensil, "</p>"));
+  });
+};
+
+/***/ }),
+
 /***/ "./src/scripts/class/Filter.js":
 /*!*************************************!*\
   !*** ./src/scripts/class/Filter.js ***!
@@ -1437,8 +1529,6 @@ var Filter = /*#__PURE__*/function () {
     key: "bySearch",
     value: function bySearch(input) {
       this.recipes = this.recipes.filter(function (recipe) {
-        // filter : me retourne tous les éléments trouvés correspondant
-        //console.log("recettes :", recipe)
         return recipe.name.toLowerCase().includes(input.toLowerCase()) || recipe.description.toLowerCase().includes(input.toLowerCase()) || recipe.ingredients.some(function (ingredient) {
           return ingredient.ingredient.toLowerCase().includes(input.toLowerCase());
         });
@@ -1457,8 +1547,7 @@ var Filter = /*#__PURE__*/function () {
   }, {
     key: "byTags",
     value: function byTags(tag) {
-      switch (tag.type // je viens chercher la valeur type de mon objet tag
-      ) {
+      switch (tag.type) {
         case "ingredients":
           this.recipes = this.recipes.filter(function (recipe) {
             return recipe.ingredients.some(function (ingredient) {
@@ -1467,7 +1556,7 @@ var Filter = /*#__PURE__*/function () {
           });
           break;
 
-        case "devices":
+        case "appliance":
           this.recipes = this.recipes.filter(function (recipe) {
             return recipe.appliance.toLowerCase().includes(tag.value.toLowerCase());
           });
@@ -1480,8 +1569,7 @@ var Filter = /*#__PURE__*/function () {
             });
           });
           break;
-      } //console.log("tag", this.recipes)
-
+      }
 
       return this.recipes;
     }
@@ -1489,6 +1577,37 @@ var Filter = /*#__PURE__*/function () {
 
   return Filter;
 }();
+
+/***/ }),
+
+/***/ "./src/scripts/list.js":
+/*!*****************************!*\
+  !*** ./src/scripts/list.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "list": () => (/* binding */ list)
+/* harmony export */ });
+var list = function list() {
+  var $listComboBox = document.querySelectorAll(".combo-box");
+  $listComboBox.forEach(function (comboBox) {
+    comboBox.addEventListener("click", function (e) {
+      if (e.currentTarget.classList.contains("open")) {
+        e.currentTarget.classList.remove("open");
+        e.currentTarget.querySelector("input").placeholder = e.currentTarget.querySelector("input").dataset.type;
+      } else {
+        $listComboBox.forEach(function (combo) {
+          combo.classList.remove("open");
+          combo.querySelector("input").placeholder = combo.querySelector("input").dataset.type;
+        });
+        e.currentTarget.classList.add("open");
+        e.currentTarget.querySelector("input").placeholder = "Rechercher un " + e.currentTarget.querySelector("input").dataset.searchType;
+      }
+    });
+  });
+};
 
 /***/ }),
 
@@ -1516,7 +1635,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n/***************************************************\nGLOBAL\n***************************************************/\n* {\n  box-sizing: border-box;\n  margin: 0;\n}\n\n.flex {\n  display: flex;\n}\n\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n\n.clearfix:after {\n  clear: both;\n}\n\nimg,\niframe,\nvideo {\n  max-width: 100%;\n  vertical-align: middle;\n}\n\nnav ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\na {\n  text-decoration: none;\n  color: rgb(6, 143, 177);\n  transition: all 0.5s ease;\n}\n\n/***************************************************\nSTRUCTURE\n***************************************************/\n#container {\n  display: flex;\n  flex-direction: column;\n  width: 80%;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n\n/***************************************************\nTYPO\n***************************************************/\n.btn {\n  background-color: rgba(0, 0, 0, 0.3);\n  border: none;\n  font-size: 0.75rem;\n  padding: 0.7rem 1.25rem;\n  font-weight: 700;\n  color: rgb(255, 255, 255);\n  line-height: 100%;\n  border-radius: 20px;\n  text-align: center;\n  text-transform: uppercase;\n  cursor: pointer;\n}\n\n/***************************************************\nTABLETTE\n***************************************************/\n@media screen and (max-width: 768px) {\n  .container {\n    width: 100%;\n  }\n\n  #search-result {\n    grid-template-columns: repeat(2, 1fr) !important;\n  }\n}\n/***************************************************\nMOBILE\n***************************************************/\n@media screen and (max-width: 425px) {\n  #list-ingredients-result {\n    width: 300px !important;\n  }\n\n  #list-utensils-result {\n    width: 280px !important;\n  }\n\n  #search-result {\n    grid-template-columns: auto !important;\n  }\n}\n:root {\n  --primary: #3282f7;\n  --secondary: #69d9a4;\n  --tertiary: #ed6454;\n  --white: #fff;\n  /* nuance */\n  --primary-shade: #2c72d8;\n  --secondary-shade: #5cbe90;\n  --tertiary-shade: #cf584a;\n  /* teinte */\n  --primary-hue: hsl(216, 29%, 84%);\n  --secondary-hue: hsl(151, 17%, 86%);\n  --tertiary-hue: hsl(6, 23%, 86%);\n  --error: rgb(167, 25, 25);\n}\n\nbody {\n  margin: 0;\n}\n\nheader {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-bottom: 20px;\n}\n\n#title {\n  color: #d04f4f;\n  font-weight: bold;\n}\n\nli {\n  list-style: none;\n}\n\n#inputs {\n  display: flex;\n  flex-wrap: wrap;\n  /* gère l'espace entre les box row & column */\n  gap: 0px 20px;\n}\n\ninput {\n  outline: none;\n  border: none;\n  border-radius: 5px;\n  padding: 0px;\n  margin: 20px 0px;\n}\n\n#search-input {\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat right 10px bottom 40%;\n  background-color: #e7e7e7;\n  display: inline-block;\n  width: 100%;\n  padding: 15px;\n  font-weight: 600;\n}\n\n#search-input::placeholder {\n  color: #adadad;\n}\n\n.all::placeholder {\n  color: rgb(152, 192, 251);\n}\n\n#search-ingredients::placeholder,\n#search-apparatus::placeholder,\n#search-utensils::placeholder {\n  color: var(--white);\n}\n\n#search-ingredients,\n#search-apparatus,\n#search-utensils {\n  padding: 15px 15px 15px 10px;\n  color: var(--white);\n  font-weight: 600;\n  width: 100%;\n}\n\n#search-ingredients {\n  background-color: var(--primary);\n}\n\n#search-apparatus {\n  background-color: var(--secondary);\n}\n\n#search-utensils {\n  background-color: var(--tertiary);\n}\n\n#ingredients, #apparatus, #utensils {\n  position: relative;\n  cursor: pointer;\n}\n\n#chevron-ingredients, #chevron-apparatus, #chevron-utensils {\n  position: absolute;\n  right: 10px;\n  top: 38px;\n}\n\n.chevron-down {\n  transform: rotate(180deg);\n}\n\n.recipe {\n  height: 400px;\n}\n\n.recipe-image {\n  background-color: #c7bebe;\n  width: 100%;\n  height: 50%;\n  border-radius: 5px 5px 0px 0px;\n}\n\n.recipe-body {\n  padding: 0 10px;\n  margin-bottom: 20px;\n  background-color: #e7e7e7;\n  height: 50%;\n  padding: 15px 15px;\n  border-radius: 0px 0px 5px 5px;\n  overflow: hidden;\n}\n\n.recipe-header {\n  display: flex;\n  justify-content: space-between;\n}\n\n.recipe-title h2 {\n  font-size: 1rem;\n  font-weight: 500;\n}\n\n.recipe-time {\n  display: flex;\n  position: relative;\n  font-weight: bold;\n}\n\n.recipe-time p {\n  width: 60px;\n  text-align: end;\n}\n\n.recipe-content {\n  display: flex;\n  justify-content: space-between;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 0.7rem;\n  max-height: 140px;\n}\n\n.recipe-ingredients,\n.recipe-describe {\n  width: 50%;\n}\n\n.recipe-ingredients {\n  font-weight: bolder;\n  font-size: 0.7rem;\n}\n\n.recipe-describe {\n  font-weight: 500;\n  padding-left: 15px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 10;\n  -webkit-box-orient: vertical;\n  word-wrap: break-word;\n}\n\nul #search-result {\n  margin: 0;\n}\n\ni {\n  text-transform: lowercase;\n}\n\n#list-ingredients-result {\n  background-color: var(--primary);\n  width: 420px;\n  height: 290px;\n  overflow-x: scroll;\n}\n\n#list-apparatus-result {\n  background-color: var(--secondary);\n  width: 230px;\n  height: 290px;\n}\n\n#list-utensils-result {\n  background-color: var(--tertiary);\n  width: 440px;\n  height: 290px;\n  overflow-x: scroll;\n}\n\n#ingredients {\n  display: flex;\n  flex-direction: column;\n}\n\n.list-result {\n  display: none;\n  flex-direction: column;\n  flex-wrap: wrap;\n  border-radius: 0px 0px 5px 5px;\n  color: var(--white);\n  margin: -20px 0px 20px 0px;\n}\n\n#search-result {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 40px;\n  border-radius: 20px;\n}\n\n.no-result {\n  background-color: rgb(167, 25, 25);\n  position: fixed;\n  margin-top: 20px;\n  padding: 10px;\n  color: white;\n}\n\n.item-list {\n  padding: 5px 10px 5px 10px;\n  color: rgb(240, 245, 250);\n  display: inline-block;\n}\n\n.item-ingredients:hover {\n  background-color: var(--primary-shade);\n}\n\n.item-apparatus:hover {\n  background-color: var(--secondary-shade);\n}\n\n.item-utensils:hover {\n  background-color: var(--tertiary-shade);\n}\n\n.show-list {\n  display: block;\n}\n\n#tags {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.tag {\n  color: var(--white);\n  padding: 10px 15px 10px 15px;\n  border-radius: 5px;\n  border-style: none;\n  margin: 5px 10px 5px 0px;\n  align-items: center;\n}\n\n.close-tag {\n  height: 20px;\n  width: 20px;\n  display: block;\n  cursor: pointer;\n}\n\n.tag-ingredients {\n  background-color: var(--primary);\n}\n\n.tag-apparatus {\n  background-color: var(--secondary);\n}\n\n.tag-utensils {\n  background-color: var(--tertiary);\n}\n\n.fa-xmark {\n  color: white;\n  border: 2px solid white;\n  border-radius: 50%;\n  display: flex;\n  margin-left: 10px;\n}\n\n.fa-xmark::before {\n  /* centrage */\n  line-height: 16px;\n}\n\n/* je relie les deux class */\n.combo-box.open .list-result {\n  display: flex;\n}\n\n.combo-box.open .chevron {\n  transform: rotate(180deg);\n  transition: transform 0.2s;\n}\n\n.combo-box.open input {\n  border-radius: 5px 5px 0px 0px;\n}\n\n.combo-box.open .i::placeholder {\n  color: var(--primary-hue) !important;\n}\n\n.combo-box.open .a::placeholder {\n  color: var(--secondary-hue) !important;\n}\n\n.combo-box.open .u::placeholder {\n  color: var(--tertiary-hue) !important;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"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","sourcesContent":["/***************************************************\nGLOBAL\n***************************************************/\n* {\n    box-sizing: border-box;\n    margin: 0;\n}\n\n.flex {\n    display: flex;\n}\n\n.clearfix:before,\n.clearfix:after {\n    content: \"\";\n    display: table;\n}\n\n.clearfix:after {\n    clear: both;\n}\n\nimg,\niframe,\nvideo {\n    max-width: 100%;\n    vertical-align: middle;\n}\n\nnav ul {\n    list-style: none;\n    padding: 0;\n    margin: 0;\n}\n\na {\n    text-decoration: none;\n    color:rgb(6, 143, 177);\n    transition: all .5s ease;\n}\n/***************************************************\nSTRUCTURE\n***************************************************/\n#container{\n    display: flex;\n    flex-direction: column;\n    width: 80%;\n    max-width: 1200px;\n    margin: 0 auto; \n}\n/***************************************************\nTYPO\n***************************************************/\n\n.btn{\n    background-color: rgba(0, 0, 0, 0.3);\n    border:none;\n    font-size: .75rem;\n    padding: .7rem 1.25rem;\n    font-weight: 700;\n    color: rgb(255, 255, 255);\n    line-height: 100%;\n    border-radius: 20px;\n    text-align: center;\n    text-transform: uppercase;\n    cursor: pointer;\n}\n/***************************************************\nTABLETTE\n***************************************************/\n@media screen and (max-width:768px){\n    .container{\n        width: 100%;\n    }\n    #search-result {\n        grid-template-columns: repeat(2,1fr) !important;\n    }\n}\n/***************************************************\nMOBILE\n***************************************************/\n@media screen and (max-width: 425px){\n\n    #list-ingredients-result {\n        width: 300px !important;\n    }\n    #list-utensils-result {\n        width: 280px !important;\n    }\n    #search-result {\n        grid-template-columns: auto !important;\n    }\n}\n\n\n:root {\n    --primary: #3282f7;\n    --secondary: #69d9a4;\n    --tertiary: #ed6454;\n    --white: #fff;\n  \n    /* nuance */\n    --primary-shade: #2c72d8;\n    --secondary-shade: #5cbe90;\n    --tertiary-shade: #cf584a;\n  \n    /* teinte */\n    --primary-hue: hsl(216, 29%, 84%);\n    --secondary-hue: hsl(151, 17%, 86%);\n    --tertiary-hue: hsl(6, 23%, 86%);\n  \n    --error: rgb(167, 25, 25);\n  }\n  \n  body {\n    margin: 0;\n  }\n  \n  header {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding-bottom: 20px;\n  }\n  \n  #title {\n    color: #d04f4f;\n    font-weight: bold;\n  }\n  \n  li {\n    list-style: none;\n  }\n  \n  #inputs {\n    display: flex;\n    flex-wrap: wrap;\n    /* gère l'espace entre les box row & column */\n    gap: 0px 20px;\n    \n  }\n  \n  input {\n    outline: none;\n    border: none;\n    border-radius: 5px;\n    padding: 0px;\n    margin: 20px 0px;\n  }\n  \n  #search-input {\n    background: url(../assets/magnifying_glass.svg) no-repeat right 10px bottom 40%;\n    background-color: #e7e7e7;\n    display: inline-block;\n    width: 100%;\n    padding: 15px;\n    font-weight: 600;\n  }\n  \n  #search-input::placeholder {\n    color: #adadad;\n  }\n  \n  .all::placeholder {\n    color: rgb(152,192,251)\n  }\n  \n  #search-ingredients::placeholder,\n  #search-apparatus::placeholder,\n  #search-utensils::placeholder {\n    color: var(--white);\n  }\n  \n  #search-ingredients,\n  #search-apparatus,\n  #search-utensils {\n    padding: 15px 15px 15px 10px;\n    color: var(--white);\n    font-weight: 600;\n    width: 100%;\n  }\n  \n  #search-ingredients {\n    background-color: var(--primary);\n  }\n  \n  #search-apparatus {\n    background-color: var(--secondary);\n  }\n  \n  #search-utensils {\n    background-color: var(--tertiary);\n  }\n  \n  #ingredients, #apparatus, #utensils {\n    position: relative;\n    cursor: pointer;\n  }\n  \n  #chevron-ingredients, #chevron-apparatus, #chevron-utensils {\n    position: absolute;\n    right: 10px;\n    top: 38px;\n  }\n  \n  .chevron-down {\n    transform: rotate(180deg);\n  }\n\n  .recipe {\n    height: 400px;\n  }\n  \n  .recipe-image {\n    background-color: #c7bebe;\n    width: 100%;\n    height: 50%;\n    border-radius: 5px 5px 0px 0px;\n  }\n  \n  .recipe-body {\n    padding: 0 10px;\n    margin-bottom: 20px;\n    background-color: #e7e7e7;\n    height: 50%;\n    padding: 15px 15px;\n    border-radius: 0px 0px 5px 5px;\n    overflow: hidden;\n  }\n  \n  .recipe-header {\n    display: flex;\n    justify-content: space-between;\n  }\n  \n  .recipe-title h2 {\n    font-size: 1rem;\n    font-weight: 500;\n  }\n  \n  .recipe-time {\n    display: flex;\n    position: relative;\n    font-weight: bold;\n  }\n  \n  .recipe-time p {\n    width: 60px;\n    text-align: end;\n  }\n  \n  .recipe-content {\n    display: flex;\n    justify-content: space-between;\n    padding-top: 10px;\n    padding-bottom: 10px;\n    font-size: 0.7rem;\n    max-height: 140px;\n  }\n  \n  .recipe-ingredients,\n  .recipe-describe {\n    width: 50%;\n  }\n  \n  .recipe-ingredients {\n    font-weight: bolder;\n    font-size: 0.7rem;\n  }\n  \n  .recipe-describe {\n    font-weight: 500;\n    padding-left: 15px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: -webkit-box;\n    -webkit-line-clamp: 10;\n    -webkit-box-orient: vertical;\n    word-wrap: break-word;\n  }\n  \n  ul #search-result {\n    margin: 0;\n  }\n  \n  i {\n    text-transform: lowercase;\n  }\n  \n  #list-ingredients-result {\n    background-color: var(--primary);\n    width: 420px;\n    height: 290px;\n    overflow-x: scroll;\n  }\n  \n  #list-apparatus-result {\n    background-color: var(--secondary);\n    width: 230px;\n    height: 290px;\n  }\n  \n  #list-utensils-result {\n    background-color: var(--tertiary);\n    width: 440px;\n    height: 290px;\n    overflow-x: scroll;\n  }\n  \n  #ingredients {\n    display: flex;\n    flex-direction: column;\n  }\n  \n  .list-result {\n    display: none;\n    flex-direction: column;\n    flex-wrap: wrap;\n    border-radius: 0px 0px 5px 5px;\n    color: var(--white);\n    margin: -20px 0px 20px 0px;\n  }\n  \n  #search-result {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    grid-gap: 40px;\n    border-radius: 20px;\n  }\n  \n  .no-result {\n    background-color: rgb(167, 25, 25);\n    position: fixed;\n    margin-top: 20px;\n    padding: 10px;\n    color: white;\n  }\n  \n  .item-list {\n    padding: 5px 10px 5px 10px;\n    color: rgb(240, 245, 250);\n    display: inline-block;\n  }\n  \n  .item-ingredients:hover {\n    background-color: var(--primary-shade);\n  }\n  \n  .item-apparatus:hover {\n    background-color: var(--secondary-shade);\n  }\n  \n  .item-utensils:hover {\n    background-color: var(--tertiary-shade);\n  }\n  \n  .show-list {\n    display: block;\n  }\n  \n  #tags {\n    display: flex;\n    flex-wrap: wrap;\n  }\n  \n  .tag {\n    color: var(--white);\n    padding: 10px 15px 10px 15px;\n    border-radius: 5px;\n    border-style: none;\n    margin: 5px 10px 5px 0px;\n    align-items: center;\n  }\n  \n  .close-tag {\n    height: 20px;\n    width: 20px;\n    display: block;\n    cursor: pointer;\n  }\n  \n  .tag-ingredients {\n    background-color: var(--primary);\n  }\n  \n  .tag-apparatus {\n    background-color: var(--secondary);\n  }\n  \n  .tag-utensils {\n    background-color: var(--tertiary);\n  }\n  \n  .fa-xmark {\n    color: white;\n    border: 2px solid white;\n    border-radius: 50%;\n    display: flex;\n    margin-left: 10px;\n  }\n  \n  .fa-xmark::before {\n    /* centrage */\n    line-height: 16px;\n  }\n  \n  /* je relie les deux class */\n  .combo-box.open .list-result {\n    display: flex;\n  }\n  \n  .combo-box.open .chevron {\n    transform: rotate(180deg);\n    transition: transform 0.2s;\n  }\n  \n  .combo-box.open input {\n    border-radius: 5px 5px 0px 0px;\n  }\n  \n  .combo-box.open .i::placeholder {\n    color: var(--primary-hue) !important;\n  }\n  \n  .combo-box.open .a::placeholder {\n    color: var(--secondary-hue) !important;\n  }\n  .combo-box.open .u::placeholder {\n    color: var(--tertiary-hue) !important;\n  }\n    "],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n/***************************************************\nGLOBAL\n***************************************************/\n* {\n  box-sizing: border-box;\n  margin: 0;\n}\n\n.flex {\n  display: flex;\n}\n\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n\n.clearfix:after {\n  clear: both;\n}\n\nimg,\niframe,\nvideo {\n  max-width: 100%;\n  vertical-align: middle;\n}\n\nnav ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\na {\n  text-decoration: none;\n  color: rgb(6, 143, 177);\n  transition: all 0.5s ease;\n}\n\n/***************************************************\nSTRUCTURE\n***************************************************/\n#container {\n  display: flex;\n  flex-direction: column;\n  width: 80%;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n\n/***************************************************\nTYPO\n***************************************************/\n.btn {\n  background-color: rgba(0, 0, 0, 0.3);\n  border: none;\n  font-size: 0.75rem;\n  padding: 0.7rem 1.25rem;\n  font-weight: 700;\n  color: rgb(255, 255, 255);\n  line-height: 100%;\n  border-radius: 20px;\n  text-align: center;\n  text-transform: uppercase;\n  cursor: pointer;\n}\n\n/***************************************************\nTABLETTE\n***************************************************/\n@media screen and (max-width: 768px) {\n  .container {\n    width: 100%;\n  }\n\n  #search-result {\n    grid-template-columns: repeat(2, 1fr) !important;\n  }\n}\n/***************************************************\nMOBILE\n***************************************************/\n@media screen and (max-width: 425px) {\n  #list-ingredients-result {\n    width: 300px !important;\n  }\n\n  #list-utensils-result {\n    width: 280px !important;\n  }\n\n  #search-result {\n    grid-template-columns: auto !important;\n  }\n}\n:root {\n  --primary: #3282f7;\n  --secondary: #69d9a4;\n  --tertiary: #ed6454;\n  --white: #fff;\n  /* nuance */\n  --primary-shade: #2c72d8;\n  --secondary-shade: #5cbe90;\n  --tertiary-shade: #cf584a;\n  /* teinte */\n  --primary-hue: hsl(216, 29%, 84%);\n  --secondary-hue: hsl(151, 17%, 86%);\n  --tertiary-hue: hsl(6, 23%, 86%);\n  --error: rgb(167, 25, 25);\n}\n\nbody {\n  margin: 0;\n}\n\nheader {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-bottom: 20px;\n}\n\n#title {\n  color: #d04f4f;\n  font-weight: bold;\n}\n\nli {\n  list-style: none;\n}\n\n#inputs {\n  display: flex;\n  flex-wrap: wrap;\n  /* gère l'espace entre les box row & column */\n  gap: 0px 20px;\n}\n\ninput {\n  outline: none;\n  border: none;\n  border-radius: 5px;\n  padding: 0px;\n  margin: 20px 0px;\n}\n\n#search-input {\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat right 10px bottom 40%;\n  background-color: #e7e7e7;\n  display: inline-block;\n  width: 100%;\n  padding: 15px;\n  font-weight: 600;\n}\n\n#search-input::placeholder {\n  color: #adadad;\n}\n\n.all::placeholder {\n  color: rgb(152, 192, 251);\n}\n\n#search-ingredients::placeholder,\n#search-appliance::placeholder,\n#search-utensils::placeholder {\n  color: var(--white);\n}\n\n#search-ingredients,\n#search-appliance,\n#search-utensils {\n  padding: 15px 15px 15px 10px;\n  color: var(--white);\n  font-weight: 600;\n  width: 100%;\n}\n\n#search-ingredients {\n  background-color: var(--primary);\n}\n\n#search-appliance {\n  background-color: var(--secondary);\n}\n\n#search-utensils {\n  background-color: var(--tertiary);\n}\n\n#ingredients, #appliance, #utensils {\n  position: relative;\n  cursor: pointer;\n}\n\n#chevron-ingredients, #chevron-appliance, #chevron-utensils {\n  position: absolute;\n  right: 10px;\n  top: 38px;\n}\n\n.chevron-down {\n  transform: rotate(180deg);\n}\n\n.recipe {\n  height: 400px;\n}\n\n.recipe-image {\n  background-color: #c7bebe;\n  width: 100%;\n  height: 50%;\n  border-radius: 5px 5px 0px 0px;\n}\n\n.recipe-body {\n  padding: 0 10px;\n  margin-bottom: 20px;\n  background-color: #e7e7e7;\n  height: 50%;\n  padding: 15px 15px;\n  border-radius: 0px 0px 5px 5px;\n  overflow: hidden;\n}\n\n.recipe-header {\n  display: flex;\n  justify-content: space-between;\n}\n\n.recipe-title h2 {\n  font-size: 1rem;\n  font-weight: 500;\n}\n\n.recipe-time {\n  display: flex;\n  position: relative;\n  font-weight: bold;\n}\n\n.recipe-time p {\n  width: 60px;\n  text-align: end;\n}\n\n.recipe-content {\n  display: flex;\n  justify-content: space-between;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 0.7rem;\n  max-height: 140px;\n}\n\n.recipe-ingredients,\n.recipe-describe {\n  width: 50%;\n}\n\n.recipe-ingredients {\n  font-weight: bolder;\n  font-size: 0.7rem;\n}\n\n.recipe-describe {\n  font-weight: 500;\n  padding-left: 15px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 10;\n  -webkit-box-orient: vertical;\n  word-wrap: break-word;\n}\n\nul #search-result {\n  margin: 0;\n}\n\ni {\n  text-transform: lowercase;\n}\n\n#list-ingredients-result {\n  width: 420px;\n  height: 290px;\n  overflow-x: scroll;\n}\n\n#list-appliance-result {\n  width: 230px;\n  height: 290px;\n}\n\n#list-utensils-result {\n  width: 440px;\n  height: 290px;\n  overflow-x: scroll;\n}\n\n#ingredients {\n  display: flex;\n  flex-direction: column;\n}\n\n.list-result {\n  display: none;\n  flex-direction: column;\n  flex-wrap: wrap;\n  border-radius: 0px 0px 5px 5px;\n  color: var(--white);\n  margin: -20px 0px 20px 0px;\n}\n\n#search-result {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 40px;\n  border-radius: 20px;\n}\n\n.no-result {\n  background-color: rgb(167, 25, 25);\n  position: fixed;\n  margin-top: 20px;\n  padding: 10px;\n  color: white;\n}\n\n.item-list {\n  padding: 5px 10px 5px 10px;\n  color: black;\n  display: inline-block;\n}\n\n.item-ingredients:hover {\n  background-color: var(--primary-shade);\n}\n\n.item-appliance:hover {\n  background-color: var(--secondary-shade);\n}\n\n.item-utensils:hover {\n  background-color: var(--tertiary-shade);\n}\n\n.show-list {\n  display: block;\n}\n\n#tags {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.tag {\n  color: var(--white);\n  padding: 10px 15px 10px 15px;\n  border-radius: 5px;\n  border-style: none;\n  margin: 5px 10px 5px 0px;\n  align-items: center;\n}\n\n.close-tag {\n  height: 20px;\n  width: 20px;\n  display: block;\n  cursor: pointer;\n}\n\n.tag-ingredients {\n  background-color: var(--primary);\n}\n\n.tag-appliance {\n  background-color: var(--secondary);\n}\n\n.tag-utensils {\n  background-color: var(--tertiary);\n}\n\n.fa-xmark {\n  color: white;\n  border: 2px solid white;\n  border-radius: 50%;\n  display: flex;\n  margin-left: 10px;\n}\n\n.fa-xmark::before {\n  /* centrage */\n  line-height: 16px;\n}\n\n/* je relie les deux class */\n.combo-box.open .list-result {\n  display: flex;\n}\n\n.combo-box.open .chevron {\n  transform: rotate(180deg);\n  transition: transform 0.2s;\n}\n\n.combo-box.open input {\n  border-radius: 5px 5px 0px 0px;\n}\n\n.combo-box.open .i::placeholder {\n  color: var(--primary-hue) !important;\n}\n\n.combo-box.open .a::placeholder {\n  color: var(--secondary-hue) !important;\n}\n\n.combo-box.open .u::placeholder {\n  color: var(--tertiary-hue) !important;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"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","sourcesContent":["/***************************************************\nGLOBAL\n***************************************************/\n* {\n    box-sizing: border-box;\n    margin: 0;\n}\n\n.flex {\n    display: flex;\n}\n\n.clearfix:before,\n.clearfix:after {\n    content: \"\";\n    display: table;\n}\n\n.clearfix:after {\n    clear: both;\n}\n\nimg,\niframe,\nvideo {\n    max-width: 100%;\n    vertical-align: middle;\n}\n\nnav ul {\n    list-style: none;\n    padding: 0;\n    margin: 0;\n}\n\na {\n    text-decoration: none;\n    color:rgb(6, 143, 177);\n    transition: all .5s ease;\n}\n/***************************************************\nSTRUCTURE\n***************************************************/\n#container{\n    display: flex;\n    flex-direction: column;\n    width: 80%;\n    max-width: 1200px;\n    margin: 0 auto; \n}\n/***************************************************\nTYPO\n***************************************************/\n\n.btn{\n    background-color: rgba(0, 0, 0, 0.3);\n    border:none;\n    font-size: .75rem;\n    padding: .7rem 1.25rem;\n    font-weight: 700;\n    color: rgb(255, 255, 255);\n    line-height: 100%;\n    border-radius: 20px;\n    text-align: center;\n    text-transform: uppercase;\n    cursor: pointer;\n}\n/***************************************************\nTABLETTE\n***************************************************/\n@media screen and (max-width:768px){\n    .container{\n        width: 100%;\n    }\n    #search-result {\n        grid-template-columns: repeat(2,1fr) !important;\n    }\n}\n/***************************************************\nMOBILE\n***************************************************/\n@media screen and (max-width: 425px){\n\n    #list-ingredients-result {\n        width: 300px !important;\n    }\n    #list-utensils-result {\n        width: 280px !important;\n    }\n    #search-result {\n        grid-template-columns: auto !important;\n    }\n}\n\n\n:root {\n    --primary: #3282f7;\n    --secondary: #69d9a4;\n    --tertiary: #ed6454;\n    --white: #fff;\n  \n    /* nuance */\n    --primary-shade: #2c72d8;\n    --secondary-shade: #5cbe90;\n    --tertiary-shade: #cf584a;\n  \n    /* teinte */\n    --primary-hue: hsl(216, 29%, 84%);\n    --secondary-hue: hsl(151, 17%, 86%);\n    --tertiary-hue: hsl(6, 23%, 86%);\n  \n    --error: rgb(167, 25, 25);\n  }\n  \n  body {\n    margin: 0;\n  }\n  \n  header {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding-bottom: 20px;\n  }\n  \n  #title {\n    color: #d04f4f;\n    font-weight: bold;\n  }\n  \n  li {\n    list-style: none;\n  }\n  \n  #inputs {\n    display: flex;\n    flex-wrap: wrap;\n    /* gère l'espace entre les box row & column */\n    gap: 0px 20px;\n    \n  }\n  \n  input {\n    outline: none;\n    border: none;\n    border-radius: 5px;\n    padding: 0px;\n    margin: 20px 0px;\n  }\n  \n  #search-input {\n    background: url(../assets/magnifying_glass.svg) no-repeat right 10px bottom 40%;\n    background-color: #e7e7e7;\n    display: inline-block;\n    width: 100%;\n    padding: 15px;\n    font-weight: 600;\n  }\n  \n  #search-input::placeholder {\n    color: #adadad;\n  }\n  \n  .all::placeholder {\n    color: rgb(152,192,251)\n  }\n  \n  #search-ingredients::placeholder,\n  #search-appliance::placeholder,\n  #search-utensils::placeholder {\n    color: var(--white);\n  }\n  \n  #search-ingredients,\n  #search-appliance,\n  #search-utensils {\n    padding: 15px 15px 15px 10px;\n    color: var(--white);\n    font-weight: 600;\n    width: 100%;\n  }\n  \n  #search-ingredients {\n    background-color: var(--primary);\n  }\n  \n  #search-appliance {\n    background-color: var(--secondary);\n  }\n  \n  #search-utensils {\n    background-color: var(--tertiary);\n  }\n  \n  #ingredients, #appliance, #utensils {\n    position: relative;\n    cursor: pointer;\n  }\n  \n  #chevron-ingredients, #chevron-appliance, #chevron-utensils {\n    position: absolute;\n    right: 10px;\n    top: 38px;\n  }\n  \n  .chevron-down {\n    transform: rotate(180deg);\n  }\n\n  .recipe {\n    height: 400px;\n  }\n  \n  .recipe-image {\n    background-color: #c7bebe;\n    width: 100%;\n    height: 50%;\n    border-radius: 5px 5px 0px 0px;\n  }\n  \n  .recipe-body {\n    padding: 0 10px;\n    margin-bottom: 20px;\n    background-color: #e7e7e7;\n    height: 50%;\n    padding: 15px 15px;\n    border-radius: 0px 0px 5px 5px;\n    overflow: hidden;\n  }\n  \n  .recipe-header {\n    display: flex;\n    justify-content: space-between;\n  }\n  \n  .recipe-title h2 {\n    font-size: 1rem;\n    font-weight: 500;\n  }\n  \n  .recipe-time {\n    display: flex;\n    position: relative;\n    font-weight: bold;\n  }\n  \n  .recipe-time p {\n    width: 60px;\n    text-align: end;\n  }\n  \n  .recipe-content {\n    display: flex;\n    justify-content: space-between;\n    padding-top: 10px;\n    padding-bottom: 10px;\n    font-size: 0.7rem;\n    max-height: 140px;\n  }\n  \n  .recipe-ingredients,\n  .recipe-describe {\n    width: 50%;\n  }\n  \n  .recipe-ingredients {\n    font-weight: bolder;\n    font-size: 0.7rem;\n  }\n  \n  .recipe-describe {\n    font-weight: 500;\n    padding-left: 15px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: -webkit-box;\n    -webkit-line-clamp: 10;\n    -webkit-box-orient: vertical;\n    word-wrap: break-word;\n  }\n  \n  ul #search-result {\n    margin: 0;\n  }\n  \n  i {\n    text-transform: lowercase;\n  }\n  \n  #list-ingredients-result {\n    // background-color: var(--primary);\n    width: 420px;\n    height: 290px;\n    overflow-x: scroll;\n  }\n  \n  #list-appliance-result {\n    // background-color: var(--secondary);\n    width: 230px;\n    height: 290px;\n  }\n  \n  #list-utensils-result {\n    // background-color: var(--tertiary);\n    width: 440px;\n    height: 290px;\n    overflow-x: scroll;\n  }\n  \n  #ingredients {\n    display: flex;\n    flex-direction: column;\n  }\n  \n  .list-result {\n    display: none;\n    flex-direction: column;\n    flex-wrap: wrap;\n    border-radius: 0px 0px 5px 5px;\n    color: var(--white);\n    margin: -20px 0px 20px 0px;\n  }\n  \n  #search-result {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    grid-gap: 40px;\n    border-radius: 20px;\n  }\n  \n  .no-result {\n    background-color: rgb(167, 25, 25);\n    position: fixed;\n    margin-top: 20px;\n    padding: 10px;\n    color: white;\n  }\n  \n  .item-list {\n    padding: 5px 10px 5px 10px;\n    // color: rgb(240, 245, 250);\n    color: black;\n    display: inline-block;\n  }\n  \n  .item-ingredients:hover {\n    background-color: var(--primary-shade);\n  }\n  \n  .item-appliance:hover {\n    background-color: var(--secondary-shade);\n  }\n  \n  .item-utensils:hover {\n    background-color: var(--tertiary-shade);\n  }\n  \n  .show-list {\n    display: block;\n  }\n  \n  #tags {\n    display: flex;\n    flex-wrap: wrap;\n  }\n  \n  .tag {\n    color: var(--white);\n    padding: 10px 15px 10px 15px;\n    border-radius: 5px;\n    border-style: none;\n    margin: 5px 10px 5px 0px;\n    align-items: center;\n  }\n  \n  .close-tag {\n    height: 20px;\n    width: 20px;\n    display: block;\n    cursor: pointer;\n  }\n  \n  .tag-ingredients {\n    background-color: var(--primary);\n  }\n  \n  .tag-appliance {\n    background-color: var(--secondary);\n  }\n  \n  .tag-utensils {\n    background-color: var(--tertiary);\n  }\n  \n  .fa-xmark {\n    color: white;\n    border: 2px solid white;\n    border-radius: 50%;\n    display: flex;\n    margin-left: 10px;\n  }\n  \n  .fa-xmark::before {\n    /* centrage */\n    line-height: 16px;\n  }\n  \n  /* je relie les deux class */\n  .combo-box.open .list-result {\n    display: flex;\n  }\n  \n  .combo-box.open .chevron {\n    transform: rotate(180deg);\n    transition: transform 0.2s;\n  }\n  \n  .combo-box.open input {\n    border-radius: 5px 5px 0px 0px;\n  }\n  \n  .combo-box.open .i::placeholder {\n    color: var(--primary-hue) !important;\n  }\n  \n  .combo-box.open .a::placeholder {\n    color: var(--secondary-hue) !important;\n  }\n  .combo-box.open .u::placeholder {\n    color: var(--tertiary-hue) !important;\n  }\n    "],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2212,23 +2331,167 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
 /* harmony import */ var _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data/recipes.js */ "./src/data/recipes.js");
 /* harmony import */ var _display_displayCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./display/displayCard */ "./src/display/displayCard.js");
-/* harmony import */ var _scripts_class_Filter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scripts/class/Filter */ "./src/scripts/class/Filter.js");
+/* harmony import */ var _display_displayCategory__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./display/displayCategory */ "./src/display/displayCategory.js");
+/* harmony import */ var _scripts_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scripts/list */ "./src/scripts/list.js");
+/* harmony import */ var _scripts_class_Filter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scripts/class/Filter */ "./src/scripts/class/Filter.js");
 
 
 
- // CLASS
 
-var filter = new _scripts_class_Filter__WEBPACK_IMPORTED_MODULE_3__.Filter(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
+
+
+
+ // DOM
+
+var $searchInput = document.querySelector("#search-input");
+var $searchResult = document.querySelector("#search-result");
+var $searchIngredients = document.querySelector("#search-ingredients");
+var $searchAppliance = document.querySelector("#search-appliance");
+var $searchUtensils = document.querySelector("#search-utensils");
+var $tags = document.querySelector("#tags");
+var $listResult = document.querySelectorAll(".list-result"); // CLASS
+
+var filter = new _scripts_class_Filter__WEBPACK_IMPORTED_MODULE_5__.Filter(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes); // ARRAY
+
+var tagList = [];
+/**
+ * Affichage des recettes
+ */
 
 var displayCards = function displayCards(recipes) {
   recipes === null || recipes === void 0 ? void 0 : recipes.forEach(function (recipe) {
     (0,_display_displayCard__WEBPACK_IMPORTED_MODULE_2__.displayCard)(recipe);
   });
 };
+/**
+ * Search bar
+ */
+
+
+$searchInput.addEventListener("keyup", function () {
+  $searchResult.innerHTML = "";
+  filterTagSearch();
+});
+/**
+ * Gestion des tags
+ */
+
+var eventTag = function eventTag() {
+  $listResult.forEach(function (list) {
+    list.querySelectorAll(".item-list").forEach(function (itemList) {
+      itemList.addEventListener("click", function (e) {
+        var tag = {
+          // objet tag avec une value et un type
+          value: e.target.textContent,
+          // la valeur sur laquelle je clique dans ma liste
+          type: e.target.closest(".list-result").dataset.type // je vais chercher data-type de mon html(ingredients, apparatus ou utensils)
+
+        };
+        tagList.push(tag); // je mets dans mon tableau tous ce que je click
+
+        $tags.innerHTML += "\n                    <button class=\"tag tag-".concat(tag.type, "\">").concat(tag.value, "<i class=\"fa-solid fa-xmark close-tag\" data-value=\"").concat(tag.value, "\"></i></button>\n                ");
+        var tagResult = filter.byTags(tag); // je trie avec ma class Filter
+
+        $searchResult.innerHTML = ""; // je vide les résultas qui ne correspondent pas
+
+        displayCards(tagResult);
+        (0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayIngredients)(tagResult, tagList.filter(function (tag) {
+          return tag.type == "ingredients";
+        }).map(function (tag) {
+          return tag.value;
+        }));
+        (0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayAppliance)(tagResult, tagList.filter(function (tag) {
+          return tag.type == "appliance";
+        }).map(function (tag) {
+          return tag.value;
+        }));
+        (0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayUtensils)(tagResult, tagList.filter(function (tag) {
+          return tag.type == "utensils";
+        }).map(function (tag) {
+          return tag.value;
+        }));
+        eventTag();
+        removeTag();
+      });
+    });
+  });
+};
+/**
+ * Suppression tag
+ */
+
+
+var removeTag = function removeTag() {
+  document.querySelectorAll(".close-tag").forEach(function (tag) {
+    tag.addEventListener("click", function (e) {
+      e.target.closest(".tag").remove();
+      tagList = tagList.filter(function (tag) {
+        return tag.value != e.target.dataset.value;
+      });
+      $searchResult.innerHTML = "";
+      filterTagSearch();
+    });
+  });
+};
+/**
+ * Filtre par la barre de recherche et les tags (ensemble)
+ */
+
+
+var filterTagSearch = function filterTagSearch() {
+  filter.recipes = _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes;
+  var result = filter.recipes;
+  var input = document.querySelector("#search-input").value;
+
+  if (input.length >= 3) {
+    result = filter.bySearch(input);
+  }
+
+  tagList.forEach(function (tag) {
+    result = filter.byTags(tag);
+  });
+  displayCards(result);
+  (0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayIngredients)(result, tagList.filter(function (tag) {
+    return tag.type == "ingredients";
+  }).map(function (tag) {
+    return tag.value;
+  }));
+  (0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayAppliance)(result, tagList.filter(function (tag) {
+    return tag.type == "appliance";
+  }).map(function (tag) {
+    return tag.value;
+  }));
+  (0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayUtensils)(result, tagList.filter(function (tag) {
+    return tag.type == "utensils";
+  }).map(function (tag) {
+    return tag.value;
+  }));
+  eventTag();
+};
+
+$searchIngredients.addEventListener("keyup", function () {
+  (0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayIngredients)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, tagList);
+  eventTag();
+});
+$searchAppliance.addEventListener("keyup", function () {
+  (0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayAppliance)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, tagList);
+  eventTag();
+});
+$searchUtensils.addEventListener("keyup", function () {
+  (0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayUtensils)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, tagList);
+});
+/**
+ * Initialisation
+ */
 
 displayCards(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
+(0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayIngredients)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
+(0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayAppliance)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
+(0,_display_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayUtensils)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
+(0,_scripts_list__WEBPACK_IMPORTED_MODULE_4__.list)();
+eventTag();
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=c261d6a1fe22e6ece0a4.js.map
+//# sourceMappingURL=e45c1682327e25357dc6.js.map
