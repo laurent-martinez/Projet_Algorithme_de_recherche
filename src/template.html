@@ -40,12 +40,12 @@
           <img id="search_picture" alt="" />
         </button>
       </form>
-
+      <div id="tags"></div>
       <div class="buttons">
         <div class="btn-group mt-4">
           <button
             type="button"
-            class="btn btn-primary dropdown-toggle"
+            class="btn btn-primary dropdown-toggle ingredientButton"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
@@ -59,13 +59,13 @@
               placeholder="Search"
               aria-label="Search"
             />
-            <ul class="ingredient_menu"></ul>
+            <ul class="lists ingredient_menu" data-category="ingredient"></ul>
           </div>
         </div>
         <div class="btn-group mt-4">
           <button
             type="button"
-            class="btn btn-success dropdown-toggle ml-4"
+            class="btn btn-success dropdown-toggle ml-4 deviceButton"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
@@ -79,13 +79,13 @@
               placeholder="Search"
               aria-label="Search"
             />
-            <ul class="device_menu"></ul>
+            <ul class="lists device_menu" data-category="device"></ul>
           </div>
         </div>
         <div class="btn-group mt-4 mr-3">
           <button
             type="button"
-            class="btn btn-danger dropdown-toggle ml-4"
+            class="btn btn-danger dropdown-toggle ml-4 ustensilButton"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
@@ -99,7 +99,7 @@
               placeholder="Search"
               aria-label="Search"
             />
-            <ul class="ustensil_menu"></ul>
+            <ul class="lists ustensil_menu" data-category="ustensil"></ul>
           </div>
         </div>
       </div>

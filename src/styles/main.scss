@@ -10,11 +10,15 @@ svg {
 
     .bg-light {
         display: flex;
-        background-color: none;
+        background-color: white;
         justify-content: center;
         align-items: center;
+        &.navbar {
+            background-color: white;
+        }
         &.navbar > .container-fluid {
             justify-content: center;
+            background-color: white;
             & .navbar-brand {
                 display: flex;
                 flex-direction: column;
@@ -154,7 +158,15 @@ svg {
     .hide {
         display: none;
     }
-
+.btn-primary {
+    background-color: #3282F7;
+}
+.btn-success {
+    background-color: #68D9A4;
+}
+.btn-danger {
+    background-color: #ED6454;
+}
 .ingredients_li,.device_li,.ustensil_li {
     cursor: pointer;
     list-style-type: none;
