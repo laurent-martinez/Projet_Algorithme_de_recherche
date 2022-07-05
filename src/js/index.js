@@ -7,8 +7,8 @@ import magnifying from "../assets/magnifying_glass.svg";
 import closeArrow from "../assets/close_arrow.svg";
 
 let initialArray = [].concat(recipes);
-let searchReduceArray = [].concat(recipes);
-let tagReduceArray = [].concat(recipes);
+let searchReduceArray = [];
+let tagReduceArray = [];
 let allIngredients = [];
 let allAppliances = [];
 let allUstensils = [];
@@ -38,11 +38,6 @@ const init = () => {
   searchTags("ingredients");
   searchTags("device");
   searchTags("ustensil");
-  searchFilter();
-  // getCategoriesTag("ingredients", allIngredients);
-  // getCategoriesTag("device", allAppliances);
-  // getCategoriesTag("ustensil", allUstensils);
-  removeTags();
 };
 
 //// display ///////////
@@ -95,6 +90,7 @@ ingredientButton.addEventListener("click", (e) => {
   if (tagList.length <= 0 && searchBar.value.length < 3) {
     getIngredientsList(recipes);
   }
+  searchTags("ingredients");
   manageTags();
   // getCategoriesTag("ingredients", allIngredients, ingredientMenu);
 });
@@ -103,6 +99,7 @@ deviceButton.addEventListener("click", (e) => {
   if (tagList.length <= 0 && searchBar.value.length < 3) {
     getAppliancesList(recipes);
   }
+  searchTags("device");
   manageTags();
   // getCategoriesTag("device", allAppliances, devices);
 });
@@ -111,6 +108,7 @@ ustensilButton.addEventListener("click", (e) => {
   if (tagList.length <= 0 && searchBar.value.length < 3) {
     getUstensilList(recipes);
   }
+  searchTags("ustensil");
   manageTags();
   // getCategoriesTag("ustensil", allUstensils, ustensilsM);
 });
@@ -128,12 +126,16 @@ const getIngredientsList = (recipes) => {
   });
 
   let ingredientsList = [...new Set(allIngredients)].sort();
-
+  tagList.forEach((tag) => {
+    ingredientsList = ingredientsList.filter((ing) => !tag.includes(ing));
+  });
   ingredientsList.forEach((ingredient) => {
-    ingredientMenu.insertAdjacentHTML(
-      "beforeend",
-      `<li class="list ingredients_li">${normalize(ingredient)}</li>`
-    );
+    // ingredientMenu.insertAdjacentHTML(
+    //   "beforeend",
+    ingredientMenu.innerHTML += `<li class="list ingredients_li">${normalize(
+      ingredient
+    )}</li>`;
+    // );
   });
 };
 
@@ -148,6 +150,9 @@ const getAppliancesList = (recipes) => {
   });
 
   let applianceList = [...new Set(allAppliances)].sort();
+  tagList.forEach((tag) => {
+    applianceList = applianceList.filter((app) => !tag.includes(app));
+  });
 
   applianceList.forEach((app) => {
     devices.insertAdjacentHTML(
@@ -167,55 +172,103 @@ const getUstensilList = (recipes) => {
     utensils.forEach((ustensil) => allUstensils.push(normalize(ustensil)));
   });
   allUstensils = [...allUstensils];
-  let utensilsList = [...new Set(allUstensils)].sort();
-
-  utensilsList.forEach((utensil) => {
+  let ustensilsList = [...new Set(allUstensils)].sort();
+  tagList.forEach((tag) => {
+    ustensilsList = ustensilsList.filter((us) => !tag.includes(us));
+  });
+  ustensilsList.forEach((ustensil) => {
     ustensilsM.insertAdjacentHTML(
       "beforeend",
-      `<li class="list ustensil_li">${normalize(utensil)}</li>`
+      `<li class="list ustensil_li">${normalize(ustensil)}</li>`
     );
   });
 };
 // filter cards by searchBar /////////
 // select card with input search value //
 
-export const searchFilter = () => {
-  searchBar.addEventListener("input", (e) => {
-    e.preventDefault();
+searchBar.addEventListener("input", () => {
+  recipeCardsContainer.innerHTML = "";
+  searchFilter();
+});
 
-    const value = normalize(e.target.value);
+const searchFilter = () => {
+  recipeCardsContainer.innerHTML = "";
+  const value = normalize(searchBar.value);
+  recipeCardsContainer.innerHTML = "";
+  if (value.length >= 3 && tagList.length < 1) {
+    searchReduceArray = recipes.filter(
+      (recipe) =>
+        recipe.ingredients
+          .map((item) => normalize(item.ingredient))
+          .includes(value) ||
+        recipe.name.includes(value) ||
+        recipe.description.includes(value)
+    );
+    console.log(searchReduceArray);
+    buildCard(searchReduceArray);
+    getAppliancesList(searchReduceArray);
+    getUstensilList(searchReduceArray);
+    getIngredientsList(searchReduceArray);
+  } else if (value.length >= 3 && tagList.length > 0) {
+    console.log("kikou", searchReduceArray);
+    searchReduceArray = tagReduceArray.filter(
+      (recipe) =>
+        recipe.ingredients
+          .map((item) => normalize(item.ingredient))
+          .includes(value) ||
+        recipe.name.includes(value) ||
+        recipe.description.includes(value)
+    );
+    removeTags();
+    console.log("coucou", tagReduceArray);
 
-    setTimeout(() => {
-      if (value.length >= 3) {
-        searchReduceArray = searchReduceArray.filter(
-          (recipe) =>
-            recipe.ingredients
-              .map((item) => normalize(item.ingredient))
-              .includes(value) ||
-            recipe.name.includes(value) ||
-            recipe.description.includes(value)
-        );
-        console.log(searchReduceArray);
-        tagFilter();
-        buildCard(searchReduceArray);
-        getAppliancesList(searchReduceArray);
-        getUstensilList(searchReduceArray);
-        getIngredientsList(searchReduceArray);
-        // getCategoriesTag("ingredients", allIngredients);
-        // getCategoriesTag("device", allAppliances);
-        // getCategoriesTag("ustensil", allUstensils);
-        manageTags();
-        removeTags();
-      } else if (value.length < 3 && tagList.length == 0) {
-        console.log(searchReduceArray);
-        buildCard(recipes);
-      } else if (value.length < 3 && tagList.length > 0) {
-        manageTags();
-      }
-    }, 650);
-  });
+    console.log("Recoucou", tagReduceArray);
+    buildCard(searchReduceArray);
+    getIngredientsList(searchReduceArray);
+    getAppliancesList(searchReduceArray);
+    getUstensilList(searchReduceArray);
+  } else if (value.length < 3 && tagList.length < 1) {
+    buildCard(recipes);
+    getAppliancesList(recipes);
+    getUstensilList(recipes);
+    getIngredientsList(recipes);
+  } else if (value.length < 3 && tagList.length > 0) {
+    removeTags();
+
+    console.log("coucou", tagReduceArray);
+    tagFilter();
+    console.log("Recoucou", tagReduceArray);
+    buildCard(tagReduceArray);
+    getIngredientsList(tagReduceArray);
+    getAppliancesList(tagReduceArray);
+    getUstensilList(tagReduceArray);
+  }
 };
 
+// const searchFilter = () => {
+//   recipeCardsContainer.innerHTML = "";
+//   buildCard(recipes);
+//   const value = normalize(searchBar.value);
+
+//   setTimeout(() => {
+//     if (value.length >= 3) {
+//       searchReduceArray = searchReduceArray.filter(
+//         (recipe) =>
+//           recipe.ingredients
+//             .map((item) => normalize(item.ingredient))
+//             .includes(value) ||
+//           recipe.name.includes(value) ||
+//           recipe.description.includes(value)
+//       );
+//     }
+//   }, 650);
+//   tagFilter();
+//   buildCard(searchReduceArray);
+//   getAppliancesList(searchReduceArray);
+//   getUstensilList(searchReduceArray);
+//   getIngredientsList(searchReduceArray);
+//   manageTags();
+// };
 // find the tags who match the search//
 const searchTags = (category) => {
   const searchBox = document.querySelector(`.${category}_search`);
@@ -275,55 +328,159 @@ const searchTags = (category) => {
 //   // console.log(tabs);
 // };
 
+/////// create tags & push to taglist/////////
 const manageTags = () => {
   lists.forEach((list) => {
+    console.log(list.dataset.category);
     list.querySelectorAll(".list").forEach((item) => {
       item.addEventListener("click", (e) => {
+        e.target.remove();
         const tag = e.target.textContent;
-        tagList.push(tag); // je mets dans mon tableau tous ce que je click
-        console.log(tagList);
+        tagList.push(tag);
         tagList = [...new Set(tagList)];
+        tagList.map((tagVal) => {
+          console.log(tagVal);
+          if (normalize(tagVal).includes(normalize(tag))) {
+            switch (list.dataset.category) {
+              case "ingredient":
+                tags.insertAdjacentHTML(
+                  "beforeend",
+                  `
+                  <button class="tags ingredient_style">${tagVal}<img class="closeTag" src="${closeArrow}"  data-value="${tagVal}"></img></button>
+                  `
+                );
+                break;
+              case "device":
+                tags.insertAdjacentHTML(
+                  "beforeend",
+                  `
+                  <button class="tags device_style">${tagVal}<img class="closeTag" src="${closeArrow}"  data-value="${tagVal}"></img></button>
+                  `
+                );
+                break;
+              case "ustensil":
+                tags.insertAdjacentHTML(
+                  "beforeend",
+                  `
+                  <button class="tags ustensil_style">${tagVal}<img class="closeTag" src="${closeArrow}"  data-value="${tagVal}"></img></button>
+                  `
+                );
+                break;
+              default:
+                console.log("error categories undefined");
+            }
+            lists.innerHTML = "";
+          }
+        });
+        // if (tagList.includes(tag)) {
 
-        tags.innerHTML += `
-                  <button class="tags">${tag}<img class="closeTag" src="${closeArrow}"  data-value="${tag}"></img></button>
-              `;
-        tagFilter();
-        removeCards();
-
-        buildCard(searchReduceArray);
-        getIngredientsList(searchReduceArray);
-        getAppliancesList(searchReduceArray);
-        getUstensilList(searchReduceArray);
-        manageTags();
+        // }
+        console.log(tagList);
         removeTags();
+        tagFilter();
+        searchFilter();
       });
     });
   });
 };
 
 ///// filter by tags ///////
+// const tagFilter = () => {
+//   return tagList.forEach((tag) => {
+//     if (tag) {
+//       searchReduceArray = searchReduceArray.filter(
+//         (e) =>
+//           e.ingredients.some((item) =>
+//             normalize(item.ingredient).includes(normalize(tag))
+//           ) ||
+//           normalize(e.appliance).includes(normalize(tag)) ||
+//           e.ustensils.some((item) => normalize(item).includes(normalize(tag)))
+//       );
+//       console.log("tagf", searchReduceArray);
+//     }
+//   });
+// };
+
 const tagFilter = () => {
-  return tagList.forEach((tag) => {
-    if (tag) {
-      searchReduceArray = searchReduceArray.filter(
-        (e) =>
-          e.ingredients.some((item) =>
-            normalize(item.ingredient).includes(normalize(tag))
-          ) ||
-          normalize(e.appliance).includes(normalize(tag)) ||
-          e.ustensils.some((item) => normalize(item).includes(normalize(tag)))
-      );
-      console.log("tagf", searchReduceArray);
+  return tagList.map((tag) => {
+    console.log(searchReduceArray);
+    if (tagReduceArray.length < 1 && searchReduceArray.length < 1) {
+      tagReduceArray = [].concat(recipes);
+    } else if (tagReduceArray.length < 1 && searchReduceArray.length > 0) {
+      tagReduceArray = [].concat(searchReduceArray);
+    }
+    console.log("hééééé", searchReduceArray);
+    console.log("oooohhh", tagReduceArray);
+    if (tagReduceArray.length > 0) {
+      if (tag) {
+        tagReduceArray = tagReduceArray.filter(
+          (e) =>
+            e.ingredients.some((item) =>
+              normalize(item.ingredient).includes(normalize(tag))
+            ) ||
+            normalize(e.appliance).includes(normalize(tag)) ||
+            e.ustensils.some((item) => normalize(item).includes(normalize(tag)))
+        );
+        console.log(tagReduceArray);
+        return tagReduceArray;
+      }
     }
   });
 };
+// fonction qui va reconstruire une liste de recettes selon les TAGS choisis
+// function tagRecipes() {
+//   if (reducedRecipesArray.length === 0) { reducedRecipesArray = [].concat(recipesArray); }
+//   reducedTagRecipesArray = [].concat(reducedRecipesArray);
+//   selectedIngredientsArray.forEach((selectedIngredient) => reducedTagRecipesArray = reducedTagRecipesArray.filter((item) => item.ingredients.some(
+//     (ingredient) => ingredient.ingredient == selectedIngredient,
+//   )));
+
+//   selectedApplianceArray.forEach((selectedAppliance) =>
+//     reducedTagRecipesArray = reducedTagRecipesArray.filter((item) =>
+//       item.appliance == selectedAppliance));
+
+//   selectedUstensilsArray.forEach((selectedUstensil) =>
+//     reducedTagRecipesArray = reducedTagRecipesArray.filter((item) =>
+//       item.ustensils.some(
+//         (ustensil) => ustensil == selectedUstensil)));
+//   console.log('reducedTagRecipesArray APRES TAGS', reducedTagRecipesArray);
+// }
+// const tagFilter = (tag) => {
+//   switch (tag.category) {
+//     case "ingredient":
+//       searchReduceArray = searchReduceArray.filter((recipe) => {
+//         return recipe.ingredients.some((ingredient) => {
+//           return ingredient.ingredient
+//             .toLowerCase()
+//             .includes(tag.value.toLowerCase());
+//         });
+//       });
+//       break;
+
+//     case "device":
+//       searchReduceArray = searchReduceArray.filter((recipe) => {
+//         return recipe.appliance.toLowerCase().includes(tag.value.toLowerCase());
+//       });
+//       break;
+
+//     case "utensil":
+//       searchReduceArray = searchReduceArray.filter((recipe) => {
+//         return recipe.ustensils.some((ustensil) => {
+//           return ustensil.toLowerCase().includes(tag.value.toLowerCase());
+//         });
+//       });
+//       break;
+//   }
+
+//   return searchReduceArray;
+// };
 ///// remove tags //////
 // const removeTags = () => {
 //   let clsTag = document.querySelectorAll(".closeTag");
 //   for (let item of clsTag) {
 //     item.addEventListener("click", (e) => {
-//       let tagVal = normalize(e.target.closest(".tags").textContent);
-//       tagList = tagList.filter((tag) => tag !== tagVal);
+// let tagVal = normalize(e.target.closest(".tags").textContent);
+// tagList = tagList.filter((tag) => tag !== tagVal);
 //       tagFilter();
 //       buildCard(searchReduceArray);
 //       e.target.closest(".tags").remove();
@@ -333,9 +490,10 @@ const tagFilter = () => {
 
 const removeTags = () => {
   document.querySelectorAll(".closeTag").forEach((tag) => {
-    tag.addEventListener("click", (e) => {
+    tag.addEventListener("mousedown", (e) => {
+      let tagVal = normalize(e.target.closest(".tags").textContent);
+      tagList = tagList.filter((tag) => tag !== tagVal);
       e.target.closest(".tags").remove();
-      tagList = tagList.filter((tag) => tag.value != e.target.dataset.value);
       searchFilter();
     });
   });
@@ -344,5 +502,5 @@ const removeCards = () => {
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => card.remove());
 };
-/*****centralisation de toutes les fonctions *******/
+/*****initialisation de toutes les valeurs(cards, lists) *******/
 init();

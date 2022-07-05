@@ -1411,7 +1411,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  width: 100vw;\n  height: 100vh;\n}\n\nimg,\nsvg {\n  vertical-align: baseline;\n}\n\n.bg-light {\n  display: flex;\n  background-color: white;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar {\n  background-color: white;\n}\n.bg-light.navbar > .container-fluid {\n  justify-content: center;\n  background-color: white;\n}\n.bg-light.navbar > .container-fluid .navbar-brand {\n  display: flex;\n  flex-direction: column;\n  text-decoration: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1 {\n  font-size: 36px;\n  color: #D04F4F;\n  font-weight: 700;\n  font-family: \"DM Sans\", sans-serif;\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:link {\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:visited {\n  text-decoration: none;\n}\n\n.form-inline {\n  display: flex;\n  height: 69px;\n  border-radius: 5px;\n}\n.form-inline .form-control {\n  font-family: \"Lato\", sans-serif;\n  font-weight: 400;\n  font-size: 18px;\n  background-color: #e7e7e7;\n  border-radius: 5px 0 0 5px;\n  border: none;\n  outline: none;\n}\n.form-inline .form-control:focus {\n  border: none;\n  outline: none;\n}\n.form-inline .btn-outline-success {\n  border: none;\n  background-color: #e7e7e7;\n  border-radius: 0px 5px 5px 0px;\n}\n\n.custom-container {\n  margin: 0 150px;\n}\n\n.btn-group {\n  margin-right: 15px;\n}\n\n.dropdown-toggle {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  font-family: \"Lato\", sans-serif;\n  color: white;\n  font-weight: 700;\n  font-size: 18px;\n  width: 170px;\n  height: 69px;\n}\n.dropdown-toggle::after {\n  appearance: none;\n  border: none;\n  content: \"\";\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") center center no-repeat;\n  width: 16px;\n  height: 10px;\n}\n\n.recipes {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n  gap: 0.25rem;\n  margin-top: 1rem;\n}\n\n.recipe {\n  height: auto;\n  background-color: #E7E7E7;\n  margin: 15px;\n  display: flex;\n  align-items: center;\n  text-overflow: ellipsis;\n}\n.recipe__title {\n  font-family: Lato;\n  font-size: 22px;\n  font-weight: 400;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__timer {\n  text-align: right;\n  align-items: center;\n}\n.recipe__timing {\n  font-family: Lato;\n  font-size: 18px;\n  font-weight: 700;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n}\n.recipe__ingredients {\n  font-family: Roboto;\n  width: 100%;\n  font-weight: 400;\n  line-height: 16px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__ingredients__title {\n  font-weight: 700;\n}\n.recipe__instructions {\n  font-family: Roboto;\n  width: 100%;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 12px;\n  letter-spacing: 0em;\n  text-align: left;\n  text-align: justify;\n}\n\n.hide {\n  display: none;\n}\n\n.btn-primary {\n  background-color: #3282F7;\n}\n\n.btn-success {\n  background-color: #68D9A4;\n}\n\n.btn-danger {\n  background-color: #ED6454;\n}\n\n.ingredients_li, .device_li, .ustensil_li {\n  cursor: pointer;\n  list-style-type: none;\n  padding: 10px;\n}\n.ingredients_li:hover, .device_li:hover, .ustensil_li:hover {\n  background-color: #E7E7E7;\n}\n\n.tags {\n  padding: 15px;\n  margin: 10px;\n  outline: none;\n  appearance: none;\n  border: none;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  padding-left: 10px;\n  background-color: #3282F7;\n  color: white;\n}\n.tags.closeTag {\n  width: 20px;\n  height: 20px;\n  padding-left: 10px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AACA;EACI,YAAA;EACA,aAAA;AAAJ;;AAEA;;EAEE,wBAAA;AACF;;AAEI;EACI,aAAA;EACA,uBAAA;EACA,uBAAA;EACA,mBAAA;AACR;AAAQ;EACI,uBAAA;AAEZ;AAAQ;EACI,uBAAA;EACA,uBAAA;AAEZ;AADY;EACI,aAAA;EACA,sBAAA;EACA,qBAAA;EACA,uBAAA;EACA,mBAAA;AAGhB;AAFgB;EACI,eAAA;EACA,cAAA;EACA,gBAAA;EAEA,kCAAA;EACA,qBAAA;AAGpB;AAFoB;EACI,qBAAA;AAIxB;AAFoB;EACI,qBAAA;AAIxB;;AAII;EACI,aAAA;EACA,YAAA;EACA,kBAAA;AADR;AAEQ;EACI,+BAAA;EACA,gBAAA;EACA,eAAA;EACA,yBAAA;EACA,0BAAA;EACA,YAAA;EACA,aAAA;AAAZ;AACY;EACI,YAAA;EACA,aAAA;AAChB;AAEQ;EACI,YAAA;EACA,yBAAA;EACA,8BAAA;AAAZ;;AAIE;EACI,eAAA;AADN;;AAGE;EACI,kBAAA;AAAN;;AAEI;EACI,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,+BAAA;EACA,YAAA;EACA,gBAAA;EACA,eAAA;EACA,YAAA;EACA,YAAA;AACR;AAAQ;EACI,gBAAA;EACA,YAAA;EACA,WAAA;EACA,2EAAA;EACA,WAAA;EACA,YAAA;AAEZ;;AAEI;EACG,aAAA;EACA,4DAAA;EACA,YAAA;EACA,gBAAA;AACP;;AACQ;EACI,YAAA;EACA,yBAAA;EACA,YAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AAEZ;AADY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAGhB;AAAY;EACI,iBAAA;EACF,mBAAA;AAEd;AAAY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;AAEhB;AACY;EACI,mBAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;AAAgB;EACI,gBAAA;AAEpB;AACY;EACI,mBAAA;EACA,WAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;;AAII;EACI,aAAA;AADR;;AAGA;EACI,yBAAA;AAAJ;;AAEA;EACI,yBAAA;AACJ;;AACA;EACI,yBAAA;AAEJ;;AAAA;EACI,eAAA;EACA,qBAAA;EACA,aAAA;AAGJ;AAFI;EACI,yBAAA;AAIR;;AAAA;EACC,aAAA;EACA,YAAA;EACA,aAAA;EACA,gBAAA;EACA,YAAA;EACA,kBAAA;EACA,aAAA;EAED,mBAAA;EACA,kBAAA;EACA,yBAAA;EACC,YAAA;AAED;AAAI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;AAER","sourcesContent":["\nbody {\n    width: 100vw;\n    height: 100vh;\n}\nimg,\nsvg {\n  vertical-align:baseline;\n}\n\n    .bg-light {\n        display: flex;\n        background-color: white;\n        justify-content: center;\n        align-items: center;\n        &.navbar {\n            background-color: white;\n        }\n        &.navbar > .container-fluid {\n            justify-content: center;\n            background-color: white;\n            & .navbar-brand {\n                display: flex;\n                flex-direction: column;\n                text-decoration: none;\n                justify-content: center;\n                align-items: center;\n                & h1 {\n                    font-size: 36px;\n                    color: #D04F4F;\n                    font-weight: 700\n                    ;\n                    font-family: 'DM Sans', sans-serif;\n                    text-decoration: none;\n                    &:link {\n                        text-decoration: none;\n                    }\n                    &:visited {\n                        text-decoration: none;\n                    }\n                }\n         \n            }\n        }\n    }\n   \n    .form-inline {\n        display: flex;\n        height: 69px;\n        border-radius: 5px;\n        & .form-control {\n            font-family: 'Lato', sans-serif;\n            font-weight: 400;\n            font-size: 18px;\n            background-color: #e7e7e7;\n            border-radius: 5px 0 0 5px;\n            border: none;\n            outline: none;\n            &:focus {\n                border: none;\n                outline: none;\n            }\n        }\n        & .btn-outline-success {\n            border: none;\n            background-color: #e7e7e7;\n            border-radius: 0px 5px 5px 0px;\n        }\n    }\n\n  .custom-container {\n      margin: 0 150px;\n  }\n  .btn-group {\n      margin-right: 15px;\n  }\n    .dropdown-toggle {\n        display: flex;\n        justify-content: space-around;\n        align-items: center;\n        font-family: 'Lato', sans-serif;\n        color: white;\n        font-weight: 700;\n        font-size: 18px;\n        width: 170px;\n        height: 69px;\n        &::after {\n            appearance: none;\n            border: none;\n            content: \"\";\n            background: url(\"../assets/arrow_down.svg\") center center no-repeat;\n            width: 16px;\n            height: 10px;\n        }\n    }\n\n    .recipes {\n       display: grid;\n       grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n       gap: .25rem;\n       margin-top: 1rem;\n    }\n        .recipe {\n            height: auto;\n            background-color: #E7E7E7;\n            margin: 15px;\n            display: flex;\n            align-items: center;\n            text-overflow: ellipsis;\n            &__title {\n                font-family: Lato;\n                font-size: 22px;\n                font-weight: 400;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n\n            }\n            &__timer {\n                text-align: right;\n              align-items: center;\n            }\n            &__timing {\n                font-family: Lato;\n                font-size: 18px;\n                font-weight: 700;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n\n            }\n            &__ingredients {\n                font-family: Roboto;\n                width: 100%;\n                font-weight: 400;\n                line-height: 16px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n                &__title {\n                    font-weight: 700;\n                }\n            }\n            &__instructions {\n                font-family: Roboto;\n                width: 100%;\n                font-size: 12px;\n                font-weight: 400;\n                line-height: 12px;\n                letter-spacing: 0em;\n                text-align: left;\n                text-align: justify;\n            }\n        }\n    \n\n    .hide {\n        display: none;\n    }\n.btn-primary {\n    background-color: #3282F7;\n}\n.btn-success {\n    background-color: #68D9A4;\n}\n.btn-danger {\n    background-color: #ED6454;\n}\n.ingredients_li,.device_li,.ustensil_li {\n    cursor: pointer;\n    list-style-type: none;\n    padding: 10px;\n    &:hover {\n        background-color: #E7E7E7;\n    }\n}\n\n.tags {\n padding: 15px;\n margin: 10px;\n outline: none;\n appearance: none;\n border: none;\n border-radius: 5px;\n display: flex;\n \nalign-items: center;\npadding-left: 10px;\nbackground-color:  #3282F7;\n color: white;\n    \n    &.closeTag {\n        width: 20px;\n        height: 20px;\n        padding-left: 10px;\n    }\n\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  width: 100vw;\n  height: 100vh;\n}\n\nimg,\nsvg {\n  vertical-align: baseline;\n}\n\n.bg-light {\n  display: flex;\n  background-color: white;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar {\n  background-color: white;\n}\n.bg-light.navbar > .container-fluid {\n  justify-content: center;\n  background-color: white;\n}\n.bg-light.navbar > .container-fluid .navbar-brand {\n  display: flex;\n  flex-direction: column;\n  text-decoration: none;\n  justify-content: center;\n  align-items: center;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1 {\n  font-size: 36px;\n  color: #D04F4F;\n  font-weight: 700;\n  font-family: \"DM Sans\", sans-serif;\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:link {\n  text-decoration: none;\n}\n.bg-light.navbar > .container-fluid .navbar-brand h1:visited {\n  text-decoration: none;\n}\n\n.form-inline {\n  display: flex;\n  height: 69px;\n  border-radius: 5px;\n}\n.form-inline .form-control {\n  font-family: \"Lato\", sans-serif;\n  font-weight: 400;\n  font-size: 18px;\n  background-color: #e7e7e7;\n  border-radius: 5px 0 0 5px;\n  border: none;\n  outline: none;\n}\n.form-inline .form-control:focus {\n  border: none;\n  outline: none;\n}\n.form-inline .btn-outline-success {\n  border: none;\n  background-color: #e7e7e7;\n  border-radius: 0px 5px 5px 0px;\n}\n\n.custom-container {\n  margin: 0 150px;\n}\n\n.btn-group {\n  margin-right: 15px;\n}\n\n.dropdown-toggle {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  font-family: \"Lato\", sans-serif;\n  color: white;\n  font-weight: 700;\n  font-size: 18px;\n  width: 170px;\n  height: 69px;\n}\n.dropdown-toggle::after {\n  appearance: none;\n  border: none;\n  content: \"\";\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") center center no-repeat;\n  width: 16px;\n  height: 10px;\n}\n\n.recipes {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n  gap: 0.25rem;\n  margin-top: 1rem;\n}\n\n.recipe {\n  height: auto;\n  background-color: #E7E7E7;\n  margin: 15px;\n  display: flex;\n  align-items: center;\n  text-overflow: ellipsis;\n}\n.recipe__title {\n  font-family: Lato;\n  font-size: 22px;\n  font-weight: 400;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__timer {\n  text-align: right;\n  align-items: center;\n}\n.recipe__timing {\n  font-family: Lato;\n  font-size: 18px;\n  font-weight: 700;\n  line-height: 22px;\n  letter-spacing: 0em;\n  text-align: left;\n}\n.recipe__ingredients {\n  font-family: Roboto;\n  width: 100%;\n  font-weight: 400;\n  line-height: 16px;\n  letter-spacing: 0em;\n  text-align: left;\n  white-space: nowrap;\n}\n.recipe__ingredients__title {\n  font-weight: 700;\n}\n.recipe__instructions {\n  font-family: Roboto;\n  width: 100%;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 12px;\n  letter-spacing: 0em;\n  text-align: left;\n  text-align: justify;\n}\n\n.hide {\n  display: none;\n}\n\n.btn-primary, .ingredient_style, .ing, .ingredients_search {\n  background-color: #3282F7;\n  color: white;\n  border: none;\n  font-family: \"Lato\", sans-serif;\n  line-height: 21.6px;\n  font-weight: 400;\n}\n\n.btn-success, .device_style, .dev, .device_search {\n  background-color: #68D9A4;\n  color: white;\n  border: none;\n  font-family: \"Lato\", sans-serif;\n  line-height: 21.6px;\n  font-weight: 400;\n}\n\n.btn-danger, .ustensil_style, .us, .ustensil_search {\n  background-color: #ED6454;\n  color: white;\n  border: none;\n  font-family: \"Lato\", sans-serif;\n  line-height: 21.6px;\n  font-weight: 400;\n}\n\n.ingredients_li, .device_li, .ustensil_li {\n  cursor: pointer;\n  list-style-type: none;\n  padding: 10px;\n}\n.ingredients_li:hover, .device_li:hover, .ustensil_li:hover {\n  color: #d0cccc;\n}\n\n.ustensil_menu, .ingredient_menu, .device_menu {\n  display: flex;\n  flex-direction: column;\n  flex-wrap: wrap;\n  width: 700px;\n  height: 397px;\n  overflow-x: scroll;\n}\n\n#tags {\n  display: flex;\n}\n\n.tags {\n  padding: 15px;\n  margin: 10px;\n  outline: none;\n  appearance: none;\n  border: none;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  padding-left: 10px;\n  color: white;\n}\n.tags.closeTag {\n  width: 20px;\n  height: 20px;\n  padding-left: 10px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AACA;EACI,YAAA;EACA,aAAA;AAAJ;;AAEA;;EAEE,wBAAA;AACF;;AAEI;EACI,aAAA;EACA,uBAAA;EACA,uBAAA;EACA,mBAAA;AACR;AAAQ;EACI,uBAAA;AAEZ;AAAQ;EACI,uBAAA;EACA,uBAAA;AAEZ;AADY;EACI,aAAA;EACA,sBAAA;EACA,qBAAA;EACA,uBAAA;EACA,mBAAA;AAGhB;AAFgB;EACI,eAAA;EACA,cAAA;EACA,gBAAA;EAEA,kCAAA;EACA,qBAAA;AAGpB;AAFoB;EACI,qBAAA;AAIxB;AAFoB;EACI,qBAAA;AAIxB;;AAII;EACI,aAAA;EACA,YAAA;EACA,kBAAA;AADR;AAEQ;EACI,+BAAA;EACA,gBAAA;EACA,eAAA;EACA,yBAAA;EACA,0BAAA;EACA,YAAA;EACA,aAAA;AAAZ;AACY;EACI,YAAA;EACA,aAAA;AAChB;AAEQ;EACI,YAAA;EACA,yBAAA;EACA,8BAAA;AAAZ;;AAIE;EACI,eAAA;AADN;;AAGE;EACI,kBAAA;AAAN;;AAEI;EACI,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,+BAAA;EACA,YAAA;EACA,gBAAA;EACA,eAAA;EACA,YAAA;EACA,YAAA;AACR;AAAQ;EACI,gBAAA;EACA,YAAA;EACA,WAAA;EACA,2EAAA;EACA,WAAA;EACA,YAAA;AAEZ;;AAEI;EACG,aAAA;EACA,4DAAA;EACA,YAAA;EACA,gBAAA;AACP;;AACQ;EACI,YAAA;EACA,yBAAA;EACA,YAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AAEZ;AADY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAGhB;AAAY;EACI,iBAAA;EACF,mBAAA;AAEd;AAAY;EACI,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;AAEhB;AACY;EACI,mBAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;AAAgB;EACI,gBAAA;AAEpB;AACY;EACI,mBAAA;EACA,WAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,mBAAA;EACA,gBAAA;EACA,mBAAA;AAChB;;AAII;EACI,aAAA;AADR;;AAGA;EACI,yBAAA;EACA,YAAA;EACA,YAAA;EACA,+BAAA;EACA,mBAAA;EACA,gBAAA;AAAJ;;AAEA;EACI,yBAAA;EACA,YAAA;EACA,YAAA;EACA,+BAAA;EACA,mBAAA;EACA,gBAAA;AACJ;;AACA;EACI,yBAAA;EACA,YAAA;EACA,YAAA;EACA,+BAAA;EACA,mBAAA;EACA,gBAAA;AAEJ;;AAAA;EACI,eAAA;EACA,qBAAA;EACA,aAAA;AAGJ;AADI;EACI,cAAA;AAGR;;AAAA;EACI,aAAA;EACA,sBAAA;EACA,eAAA;EACA,YAAA;EACA,aAAA;EACA,kBAAA;AAGJ;;AADA;EACI,aAAA;AAIJ;;AAFA;EACC,aAAA;EACA,YAAA;EACA,aAAA;EACA,gBAAA;EACA,YAAA;EACA,kBAAA;EACA,aAAA;EAED,mBAAA;EACA,kBAAA;EACC,YAAA;AAID;AAFI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;AAIR","sourcesContent":["\nbody {\n    width: 100vw;\n    height: 100vh;\n}\nimg,\nsvg {\n  vertical-align:baseline;\n}\n\n    .bg-light {\n        display: flex;\n        background-color: white;\n        justify-content: center;\n        align-items: center;\n        &.navbar {\n            background-color: white;\n        }\n        &.navbar > .container-fluid {\n            justify-content: center;\n            background-color: white;\n            & .navbar-brand {\n                display: flex;\n                flex-direction: column;\n                text-decoration: none;\n                justify-content: center;\n                align-items: center;\n                & h1 {\n                    font-size: 36px;\n                    color: #D04F4F;\n                    font-weight: 700\n                    ;\n                    font-family: 'DM Sans', sans-serif;\n                    text-decoration: none;\n                    &:link {\n                        text-decoration: none;\n                    }\n                    &:visited {\n                        text-decoration: none;\n                    }\n                }\n         \n            }\n        }\n    }\n   \n    .form-inline {\n        display: flex;\n        height: 69px;\n        border-radius: 5px;\n        & .form-control {\n            font-family: 'Lato', sans-serif;\n            font-weight: 400;\n            font-size: 18px;\n            background-color: #e7e7e7;\n            border-radius: 5px 0 0 5px;\n            border: none;\n            outline: none;\n            &:focus {\n                border: none;\n                outline: none;\n            }\n        }\n        & .btn-outline-success {\n            border: none;\n            background-color: #e7e7e7;\n            border-radius: 0px 5px 5px 0px;\n        }\n    }\n\n  .custom-container {\n      margin: 0 150px;\n  }\n  .btn-group {\n      margin-right: 15px;\n  }\n    .dropdown-toggle {\n        display: flex;\n        justify-content: space-around;\n        align-items: center;\n        font-family: 'Lato', sans-serif;\n        color: white;\n        font-weight: 700;\n        font-size: 18px;\n        width: 170px;\n        height: 69px;\n        &::after {\n            appearance: none;\n            border: none;\n            content: \"\";\n            background: url(\"../assets/arrow_down.svg\") center center no-repeat;\n            width: 16px;\n            height: 10px;\n        }\n    }\n\n    .recipes {\n       display: grid;\n       grid-template-columns: repeat(auto-fill, minmax(410px, 2fr));\n       gap: .25rem;\n       margin-top: 1rem;\n    }\n        .recipe {\n            height: auto;\n            background-color: #E7E7E7;\n            margin: 15px;\n            display: flex;\n            align-items: center;\n            text-overflow: ellipsis;\n            &__title {\n                font-family: Lato;\n                font-size: 22px;\n                font-weight: 400;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n\n            }\n            &__timer {\n                text-align: right;\n              align-items: center;\n            }\n            &__timing {\n                font-family: Lato;\n                font-size: 18px;\n                font-weight: 700;\n                line-height: 22px;\n                letter-spacing: 0em;\n                text-align: left;\n\n            }\n            &__ingredients {\n                font-family: Roboto;\n                width: 100%;\n                font-weight: 400;\n                line-height: 16px;\n                letter-spacing: 0em;\n                text-align: left;\n                white-space: nowrap;\n                &__title {\n                    font-weight: 700;\n                }\n            }\n            &__instructions {\n                font-family: Roboto;\n                width: 100%;\n                font-size: 12px;\n                font-weight: 400;\n                line-height: 12px;\n                letter-spacing: 0em;\n                text-align: left;\n                text-align: justify;\n            }\n        }\n    \n\n    .hide {\n        display: none;\n    }\n.btn-primary,.ingredient_style,.ing,.ingredients_search {\n    background-color: #3282F7;\n    color: white;\n    border: none;\n    font-family: 'Lato', sans-serif;\n    line-height: 21.6px;\n    font-weight: 400;\n}\n.btn-success,.device_style,.dev,.device_search {\n    background-color: #68D9A4;\n    color: white;\n    border: none;\n    font-family: 'Lato', sans-serif;\n    line-height: 21.6px;\n    font-weight: 400;\n}\n.btn-danger,.ustensil_style,.us,.ustensil_search{\n    background-color: #ED6454;\n    color: white;\n    border: none;\n    font-family: 'Lato', sans-serif;\n    line-height: 21.6px;\n    font-weight: 400;\n}\n.ingredients_li,.device_li,.ustensil_li {\n    cursor: pointer;\n    list-style-type: none;\n    padding: 10px;\n\n    &:hover {\n        color: #d0cccc;\n    }\n}\n.ustensil_menu,.ingredient_menu,.device_menu {\n    display: flex;\n    flex-direction: column;\n    flex-wrap: wrap;\n    width: 700px;\n    height: 397px;\n    overflow-x: scroll;\n}\n#tags{\n    display: flex;\n}\n.tags {\n padding: 15px;\n margin: 10px;\n outline: none;\n appearance: none;\n border: none;\n border-radius: 5px;\n display: flex;\n \nalign-items: center;\npadding-left: 10px;\n color: white;\n    \n    &.closeTag {\n        width: 20px;\n        height: 20px;\n        padding-left: 10px;\n    }\n\n}\n\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2154,9 +2154,6 @@ var __webpack_exports__ = {};
   !*** ./src/js/index.js ***!
   \*************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "searchFilter": () => (/* binding */ searchFilter)
-/* harmony export */ });
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/main.scss */ "./src/styles/main.scss");
 /* harmony import */ var _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data/recipes.js */ "./src/js/data/recipes.js");
 /* harmony import */ var _assets_food_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/food.svg */ "./src/assets/food.svg");
@@ -2186,8 +2183,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 var initialArray = [].concat(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
-var searchReduceArray = [].concat(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
-var tagReduceArray = [].concat(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
+var searchReduceArray = [];
+var tagReduceArray = [];
 var allIngredients = [];
 var allAppliances = [];
 var allUstensils = [];
@@ -2214,11 +2211,6 @@ var init = function init() {
   searchTags("ingredients");
   searchTags("device");
   searchTags("ustensil");
-  searchFilter(); // getCategoriesTag("ingredients", allIngredients);
-  // getCategoriesTag("device", allAppliances);
-  // getCategoriesTag("ustensil", allUstensils);
-
-  removeTags();
 }; //// display ///////////
 
 
@@ -2265,6 +2257,7 @@ ingredientButton.addEventListener("click", function (e) {
     getIngredientsList(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
   }
 
+  searchTags("ingredients");
   manageTags(); // getCategoriesTag("ingredients", allIngredients, ingredientMenu);
 });
 deviceButton.addEventListener("click", function (e) {
@@ -2272,6 +2265,7 @@ deviceButton.addEventListener("click", function (e) {
     getAppliancesList(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
   }
 
+  searchTags("device");
   manageTags(); // getCategoriesTag("device", allAppliances, devices);
 });
 ustensilButton.addEventListener("click", function (e) {
@@ -2279,6 +2273,7 @@ ustensilButton.addEventListener("click", function (e) {
     getUstensilList(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
   }
 
+  searchTags("ustensil");
   manageTags(); // getCategoriesTag("ustensil", allUstensils, ustensilsM);
 }); ///// ingredient-list //////////
 
@@ -2297,8 +2292,15 @@ var getIngredientsList = function getIngredientsList(recipes) {
 
   var ingredientsList = _toConsumableArray(new Set(allIngredients)).sort();
 
+  tagList.forEach(function (tag) {
+    ingredientsList = ingredientsList.filter(function (ing) {
+      return !tag.includes(ing);
+    });
+  });
   ingredientsList.forEach(function (ingredient) {
-    ingredientMenu.insertAdjacentHTML("beforeend", "<li class=\"list ingredients_li\">".concat(normalize(ingredient), "</li>"));
+    // ingredientMenu.insertAdjacentHTML(
+    //   "beforeend",
+    ingredientMenu.innerHTML += "<li class=\"list ingredients_li\">".concat(normalize(ingredient), "</li>"); // );
   });
 }; //////// device list //////////////////////////////////
 
@@ -2313,6 +2315,11 @@ var getAppliancesList = function getAppliancesList(recipes) {
 
   var applianceList = _toConsumableArray(new Set(allAppliances)).sort();
 
+  tagList.forEach(function (tag) {
+    applianceList = applianceList.filter(function (app) {
+      return !tag.includes(app);
+    });
+  });
   applianceList.forEach(function (app) {
     devices.insertAdjacentHTML("beforeend", "<li class=\"list device_li\">".concat(normalize(app), "</li>"));
   });
@@ -2330,46 +2337,95 @@ var getUstensilList = function getUstensilList(recipes) {
   });
   allUstensils = _toConsumableArray(allUstensils);
 
-  var utensilsList = _toConsumableArray(new Set(allUstensils)).sort();
+  var ustensilsList = _toConsumableArray(new Set(allUstensils)).sort();
 
-  utensilsList.forEach(function (utensil) {
-    ustensilsM.insertAdjacentHTML("beforeend", "<li class=\"list ustensil_li\">".concat(normalize(utensil), "</li>"));
+  tagList.forEach(function (tag) {
+    ustensilsList = ustensilsList.filter(function (us) {
+      return !tag.includes(us);
+    });
+  });
+  ustensilsList.forEach(function (ustensil) {
+    ustensilsM.insertAdjacentHTML("beforeend", "<li class=\"list ustensil_li\">".concat(normalize(ustensil), "</li>"));
   });
 }; // filter cards by searchBar /////////
 // select card with input search value //
 
 
-var searchFilter = function searchFilter() {
-  searchBar.addEventListener("input", function (e) {
-    e.preventDefault();
-    var value = normalize(e.target.value);
-    setTimeout(function () {
-      if (value.length >= 3) {
-        searchReduceArray = searchReduceArray.filter(function (recipe) {
-          return recipe.ingredients.map(function (item) {
-            return normalize(item.ingredient);
-          }).includes(value) || recipe.name.includes(value) || recipe.description.includes(value);
-        });
-        console.log(searchReduceArray);
-        tagFilter();
-        buildCard(searchReduceArray);
-        getAppliancesList(searchReduceArray);
-        getUstensilList(searchReduceArray);
-        getIngredientsList(searchReduceArray); // getCategoriesTag("ingredients", allIngredients);
-        // getCategoriesTag("device", allAppliances);
-        // getCategoriesTag("ustensil", allUstensils);
+searchBar.addEventListener("input", function () {
+  recipeCardsContainer.innerHTML = "";
+  searchFilter();
+});
 
-        manageTags();
-        removeTags();
-      } else if (value.length < 3 && tagList.length == 0) {
-        console.log(searchReduceArray);
-        buildCard(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
-      } else if (value.length < 3 && tagList.length > 0) {
-        manageTags();
-      }
-    }, 650);
-  });
-}; // find the tags who match the search//
+var searchFilter = function searchFilter() {
+  recipeCardsContainer.innerHTML = "";
+  var value = normalize(searchBar.value);
+  recipeCardsContainer.innerHTML = "";
+
+  if (value.length >= 3 && tagList.length < 1) {
+    searchReduceArray = _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.filter(function (recipe) {
+      return recipe.ingredients.map(function (item) {
+        return normalize(item.ingredient);
+      }).includes(value) || recipe.name.includes(value) || recipe.description.includes(value);
+    });
+    console.log(searchReduceArray);
+    buildCard(searchReduceArray);
+    getAppliancesList(searchReduceArray);
+    getUstensilList(searchReduceArray);
+    getIngredientsList(searchReduceArray);
+  } else if (value.length >= 3 && tagList.length > 0) {
+    console.log("kikou", searchReduceArray);
+    searchReduceArray = tagReduceArray.filter(function (recipe) {
+      return recipe.ingredients.map(function (item) {
+        return normalize(item.ingredient);
+      }).includes(value) || recipe.name.includes(value) || recipe.description.includes(value);
+    });
+    removeTags();
+    console.log("coucou", tagReduceArray);
+    console.log("Recoucou", tagReduceArray);
+    buildCard(searchReduceArray);
+    getIngredientsList(searchReduceArray);
+    getAppliancesList(searchReduceArray);
+    getUstensilList(searchReduceArray);
+  } else if (value.length < 3 && tagList.length < 1) {
+    buildCard(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
+    getAppliancesList(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
+    getUstensilList(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
+    getIngredientsList(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
+  } else if (value.length < 3 && tagList.length > 0) {
+    removeTags();
+    console.log("coucou", tagReduceArray);
+    tagFilter();
+    console.log("Recoucou", tagReduceArray);
+    buildCard(tagReduceArray);
+    getIngredientsList(tagReduceArray);
+    getAppliancesList(tagReduceArray);
+    getUstensilList(tagReduceArray);
+  }
+}; // const searchFilter = () => {
+//   recipeCardsContainer.innerHTML = "";
+//   buildCard(recipes);
+//   const value = normalize(searchBar.value);
+//   setTimeout(() => {
+//     if (value.length >= 3) {
+//       searchReduceArray = searchReduceArray.filter(
+//         (recipe) =>
+//           recipe.ingredients
+//             .map((item) => normalize(item.ingredient))
+//             .includes(value) ||
+//           recipe.name.includes(value) ||
+//           recipe.description.includes(value)
+//       );
+//     }
+//   }, 650);
+//   tagFilter();
+//   buildCard(searchReduceArray);
+//   getAppliancesList(searchReduceArray);
+//   getUstensilList(searchReduceArray);
+//   getIngredientsList(searchReduceArray);
+//   manageTags();
+// };
+// find the tags who match the search//
+
 
 var searchTags = function searchTags(category) {
   var searchBox = document.querySelector(".".concat(category, "_search"));
@@ -2436,52 +2492,145 @@ var searchTags = function searchTags(category) {
 //   // console.log("array après la sélection des tags", searchReduceArray);
 //   // console.log(tabs);
 // };
+/////// create tags & push to taglist/////////
 
 
 var manageTags = function manageTags() {
   lists.forEach(function (list) {
+    console.log(list.dataset.category);
     list.querySelectorAll(".list").forEach(function (item) {
       item.addEventListener("click", function (e) {
+        e.target.remove();
         var tag = e.target.textContent;
-        tagList.push(tag); // je mets dans mon tableau tous ce que je click
+        tagList.push(tag);
+        tagList = _toConsumableArray(new Set(tagList));
+        tagList.map(function (tagVal) {
+          console.log(tagVal);
+
+          if (normalize(tagVal).includes(normalize(tag))) {
+            switch (list.dataset.category) {
+              case "ingredient":
+                tags.insertAdjacentHTML("beforeend", "\n                  <button class=\"tags ingredient_style\">".concat(tagVal, "<img class=\"closeTag\" src=\"").concat(_assets_close_arrow_svg__WEBPACK_IMPORTED_MODULE_6__, "\"  data-value=\"").concat(tagVal, "\"></img></button>\n                  "));
+                break;
+
+              case "device":
+                tags.insertAdjacentHTML("beforeend", "\n                  <button class=\"tags device_style\">".concat(tagVal, "<img class=\"closeTag\" src=\"").concat(_assets_close_arrow_svg__WEBPACK_IMPORTED_MODULE_6__, "\"  data-value=\"").concat(tagVal, "\"></img></button>\n                  "));
+                break;
+
+              case "ustensil":
+                tags.insertAdjacentHTML("beforeend", "\n                  <button class=\"tags ustensil_style\">".concat(tagVal, "<img class=\"closeTag\" src=\"").concat(_assets_close_arrow_svg__WEBPACK_IMPORTED_MODULE_6__, "\"  data-value=\"").concat(tagVal, "\"></img></button>\n                  "));
+                break;
+
+              default:
+                console.log("error categories undefined");
+            }
+
+            lists.innerHTML = "";
+          }
+        }); // if (tagList.includes(tag)) {
+        // }
 
         console.log(tagList);
-        tagList = _toConsumableArray(new Set(tagList));
-        tags.innerHTML += "\n                  <button class=\"tags\">".concat(tag, "<img class=\"closeTag\" src=\"").concat(_assets_close_arrow_svg__WEBPACK_IMPORTED_MODULE_6__, "\"  data-value=\"").concat(tag, "\"></img></button>\n              ");
-        tagFilter();
-        removeCards();
-        buildCard(searchReduceArray);
-        getIngredientsList(searchReduceArray);
-        getAppliancesList(searchReduceArray);
-        getUstensilList(searchReduceArray);
-        manageTags();
         removeTags();
+        tagFilter();
+        searchFilter();
       });
     });
   });
 }; ///// filter by tags ///////
+// const tagFilter = () => {
+//   return tagList.forEach((tag) => {
+//     if (tag) {
+//       searchReduceArray = searchReduceArray.filter(
+//         (e) =>
+//           e.ingredients.some((item) =>
+//             normalize(item.ingredient).includes(normalize(tag))
+//           ) ||
+//           normalize(e.appliance).includes(normalize(tag)) ||
+//           e.ustensils.some((item) => normalize(item).includes(normalize(tag)))
+//       );
+//       console.log("tagf", searchReduceArray);
+//     }
+//   });
+// };
 
 
 var tagFilter = function tagFilter() {
-  return tagList.forEach(function (tag) {
-    if (tag) {
-      searchReduceArray = searchReduceArray.filter(function (e) {
-        return e.ingredients.some(function (item) {
-          return normalize(item.ingredient).includes(normalize(tag));
-        }) || normalize(e.appliance).includes(normalize(tag)) || e.ustensils.some(function (item) {
-          return normalize(item).includes(normalize(tag));
+  return tagList.map(function (tag) {
+    console.log(searchReduceArray);
+
+    if (tagReduceArray.length < 1 && searchReduceArray.length < 1) {
+      tagReduceArray = [].concat(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
+    } else if (tagReduceArray.length < 1 && searchReduceArray.length > 0) {
+      tagReduceArray = [].concat(searchReduceArray);
+    }
+
+    console.log("hééééé", searchReduceArray);
+    console.log("oooohhh", tagReduceArray);
+
+    if (tagReduceArray.length > 0) {
+      if (tag) {
+        tagReduceArray = tagReduceArray.filter(function (e) {
+          return e.ingredients.some(function (item) {
+            return normalize(item.ingredient).includes(normalize(tag));
+          }) || normalize(e.appliance).includes(normalize(tag)) || e.ustensils.some(function (item) {
+            return normalize(item).includes(normalize(tag));
+          });
         });
-      });
-      console.log("tagf", searchReduceArray);
+        console.log(tagReduceArray);
+        return tagReduceArray;
+      }
     }
   });
-}; ///// remove tags //////
+}; // fonction qui va reconstruire une liste de recettes selon les TAGS choisis
+// function tagRecipes() {
+//   if (reducedRecipesArray.length === 0) { reducedRecipesArray = [].concat(recipesArray); }
+//   reducedTagRecipesArray = [].concat(reducedRecipesArray);
+//   selectedIngredientsArray.forEach((selectedIngredient) => reducedTagRecipesArray = reducedTagRecipesArray.filter((item) => item.ingredients.some(
+//     (ingredient) => ingredient.ingredient == selectedIngredient,
+//   )));
+//   selectedApplianceArray.forEach((selectedAppliance) =>
+//     reducedTagRecipesArray = reducedTagRecipesArray.filter((item) =>
+//       item.appliance == selectedAppliance));
+//   selectedUstensilsArray.forEach((selectedUstensil) =>
+//     reducedTagRecipesArray = reducedTagRecipesArray.filter((item) =>
+//       item.ustensils.some(
+//         (ustensil) => ustensil == selectedUstensil)));
+//   console.log('reducedTagRecipesArray APRES TAGS', reducedTagRecipesArray);
+// }
+// const tagFilter = (tag) => {
+//   switch (tag.category) {
+//     case "ingredient":
+//       searchReduceArray = searchReduceArray.filter((recipe) => {
+//         return recipe.ingredients.some((ingredient) => {
+//           return ingredient.ingredient
+//             .toLowerCase()
+//             .includes(tag.value.toLowerCase());
+//         });
+//       });
+//       break;
+//     case "device":
+//       searchReduceArray = searchReduceArray.filter((recipe) => {
+//         return recipe.appliance.toLowerCase().includes(tag.value.toLowerCase());
+//       });
+//       break;
+//     case "utensil":
+//       searchReduceArray = searchReduceArray.filter((recipe) => {
+//         return recipe.ustensils.some((ustensil) => {
+//           return ustensil.toLowerCase().includes(tag.value.toLowerCase());
+//         });
+//       });
+//       break;
+//   }
+//   return searchReduceArray;
+// };
+///// remove tags //////
 // const removeTags = () => {
 //   let clsTag = document.querySelectorAll(".closeTag");
 //   for (let item of clsTag) {
 //     item.addEventListener("click", (e) => {
-//       let tagVal = normalize(e.target.closest(".tags").textContent);
-//       tagList = tagList.filter((tag) => tag !== tagVal);
+// let tagVal = normalize(e.target.closest(".tags").textContent);
+// tagList = tagList.filter((tag) => tag !== tagVal);
 //       tagFilter();
 //       buildCard(searchReduceArray);
 //       e.target.closest(".tags").remove();
@@ -2492,11 +2641,12 @@ var tagFilter = function tagFilter() {
 
 var removeTags = function removeTags() {
   document.querySelectorAll(".closeTag").forEach(function (tag) {
-    tag.addEventListener("click", function (e) {
-      e.target.closest(".tags").remove();
+    tag.addEventListener("mousedown", function (e) {
+      var tagVal = normalize(e.target.closest(".tags").textContent);
       tagList = tagList.filter(function (tag) {
-        return tag.value != e.target.dataset.value;
+        return tag !== tagVal;
       });
+      e.target.closest(".tags").remove();
       searchFilter();
     });
   });
@@ -2508,7 +2658,7 @@ var removeCards = function removeCards() {
     return card.remove();
   });
 };
-/*****centralisation de toutes les fonctions *******/
+/*****initialisation de toutes les valeurs(cards, lists) *******/
 
 
 init();
@@ -2516,4 +2666,4 @@ init();
 
 /******/ })()
 ;
-//# sourceMappingURL=b87b2f9f9dee3e43fc68.js.map
+//# sourceMappingURL=a1dc92756fe19910b918.js.map

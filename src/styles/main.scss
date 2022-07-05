@@ -158,24 +158,50 @@ svg {
     .hide {
         display: none;
     }
-.btn-primary {
+.btn-primary,.ingredient_style,.ing,.ingredients_search {
     background-color: #3282F7;
+    color: white;
+    border: none;
+    font-family: 'Lato', sans-serif;
+    line-height: 21.6px;
+    font-weight: 400;
 }
-.btn-success {
+.btn-success,.device_style,.dev,.device_search {
     background-color: #68D9A4;
+    color: white;
+    border: none;
+    font-family: 'Lato', sans-serif;
+    line-height: 21.6px;
+    font-weight: 400;
 }
-.btn-danger {
+.btn-danger,.ustensil_style,.us,.ustensil_search{
     background-color: #ED6454;
+    color: white;
+    border: none;
+    font-family: 'Lato', sans-serif;
+    line-height: 21.6px;
+    font-weight: 400;
 }
 .ingredients_li,.device_li,.ustensil_li {
     cursor: pointer;
     list-style-type: none;
     padding: 10px;
+
     &:hover {
-        background-color: #E7E7E7;
+        color: #d0cccc;
     }
 }
-
+.ustensil_menu,.ingredient_menu,.device_menu {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 700px;
+    height: 397px;
+    overflow-x: scroll;
+}
+#tags{
+    display: flex;
+}
 .tags {
  padding: 15px;
  margin: 10px;
@@ -187,7 +213,6 @@ svg {
  
 align-items: center;
 padding-left: 10px;
-background-color:  #3282F7;
  color: white;
     
     &.closeTag {
@@ -197,3 +222,4 @@ background-color:  #3282F7;
     }
 
 }
+
