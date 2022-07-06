@@ -2183,7 +2183,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 var initialArray = [].concat(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
-var searchReduceArray = [];
+var searchReduceArray = [].concat(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
 var tagReduceArray = [];
 var allIngredients = [];
 var allAppliances = [];
@@ -2354,77 +2354,91 @@ var getUstensilList = function getUstensilList(recipes) {
 searchBar.addEventListener("input", function () {
   recipeCardsContainer.innerHTML = "";
   searchFilter();
-});
+}); // const searchFilter = () => {
+//   recipeCardsContainer.innerHTML = "";
+//   const value = normalize(searchBar.value);
+//   recipeCardsContainer.innerHTML = "";
+//   if (value.length >= 3 && tagList.length < 1) {
+//     searchReduceArray = recipes.filter(
+//       (recipe) =>
+//         recipe.ingredients
+//           .map((item) => normalize(item.ingredient))
+//           .includes(value) ||
+//         recipe.name.includes(value) ||
+//         recipe.description.includes(value)
+//     );
+//     console.log(searchReduceArray);
+//     buildCard(searchReduceArray);
+//     getAppliancesList(searchReduceArray);
+//     getUstensilList(searchReduceArray);
+//     getIngredientsList(searchReduceArray);
+//   } else if (value.length >= 3 && tagList.length > 0) {
+//     console.log("kikou", searchReduceArray);
+//     searchReduceArray = tagReduceArray.filter(
+//       (recipe) =>
+//         recipe.ingredients
+//           .map((item) => normalize(item.ingredient))
+//           .includes(value) ||
+//         recipe.name.includes(value) ||
+//         recipe.description.includes(value)
+//     );
+//     removeTags();
+//     console.log("coucou", tagReduceArray);
+//     console.log("Recoucou", tagReduceArray);
+//     buildCard(searchReduceArray);
+//     getIngredientsList(searchReduceArray);
+//     getAppliancesList(searchReduceArray);
+//     getUstensilList(searchReduceArray);
+//   } else if (value.length < 3 && tagList.length < 1) {
+//     buildCard(recipes);
+//     getAppliancesList(recipes);
+//     getUstensilList(recipes);
+//     getIngredientsList(recipes);
+//   } else if (value.length < 3 && tagList.length > 0) {
+//     removeTags();
+//     console.log("coucou", tagReduceArray);
+//     tagFilter();
+//     console.log("Recoucou", tagReduceArray);
+//     buildCard(tagReduceArray);
+//     getIngredientsList(tagReduceArray);
+//     getAppliancesList(tagReduceArray);
+//     getUstensilList(tagReduceArray);
+//   }
+// };
 
 var searchFilter = function searchFilter() {
   recipeCardsContainer.innerHTML = "";
+  buildCard(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
   var value = normalize(searchBar.value);
-  recipeCardsContainer.innerHTML = "";
 
-  if (value.length >= 3 && tagList.length < 1) {
-    searchReduceArray = _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes.filter(function (recipe) {
+  if (value.length >= 3) {
+    searchReduceArray = searchReduceArray.filter(function (recipe) {
       return recipe.ingredients.map(function (item) {
         return normalize(item.ingredient);
       }).includes(value) || recipe.name.includes(value) || recipe.description.includes(value);
     });
-    console.log(searchReduceArray);
-    buildCard(searchReduceArray);
-    getAppliancesList(searchReduceArray);
-    getUstensilList(searchReduceArray);
-    getIngredientsList(searchReduceArray);
-  } else if (value.length >= 3 && tagList.length > 0) {
-    console.log("kikou", searchReduceArray);
-    searchReduceArray = tagReduceArray.filter(function (recipe) {
-      return recipe.ingredients.map(function (item) {
-        return normalize(item.ingredient);
-      }).includes(value) || recipe.name.includes(value) || recipe.description.includes(value);
-    });
-    removeTags();
-    console.log("coucou", tagReduceArray);
-    console.log("Recoucou", tagReduceArray);
-    buildCard(searchReduceArray);
-    getIngredientsList(searchReduceArray);
-    getAppliancesList(searchReduceArray);
-    getUstensilList(searchReduceArray);
-  } else if (value.length < 3 && tagList.length < 1) {
+  } else if (value.length < 3) {
     buildCard(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
     getAppliancesList(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
     getUstensilList(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
     getIngredientsList(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
-  } else if (value.length < 3 && tagList.length > 0) {
-    removeTags();
-    console.log("coucou", tagReduceArray);
-    tagFilter();
-    console.log("Recoucou", tagReduceArray);
-    buildCard(tagReduceArray);
-    getIngredientsList(tagReduceArray);
-    getAppliancesList(tagReduceArray);
-    getUstensilList(tagReduceArray);
   }
-}; // const searchFilter = () => {
-//   recipeCardsContainer.innerHTML = "";
-//   buildCard(recipes);
-//   const value = normalize(searchBar.value);
-//   setTimeout(() => {
-//     if (value.length >= 3) {
-//       searchReduceArray = searchReduceArray.filter(
-//         (recipe) =>
-//           recipe.ingredients
-//             .map((item) => normalize(item.ingredient))
-//             .includes(value) ||
-//           recipe.name.includes(value) ||
-//           recipe.description.includes(value)
-//       );
-//     }
-//   }, 650);
-//   tagFilter();
-//   buildCard(searchReduceArray);
-//   getAppliancesList(searchReduceArray);
-//   getUstensilList(searchReduceArray);
-//   getIngredientsList(searchReduceArray);
-//   manageTags();
-// };
-// find the tags who match the search//
+
+  tagList.forEach(function (tag) {
+    searchReduceArray = searchReduceArray.filter(function (e) {
+      return e.ingredients.some(function (item) {
+        return normalize(item.ingredient).includes(normalize(tag));
+      }) || normalize(e.appliance).includes(normalize(tag)) || e.ustensils.some(function (item) {
+        return normalize(item).includes(normalize(tag));
+      });
+    });
+  });
+  buildCard(searchReduceArray);
+  getAppliancesList(searchReduceArray);
+  getUstensilList(searchReduceArray);
+  getIngredientsList(searchReduceArray);
+  manageTags();
+}; // find the tags who match the search//
 
 
 var searchTags = function searchTags(category) {
@@ -2524,16 +2538,16 @@ var manageTags = function manageTags() {
               default:
                 console.log("error categories undefined");
             }
-
-            lists.innerHTML = "";
           }
-        }); // if (tagList.includes(tag)) {
-        // }
-
-        console.log(tagList);
-        removeTags();
+        });
         tagFilter();
-        searchFilter();
+        lists.innerHTML = "";
+        buildCard(tagReduceArray);
+        getIngredientsList(tagReduceArray);
+        getUstensilList(tagReduceArray);
+        getAppliancesList(tagReduceArray);
+        manageTags();
+        removeTags();
       });
     });
   });
@@ -2564,9 +2578,6 @@ var tagFilter = function tagFilter() {
     } else if (tagReduceArray.length < 1 && searchReduceArray.length > 0) {
       tagReduceArray = [].concat(searchReduceArray);
     }
-
-    console.log("hééééé", searchReduceArray);
-    console.log("oooohhh", tagReduceArray);
 
     if (tagReduceArray.length > 0) {
       if (tag) {
@@ -2666,4 +2677,4 @@ init();
 
 /******/ })()
 ;
-//# sourceMappingURL=a1dc92756fe19910b918.js.map
+//# sourceMappingURL=a0d204831d0eac8bfbc3.js.map

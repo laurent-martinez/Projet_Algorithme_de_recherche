@@ -7,7 +7,7 @@ import magnifying from "../assets/magnifying_glass.svg";
 import closeArrow from "../assets/close_arrow.svg";
 
 let initialArray = [].concat(recipes);
-let searchReduceArray = [];
+let searchReduceArray = [].concat(recipes);
 let tagReduceArray = [];
 let allIngredients = [];
 let allAppliances = [];
@@ -191,84 +191,97 @@ searchBar.addEventListener("input", () => {
   searchFilter();
 });
 
+// const searchFilter = () => {
+//   recipeCardsContainer.innerHTML = "";
+//   const value = normalize(searchBar.value);
+//   recipeCardsContainer.innerHTML = "";
+//   if (value.length >= 3 && tagList.length < 1) {
+//     searchReduceArray = recipes.filter(
+//       (recipe) =>
+//         recipe.ingredients
+//           .map((item) => normalize(item.ingredient))
+//           .includes(value) ||
+//         recipe.name.includes(value) ||
+//         recipe.description.includes(value)
+//     );
+//     console.log(searchReduceArray);
+//     buildCard(searchReduceArray);
+//     getAppliancesList(searchReduceArray);
+//     getUstensilList(searchReduceArray);
+//     getIngredientsList(searchReduceArray);
+//   } else if (value.length >= 3 && tagList.length > 0) {
+//     console.log("kikou", searchReduceArray);
+//     searchReduceArray = tagReduceArray.filter(
+//       (recipe) =>
+//         recipe.ingredients
+//           .map((item) => normalize(item.ingredient))
+//           .includes(value) ||
+//         recipe.name.includes(value) ||
+//         recipe.description.includes(value)
+//     );
+//     removeTags();
+//     console.log("coucou", tagReduceArray);
+
+//     console.log("Recoucou", tagReduceArray);
+//     buildCard(searchReduceArray);
+//     getIngredientsList(searchReduceArray);
+//     getAppliancesList(searchReduceArray);
+//     getUstensilList(searchReduceArray);
+//   } else if (value.length < 3 && tagList.length < 1) {
+//     buildCard(recipes);
+//     getAppliancesList(recipes);
+//     getUstensilList(recipes);
+//     getIngredientsList(recipes);
+//   } else if (value.length < 3 && tagList.length > 0) {
+//     removeTags();
+
+//     console.log("coucou", tagReduceArray);
+//     tagFilter();
+//     console.log("Recoucou", tagReduceArray);
+//     buildCard(tagReduceArray);
+//     getIngredientsList(tagReduceArray);
+//     getAppliancesList(tagReduceArray);
+//     getUstensilList(tagReduceArray);
+//   }
+// };
+
 const searchFilter = () => {
   recipeCardsContainer.innerHTML = "";
+  buildCard(recipes);
   const value = normalize(searchBar.value);
-  recipeCardsContainer.innerHTML = "";
-  if (value.length >= 3 && tagList.length < 1) {
-    searchReduceArray = recipes.filter(
-      (recipe) =>
-        recipe.ingredients
-          .map((item) => normalize(item.ingredient))
-          .includes(value) ||
-        recipe.name.includes(value) ||
-        recipe.description.includes(value)
-    );
-    console.log(searchReduceArray);
-    buildCard(searchReduceArray);
-    getAppliancesList(searchReduceArray);
-    getUstensilList(searchReduceArray);
-    getIngredientsList(searchReduceArray);
-  } else if (value.length >= 3 && tagList.length > 0) {
-    console.log("kikou", searchReduceArray);
-    searchReduceArray = tagReduceArray.filter(
-      (recipe) =>
-        recipe.ingredients
-          .map((item) => normalize(item.ingredient))
-          .includes(value) ||
-        recipe.name.includes(value) ||
-        recipe.description.includes(value)
-    );
-    removeTags();
-    console.log("coucou", tagReduceArray);
 
-    console.log("Recoucou", tagReduceArray);
-    buildCard(searchReduceArray);
-    getIngredientsList(searchReduceArray);
-    getAppliancesList(searchReduceArray);
-    getUstensilList(searchReduceArray);
-  } else if (value.length < 3 && tagList.length < 1) {
+  if (value.length >= 3) {
+    searchReduceArray = searchReduceArray.filter(
+      (recipe) =>
+        recipe.ingredients
+          .map((item) => normalize(item.ingredient))
+          .includes(value) ||
+        recipe.name.includes(value) ||
+        recipe.description.includes(value)
+    );
+  } else if (value.length < 3) {
     buildCard(recipes);
     getAppliancesList(recipes);
     getUstensilList(recipes);
     getIngredientsList(recipes);
-  } else if (value.length < 3 && tagList.length > 0) {
-    removeTags();
-
-    console.log("coucou", tagReduceArray);
-    tagFilter();
-    console.log("Recoucou", tagReduceArray);
-    buildCard(tagReduceArray);
-    getIngredientsList(tagReduceArray);
-    getAppliancesList(tagReduceArray);
-    getUstensilList(tagReduceArray);
   }
+  tagList.forEach((tag) => {
+    searchReduceArray = searchReduceArray.filter(
+      (e) =>
+        e.ingredients.some((item) =>
+          normalize(item.ingredient).includes(normalize(tag))
+        ) ||
+        normalize(e.appliance).includes(normalize(tag)) ||
+        e.ustensils.some((item) => normalize(item).includes(normalize(tag)))
+    );
+  });
+  buildCard(searchReduceArray);
+  getAppliancesList(searchReduceArray);
+  getUstensilList(searchReduceArray);
+  getIngredientsList(searchReduceArray);
+  manageTags();
 };
 
-// const searchFilter = () => {
-//   recipeCardsContainer.innerHTML = "";
-//   buildCard(recipes);
-//   const value = normalize(searchBar.value);
-
-//   setTimeout(() => {
-//     if (value.length >= 3) {
-//       searchReduceArray = searchReduceArray.filter(
-//         (recipe) =>
-//           recipe.ingredients
-//             .map((item) => normalize(item.ingredient))
-//             .includes(value) ||
-//           recipe.name.includes(value) ||
-//           recipe.description.includes(value)
-//       );
-//     }
-//   }, 650);
-//   tagFilter();
-//   buildCard(searchReduceArray);
-//   getAppliancesList(searchReduceArray);
-//   getUstensilList(searchReduceArray);
-//   getIngredientsList(searchReduceArray);
-//   manageTags();
-// };
 // find the tags who match the search//
 const searchTags = (category) => {
   const searchBox = document.querySelector(`.${category}_search`);
@@ -369,16 +382,16 @@ const manageTags = () => {
               default:
                 console.log("error categories undefined");
             }
-            lists.innerHTML = "";
           }
         });
-        // if (tagList.includes(tag)) {
-
-        // }
-        console.log(tagList);
-        removeTags();
         tagFilter();
-        searchFilter();
+        lists.innerHTML = "";
+        buildCard(tagReduceArray);
+        getIngredientsList(tagReduceArray);
+        getUstensilList(tagReduceArray);
+        getAppliancesList(tagReduceArray);
+        manageTags();
+        removeTags();
       });
     });
   });
@@ -409,8 +422,6 @@ const tagFilter = () => {
     } else if (tagReduceArray.length < 1 && searchReduceArray.length > 0) {
       tagReduceArray = [].concat(searchReduceArray);
     }
-    console.log("hééééé", searchReduceArray);
-    console.log("oooohhh", tagReduceArray);
     if (tagReduceArray.length > 0) {
       if (tag) {
         tagReduceArray = tagReduceArray.filter(
