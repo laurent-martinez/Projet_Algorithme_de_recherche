@@ -1,10 +1,10 @@
 // DOM
-const $ingredientsResult = document.querySelector("#list-ingredients-result");
-const $applianceResult = document.querySelector("#list-appliance-result");
-const $utensilsResult = document.querySelector("#list-utensils-result");
+const ingredientsResult = document.querySelector("#list-ingredients-result");
+const applianceResult = document.querySelector("#list-appliance-result");
+const utensilsResult = document.querySelector("#list-utensils-result");
 
 export const displayIngredients = (recipes, tagIngredients) => {
-  $ingredientsResult.innerHTML = "";
+  ingredientsResult.innerHTML = "";
   let ingredientsArray = [];
 
   recipes.forEach((recipe) => {
@@ -23,7 +23,7 @@ export const displayIngredients = (recipes, tagIngredients) => {
   );
 
   ingredientsList.forEach((ingredient) => {
-    $ingredientsResult.insertAdjacentHTML(
+    ingredientsResult.insertAdjacentHTML(
       "beforeend",
       `<p class="item-list item-ingredients">${ingredient}</p>`
     );
@@ -31,7 +31,7 @@ export const displayIngredients = (recipes, tagIngredients) => {
 };
 
 export const displayAppliance = (recipes, tagAppliance) => {
-  $applianceResult.innerHTML = "";
+  applianceResult.innerHTML = "";
   let applianceArray = [];
 
   recipes.filter((recipe) => {
@@ -49,7 +49,7 @@ export const displayAppliance = (recipes, tagAppliance) => {
   );
 
   applianceList.forEach((appliance) => {
-    $applianceResult.insertAdjacentHTML(
+    applianceResult.insertAdjacentHTML(
       "beforeend",
       `<p class="item-list item-appliance">${appliance}</p>`
     );
@@ -57,7 +57,7 @@ export const displayAppliance = (recipes, tagAppliance) => {
 };
 
 export const displayUtensils = (recipes, tagUtensils) => {
-  $utensilsResult.innerHTML = "";
+  utensilsResult.innerHTML = "";
   let utensilsArray = [];
 
   recipes.map((recipe) => {
@@ -75,7 +75,7 @@ export const displayUtensils = (recipes, tagUtensils) => {
   );
 
   utensilsList.forEach((utensil) => {
-    $utensilsResult.insertAdjacentHTML(
+    utensilsResult.insertAdjacentHTML(
       "beforeend",
       `<p class="item-list item-utensils">${utensil}</p>`
     );

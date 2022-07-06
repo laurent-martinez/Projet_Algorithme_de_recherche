@@ -8,13 +8,13 @@ import { list } from "./scripts/list";
 import { Filter } from "./scripts/class/Filter";
 
 // DOM
-const $searchInput = document.querySelector("#search-input");
-const $searchResult = document.querySelector("#search-result");
-const $searchIngredients = document.querySelector("#search-ingredients");
-const $searchAppliance = document.querySelector("#search-appliance");
-const $searchUtensils = document.querySelector("#search-utensils");
-const $tags = document.querySelector("#tags");
-const $listResult = document.querySelectorAll(".list-result");
+const searchInput = document.querySelector("#search-input");
+const searchResult = document.querySelector("#search-result");
+const searchIngredients = document.querySelector("#search-ingredients");
+const searchAppliance = document.querySelector("#search-appliance");
+const searchUtensils = document.querySelector("#search-utensils");
+const tags = document.querySelector("#tags");
+const listResult = document.querySelectorAll(".list-result");
 
 // CLASS
 const filter = new Filter(recipes);
@@ -34,8 +34,8 @@ const displayCards = (recipes) => {
 /**
  * Search bar
  */
-$searchInput.addEventListener("keyup", () => {
-  $searchResult.innerHTML = "";
+searchInput.addEventListener("keyup", () => {
+  searchResult.innerHTML = "";
   filterTagSearch();
 });
 
@@ -43,7 +43,7 @@ $searchInput.addEventListener("keyup", () => {
  * Gestion des tags
  */
 const eventTag = () => {
-  $listResult.forEach((list) => {
+  listResult.forEach((list) => {
     list.querySelectorAll(".item-list").forEach((itemList) => {
       itemList.addEventListener("click", (e) => {
         const tag = {
@@ -52,11 +52,11 @@ const eventTag = () => {
           type: e.target.closest(".list-result").dataset.type, // je vais chercher data-type de mon html(ingredients, apparatus ou utensils)
         };
         tagList.push(tag); // je mets dans mon tableau tous ce que je click
-        $tags.innerHTML += `
+        tags.innerHTML += `
                     <button class="tag tag-${tag.type}">${tag.value}<i class="fa-solid fa-xmark close-tag" data-value="${tag.value}"></i></button>
                 `;
         const tagResult = filter.byTags(tag); // je trie avec ma class Filter
-        $searchResult.innerHTML = ""; // je vide les résultas qui ne correspondent pas
+        searchResult.innerHTML = ""; // je vide les résultas qui ne correspondent pas
 
         displayCards(tagResult);
         displayIngredients(
@@ -92,7 +92,7 @@ const removeTag = () => {
     tag.addEventListener("click", (e) => {
       e.target.closest(".tag").remove();
       tagList = tagList.filter((tag) => tag.value != e.target.dataset.value);
-      $searchResult.innerHTML = "";
+      searchResult.innerHTML = "";
       filterTagSearch();
     });
   });
@@ -127,17 +127,17 @@ const filterTagSearch = () => {
   eventTag();
 };
 
-$searchIngredients.addEventListener("keyup", () => {
+searchIngredients.addEventListener("keyup", () => {
   displayIngredients(recipes, tagList);
   eventTag();
 });
 
-$searchAppliance.addEventListener("keyup", () => {
+searchAppliance.addEventListener("keyup", () => {
   displayAppliance(recipes, tagList);
   eventTag();
 });
 
-$searchUtensils.addEventListener("keyup", () => {
+searchUtensils.addEventListener("keyup", () => {
   displayUtensils(recipes, tagList);
 });
 

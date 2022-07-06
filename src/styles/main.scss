@@ -288,20 +288,20 @@ MOBILE
   }
   
   #list-ingredients-result {
-    // background-color: var(--primary);
+     background-color: var(--primary);
     width: 420px;
     height: 290px;
     overflow-x: scroll;
   }
   
   #list-appliance-result {
-    // background-color: var(--secondary);
+     background-color: var(--secondary);
     width: 230px;
     height: 290px;
   }
   
   #list-utensils-result {
-    // background-color: var(--tertiary);
+     background-color: var(--tertiary);
     width: 440px;
     height: 290px;
     overflow-x: scroll;
@@ -337,10 +337,10 @@ MOBILE
   }
   
   .item-list {
-    padding: 5px 10px 5px 10px;
-    // color: rgb(240, 245, 250);
-    color: black;
+    padding: 5px 20px 5px 20px;
+     color: rgb(240, 245, 250);
     display: inline-block;
+    margin-bottom: 0;
   }
   
   .item-ingredients:hover {
@@ -365,11 +365,13 @@ MOBILE
   }
   
   .tag {
+    display: flex;
+    justify-content: space-between;
     color: var(--white);
-    padding: 10px 15px 10px 15px;
+    padding:10px 15px;
     border-radius: 5px;
     border-style: none;
-    margin: 5px 10px 5px 0px;
+    margin: 5px 10px 5px 5px;
     align-items: center;
   }
   
