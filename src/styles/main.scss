@@ -289,20 +289,21 @@ MOBILE
   
   #list-ingredients-result {
      background-color: var(--primary);
-    width: 420px;
+    width: 500px;
     height: 290px;
     overflow-x: scroll;
+    
   }
   
   #list-appliance-result {
      background-color: var(--secondary);
-    width: 440px;
+    width: 500px;
     height: 290px;
   }
   
   #list-utensils-result {
      background-color: var(--tertiary);
-    width: 440px;
+    width: 500px;
     height: 290px;
     overflow-x: scroll;
   }

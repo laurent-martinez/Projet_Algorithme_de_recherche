@@ -150,3 +150,22 @@ displayAppliance(recipes, []);
 displayUtensils(recipes, []);
 list();
 eventTag();
+
+let moyenne = [];
+setTimeout(() => {
+  for (let i = 0; i < 50; i++) {
+    let start = performance.now();
+    filterTagSearch();
+    moyenne.push(performance.now() - start);
+  }
+  console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
+}, 350);
+
+// setTimeout(() => {
+//   for (let i = 0; i < 50; i++) {
+//     let start = performance.now();
+//     filterTagSearch();
+//     moyenne.push(performance.now() - start);
+//   }
+//   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
+// }, 350);
