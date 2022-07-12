@@ -44,8 +44,7 @@ STRUCTURE
 #container{
     display: flex;
     flex-direction: column;
-    width: 80%;
-    max-width: 1200px;
+    width: 85%;
     margin: 0 auto; 
 }
 /***************************************************
@@ -120,12 +119,15 @@ MOBILE
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 20px;
+    padding: 15px 0;
   }
   
   #title {
     color: #d04f4f;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 38px;
+    font-family: 'DM Sans', sans-serif;
+    line-height: 46.87px;
   }
   
   li {
@@ -149,33 +151,46 @@ MOBILE
   }
   
   #search-input {
-    background: url(../assets/magnifying_glass.svg) no-repeat right 10px bottom 40%;
+    background: url(../assets/magnifying_glass.svg) no-repeat right 10px center;
     background-color: #e7e7e7;
     display: inline-block;
     width: 100%;
     padding: 15px;
-    font-weight: 600;
+    font-size: 18px;
+    line-height: 21.6px;
+    color: rgba(0,0,0);
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    height: 69px;
   }
   
   #search-input::placeholder {
-    color: #adadad;
+    color: rgba(0,0,0,0.25);
   }
   
   .all::placeholder {
     color: rgb(152,192,251)
   }
   
+  #search-ingredients:active::placeholder,
+  #search-appliance:active::placeholder,
+  #search-utensils:active::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
   #search-ingredients::placeholder,
   #search-appliance::placeholder,
   #search-utensils::placeholder {
-    color: var(--white);
+    font-size: 18px;
+    line-height: 21.6px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
   }
-  
   #search-ingredients,
   #search-appliance,
   #search-utensils {
     padding: 15px 15px 15px 10px;
-    color: var(--white);
+    color: rgba(255, 255, 255, 1);
     font-weight: 600;
     width: 100%;
   }
@@ -192,6 +207,7 @@ MOBILE
     background-color: var(--tertiary);
   }
   
+
   #ingredients, #appliance, #utensils {
     position: relative;
     cursor: pointer;
@@ -208,7 +224,7 @@ MOBILE
   }
 
   .recipe {
-    height: 400px;
+    height: 450px;
   }
   
   .recipe-image {
@@ -234,19 +250,24 @@ MOBILE
   }
   
   .recipe-title h2 {
-    font-size: 1rem;
-    font-weight: 500;
+    font-family: 'Lato', sans-serif;
+    font-size: 400;
+    line-height: 21.6px;
+    font-size: 20px;
   }
   
   .recipe-time {
     display: flex;
     position: relative;
-    font-weight: bold;
   }
   
   .recipe-time p {
     width: 60px;
     text-align: end;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21.6px;
   }
   
   .recipe-content {
@@ -264,13 +285,18 @@ MOBILE
   }
   
   .recipe-ingredients {
-    font-weight: bolder;
-    font-size: 0.7rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    line-height: 16.4px;
+    font-weight: 700;
   }
   
   .recipe-describe {
-    font-weight: 500;
+    font-weight: 400;
     padding-left: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    line-height: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -286,25 +312,43 @@ MOBILE
   i {
     text-transform: lowercase;
   }
-  
+  input#search-ingredients {
+    width: 100%;
+  }
   #list-ingredients-result {
      background-color: var(--primary);
-    width: 420px;
+    width: 500px;
     height: 290px;
     overflow-x: scroll;
+    &::-webkit-scrollbar{
+      background:var(--primary);
+    }
+    &::-webkit-scrollbar-thumb {
+      background: white;
+      border-radius: 2px;
+      border: 4px solid var(--primary);
+    }
   }
-  
+
   #list-appliance-result {
      background-color: var(--secondary);
-    width: 440px;
+    width: 500px;
     height: 290px;
   }
   
   #list-utensils-result {
      background-color: var(--tertiary);
-    width: 440px;
+    width: 500px;
     height: 290px;
     overflow-x: scroll;
+    &::-webkit-scrollbar{
+      background:var(--tertiary);
+    }
+    &::-webkit-scrollbar-thumb {
+      background: white;
+      border-radius: 2px;
+      border: 4px solid var(--tertiary);
+    }
   }
   
   #ingredients {
@@ -320,12 +364,16 @@ MOBILE
     color: var(--white);
     margin: -20px 0px 20px 0px;
   }
-  
+  #search {
+    margin-bottom: 0px;
+  }
+
   #search-result {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 40px;
     border-radius: 20px;
+    margin-top: 50px;
   }
   
   .no-result {
@@ -360,7 +408,7 @@ MOBILE
   }
   
   #tags {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
   }
   

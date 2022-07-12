@@ -1,9 +1,9 @@
 import "./styles/main.scss";
 import { recipes } from "./data/recipes.js";
-import { displayCard } from "./display/displayCard";
-import { displayAppliance } from "./display/displayCategory";
-import { displayIngredients } from "./display/displayCategory";
-import { displayUtensils } from "./display/displayCategory";
+import { buildCard } from "./views/buildCard";
+import { displayAppliance } from "./views/displayCategory";
+import { displayIngredients } from "./views/displayCategory";
+import { displayUtensils } from "./views/displayCategory";
 import { list } from "./scripts/list";
 import { Filter } from "./scripts/class/Filter";
 
@@ -25,10 +25,13 @@ let tagList = [];
 /**
  * Affichage des recettes
  */
-const displayCards = (recipes) => {
-  recipes?.forEach((recipe) => {
-    displayCard(recipe);
-  });
+searchResult.innerHTML = "";
+console.log(searchResult);
+const buildCards = (recipes) => {
+  for (let i = 0; i < recipes.length; i++) {
+    buildCard(recipes[i]);
+    console.log("once");
+  }
 };
 
 /**
@@ -36,16 +39,17 @@ const displayCards = (recipes) => {
  */
 searchInput.addEventListener("keyup", () => {
   searchResult.innerHTML = "";
-  filterTagSearch();
+  searchBarFilter();
 });
 
 /**
  * Gestion des tags
  */
-const eventTag = () => {
-  listResult.forEach((list) => {
-    list.querySelectorAll(".item-list").forEach((itemList) => {
-      itemList.addEventListener("click", (e) => {
+const manageTags = () => {
+  for (let i = 0; i < listResult.length; i++) {
+    let item = listResult[i].querySelectorAll(".item-list");
+    for (let j = 0; j < item.length; j++) {
+      item[j].addEventListener("click", (e) => {
         const tag = {
           // objet tag avec une value et un type
           value: e.target.textContent, // la valeur sur laquelle je clique dans ma liste
@@ -53,12 +57,13 @@ const eventTag = () => {
         };
         tagList.push(tag); // je mets dans mon tableau tous ce que je click
         tags.innerHTML += `
-                    <button class="tag tag-${tag.type}">${tag.value}<i class="fa-solid fa-xmark close-tag" data-value="${tag.value}"></i></button>
-                `;
+        <button class="tag tag-${tag.type}">${tag.value}<i class="fa-solid fa-xmark close-tag" data-value="${tag.value}"></i></button>
+        `;
+        tags.style.display = "flex";
         const tagResult = filter.byTags(tag); // je trie avec ma class Filter
         searchResult.innerHTML = ""; // je vide les résultas qui ne correspondent pas
 
-        displayCards(tagResult);
+        buildCards(tagResult);
         displayIngredients(
           tagResult,
           tagList
@@ -77,31 +82,71 @@ const eventTag = () => {
             .filter((tag) => tag.type == "utensils")
             .map((tag) => tag.value)
         );
-        eventTag();
-        removeTag();
+        manageTags();
+        eraseTags();
       });
-    });
-  });
+    }
+  }
+  // listResult.forEach((list) => {
+  //   list.querySelectorAll(".item-list").forEach((itemList) => {
+  //     itemList.addEventListener("click", (e) => {
+  //       const tag = {
+  //         // objet tag avec une value et un type
+  //         value: e.target.textContent, // la valeur sur laquelle je clique dans ma liste
+  //         type: e.target.closest(".list-result").dataset.type, // je vais chercher data-type de mon html(ingredients, apparatus ou utensils)
+  //       };
+  //       tagList.push(tag); // je mets dans mon tableau tous ce que je click
+  //       tags.innerHTML += `
+  //                   <button class="tag tag-${tag.type}">${tag.value}<i class="fa-solid fa-xmark close-tag" data-value="${tag.value}"></i></button>
+  //               `;
+  //       const tagResult = filter.byTags(tag); // je trie avec ma class Filter
+  //       searchResult.innerHTML = ""; // je vide les résultas qui ne correspondent pas
+
+  //       displayCards(tagResult);
+  //       displayIngredients(
+  //         tagResult,
+  //         tagList
+  //           .filter((tag) => tag.type == "ingredients")
+  //           .map((tag) => tag.value)
+  //       );
+  //       displayAppliance(
+  //         tagResult,
+  //         tagList
+  //           .filter((tag) => tag.type == "appliance")
+  //           .map((tag) => tag.value)
+  //       );
+  //       displayUtensils(
+  //         tagResult,
+  //         tagList
+  //           .filter((tag) => tag.type == "utensils")
+  //           .map((tag) => tag.value)
+  //       );
+  //       eventTag();
+  //       removeTag();
+  //     });
+  //   });
+  // });
 };
 
 /**
  * Suppression tag
  */
-const removeTag = () => {
-  document.querySelectorAll(".close-tag").forEach((tag) => {
-    tag.addEventListener("click", (e) => {
+const eraseTags = () => {
+  let clsTag = document.querySelectorAll(".close-tag");
+  for (let i = 0; i < clsTag.length; i++) {
+    clsTag[i].addEventListener("click", (e) => {
       e.target.closest(".tag").remove();
       tagList = tagList.filter((tag) => tag.value != e.target.dataset.value);
       searchResult.innerHTML = "";
-      filterTagSearch();
+      searchBarFilter();
     });
-  });
+  }
 };
 
 /**
  * Filtre par la barre de recherche et les tags (ensemble)
  */
-const filterTagSearch = () => {
+const searchBarFilter = () => {
   filter.recipes = recipes;
   let result = filter.recipes;
   let input = document.querySelector("#search-input").value;
@@ -111,7 +156,7 @@ const filterTagSearch = () => {
   tagList.forEach((tag) => {
     result = filter.byTags(tag);
   });
-  displayCards(result);
+  buildCards(result);
   displayIngredients(
     result,
     tagList.filter((tag) => tag.type == "ingredients").map((tag) => tag.value)
@@ -124,29 +169,49 @@ const filterTagSearch = () => {
     result,
     tagList.filter((tag) => tag.type == "utensils").map((tag) => tag.value)
   );
-  eventTag();
+  manageTags();
 };
 
 searchIngredients.addEventListener("keyup", () => {
   displayIngredients(recipes, tagList);
-  eventTag();
+  manageTags();
 });
 
 searchAppliance.addEventListener("keyup", () => {
   displayAppliance(recipes, tagList);
-  eventTag();
+  manageTags();
 });
 
 searchUtensils.addEventListener("keyup", () => {
   displayUtensils(recipes, tagList);
+  manageTags();
 });
 
 /**
  * Initialisation
  */
-displayCards(recipes);
+buildCards(recipes);
 displayIngredients(recipes, []);
 displayAppliance(recipes, []);
 displayUtensils(recipes, []);
 list();
-eventTag();
+manageTags();
+
+let moyenne = [];
+setTimeout(() => {
+  for (let i = 0; i < 50; i++) {
+    let start = performance.now();
+    searchBarFilter();
+    moyenne.push(performance.now() - start);
+  }
+  console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
+}, 350);
+
+// setTimeout(() => {
+//   for (let i = 0; i < 50; i++) {
+//     let start = performance.now();
+//     filterTagSearch();
+//     moyenne.push(performance.now() - start);
+//   }
+//   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
+// }, 350);
