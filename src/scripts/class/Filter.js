@@ -40,6 +40,13 @@ export class Filter {
       }
     }
     this.recipes = searchBarArray;
+    if (this.recipes.length == 0) {
+      const searchResult = document.querySelector("#search-result");
+      const result = document.createElement("p");
+      result.classList.add("no-result");
+      result.textContent = "Aucune recette ne correspond à votre recherche";
+      searchResult.appendChild(result);
+    }
     return this.recipes;
   }
 

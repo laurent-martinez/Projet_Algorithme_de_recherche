@@ -1444,6 +1444,15 @@ var Filter = /*#__PURE__*/function () {
       }
 
       this.recipes = searchBarArray;
+
+      if (this.recipes.length == 0) {
+        var searchResult = document.querySelector("#search-result");
+        var result = document.createElement("p");
+        result.classList.add("no-result");
+        result.textContent = "Aucune recette ne correspond à votre recherche";
+        searchResult.appendChild(result);
+      }
+
       return this.recipes;
     }
   }, {
@@ -2375,13 +2384,11 @@ var tagList = [];
  * Affichage des recettes
  */
 
-searchResult.innerHTML = "";
-console.log(searchResult);
-
 var buildCards = function buildCards(recipes) {
+  searchResult.innerHTML = "";
+
   for (var i = 0; i < recipes.length; i++) {
     (0,_views_buildCard__WEBPACK_IMPORTED_MODULE_2__.buildCard)(recipes[i]);
-    console.log("once");
   }
 };
 /**
@@ -2563,10 +2570,32 @@ setTimeout(function () {
     moyenne.push(performance.now() - start);
   }
 
+  for (var _i = 0; _i < 100; _i++) {
+    var _start = performance.now();
+
+    searchBarFilter();
+    moyenne.push(performance.now() - _start);
+  }
+
+  for (var _i2 = 0; _i2 < 20; _i2++) {
+    var _start2 = performance.now();
+
+    searchBarFilter();
+    moyenne.push(performance.now() - _start2);
+  }
+
+  for (var _i3 = 0; _i3 < 150; _i3++) {
+    var _start3 = performance.now();
+
+    searchBarFilter();
+    moyenne.push(performance.now() - _start3);
+  }
+
   console.log(moyenne.reduce(function (a, b) {
     return a + b;
   }) / moyenne.length);
-}, 350); // setTimeout(() => {
+}, 350); // score : 10.13,10.38,11.8,9.50,8.71
+// setTimeout(() => {
 //   for (let i = 0; i < 50; i++) {
 //     let start = performance.now();
 //     filterTagSearch();
@@ -2578,4 +2607,4 @@ setTimeout(function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=a53e20667dfd26739c76.js.map
+//# sourceMappingURL=d414a69a8463ee20f0d9.js.map

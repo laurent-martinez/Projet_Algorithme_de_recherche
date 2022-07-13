@@ -25,15 +25,13 @@ let tagList = [];
 /**
  * Affichage des recettes
  */
-searchResult.innerHTML = "";
-console.log(searchResult);
+
 const buildCards = (recipes) => {
+  searchResult.innerHTML = "";
   for (let i = 0; i < recipes.length; i++) {
     buildCard(recipes[i]);
-    console.log("once");
   }
 };
-
 /**
  * Search bar
  */
@@ -222,6 +220,8 @@ setTimeout(() => {
 
   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
 }, 350);
+
+// score : 10.13,10.38,11.8,9.50,8.71
 
 // setTimeout(() => {
 //   for (let i = 0; i < 50; i++) {
