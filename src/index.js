@@ -204,6 +204,22 @@ setTimeout(() => {
     searchBarFilter();
     moyenne.push(performance.now() - start);
   }
+  for (let i = 0; i < 100; i++) {
+    let start = performance.now();
+    searchBarFilter();
+    moyenne.push(performance.now() - start);
+  }
+  for (let i = 0; i < 20; i++) {
+    let start = performance.now();
+    searchBarFilter();
+    moyenne.push(performance.now() - start);
+  }
+  for (let i = 0; i < 150; i++) {
+    let start = performance.now();
+    searchBarFilter();
+    moyenne.push(performance.now() - start);
+  }
+
   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
 }, 350);
 
