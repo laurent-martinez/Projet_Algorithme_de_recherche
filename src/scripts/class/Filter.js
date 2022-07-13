@@ -25,6 +25,7 @@ export class Filter {
   // }
 
   bySearch(input) {
+<<<<<<< HEAD
     let searchBarArray = [];
     for (let i = 0; i < this.recipes.length; i++) {
       if (
@@ -46,6 +47,20 @@ export class Filter {
       result.classList.add("no-result");
       result.textContent = "Aucune recette ne correspond à votre recherche";
       searchResult.appendChild(result);
+=======
+    let result = [];
+    for (let recipe of this.recipes) {
+      if (
+        recipe.name.toLowerCase().includes(input.toLowerCase()) ||
+        recipe.description.toLowerCase().includes(input.toLowerCase()) ||
+        recipe.ingredients.some((ingredient) =>
+          ingredient.ingredient.toLowerCase().includes(input.toLowerCase())
+        )
+      ) {
+        result.push(recipe);
+      }
+      this.recipes = result;
+>>>>>>> c8c66ce3d7012deebeeab81ddd9ef3d92d3dcc70
     }
     return this.recipes;
   }

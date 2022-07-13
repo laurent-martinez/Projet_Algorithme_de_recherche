@@ -320,6 +320,7 @@ MOBILE
     width: 500px;
     height: 290px;
     overflow-x: scroll;
+<<<<<<< HEAD
     &::-webkit-scrollbar{
       background:var(--primary);
     }
@@ -328,6 +329,9 @@ MOBILE
       border-radius: 2px;
       border: 4px solid var(--primary);
     }
+=======
+    
+>>>>>>> c8c66ce3d7012deebeeab81ddd9ef3d92d3dcc70
   }
 
   #list-appliance-result {
