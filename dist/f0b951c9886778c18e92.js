@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/data/recipes.js":
@@ -8,6 +7,7 @@
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "recipes": () => (/* binding */ recipes)
@@ -1391,103 +1391,9 @@ var recipes = [{
 /*!*************************************!*\
   !*** ./src/scripts/class/Filter.js ***!
   \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Filter": () => (/* binding */ Filter)
-/* harmony export */ });
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-var Filter = /*#__PURE__*/function () {
-  function Filter(recipes) {
-    _classCallCheck(this, Filter);
-
-    this.recipes = recipes;
-  } // bySearch(input) {
-  //   this.recipes = this.recipes.filter((recipe) => {
-  //     return (
-  //       recipe.name.toLowerCase().includes(input.toLowerCase()) ||
-  //       recipe.description.toLowerCase().includes(input.toLowerCase()) ||
-  //       recipe.ingredients.some((ingredient) =>
-  //         ingredient.ingredient.toLowerCase().includes(input.toLowerCase())
-  //       )
-  //     );
-  //   });
-  //   if (this.recipes.length == 0) {
-  //     const searchResult = document.querySelector("#search-result");
-  //     const result = document.createElement("p");
-  //     result.classList.add("no-result");
-  //     result.textContent = "Aucune recette ne correspond à votre recherche";
-  //     searchResult.appendChild(result);
-  //   } else {
-  //     return this.recipes;
-  //   }
-  // }
-
-
-  _createClass(Filter, [{
-    key: "bySearch",
-    value: function bySearch(input) {
-      var searchBarArray = [];
-
-      for (var i = 0; i < this.recipes.length; i++) {
-        if (this.recipes[i].name.toLowerCase().includes(input.toLowerCase()) || this.recipes[i].description.toLowerCase().includes(input.toLowerCase()) || this.recipes[i].ingredients.some(function (ingredient) {
-          return ingredient.ingredient.toLowerCase().includes(input.toLowerCase());
-        })) {
-          searchBarArray.push(this.recipes[i]);
-        }
-      }
-
-      this.recipes = searchBarArray;
-
-      if (this.recipes.length == 0) {
-        var searchResult = document.querySelector("#search-result");
-        var result = document.createElement("p");
-        result.classList.add("no-result");
-        result.textContent = "Aucune recette ne correspond à votre recherche";
-        searchResult.appendChild(result);
-      }
-
-      return this.recipes;
-    }
-  }, {
-    key: "byTags",
-    value: function byTags(tag) {
-      switch (tag.type) {
-        case "ingredients":
-          this.recipes = this.recipes.filter(function (recipe) {
-            return recipe.ingredients.some(function (ingredient) {
-              return ingredient.ingredient.toLowerCase().includes(tag.value.toLowerCase());
-            });
-          });
-          break;
-
-        case "appliance":
-          this.recipes = this.recipes.filter(function (recipe) {
-            return recipe.appliance.toLowerCase().includes(tag.value.toLowerCase());
-          });
-          break;
-
-        case "utensils":
-          this.recipes = this.recipes.filter(function (recipe) {
-            return recipe.ustensils.some(function (ustensil) {
-              return ustensil.toLowerCase().includes(tag.value.toLowerCase());
-            });
-          });
-          break;
-      }
-
-      return this.recipes;
-    }
-  }]);
-
-  return Filter;
-}();
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/laurent/Bureau/Projet_Algorithme_de_recherche/src/scripts/class/Filter.js: Unexpected token (28:0)\n\n\u001b[0m \u001b[90m 26 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 27 |\u001b[39m   bySearch(input) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m \u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 29 |\u001b[39m     \u001b[36mlet\u001b[39m searchBarArray \u001b[33m=\u001b[39m []\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 30 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mlet\u001b[39m i \u001b[33m=\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m i \u001b[33m<\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mrecipes\u001b[33m.\u001b[39mlength\u001b[33m;\u001b[39m i\u001b[33m++\u001b[39m) {\u001b[0m\n\u001b[0m \u001b[90m 31 |\u001b[39m       \u001b[36mif\u001b[39m (\u001b[0m\n    at instantiate (/home/laurent/Bureau/Projet_Algorithme_de_recherche/node_modules/@babel/parser/lib/index.js:72:32)\n    at constructor (/home/laurent/Bureau/Projet_Algorithme_de_recherche/node_modules/@babel/parser/lib/index.js:358:12)\n    at Parser.raise (/home/laurent/Bureau/Projet_Algorithme_de_recherche/node_modules/@babel/parser/lib/index.js:3335:19)\n    at Parser.unexpected (/home/laurent/Bureau/Projet_Algorithme_de_recherche/node_modules/@babel/parser/lib/index.js:3373:16)\n    at Parser.parseExprAtom (/home/laurent/Bureau/Projet_Algorithme_de_recherche/node_modules/@babel/parser/lib/index.js:13015:22)\n    at Parser.parseExprSubscripts (/home/laurent/Bureau/Projet_Algorithme_de_recherche/node_modules/@babel/parser/lib/index.js:12540:23)\n    at Parser.parseUpdate (/home/laurent/Bureau/Projet_Algorithme_de_recherche/node_modules/@babel/parser/lib/index.js:12519:21)\n    at Parser.parseMaybeUnary (/home/laurent/Bureau/Projet_Algorithme_de_recherche/node_modules/@babel/parser/lib/index.js:12490:23)\n    at Parser.parseMaybeUnaryOrPrivate (/home/laurent/Bureau/Projet_Algorithme_de_recherche/node_modules/@babel/parser/lib/index.js:12284:61)\n    at Parser.parseExprOps (/home/laurent/Bureau/Projet_Algorithme_de_recherche/node_modules/@babel/parser/lib/index.js:12291:23)");
 
 /***/ }),
 
@@ -1497,6 +1403,7 @@ var Filter = /*#__PURE__*/function () {
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "list": () => (/* binding */ list)
@@ -1528,6 +1435,7 @@ var list = function list() {
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "buildCard": () => (/* binding */ buildCard)
@@ -1551,6 +1459,7 @@ var buildCard = function buildCard(recipe) {
   \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "displayAppliance": () => (/* binding */ displayAppliance),
@@ -1637,365 +1546,13 @@ var displayUtensils = function displayUtensils(recipes, tagUtensils) {
 
 /***/ }),
 
-<<<<<<< HEAD:dist/d414a69a8463ee20f0d9.js
-=======
-/***/ "./src/scripts/class/Filter.js":
-/*!*************************************!*\
-  !*** ./src/scripts/class/Filter.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Filter": () => (/* binding */ Filter)
-/* harmony export */ });
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-var Filter = /*#__PURE__*/function () {
-  function Filter(recipes) {
-    _classCallCheck(this, Filter);
-
-    this.recipes = recipes;
-  } // bySearch(input) {
-  //   this.recipes = this.recipes.filter((recipe) => {
-  //     return (
-  //       recipe.name.toLowerCase().includes(input.toLowerCase()) ||
-  //       recipe.description.toLowerCase().includes(input.toLowerCase()) ||
-  //       recipe.ingredients.some((ingredient) =>
-  //         ingredient.ingredient.toLowerCase().includes(input.toLowerCase())
-  //       )
-  //     );
-  //   });
-  //   if (this.recipes.length == 0) {
-  //     const searchResult = document.querySelector("#search-result");
-  //     const result = document.createElement("p");
-  //     result.classList.add("no-result");
-  //     result.textContent = "Aucune recette ne correspond à votre recherche";
-  //     searchResult.appendChild(result);
-  //   } else {
-  //     return this.recipes;
-  //   }
-  // }
-
-
-  _createClass(Filter, [{
-    key: "bySearch",
-    value: function bySearch(input) {
-      var result = [];
-
-      var _iterator = _createForOfIteratorHelper(this.recipes),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var recipe = _step.value;
-
-          if (recipe.name.toLowerCase().includes(input.toLowerCase()) || recipe.description.toLowerCase().includes(input.toLowerCase()) || recipe.ingredients.some(function (ingredient) {
-            return ingredient.ingredient.toLowerCase().includes(input.toLowerCase());
-          })) {
-            result.push(recipe);
-          }
-
-          this.recipes = result;
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      return this.recipes;
-    }
-  }, {
-    key: "byTags",
-    value: function byTags(tag) {
-      switch (tag.type) {
-        case "ingredients":
-          this.recipes = this.recipes.filter(function (recipe) {
-            return recipe.ingredients.some(function (ingredient) {
-              return ingredient.ingredient.toLowerCase().includes(tag.value.toLowerCase());
-            });
-          });
-          break;
-
-        case "appliance":
-          this.recipes = this.recipes.filter(function (recipe) {
-            return recipe.appliance.toLowerCase().includes(tag.value.toLowerCase());
-          });
-          break;
-
-        case "utensils":
-          this.recipes = this.recipes.filter(function (recipe) {
-            return recipe.ustensils.some(function (ustensil) {
-              return ustensil.toLowerCase().includes(tag.value.toLowerCase());
-            });
-          });
-          break;
-      }
-
-      return this.recipes;
-    }
-  }]);
-
-  return Filter;
-}();
-
-/***/ }),
-
-/***/ "./src/scripts/list.js":
-/*!*****************************!*\
-  !*** ./src/scripts/list.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "list": () => (/* binding */ list)
-/* harmony export */ });
-var list = function list() {
-  var listComboBox = document.querySelectorAll(".combo-box");
-  listComboBox.forEach(function (comboBox) {
-    comboBox.addEventListener("click", function (e) {
-      if (e.currentTarget.classList.contains("open")) {
-        e.currentTarget.classList.remove("open");
-        e.currentTarget.querySelector("input").placeholder = e.currentTarget.querySelector("input").dataset.type;
-      } else {
-        listComboBox.forEach(function (combo) {
-          combo.classList.remove("open");
-          combo.querySelector("input").placeholder = combo.querySelector("input").dataset.type;
-        });
-        e.currentTarget.classList.add("open");
-        e.currentTarget.querySelector("input").placeholder = "Rechercher un " + e.currentTarget.querySelector("input").dataset.searchType;
-      }
-    });
-  });
-};
-
-/***/ }),
-
->>>>>>> c8c66ce3d7012deebeeab81ddd9ef3d92d3dcc70:dist/8c04a8768b4f0515089f.js
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.scss":
 /*!*********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.scss ***!
   \*********************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
-// Imports
-
-
-
-var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../assets/magnifying_glass.svg */ "./src/assets/magnifying_glass.svg"), __webpack_require__.b);
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
-// Module
-<<<<<<< HEAD:dist/d414a69a8463ee20f0d9.js
-___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n/***************************************************\nGLOBAL\n***************************************************/\n* {\n  box-sizing: border-box;\n  margin: 0;\n}\n\n.flex {\n  display: flex;\n}\n\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n\n.clearfix:after {\n  clear: both;\n}\n\nimg,\niframe,\nvideo {\n  max-width: 100%;\n  vertical-align: middle;\n}\n\nnav ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\na {\n  text-decoration: none;\n  color: rgb(6, 143, 177);\n  transition: all 0.5s ease;\n}\n\n/***************************************************\nSTRUCTURE\n***************************************************/\n#container {\n  display: flex;\n  flex-direction: column;\n  width: 85%;\n  margin: 0 auto;\n}\n\n/***************************************************\nTYPO\n***************************************************/\n.btn {\n  background-color: rgba(0, 0, 0, 0.3);\n  border: none;\n  font-size: 0.75rem;\n  padding: 0.7rem 1.25rem;\n  font-weight: 700;\n  color: rgb(255, 255, 255);\n  line-height: 100%;\n  border-radius: 20px;\n  text-align: center;\n  text-transform: uppercase;\n  cursor: pointer;\n}\n\n/***************************************************\nTABLETTE\n***************************************************/\n@media screen and (max-width: 768px) {\n  .container {\n    width: 100%;\n  }\n\n  #search-result {\n    grid-template-columns: repeat(2, 1fr) !important;\n  }\n}\n/***************************************************\nMOBILE\n***************************************************/\n@media screen and (max-width: 425px) {\n  #list-ingredients-result {\n    width: 300px !important;\n  }\n\n  #list-utensils-result {\n    width: 280px !important;\n  }\n\n  #search-result {\n    grid-template-columns: auto !important;\n  }\n}\n:root {\n  --primary: #3282f7;\n  --secondary: #69d9a4;\n  --tertiary: #ed6454;\n  --white: #fff;\n  /* nuance */\n  --primary-shade: #2c72d8;\n  --secondary-shade: #5cbe90;\n  --tertiary-shade: #cf584a;\n  /* teinte */\n  --primary-hue: hsl(216, 29%, 84%);\n  --secondary-hue: hsl(151, 17%, 86%);\n  --tertiary-hue: hsl(6, 23%, 86%);\n  --error: rgb(167, 25, 25);\n}\n\nbody {\n  margin: 0;\n}\n\nheader {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 15px 0;\n}\n\n#title {\n  color: #d04f4f;\n  font-weight: 700;\n  font-size: 38px;\n  font-family: \"DM Sans\", sans-serif;\n  line-height: 46.87px;\n}\n\nli {\n  list-style: none;\n}\n\n#inputs {\n  display: flex;\n  flex-wrap: wrap;\n  /* gère l'espace entre les box row & column */\n  gap: 0px 20px;\n}\n\ninput {\n  outline: none;\n  border: none;\n  border-radius: 5px;\n  padding: 0px;\n  margin: 20px 0px;\n}\n\n#search-input {\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat right 10px center;\n  background-color: #e7e7e7;\n  display: inline-block;\n  width: 100%;\n  padding: 15px;\n  font-size: 18px;\n  line-height: 21.6px;\n  color: rgb(0, 0, 0);\n  font-family: \"Lato\", sans-serif;\n  font-weight: 400;\n  height: 69px;\n}\n\n#search-input::placeholder {\n  color: rgba(0, 0, 0, 0.25);\n}\n\n.all::placeholder {\n  color: rgb(152, 192, 251);\n}\n\n#search-ingredients:active::placeholder,\n#search-appliance:active::placeholder,\n#search-utensils:active::placeholder {\n  color: rgba(255, 255, 255, 0.5);\n}\n\n#search-ingredients::placeholder,\n#search-appliance::placeholder,\n#search-utensils::placeholder {\n  font-size: 18px;\n  line-height: 21.6px;\n  color: rgb(255, 255, 255);\n  font-family: \"Lato\", sans-serif;\n  font-weight: 700;\n}\n\n#search-ingredients,\n#search-appliance,\n#search-utensils {\n  padding: 15px 15px 15px 10px;\n  color: rgb(255, 255, 255);\n  font-weight: 600;\n  width: 100%;\n}\n\n#search-ingredients {\n  background-color: var(--primary);\n}\n\n#search-appliance {\n  background-color: var(--secondary);\n}\n\n#search-utensils {\n  background-color: var(--tertiary);\n}\n\n#ingredients, #appliance, #utensils {\n  position: relative;\n  cursor: pointer;\n}\n\n#chevron-ingredients, #chevron-appliance, #chevron-utensils {\n  position: absolute;\n  right: 10px;\n  top: 38px;\n}\n\n.chevron-down {\n  transform: rotate(180deg);\n}\n\n.recipe {\n  height: 450px;\n}\n\n.recipe-image {\n  background-color: #c7bebe;\n  width: 100%;\n  height: 50%;\n  border-radius: 5px 5px 0px 0px;\n}\n\n.recipe-body {\n  padding: 0 10px;\n  margin-bottom: 20px;\n  background-color: #e7e7e7;\n  height: 50%;\n  padding: 15px 15px;\n  border-radius: 0px 0px 5px 5px;\n  overflow: hidden;\n}\n\n.recipe-header {\n  display: flex;\n  justify-content: space-between;\n}\n\n.recipe-title h2 {\n  font-family: \"Lato\", sans-serif;\n  font-size: 400;\n  line-height: 21.6px;\n  font-size: 20px;\n}\n\n.recipe-time {\n  display: flex;\n  position: relative;\n}\n\n.recipe-time p {\n  width: 60px;\n  text-align: end;\n  font-family: \"Lato\", sans-serif;\n  font-weight: 700;\n  font-size: 18px;\n  line-height: 21.6px;\n}\n\n.recipe-content {\n  display: flex;\n  justify-content: space-between;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 0.7rem;\n  max-height: 140px;\n}\n\n.recipe-ingredients,\n.recipe-describe {\n  width: 50%;\n}\n\n.recipe-ingredients {\n  font-family: \"Lato\", sans-serif;\n  font-size: 15px;\n  line-height: 16.4px;\n  font-weight: 700;\n}\n\n.recipe-describe {\n  font-weight: 400;\n  padding-left: 15px;\n  font-family: \"Roboto\", sans-serif;\n  font-size: 15px;\n  line-height: 15px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 10;\n  -webkit-box-orient: vertical;\n  word-wrap: break-word;\n}\n\nul #search-result {\n  margin: 0;\n}\n\ni {\n  text-transform: lowercase;\n}\n\ninput#search-ingredients {\n  width: 100%;\n}\n\n#list-ingredients-result {\n  background-color: var(--primary);\n  width: 500px;\n  height: 290px;\n  overflow-x: scroll;\n}\n#list-ingredients-result::-webkit-scrollbar {\n  background: var(--primary);\n}\n#list-ingredients-result::-webkit-scrollbar-thumb {\n  background: white;\n  border-radius: 2px;\n  border: 4px solid var(--primary);\n}\n\n#list-appliance-result {\n  background-color: var(--secondary);\n  width: 500px;\n  height: 290px;\n}\n\n#list-utensils-result {\n  background-color: var(--tertiary);\n  width: 500px;\n  height: 290px;\n  overflow-x: scroll;\n}\n#list-utensils-result::-webkit-scrollbar {\n  background: var(--tertiary);\n}\n#list-utensils-result::-webkit-scrollbar-thumb {\n  background: white;\n  border-radius: 2px;\n  border: 4px solid var(--tertiary);\n}\n\n#ingredients {\n  display: flex;\n  flex-direction: column;\n}\n\n.list-result {\n  display: none;\n  flex-direction: column;\n  flex-wrap: wrap;\n  border-radius: 0px 0px 5px 5px;\n  color: var(--white);\n  margin: -20px 0px 20px 0px;\n}\n\n#search {\n  margin-bottom: 0px;\n}\n\n#search-result {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 40px;\n  border-radius: 20px;\n  margin-top: 50px;\n}\n\n.no-result {\n  background-color: rgb(167, 25, 25);\n  position: fixed;\n  margin-top: 20px;\n  padding: 10px;\n  color: white;\n}\n\n.item-list {\n  padding: 5px 20px 5px 20px;\n  color: rgb(240, 245, 250);\n  display: inline-block;\n  margin-bottom: 0;\n}\n\n.item-ingredients:hover {\n  background-color: var(--primary-shade);\n}\n\n.item-appliance:hover {\n  background-color: var(--secondary-shade);\n}\n\n.item-utensils:hover {\n  background-color: var(--tertiary-shade);\n}\n\n.show-list {\n  display: block;\n}\n\n#tags {\n  display: none;\n  flex-wrap: wrap;\n}\n\n.tag {\n  display: flex;\n  justify-content: space-between;\n  color: var(--white);\n  padding: 10px 15px;\n  border-radius: 5px;\n  border-style: none;\n  margin: 5px 10px 5px 5px;\n  align-items: center;\n}\n\n.close-tag {\n  height: 20px;\n  width: 20px;\n  display: block;\n  cursor: pointer;\n}\n\n.tag-ingredients {\n  background-color: var(--primary);\n}\n\n.tag-appliance {\n  background-color: var(--secondary);\n}\n\n.tag-utensils {\n  background-color: var(--tertiary);\n}\n\n.fa-xmark {\n  color: white;\n  border: 2px solid white;\n  border-radius: 50%;\n  display: flex;\n  margin-left: 10px;\n}\n\n.fa-xmark::before {\n  /* centrage */\n  line-height: 16px;\n}\n\n/* je relie les deux class */\n.combo-box.open .list-result {\n  display: flex;\n}\n\n.combo-box.open .chevron {\n  transform: rotate(180deg);\n  transition: transform 0.2s;\n}\n\n.combo-box.open input {\n  border-radius: 5px 5px 0px 0px;\n}\n\n.combo-box.open .i::placeholder {\n  color: var(--primary-hue) !important;\n}\n\n.combo-box.open .a::placeholder {\n  color: var(--secondary-hue) !important;\n}\n\n.combo-box.open .u::placeholder {\n  color: var(--tertiary-hue) !important;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"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","sourcesContent":["/***************************************************\nGLOBAL\n***************************************************/\n* {\n    box-sizing: border-box;\n    margin: 0;\n}\n\n.flex {\n    display: flex;\n}\n\n.clearfix:before,\n.clearfix:after {\n    content: \"\";\n    display: table;\n}\n\n.clearfix:after {\n    clear: both;\n}\n\nimg,\niframe,\nvideo {\n    max-width: 100%;\n    vertical-align: middle;\n}\n\nnav ul {\n    list-style: none;\n    padding: 0;\n    margin: 0;\n}\n\na {\n    text-decoration: none;\n    color:rgb(6, 143, 177);\n    transition: all .5s ease;\n}\n/***************************************************\nSTRUCTURE\n***************************************************/\n#container{\n    display: flex;\n    flex-direction: column;\n    width: 85%;\n    margin: 0 auto; \n}\n/***************************************************\nTYPO\n***************************************************/\n\n.btn{\n    background-color: rgba(0, 0, 0, 0.3);\n    border:none;\n    font-size: .75rem;\n    padding: .7rem 1.25rem;\n    font-weight: 700;\n    color: rgb(255, 255, 255);\n    line-height: 100%;\n    border-radius: 20px;\n    text-align: center;\n    text-transform: uppercase;\n    cursor: pointer;\n}\n/***************************************************\nTABLETTE\n***************************************************/\n@media screen and (max-width:768px){\n    .container{\n        width: 100%;\n    }\n    #search-result {\n        grid-template-columns: repeat(2,1fr) !important;\n    }\n}\n/***************************************************\nMOBILE\n***************************************************/\n@media screen and (max-width: 425px){\n\n    #list-ingredients-result {\n        width: 300px !important;\n    }\n    #list-utensils-result {\n        width: 280px !important;\n    }\n    #search-result {\n        grid-template-columns: auto !important;\n    }\n}\n\n\n:root {\n    --primary: #3282f7;\n    --secondary: #69d9a4;\n    --tertiary: #ed6454;\n    --white: #fff;\n  \n    /* nuance */\n    --primary-shade: #2c72d8;\n    --secondary-shade: #5cbe90;\n    --tertiary-shade: #cf584a;\n  \n    /* teinte */\n    --primary-hue: hsl(216, 29%, 84%);\n    --secondary-hue: hsl(151, 17%, 86%);\n    --tertiary-hue: hsl(6, 23%, 86%);\n  \n    --error: rgb(167, 25, 25);\n  }\n  \n  body {\n    margin: 0;\n  }\n  \n  header {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 15px 0;\n  }\n  \n  #title {\n    color: #d04f4f;\n    font-weight: 700;\n    font-size: 38px;\n    font-family: 'DM Sans', sans-serif;\n    line-height: 46.87px;\n  }\n  \n  li {\n    list-style: none;\n  }\n  \n  #inputs {\n    display: flex;\n    flex-wrap: wrap;\n    /* gère l'espace entre les box row & column */\n    gap: 0px 20px;\n    \n  }\n  \n  input {\n    outline: none;\n    border: none;\n    border-radius: 5px;\n    padding: 0px;\n    margin: 20px 0px;\n  }\n  \n  #search-input {\n    background: url(../assets/magnifying_glass.svg) no-repeat right 10px center;\n    background-color: #e7e7e7;\n    display: inline-block;\n    width: 100%;\n    padding: 15px;\n    font-size: 18px;\n    line-height: 21.6px;\n    color: rgba(0,0,0);\n    font-family: 'Lato', sans-serif;\n    font-weight: 400;\n    height: 69px;\n  }\n  \n  #search-input::placeholder {\n    color: rgba(0,0,0,0.25);\n  }\n  \n  .all::placeholder {\n    color: rgb(152,192,251)\n  }\n  \n  #search-ingredients:active::placeholder,\n  #search-appliance:active::placeholder,\n  #search-utensils:active::placeholder {\n    color: rgba(255, 255, 255, 0.5);\n  }\n  #search-ingredients::placeholder,\n  #search-appliance::placeholder,\n  #search-utensils::placeholder {\n    font-size: 18px;\n    line-height: 21.6px;\n    color: rgba(255, 255, 255, 1);\n    font-family: 'Lato', sans-serif;\n    font-weight: 700;\n  }\n  #search-ingredients,\n  #search-appliance,\n  #search-utensils {\n    padding: 15px 15px 15px 10px;\n    color: rgba(255, 255, 255, 1);\n    font-weight: 600;\n    width: 100%;\n  }\n  \n  #search-ingredients {\n    background-color: var(--primary);\n  }\n  \n  #search-appliance {\n    background-color: var(--secondary);\n  }\n  \n  #search-utensils {\n    background-color: var(--tertiary);\n  }\n  \n\n  #ingredients, #appliance, #utensils {\n    position: relative;\n    cursor: pointer;\n  }\n  \n  #chevron-ingredients, #chevron-appliance, #chevron-utensils {\n    position: absolute;\n    right: 10px;\n    top: 38px;\n  }\n  \n  .chevron-down {\n    transform: rotate(180deg);\n  }\n\n  .recipe {\n    height: 450px;\n  }\n  \n  .recipe-image {\n    background-color: #c7bebe;\n    width: 100%;\n    height: 50%;\n    border-radius: 5px 5px 0px 0px;\n  }\n  \n  .recipe-body {\n    padding: 0 10px;\n    margin-bottom: 20px;\n    background-color: #e7e7e7;\n    height: 50%;\n    padding: 15px 15px;\n    border-radius: 0px 0px 5px 5px;\n    overflow: hidden;\n  }\n  \n  .recipe-header {\n    display: flex;\n    justify-content: space-between;\n  }\n  \n  .recipe-title h2 {\n    font-family: 'Lato', sans-serif;\n    font-size: 400;\n    line-height: 21.6px;\n    font-size: 20px;\n  }\n  \n  .recipe-time {\n    display: flex;\n    position: relative;\n  }\n  \n  .recipe-time p {\n    width: 60px;\n    text-align: end;\n    font-family: 'Lato', sans-serif;\n    font-weight: 700;\n    font-size: 18px;\n    line-height: 21.6px;\n  }\n  \n  .recipe-content {\n    display: flex;\n    justify-content: space-between;\n    padding-top: 10px;\n    padding-bottom: 10px;\n    font-size: 0.7rem;\n    max-height: 140px;\n  }\n  \n  .recipe-ingredients,\n  .recipe-describe {\n    width: 50%;\n  }\n  \n  .recipe-ingredients {\n    font-family: 'Lato', sans-serif;\n    font-size: 15px;\n    line-height: 16.4px;\n    font-weight: 700;\n  }\n  \n  .recipe-describe {\n    font-weight: 400;\n    padding-left: 15px;\n    font-family: 'Roboto', sans-serif;\n    font-size: 15px;\n    line-height: 15px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: -webkit-box;\n    -webkit-line-clamp: 10;\n    -webkit-box-orient: vertical;\n    word-wrap: break-word;\n  }\n  \n  ul #search-result {\n    margin: 0;\n  }\n  \n  i {\n    text-transform: lowercase;\n  }\n  input#search-ingredients {\n    width: 100%;\n  }\n  #list-ingredients-result {\n     background-color: var(--primary);\n    width: 500px;\n    height: 290px;\n    overflow-x: scroll;\n    &::-webkit-scrollbar{\n      background:var(--primary);\n    }\n    &::-webkit-scrollbar-thumb {\n      background: white;\n      border-radius: 2px;\n      border: 4px solid var(--primary);\n    }\n  }\n\n  #list-appliance-result {\n     background-color: var(--secondary);\n    width: 500px;\n    height: 290px;\n  }\n  \n  #list-utensils-result {\n     background-color: var(--tertiary);\n    width: 500px;\n    height: 290px;\n    overflow-x: scroll;\n    &::-webkit-scrollbar{\n      background:var(--tertiary);\n    }\n    &::-webkit-scrollbar-thumb {\n      background: white;\n      border-radius: 2px;\n      border: 4px solid var(--tertiary);\n    }\n  }\n  \n  #ingredients {\n    display: flex;\n    flex-direction: column;\n  }\n  \n  .list-result {\n    display: none;\n    flex-direction: column;\n    flex-wrap: wrap;\n    border-radius: 0px 0px 5px 5px;\n    color: var(--white);\n    margin: -20px 0px 20px 0px;\n  }\n  #search {\n    margin-bottom: 0px;\n  }\n\n  #search-result {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    grid-gap: 40px;\n    border-radius: 20px;\n    margin-top: 50px;\n  }\n  \n  .no-result {\n    background-color: rgb(167, 25, 25);\n    position: fixed;\n    margin-top: 20px;\n    padding: 10px;\n    color: white;\n  }\n  \n  .item-list {\n    padding: 5px 20px 5px 20px;\n     color: rgb(240, 245, 250);\n    display: inline-block;\n    margin-bottom: 0;\n  }\n  \n  .item-ingredients:hover {\n    background-color: var(--primary-shade);\n  }\n  \n  .item-appliance:hover {\n    background-color: var(--secondary-shade);\n  }\n  \n  .item-utensils:hover {\n    background-color: var(--tertiary-shade);\n  }\n  \n  .show-list {\n    display: block;\n  }\n  \n  #tags {\n    display: none;\n    flex-wrap: wrap;\n  }\n  \n  .tag {\n    display: flex;\n    justify-content: space-between;\n    color: var(--white);\n    padding:10px 15px;\n    border-radius: 5px;\n    border-style: none;\n    margin: 5px 10px 5px 5px;\n    align-items: center;\n  }\n  \n  .close-tag {\n    height: 20px;\n    width: 20px;\n    display: block;\n    cursor: pointer;\n  }\n  \n  .tag-ingredients {\n    background-color: var(--primary);\n  }\n  \n  .tag-appliance {\n    background-color: var(--secondary);\n  }\n  \n  .tag-utensils {\n    background-color: var(--tertiary);\n  }\n  \n  .fa-xmark {\n    color: white;\n    border: 2px solid white;\n    border-radius: 50%;\n    display: flex;\n    margin-left: 10px;\n  }\n  \n  .fa-xmark::before {\n    /* centrage */\n    line-height: 16px;\n  }\n  \n  /* je relie les deux class */\n  .combo-box.open .list-result {\n    display: flex;\n  }\n  \n  .combo-box.open .chevron {\n    transform: rotate(180deg);\n    transition: transform 0.2s;\n  }\n  \n  .combo-box.open input {\n    border-radius: 5px 5px 0px 0px;\n  }\n  \n  .combo-box.open .i::placeholder {\n    color: var(--primary-hue) !important;\n  }\n  \n  .combo-box.open .a::placeholder {\n    color: var(--secondary-hue) !important;\n  }\n  .combo-box.open .u::placeholder {\n    color: var(--tertiary-hue) !important;\n  }\n    "],"sourceRoot":""}]);
-=======
-___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n/***************************************************\nGLOBAL\n***************************************************/\n* {\n  box-sizing: border-box;\n  margin: 0;\n}\n\n.flex {\n  display: flex;\n}\n\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n\n.clearfix:after {\n  clear: both;\n}\n\nimg,\niframe,\nvideo {\n  max-width: 100%;\n  vertical-align: middle;\n}\n\nnav ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\na {\n  text-decoration: none;\n  color: rgb(6, 143, 177);\n  transition: all 0.5s ease;\n}\n\n/***************************************************\nSTRUCTURE\n***************************************************/\n#container {\n  display: flex;\n  flex-direction: column;\n  width: 80%;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n\n/***************************************************\nTYPO\n***************************************************/\n.btn {\n  background-color: rgba(0, 0, 0, 0.3);\n  border: none;\n  font-size: 0.75rem;\n  padding: 0.7rem 1.25rem;\n  font-weight: 700;\n  color: rgb(255, 255, 255);\n  line-height: 100%;\n  border-radius: 20px;\n  text-align: center;\n  text-transform: uppercase;\n  cursor: pointer;\n}\n\n/***************************************************\nTABLETTE\n***************************************************/\n@media screen and (max-width: 768px) {\n  .container {\n    width: 100%;\n  }\n\n  #search-result {\n    grid-template-columns: repeat(2, 1fr) !important;\n  }\n}\n/***************************************************\nMOBILE\n***************************************************/\n@media screen and (max-width: 425px) {\n  #list-ingredients-result {\n    width: 300px !important;\n  }\n\n  #list-utensils-result {\n    width: 280px !important;\n  }\n\n  #search-result {\n    grid-template-columns: auto !important;\n  }\n}\n:root {\n  --primary: #3282f7;\n  --secondary: #69d9a4;\n  --tertiary: #ed6454;\n  --white: #fff;\n  /* nuance */\n  --primary-shade: #2c72d8;\n  --secondary-shade: #5cbe90;\n  --tertiary-shade: #cf584a;\n  /* teinte */\n  --primary-hue: hsl(216, 29%, 84%);\n  --secondary-hue: hsl(151, 17%, 86%);\n  --tertiary-hue: hsl(6, 23%, 86%);\n  --error: rgb(167, 25, 25);\n}\n\nbody {\n  margin: 0;\n}\n\nheader {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-bottom: 20px;\n}\n\n#title {\n  color: #d04f4f;\n  font-weight: bold;\n}\n\nli {\n  list-style: none;\n}\n\n#inputs {\n  display: flex;\n  flex-wrap: wrap;\n  /* gère l'espace entre les box row & column */\n  gap: 0px 20px;\n}\n\ninput {\n  outline: none;\n  border: none;\n  border-radius: 5px;\n  padding: 0px;\n  margin: 20px 0px;\n}\n\n#search-input {\n  background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat right 10px bottom 40%;\n  background-color: #e7e7e7;\n  display: inline-block;\n  width: 100%;\n  padding: 15px;\n  font-weight: 600;\n}\n\n#search-input::placeholder {\n  color: #adadad;\n}\n\n.all::placeholder {\n  color: rgb(152, 192, 251);\n}\n\n#search-ingredients::placeholder,\n#search-appliance::placeholder,\n#search-utensils::placeholder {\n  color: var(--white);\n}\n\n#search-ingredients,\n#search-appliance,\n#search-utensils {\n  padding: 15px 15px 15px 10px;\n  color: var(--white);\n  font-weight: 600;\n  width: 100%;\n}\n\n#search-ingredients {\n  background-color: var(--primary);\n}\n\n#search-appliance {\n  background-color: var(--secondary);\n}\n\n#search-utensils {\n  background-color: var(--tertiary);\n}\n\n#ingredients, #appliance, #utensils {\n  position: relative;\n  cursor: pointer;\n}\n\n#chevron-ingredients, #chevron-appliance, #chevron-utensils {\n  position: absolute;\n  right: 10px;\n  top: 38px;\n}\n\n.chevron-down {\n  transform: rotate(180deg);\n}\n\n.recipe {\n  height: 400px;\n}\n\n.recipe-image {\n  background-color: #c7bebe;\n  width: 100%;\n  height: 50%;\n  border-radius: 5px 5px 0px 0px;\n}\n\n.recipe-body {\n  padding: 0 10px;\n  margin-bottom: 20px;\n  background-color: #e7e7e7;\n  height: 50%;\n  padding: 15px 15px;\n  border-radius: 0px 0px 5px 5px;\n  overflow: hidden;\n}\n\n.recipe-header {\n  display: flex;\n  justify-content: space-between;\n}\n\n.recipe-title h2 {\n  font-size: 1rem;\n  font-weight: 500;\n}\n\n.recipe-time {\n  display: flex;\n  position: relative;\n  font-weight: bold;\n}\n\n.recipe-time p {\n  width: 60px;\n  text-align: end;\n}\n\n.recipe-content {\n  display: flex;\n  justify-content: space-between;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 0.7rem;\n  max-height: 140px;\n}\n\n.recipe-ingredients,\n.recipe-describe {\n  width: 50%;\n}\n\n.recipe-ingredients {\n  font-weight: bolder;\n  font-size: 0.7rem;\n}\n\n.recipe-describe {\n  font-weight: 500;\n  padding-left: 15px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 10;\n  -webkit-box-orient: vertical;\n  word-wrap: break-word;\n}\n\nul #search-result {\n  margin: 0;\n}\n\ni {\n  text-transform: lowercase;\n}\n\n#list-ingredients-result {\n  background-color: var(--primary);\n  width: 500px;\n  height: 290px;\n  overflow-x: scroll;\n}\n\n#list-appliance-result {\n  background-color: var(--secondary);\n  width: 500px;\n  height: 290px;\n}\n\n#list-utensils-result {\n  background-color: var(--tertiary);\n  width: 500px;\n  height: 290px;\n  overflow-x: scroll;\n}\n\n#ingredients {\n  display: flex;\n  flex-direction: column;\n}\n\n.list-result {\n  display: none;\n  flex-direction: column;\n  flex-wrap: wrap;\n  border-radius: 0px 0px 5px 5px;\n  color: var(--white);\n  margin: -20px 0px 20px 0px;\n}\n\n#search-result {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 40px;\n  border-radius: 20px;\n}\n\n.no-result {\n  background-color: rgb(167, 25, 25);\n  position: fixed;\n  margin-top: 20px;\n  padding: 10px;\n  color: white;\n}\n\n.item-list {\n  padding: 5px 20px 5px 20px;\n  color: rgb(240, 245, 250);\n  display: inline-block;\n  margin-bottom: 0;\n}\n\n.item-ingredients:hover {\n  background-color: var(--primary-shade);\n}\n\n.item-appliance:hover {\n  background-color: var(--secondary-shade);\n}\n\n.item-utensils:hover {\n  background-color: var(--tertiary-shade);\n}\n\n.show-list {\n  display: block;\n}\n\n#tags {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.tag {\n  display: flex;\n  justify-content: space-between;\n  color: var(--white);\n  padding: 10px 15px;\n  border-radius: 5px;\n  border-style: none;\n  margin: 5px 10px 5px 5px;\n  align-items: center;\n}\n\n.close-tag {\n  height: 20px;\n  width: 20px;\n  display: block;\n  cursor: pointer;\n}\n\n.tag-ingredients {\n  background-color: var(--primary);\n}\n\n.tag-appliance {\n  background-color: var(--secondary);\n}\n\n.tag-utensils {\n  background-color: var(--tertiary);\n}\n\n.fa-xmark {\n  color: white;\n  border: 2px solid white;\n  border-radius: 50%;\n  display: flex;\n  margin-left: 10px;\n}\n\n.fa-xmark::before {\n  /* centrage */\n  line-height: 16px;\n}\n\n/* je relie les deux class */\n.combo-box.open .list-result {\n  display: flex;\n}\n\n.combo-box.open .chevron {\n  transform: rotate(180deg);\n  transition: transform 0.2s;\n}\n\n.combo-box.open input {\n  border-radius: 5px 5px 0px 0px;\n}\n\n.combo-box.open .i::placeholder {\n  color: var(--primary-hue) !important;\n}\n\n.combo-box.open .a::placeholder {\n  color: var(--secondary-hue) !important;\n}\n\n.combo-box.open .u::placeholder {\n  color: var(--tertiary-hue) !important;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"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","sourcesContent":["/***************************************************\nGLOBAL\n***************************************************/\n* {\n    box-sizing: border-box;\n    margin: 0;\n}\n\n.flex {\n    display: flex;\n}\n\n.clearfix:before,\n.clearfix:after {\n    content: \"\";\n    display: table;\n}\n\n.clearfix:after {\n    clear: both;\n}\n\nimg,\niframe,\nvideo {\n    max-width: 100%;\n    vertical-align: middle;\n}\n\nnav ul {\n    list-style: none;\n    padding: 0;\n    margin: 0;\n}\n\na {\n    text-decoration: none;\n    color:rgb(6, 143, 177);\n    transition: all .5s ease;\n}\n/***************************************************\nSTRUCTURE\n***************************************************/\n#container{\n    display: flex;\n    flex-direction: column;\n    width: 80%;\n    max-width: 1200px;\n    margin: 0 auto; \n}\n/***************************************************\nTYPO\n***************************************************/\n\n.btn{\n    background-color: rgba(0, 0, 0, 0.3);\n    border:none;\n    font-size: .75rem;\n    padding: .7rem 1.25rem;\n    font-weight: 700;\n    color: rgb(255, 255, 255);\n    line-height: 100%;\n    border-radius: 20px;\n    text-align: center;\n    text-transform: uppercase;\n    cursor: pointer;\n}\n/***************************************************\nTABLETTE\n***************************************************/\n@media screen and (max-width:768px){\n    .container{\n        width: 100%;\n    }\n    #search-result {\n        grid-template-columns: repeat(2,1fr) !important;\n    }\n}\n/***************************************************\nMOBILE\n***************************************************/\n@media screen and (max-width: 425px){\n\n    #list-ingredients-result {\n        width: 300px !important;\n    }\n    #list-utensils-result {\n        width: 280px !important;\n    }\n    #search-result {\n        grid-template-columns: auto !important;\n    }\n}\n\n\n:root {\n    --primary: #3282f7;\n    --secondary: #69d9a4;\n    --tertiary: #ed6454;\n    --white: #fff;\n  \n    /* nuance */\n    --primary-shade: #2c72d8;\n    --secondary-shade: #5cbe90;\n    --tertiary-shade: #cf584a;\n  \n    /* teinte */\n    --primary-hue: hsl(216, 29%, 84%);\n    --secondary-hue: hsl(151, 17%, 86%);\n    --tertiary-hue: hsl(6, 23%, 86%);\n  \n    --error: rgb(167, 25, 25);\n  }\n  \n  body {\n    margin: 0;\n  }\n  \n  header {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding-bottom: 20px;\n  }\n  \n  #title {\n    color: #d04f4f;\n    font-weight: bold;\n  }\n  \n  li {\n    list-style: none;\n  }\n  \n  #inputs {\n    display: flex;\n    flex-wrap: wrap;\n    /* gère l'espace entre les box row & column */\n    gap: 0px 20px;\n    \n  }\n  \n  input {\n    outline: none;\n    border: none;\n    border-radius: 5px;\n    padding: 0px;\n    margin: 20px 0px;\n  }\n  \n  #search-input {\n    background: url(../assets/magnifying_glass.svg) no-repeat right 10px bottom 40%;\n    background-color: #e7e7e7;\n    display: inline-block;\n    width: 100%;\n    padding: 15px;\n    font-weight: 600;\n  }\n  \n  #search-input::placeholder {\n    color: #adadad;\n  }\n  \n  .all::placeholder {\n    color: rgb(152,192,251)\n  }\n  \n  #search-ingredients::placeholder,\n  #search-appliance::placeholder,\n  #search-utensils::placeholder {\n    color: var(--white);\n  }\n  \n  #search-ingredients,\n  #search-appliance,\n  #search-utensils {\n    padding: 15px 15px 15px 10px;\n    color: var(--white);\n    font-weight: 600;\n    width: 100%;\n  }\n  \n  #search-ingredients {\n    background-color: var(--primary);\n  }\n  \n  #search-appliance {\n    background-color: var(--secondary);\n  }\n  \n  #search-utensils {\n    background-color: var(--tertiary);\n  }\n  \n  #ingredients, #appliance, #utensils {\n    position: relative;\n    cursor: pointer;\n  }\n  \n  #chevron-ingredients, #chevron-appliance, #chevron-utensils {\n    position: absolute;\n    right: 10px;\n    top: 38px;\n  }\n  \n  .chevron-down {\n    transform: rotate(180deg);\n  }\n\n  .recipe {\n    height: 400px;\n  }\n  \n  .recipe-image {\n    background-color: #c7bebe;\n    width: 100%;\n    height: 50%;\n    border-radius: 5px 5px 0px 0px;\n  }\n  \n  .recipe-body {\n    padding: 0 10px;\n    margin-bottom: 20px;\n    background-color: #e7e7e7;\n    height: 50%;\n    padding: 15px 15px;\n    border-radius: 0px 0px 5px 5px;\n    overflow: hidden;\n  }\n  \n  .recipe-header {\n    display: flex;\n    justify-content: space-between;\n  }\n  \n  .recipe-title h2 {\n    font-size: 1rem;\n    font-weight: 500;\n  }\n  \n  .recipe-time {\n    display: flex;\n    position: relative;\n    font-weight: bold;\n  }\n  \n  .recipe-time p {\n    width: 60px;\n    text-align: end;\n  }\n  \n  .recipe-content {\n    display: flex;\n    justify-content: space-between;\n    padding-top: 10px;\n    padding-bottom: 10px;\n    font-size: 0.7rem;\n    max-height: 140px;\n  }\n  \n  .recipe-ingredients,\n  .recipe-describe {\n    width: 50%;\n  }\n  \n  .recipe-ingredients {\n    font-weight: bolder;\n    font-size: 0.7rem;\n  }\n  \n  .recipe-describe {\n    font-weight: 500;\n    padding-left: 15px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: -webkit-box;\n    -webkit-line-clamp: 10;\n    -webkit-box-orient: vertical;\n    word-wrap: break-word;\n  }\n  \n  ul #search-result {\n    margin: 0;\n  }\n  \n  i {\n    text-transform: lowercase;\n  }\n  \n  #list-ingredients-result {\n     background-color: var(--primary);\n    width: 500px;\n    height: 290px;\n    overflow-x: scroll;\n    \n  }\n  \n  #list-appliance-result {\n     background-color: var(--secondary);\n    width: 500px;\n    height: 290px;\n  }\n  \n  #list-utensils-result {\n     background-color: var(--tertiary);\n    width: 500px;\n    height: 290px;\n    overflow-x: scroll;\n  }\n  \n  #ingredients {\n    display: flex;\n    flex-direction: column;\n  }\n  \n  .list-result {\n    display: none;\n    flex-direction: column;\n    flex-wrap: wrap;\n    border-radius: 0px 0px 5px 5px;\n    color: var(--white);\n    margin: -20px 0px 20px 0px;\n  }\n  \n  #search-result {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    grid-gap: 40px;\n    border-radius: 20px;\n  }\n  \n  .no-result {\n    background-color: rgb(167, 25, 25);\n    position: fixed;\n    margin-top: 20px;\n    padding: 10px;\n    color: white;\n  }\n  \n  .item-list {\n    padding: 5px 20px 5px 20px;\n     color: rgb(240, 245, 250);\n    display: inline-block;\n    margin-bottom: 0;\n  }\n  \n  .item-ingredients:hover {\n    background-color: var(--primary-shade);\n  }\n  \n  .item-appliance:hover {\n    background-color: var(--secondary-shade);\n  }\n  \n  .item-utensils:hover {\n    background-color: var(--tertiary-shade);\n  }\n  \n  .show-list {\n    display: block;\n  }\n  \n  #tags {\n    display: flex;\n    flex-wrap: wrap;\n  }\n  \n  .tag {\n    display: flex;\n    justify-content: space-between;\n    color: var(--white);\n    padding:10px 15px;\n    border-radius: 5px;\n    border-style: none;\n    margin: 5px 10px 5px 5px;\n    align-items: center;\n  }\n  \n  .close-tag {\n    height: 20px;\n    width: 20px;\n    display: block;\n    cursor: pointer;\n  }\n  \n  .tag-ingredients {\n    background-color: var(--primary);\n  }\n  \n  .tag-appliance {\n    background-color: var(--secondary);\n  }\n  \n  .tag-utensils {\n    background-color: var(--tertiary);\n  }\n  \n  .fa-xmark {\n    color: white;\n    border: 2px solid white;\n    border-radius: 50%;\n    display: flex;\n    margin-left: 10px;\n  }\n  \n  .fa-xmark::before {\n    /* centrage */\n    line-height: 16px;\n  }\n  \n  /* je relie les deux class */\n  .combo-box.open .list-result {\n    display: flex;\n  }\n  \n  .combo-box.open .chevron {\n    transform: rotate(180deg);\n    transition: transform 0.2s;\n  }\n  \n  .combo-box.open input {\n    border-radius: 5px 5px 0px 0px;\n  }\n  \n  .combo-box.open .i::placeholder {\n    color: var(--primary-hue) !important;\n  }\n  \n  .combo-box.open .a::placeholder {\n    color: var(--secondary-hue) !important;\n  }\n  .combo-box.open .u::placeholder {\n    color: var(--tertiary-hue) !important;\n  }\n    "],"sourceRoot":""}]);
->>>>>>> c8c66ce3d7012deebeeab81ddd9ef3d92d3dcc70:dist/8c04a8768b4f0515089f.js
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/runtime/api.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
-  \*****************************************************/
-/***/ ((module) => {
-
-
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-*/
-module.exports = function (cssWithMappingToString) {
-  var list = []; // return the list of modules as css string
-
-  list.toString = function toString() {
-    return this.map(function (item) {
-      var content = "";
-      var needLayer = typeof item[5] !== "undefined";
-
-      if (item[4]) {
-        content += "@supports (".concat(item[4], ") {");
-      }
-
-      if (item[2]) {
-        content += "@media ".concat(item[2], " {");
-      }
-
-      if (needLayer) {
-        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
-      }
-
-      content += cssWithMappingToString(item);
-
-      if (needLayer) {
-        content += "}";
-      }
-
-      if (item[2]) {
-        content += "}";
-      }
-
-      if (item[4]) {
-        content += "}";
-      }
-
-      return content;
-    }).join("");
-  }; // import a list of modules into the list
-
-
-  list.i = function i(modules, media, dedupe, supports, layer) {
-    if (typeof modules === "string") {
-      modules = [[null, modules, undefined]];
-    }
-
-    var alreadyImportedModules = {};
-
-    if (dedupe) {
-      for (var k = 0; k < this.length; k++) {
-        var id = this[k][0];
-
-        if (id != null) {
-          alreadyImportedModules[id] = true;
-        }
-      }
-    }
-
-    for (var _k = 0; _k < modules.length; _k++) {
-      var item = [].concat(modules[_k]);
-
-      if (dedupe && alreadyImportedModules[item[0]]) {
-        continue;
-      }
-
-      if (typeof layer !== "undefined") {
-        if (typeof item[5] === "undefined") {
-          item[5] = layer;
-        } else {
-          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
-          item[5] = layer;
-        }
-      }
-
-      if (media) {
-        if (!item[2]) {
-          item[2] = media;
-        } else {
-          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
-          item[2] = media;
-        }
-      }
-
-      if (supports) {
-        if (!item[4]) {
-          item[4] = "".concat(supports);
-        } else {
-          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
-          item[4] = supports;
-        }
-      }
-
-      list.push(item);
-    }
-  };
-
-  return list;
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
-/*!********************************************************!*\
-  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
-  \********************************************************/
-/***/ ((module) => {
-
-
-
-module.exports = function (url, options) {
-  if (!options) {
-    options = {};
-  }
-
-  if (!url) {
-    return url;
-  }
-
-  url = String(url.__esModule ? url.default : url); // If url is already wrapped in quotes, remove them
-
-  if (/^['"].*['"]$/.test(url)) {
-    url = url.slice(1, -1);
-  }
-
-  if (options.hash) {
-    url += options.hash;
-  } // Should url be wrapped?
-  // See https://drafts.csswg.org/css-values-3/#urls
-
-
-  if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
-    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
-  }
-
-  return url;
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/runtime/sourceMaps.js":
-/*!************************************************************!*\
-  !*** ./node_modules/css-loader/dist/runtime/sourceMaps.js ***!
-  \************************************************************/
-/***/ ((module) => {
-
-
-
-module.exports = function (item) {
-  var content = item[1];
-  var cssMapping = item[3];
-
-  if (!cssMapping) {
-    return content;
-  }
-
-  if (typeof btoa === "function") {
-    var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(cssMapping))));
-    var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
-    var sourceMapping = "/*# ".concat(data, " */");
-    var sourceURLs = cssMapping.sources.map(function (source) {
-      return "/*# sourceURL=".concat(cssMapping.sourceRoot || "").concat(source, " */");
-    });
-    return [content].concat(sourceURLs).concat([sourceMapping]).join("\n");
-  }
-
-  return [content].join("\n");
-};
+throw new Error("Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: expected \"{\".\n    ╷\n334 │ >>>>>>> c8c66ce3d7012deebeeab81ddd9ef3d92d3dcc70\n    │                                                 ^\n    ╵\n  src/styles/main.scss 334:49  root stylesheet");
 
 /***/ }),
 
@@ -2005,6 +1562,7 @@ module.exports = function (item) {
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2022,6 +1580,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!../../node_modules/sass-loader/dist/cjs.js!./main.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 
       
       
@@ -2043,12 +1605,12 @@ options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWi
 options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
 options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()((_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6___default()), options);
 
 
 
 
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6___default()) && (_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6___default().locals) ? (_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6___default().locals) : undefined);
 
 
 /***/ }),
@@ -2059,6 +1621,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \****************************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 var stylesInDOM = [];
@@ -2172,6 +1735,7 @@ module.exports = function (list, options) {
   \********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 var memo = {};
@@ -2220,6 +1784,7 @@ module.exports = insertBySelector;
   \**********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -2240,6 +1805,7 @@ module.exports = insertStyleElement;
   \**********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -2261,6 +1827,7 @@ module.exports = setAttributesWithoutAttributes;
   \***************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -2340,6 +1907,7 @@ module.exports = domAPI;
   \*********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -2357,16 +1925,6 @@ function styleTagTransform(css, styleElement) {
 
 module.exports = styleTagTransform;
 
-/***/ }),
-
-/***/ "./src/assets/magnifying_glass.svg":
-/*!*****************************************!*\
-  !*** ./src/assets/magnifying_glass.svg ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "magnifying_glass.svg";
-
 /***/ })
 
 /******/ 	});
@@ -2383,7 +1941,7 @@ module.exports = __webpack_require__.p + "magnifying_glass.svg";
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
+/******/ 			// no module.id needed
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
@@ -2394,9 +1952,6 @@ module.exports = __webpack_require__.p + "magnifying_glass.svg";
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
@@ -2423,18 +1978,6 @@ module.exports = __webpack_require__.p + "magnifying_glass.svg";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -2451,56 +1994,11 @@ module.exports = __webpack_require__.p + "magnifying_glass.svg";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript)
-/******/ 				scriptUrl = document.currentScript.src
-/******/ 			if (!scriptUrl) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl;
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"main": 0
-/******/ 		};
-/******/ 		
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		// no on chunks loaded
-/******/ 		
-/******/ 		// no jsonp function
-/******/ 	})();
-/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
@@ -2511,6 +2009,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_displayCategory__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/displayCategory */ "./src/views/displayCategory.js");
 /* harmony import */ var _scripts_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scripts/list */ "./src/scripts/list.js");
 /* harmony import */ var _scripts_class_Filter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scripts/class/Filter */ "./src/scripts/class/Filter.js");
+/* harmony import */ var _scripts_class_Filter__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_scripts_class_Filter__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -2712,16 +2211,11 @@ buildCards(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
 (0,_views_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayAppliance)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
 (0,_views_displayCategory__WEBPACK_IMPORTED_MODULE_3__.displayUtensils)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
 (0,_scripts_list__WEBPACK_IMPORTED_MODULE_4__.list)();
-<<<<<<< HEAD:dist/d414a69a8463ee20f0d9.js
 manageTags();
-=======
-eventTag();
->>>>>>> c8c66ce3d7012deebeeab81ddd9ef3d92d3dcc70:dist/8c04a8768b4f0515089f.js
 var moyenne = [];
 setTimeout(function () {
   for (var i = 0; i < 50; i++) {
     var start = performance.now();
-<<<<<<< HEAD:dist/d414a69a8463ee20f0d9.js
     searchBarFilter();
     moyenne.push(performance.now() - start);
   }
@@ -2752,16 +2246,6 @@ setTimeout(function () {
   }) / moyenne.length);
 }, 350); // score : 10.13,10.38,11.8,9.50,8.71
 // setTimeout(() => {
-=======
-    filterTagSearch();
-    moyenne.push(performance.now() - start);
-  }
-
-  console.log(moyenne.reduce(function (a, b) {
-    return a + b;
-  }) / moyenne.length);
-}, 350); // setTimeout(() => {
->>>>>>> c8c66ce3d7012deebeeab81ddd9ef3d92d3dcc70:dist/8c04a8768b4f0515089f.js
 //   for (let i = 0; i < 50; i++) {
 //     let start = performance.now();
 //     filterTagSearch();
@@ -2773,8 +2257,4 @@ setTimeout(function () {
 
 /******/ })()
 ;
-<<<<<<< HEAD:dist/d414a69a8463ee20f0d9.js
-//# sourceMappingURL=d414a69a8463ee20f0d9.js.map
-=======
-//# sourceMappingURL=8c04a8768b4f0515089f.js.map
->>>>>>> c8c66ce3d7012deebeeab81ddd9ef3d92d3dcc70:dist/8c04a8768b4f0515089f.js
+//# sourceMappingURL=f0b951c9886778c18e92.js.map

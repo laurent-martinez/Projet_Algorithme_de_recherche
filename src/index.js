@@ -193,17 +193,13 @@ displayIngredients(recipes, []);
 displayAppliance(recipes, []);
 displayUtensils(recipes, []);
 list();
-<<<<<<< HEAD
+
 manageTags();
-=======
-eventTag();
->>>>>>> c8c66ce3d7012deebeeab81ddd9ef3d92d3dcc70
 
 let moyenne = [];
 setTimeout(() => {
   for (let i = 0; i < 50; i++) {
     let start = performance.now();
-<<<<<<< HEAD
     searchBarFilter();
     moyenne.push(performance.now() - start);
   }
@@ -228,14 +224,6 @@ setTimeout(() => {
 
 // score : 10.13,10.38,11.8,9.50,8.71
 
-=======
-    filterTagSearch();
-    moyenne.push(performance.now() - start);
-  }
-  console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
-}, 350);
-
->>>>>>> c8c66ce3d7012deebeeab81ddd9ef3d92d3dcc70
 // setTimeout(() => {
 //   for (let i = 0; i < 50; i++) {
 //     let start = performance.now();
