@@ -1,9 +1,9 @@
 // DOM
 const ingredientsResult = document.querySelector("#list-ingredients-result");
 const applianceResult = document.querySelector("#list-appliance-result");
-const utensilsResult = document.querySelector("#list-utensils-result");
+const ustensilsResult = document.querySelector("#list-ustensils-result");
 
-export const displayIngredients = (recipes, tagIngredients) => {
+export const buildIngredients = (recipes, tagIngredients) => {
   ingredientsResult.innerHTML = "";
   let ingredientsArray = [];
 
@@ -30,7 +30,7 @@ export const displayIngredients = (recipes, tagIngredients) => {
   });
 };
 
-export const displayAppliance = (recipes, tagAppliance) => {
+export const buildAppliance = (recipes, tagAppliance) => {
   applianceResult.innerHTML = "";
   let applianceArray = [];
 
@@ -56,28 +56,28 @@ export const displayAppliance = (recipes, tagAppliance) => {
   });
 };
 
-export const displayUtensils = (recipes, tagUtensils) => {
-  utensilsResult.innerHTML = "";
-  let utensilsArray = [];
+export const buildUstensils = (recipes, tagUstensils) => {
+  ustensilsResult.innerHTML = "";
+  let ustensilsArray = [];
 
   recipes.map((recipe) => {
-    const utensils = recipe.ustensils;
-    utensils.forEach((utensil) => utensilsArray.push(utensil));
+    const ustensils = recipe.ustensils;
+    ustensils.forEach((ustensil) => ustensilsArray.push(ustensil));
   });
 
-  let utensilsList = [...new Set(utensilsArray)].sort();
-  const inputUtensils = document.querySelector("#search-utensils").value;
+  let ustensilsList = [...new Set(ustensilsArray)].sort();
+  const inputUstensils = document.querySelector("#search-ustensils").value;
 
-  utensilsList = utensilsList.filter(
-    (utensil) =>
-      !tagUtensils.includes(utensil) &&
-      utensil.toLowerCase().includes(inputUtensils.toLowerCase())
+  ustensilsList = ustensilsList.filter(
+    (ustensil) =>
+      !tagUstensils.includes(ustensil) &&
+      ustensil.toLowerCase().includes(inputUstensils.toLowerCase())
   );
 
-  utensilsList.forEach((utensil) => {
-    utensilsResult.insertAdjacentHTML(
+  ustensilsList.forEach((ustensil) => {
+    ustensilsResult.insertAdjacentHTML(
       "beforeend",
-      `<p class="item-list item-utensils">${utensil}</p>`
+      `<p class="item-list item-ustensils">${ustensil}</p>`
     );
   });
 };

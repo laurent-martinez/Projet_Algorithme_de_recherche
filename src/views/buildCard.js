@@ -1,7 +1,7 @@
 // DOM
 const searchResult = document.querySelector("#search-result");
 
-export const displayCard = (recipe) => {
+export const buildCard = (recipe) => {
   const ingredients = recipe.ingredients
     .map(
       (ingredient) =>

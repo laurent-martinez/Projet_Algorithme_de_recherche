@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>Les petits plats</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,53 +13,123 @@
     />
   </head>
   <body>
-    <div id="container">
+    <div id="wrapper">
       <header>
-          <svg width="52" height="47" viewBox="0 0 52 47" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M39.5082 25.3424V35.1415H12.4023V25.3424C7.99762 25.3424 4.60939 21.9635 4.60939 17.5708C4.60939 13.1781 7.99762 9.79908 12.4023 9.79908C15.4517 9.79908 18.1623 11.4886 19.5176 14.1918L22.9059 12.5023C21.8894 10.8128 20.8729 9.12328 19.1788 8.10958C20.5341 5.74429 22.9059 4.05479 25.9553 4.05479C30.36 4.05479 33.7482 7.43378 33.7482 11.8265C33.7482 13.1781 33.4094 14.5297 32.7317 15.8813L36.12 17.9087C37.1365 16.2192 37.8141 14.1918 37.8141 11.8265C37.8141 11.1507 37.8141 10.8128 37.8141 10.137C38.4918 9.79908 39.1694 9.79908 39.847 9.79908C44.2518 9.79908 47.64 13.1781 47.64 17.5708C47.64 21.9635 43.9129 25.3424 39.5082 25.3424ZM39.5082 42.9132H12.4023V39.1963H39.5082V42.9132ZM39.5082 6.08219C38.4918 6.08219 37.4753 6.42009 36.12 6.42009C34.087 2.70319 30.36 0 25.9553 0C21.5506 0 17.4847 2.36529 15.7906 6.42009C14.7741 6.08219 13.7576 6.08219 12.4023 6.08219C5.96468 6.08219 0.882324 11.1507 0.882324 17.5708C0.882324 22.6393 4.27056 27.0319 8.67527 28.3835V46.2922H43.5741V28.7214C47.9788 27.0319 51.3671 22.9772 51.3671 17.9087C51.3671 11.4886 45.9459 6.08219 39.5082 6.08219ZM22.2282 31.0867H18.5012V23.653H22.2282V31.0867ZM33.7482 31.0867H30.0212V23.653H33.7482V31.0867Z"
-                  fill="#D04F4F" />
-          </svg>
-          <h1 id="title">Les petits plats</h1>
-      </header></p>
+        <svg width="52" height="47" viewBox="0 0 52 47" fill="none">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M39.5082 25.3424V35.1415H12.4023V25.3424C7.99762 25.3424 4.60939 21.9635 4.60939 17.5708C4.60939 13.1781 7.99762 9.79908 12.4023 9.79908C15.4517 9.79908 18.1623 11.4886 19.5176 14.1918L22.9059 12.5023C21.8894 10.8128 20.8729 9.12328 19.1788 8.10958C20.5341 5.74429 22.9059 4.05479 25.9553 4.05479C30.36 4.05479 33.7482 7.43378 33.7482 11.8265C33.7482 13.1781 33.4094 14.5297 32.7317 15.8813L36.12 17.9087C37.1365 16.2192 37.8141 14.1918 37.8141 11.8265C37.8141 11.1507 37.8141 10.8128 37.8141 10.137C38.4918 9.79908 39.1694 9.79908 39.847 9.79908C44.2518 9.79908 47.64 13.1781 47.64 17.5708C47.64 21.9635 43.9129 25.3424 39.5082 25.3424ZM39.5082 42.9132H12.4023V39.1963H39.5082V42.9132ZM39.5082 6.08219C38.4918 6.08219 37.4753 6.42009 36.12 6.42009C34.087 2.70319 30.36 0 25.9553 0C21.5506 0 17.4847 2.36529 15.7906 6.42009C14.7741 6.08219 13.7576 6.08219 12.4023 6.08219C5.96468 6.08219 0.882324 11.1507 0.882324 17.5708C0.882324 22.6393 4.27056 27.0319 8.67527 28.3835V46.2922H43.5741V28.7214C47.9788 27.0319 51.3671 22.9772 51.3671 17.9087C51.3671 11.4886 45.9459 6.08219 39.5082 6.08219ZM22.2282 31.0867H18.5012V23.653H22.2282V31.0867ZM33.7482 31.0867H30.0212V23.653H33.7482V31.0867Z"
+            fill="#D04F4F"
+          />
+        </svg>
+        <h1 id="title">Les petits plats</h1>
+      </header>
       <div id="search">
-          <input id="search-input" type="text" placeholder="Rechercher une recette">
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Rechercher une recette"
+        />
       </div>
       <p id="tags"></p>
       <div id="inputs">
-          <div id="ingredients" class="combo-box">
-              <div class="content-input">
-                  <input id="search-ingredients" type="text" class="i" data-type="Ingredients" data-search-type="ingrédient" placeholder="Ingredients">
-                  <svg width="16" height="11" viewBox="0 0 16 11" id="chevron-ingredients" class="chevron" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L-3.12482e-07 8.66663L1.88 10.5466Z" fill="white"/>
-                    </svg>
-                    
-              </div>
-              <div id="list-ingredients-result" class="list-result" data-type="ingredients"></div>
+        <div id="ingredients" class="combo-box">
+          <div class="content-input">
+            <input
+              id="search-ingredients"
+              type="text"
+              class="i"
+              data-type="Ingredients"
+              data-search-type="ingrédient"
+              placeholder="Ingredients"
+            />
+            <svg
+              width="16"
+              height="11"
+              viewBox="0 0 16 11"
+              id="chevron-ingredients"
+              class="chevron"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L-3.12482e-07 8.66663L1.88 10.5466Z"
+                fill="white"
+              />
+            </svg>
           </div>
-          <div id="apparatus" class="combo-box">
-              <div class="content-input">
-                  <input id="search-appliance" type="text" class="a" data-type="Appareils" data-search-type="appareil" placeholder="Appareils">
-                  <svg width="16" height="11" viewBox="0 0 16 11" id="chevron-appliance" class="chevron" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L-3.12482e-07 8.66663L1.88 10.5466Z" fill="white"/>
-                    </svg>
-                    
-              </div>
-              <div id="list-appliance-result"  class="list-result"  data-type="appliance"></div>
+          <div
+            id="list-ingredients-result"
+            class="list-result"
+            data-type="ingredients"
+          ></div>
+        </div>
+        <div id="apparatus" class="combo-box">
+          <div class="content-input">
+            <input
+              id="search-appliance"
+              type="text"
+              class="a"
+              data-type="Appareils"
+              data-search-type="appareil"
+              placeholder="Appareils"
+            />
+            <svg
+              width="16"
+              height="11"
+              viewBox="0 0 16 11"
+              id="chevron-appliance"
+              class="chevron"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L-3.12482e-07 8.66663L1.88 10.5466Z"
+                fill="white"
+              />
+            </svg>
           </div>
-          <div id="utensils" class="combo-box">
-              <div class="content-input">
-                  <input id="search-utensils" type="text" class="u" data-type="Ustensiles" data-search-type="ustensile" placeholder="Ustensiles">
-                  <svg width="16" height="11" viewBox="0 0 16 11" id="chevron-utensils" class="chevron" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z" fill="white"/>
-                    </svg>
-                    
-              </div>
-              <div id="list-utensils-result"  class="list-result"  data-type="utensils"></div>
+          <div
+            id="list-appliance-result"
+            class="list-result"
+            data-type="appliance"
+          ></div>
+        </div>
+        <div id="ustensils" class="combo-box">
+          <div class="content-input">
+            <input
+              id="search-ustensils"
+              type="text"
+              class="u"
+              data-type="Ustensiles"
+              data-search-type="ustensile"
+              placeholder="Ustensiles"
+            />
+            <svg
+              width="16"
+              height="11"
+              viewBox="0 0 16 11"
+              id="chevron-ustensils"
+              class="chevron"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
+                fill="white"
+              />
+            </svg>
           </div>
+          <div
+            id="list-ustensils-result"
+            class="list-result"
+            data-type="ustensils"
+          ></div>
+        </div>
       </div>
       <div id="search-result"></div>
-  </div>
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

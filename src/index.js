@@ -1,9 +1,9 @@
 import "./styles/main.scss";
 import { recipes } from "./data/recipes.js";
-import { displayCard } from "./display/displayCard";
-import { displayAppliance } from "./display/displayCategory";
-import { displayIngredients } from "./display/displayCategory";
-import { displayUtensils } from "./display/displayCategory";
+import { buildCard } from "./views/buildCard";
+import { buildAppliance } from "./views/buildList";
+import { buildIngredients } from "./views/buildList";
+import { buildUstensils } from "./views/buildList";
 import { list } from "./scripts/list";
 import { Filter } from "./scripts/class/Filter";
 
@@ -12,7 +12,7 @@ const searchInput = document.querySelector("#search-input");
 const searchResult = document.querySelector("#search-result");
 const searchIngredients = document.querySelector("#search-ingredients");
 const searchAppliance = document.querySelector("#search-appliance");
-const searchUtensils = document.querySelector("#search-utensils");
+const searchUstensils = document.querySelector("#search-ustensils");
 const tags = document.querySelector("#tags");
 const listResult = document.querySelectorAll(".list-result");
 
@@ -25,9 +25,9 @@ let tagList = [];
 /**
  * Affichage des recettes
  */
-const displayCards = (recipes) => {
+const buildCards = (recipes) => {
   recipes?.forEach((recipe) => {
-    displayCard(recipe);
+    buildCard(recipe);
   });
 };
 
@@ -42,14 +42,14 @@ searchInput.addEventListener("keyup", () => {
 /**
  * Gestion des tags
  */
-const eventTag = () => {
+const manageTags = () => {
   listResult.forEach((list) => {
     list.querySelectorAll(".item-list").forEach((itemList) => {
       itemList.addEventListener("click", (e) => {
         const tag = {
           // objet tag avec une value et un type
           value: e.target.textContent, // la valeur sur laquelle je clique dans ma liste
-          type: e.target.closest(".list-result").dataset.type, // je vais chercher data-type de mon html(ingredients, apparatus ou utensils)
+          type: e.target.closest(".list-result").dataset.type, // je vais chercher data-type de mon html(ingredients, apparatus ou ustensils)
         };
         tagList.push(tag); // je mets dans mon tableau tous ce que je click
         tags.innerHTML += `
@@ -58,23 +58,23 @@ const eventTag = () => {
         const tagResult = filter.byTags(tag); // je trie avec ma class Filter
         searchResult.innerHTML = ""; // je vide les résultas qui ne correspondent pas
 
-        displayCards(tagResult);
-        displayIngredients(
+        buildCards(tagResult);
+        buildIngredients(
           tagResult,
           tagList
             .filter((tag) => tag.type == "ingredients")
             .map((tag) => tag.value)
         );
-        displayAppliance(
+        buildAppliance(
           tagResult,
           tagList
             .filter((tag) => tag.type == "appliance")
             .map((tag) => tag.value)
         );
-        displayUtensils(
+        buildUstensils(
           tagResult,
           tagList
-            .filter((tag) => tag.type == "utensils")
+            .filter((tag) => tag.type == "ustensils")
             .map((tag) => tag.value)
         );
         eventTag();
@@ -111,42 +111,68 @@ const filterTagSearch = () => {
   tagList.forEach((tag) => {
     result = filter.byTags(tag);
   });
-  displayCards(result);
-  displayIngredients(
+  buildCards(result);
+  buildIngredients(
     result,
     tagList.filter((tag) => tag.type == "ingredients").map((tag) => tag.value)
   );
-  displayAppliance(
+  buildAppliance(
     result,
     tagList.filter((tag) => tag.type == "appliance").map((tag) => tag.value)
   );
-  displayUtensils(
+  buildUstensils(
     result,
-    tagList.filter((tag) => tag.type == "utensils").map((tag) => tag.value)
+    tagList.filter((tag) => tag.type == "ustensils").map((tag) => tag.value)
   );
   eventTag();
 };
 
 searchIngredients.addEventListener("keyup", () => {
-  displayIngredients(recipes, tagList);
+  buildIngredients(recipes, tagList);
   eventTag();
 });
 
 searchAppliance.addEventListener("keyup", () => {
-  displayAppliance(recipes, tagList);
+  buildAppliance(recipes, tagList);
   eventTag();
 });
 
-searchUtensils.addEventListener("keyup", () => {
-  displayUtensils(recipes, tagList);
+searchUstensils.addEventListener("keyup", () => {
+  buildUstensils(recipes, tagList);
 });
 
 /**
  * Initialisation
  */
-displayCards(recipes);
-displayIngredients(recipes, []);
-displayAppliance(recipes, []);
-displayUtensils(recipes, []);
+buildCards(recipes);
+buildIngredients(recipes, []);
+buildAppliance(recipes, []);
+buildUstensils(recipes, []);
 list();
 eventTag();
+
+// let moyenne = [];
+// setTimeout(() => {
+//   for (let i = 0; i < 50; i++) {
+//     let start = performance.now();
+//     searchBarFilter();
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 100; i++) {
+//     let start = performance.now();
+//     searchBarFilter();
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 20; i++) {
+//     let start = performance.now();
+//     searchBarFilter();
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 150; i++) {
+//     let start = performance.now();
+//     searchBarFilter();
+//     moyenne.push(performance.now() - start);
+//   }
+
+//   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
+// }, 350);
