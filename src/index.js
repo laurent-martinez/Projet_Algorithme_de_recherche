@@ -149,7 +149,7 @@ buildIngredients(recipes, []);
 buildAppliance(recipes, []);
 buildUstensils(recipes, []);
 list();
-eventTag();
+manageTags();
 
 // let moyenne = [];
 // setTimeout(() => {

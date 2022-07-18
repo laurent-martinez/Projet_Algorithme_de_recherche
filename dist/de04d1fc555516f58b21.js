@@ -2489,7 +2489,7 @@ buildCards(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
 (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildAppliance)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
 (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildUstensils)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
 (0,_scripts_list__WEBPACK_IMPORTED_MODULE_4__.list)();
-eventTag(); // let moyenne = [];
+manageTags(); // let moyenne = [];
 // setTimeout(() => {
 //   for (let i = 0; i < 50; i++) {
 //     let start = performance.now();
@@ -2517,4 +2517,4 @@ eventTag(); // let moyenne = [];
 
 /******/ })()
 ;
-//# sourceMappingURL=3c07f710ece84ea7420a.js.map
+//# sourceMappingURL=de04d1fc555516f58b21.js.map
