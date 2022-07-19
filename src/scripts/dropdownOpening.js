@@ -1,4 +1,4 @@
-export const list = () => {
+export const dropdownOpen = () => {
   const listComboBox = document.querySelectorAll(".combo-box");
   listComboBox.forEach((comboBox) => {
     comboBox.addEventListener("click", (e) => {

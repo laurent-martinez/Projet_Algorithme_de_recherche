@@ -4,11 +4,11 @@ import { buildCard } from "./views/buildCard";
 import { buildAppliance } from "./views/buildList";
 import { buildIngredients } from "./views/buildList";
 import { buildUstensils } from "./views/buildList";
-import { list } from "./scripts/list";
-import { Filter } from "./scripts/class/Filter";
+import { dropdownOpen } from "./scripts/dropdownOpening";
+import { Filter } from "./scripts/Filters";
 
 // DOM
-const searchInput = document.querySelector("#search-input");
+const searchInput = document.querySelector("#searchBar-input");
 const searchResult = document.querySelector("#search-result");
 const searchIngredients = document.querySelector("#search-ingredients");
 const searchAppliance = document.querySelector("#search-appliance");
@@ -16,27 +16,40 @@ const searchUstensils = document.querySelector("#search-ustensils");
 const tags = document.querySelector("#tags");
 const listResult = document.querySelectorAll(".list-result");
 
-// CLASS
+// CLASS //
 const filter = new Filter(recipes);
 
-// ARRAY
+// ARRAY //
 let tagList = [];
 
-/**
- * Affichage des recettes
- */
+// display Cards ///
+
 const buildCards = (recipes) => {
   recipes?.forEach((recipe) => {
     buildCard(recipe);
   });
 };
 
-/**
- * Search bar
- */
+// eventListeners //
+
 searchInput.addEventListener("keyup", () => {
   searchResult.innerHTML = "";
   filterTagSearch();
+});
+
+searchIngredients.addEventListener("keyup", () => {
+  buildIngredients(recipes, tagList);
+  manageTags();
+});
+
+searchAppliance.addEventListener("keyup", () => {
+  buildAppliance(recipes, tagList);
+  manageTags();
+});
+
+searchUstensils.addEventListener("keyup", () => {
+  buildUstensils(recipes, tagList);
+  manageTags();
 });
 
 /**
@@ -53,9 +66,12 @@ const manageTags = () => {
         };
         tagList.push(tag); // je mets dans mon tableau tous ce que je click
         tags.innerHTML += `
-                    <button class="tag tag-${tag.type}">${tag.value}<i class="fa-solid fa-xmark close-tag" data-value="${tag.value}"></i></button>
+                    <button class="tag tag-${tag.type}">${tag.value} <svg width="20" class="close-tag" data-value="${tag.value}" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z" fill="white"/>
+                    </svg>
+                    </button>
                 `;
-        const tagResult = filter.byTags(tag); // je trie avec ma class Filter
+        const tagResult = filter.recipesByTags(tag); // je trie avec ma class Filter
         searchResult.innerHTML = ""; // je vide les résultas qui ne correspondent pas
 
         buildCards(tagResult);
@@ -77,7 +93,7 @@ const manageTags = () => {
             .filter((tag) => tag.type == "ustensils")
             .map((tag) => tag.value)
         );
-        eventTag();
+        manageTags();
         removeTag();
       });
     });
@@ -104,12 +120,12 @@ const removeTag = () => {
 const filterTagSearch = () => {
   filter.recipes = recipes;
   let result = filter.recipes;
-  let input = document.querySelector("#search-input").value;
+  let input = document.querySelector("#searchBar-input").value;
   if (input.length >= 3) {
-    result = filter.bySearch(input);
+    result = filter.recipesByInput(input);
   }
   tagList.forEach((tag) => {
-    result = filter.byTags(tag);
+    result = filter.recipesByTags(tag);
   });
   buildCards(result);
   buildIngredients(
@@ -124,22 +140,8 @@ const filterTagSearch = () => {
     result,
     tagList.filter((tag) => tag.type == "ustensils").map((tag) => tag.value)
   );
-  eventTag();
+  manageTags();
 };
-
-searchIngredients.addEventListener("keyup", () => {
-  buildIngredients(recipes, tagList);
-  eventTag();
-});
-
-searchAppliance.addEventListener("keyup", () => {
-  buildAppliance(recipes, tagList);
-  eventTag();
-});
-
-searchUstensils.addEventListener("keyup", () => {
-  buildUstensils(recipes, tagList);
-});
 
 /**
  * Initialisation
@@ -148,7 +150,7 @@ buildCards(recipes);
 buildIngredients(recipes, []);
 buildAppliance(recipes, []);
 buildUstensils(recipes, []);
-list();
+dropdownOpen();
 manageTags();
 
 // let moyenne = [];
