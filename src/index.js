@@ -125,10 +125,10 @@ const removeTag = () => {
 /**
  * Filtre par la barre de recherche et les tags (ensemble)
  */
-const filterTagSearch = () => {
+const filterTagSearch = (input) => {
   filter.recipes = recipes;
   let result = filter.recipes;
-  let input = document.querySelector("#searchBar-input").value;
+  input = document.querySelector("#searchBar-input").value;
   if (input.length >= 3) {
     result = filter.recipesByInput(input);
   }
@@ -161,28 +161,28 @@ buildUstensils(recipes, []);
 dropdownOpen();
 manageTags();
 
-// let moyenne = [];
-// setTimeout(() => {
-//   for (let i = 0; i < 50; i++) {
-//     let start = performance.now();
-//     filterTagSearch();
-//     moyenne.push(performance.now() - start);
-//   }
-//   for (let i = 0; i < 100; i++) {
-//     let start = performance.now();
-//     filterTagSearch();
-//     moyenne.push(performance.now() - start);
-//   }
-//   for (let i = 0; i < 20; i++) {
-//     let start = performance.now();
-//     filterTagSearch();
-//     moyenne.push(performance.now() - start);
-//   }
-//   for (let i = 0; i < 150; i++) {
-//     let start = performance.now();
-//     filterTagSearch();
-//     moyenne.push(performance.now() - start);
-//   }
+let moyenne = [];
+setTimeout(() => {
+  for (let i = 0; i < 50; i++) {
+    let start = performance.now();
+    filterTagSearch("citron");
+    moyenne.push(performance.now() - start);
+  }
+  for (let i = 0; i < 100; i++) {
+    let start = performance.now();
+    filterTagSearch("citron");
+    moyenne.push(performance.now() - start);
+  }
+  for (let i = 0; i < 20; i++) {
+    let start = performance.now();
+    filterTagSearch("citron");
+    moyenne.push(performance.now() - start);
+  }
+  for (let i = 0; i < 150; i++) {
+    let start = performance.now();
+    filterTagSearch("citron");
+    moyenne.push(performance.now() - start);
+  }
 
-//   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
-// }, 350);
+  console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
+}, 350);

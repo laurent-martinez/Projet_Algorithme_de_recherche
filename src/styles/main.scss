@@ -167,7 +167,8 @@ input {
   padding: 15px 15px 15px 10px;
   color: rgba(255, 255, 255, 1);
   font-weight: 600;
-  width: 100%;
+  width: 170px;
+  height: 69px;
 }
 
 #search-ingredients {
@@ -190,8 +191,8 @@ input {
 
 #chevron-ingredients, #chevron-appliance, #chevron-ustensils {
   position: absolute;
-  right: 10px;
-  top: 38px;
+  right: 15px;
+  top: 45px;
 }
 
 .chevron-down {
@@ -290,9 +291,7 @@ ul #search-result {
 i {
   text-transform: lowercase;
 }
-input#search-ingredients {
-  width: 100%;
-}
+
 #list-ingredients-result {
    background-color: var(--primary);
   width: 500px;
@@ -461,6 +460,7 @@ text-align: center;
 
 .combo-box.open input {
   border-radius: 5px 5px 0px 0px;
+ 
 }
 
 .combo-box.open .i::placeholder {
@@ -474,6 +474,16 @@ text-align: center;
   color: var(--tertiary-hue) !important;
 }
   
+.combo-box.open #search-ingredients {
+  width: 100%;
+}
+.combo-box.open #search-appliance {
+  width: 100%;
+}
+.combo-box.open #search-ustensils {
+  width: 100%;
+}
+
 @media screen and (min-width: 1294px) {
   #list-ingredients-result,#list-appliance-result,#list-ustensils-result {
     margin-bottom: -200px
@@ -490,6 +500,9 @@ text-align: center;
     width: 60%;
   }
   #list-ingredients-result,#list-appliance-result,#list-ustensils-result {
+    width: 100%;
+  }
+  #search-ingredients, #search-appliance, #search-ustensils {
     width: 100%;
   }
 }

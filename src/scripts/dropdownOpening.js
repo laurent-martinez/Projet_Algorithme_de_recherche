@@ -1,5 +1,6 @@
 export const dropdownOpen = () => {
   const listComboBox = document.querySelectorAll(".combo-box");
+  const input = document.querySelector(".i");
   listComboBox.forEach((comboBox) => {
     comboBox.addEventListener("click", (e) => {
       if (e.currentTarget.classList.contains("open")) {
@@ -16,6 +17,7 @@ export const dropdownOpen = () => {
         e.currentTarget.querySelector("input").placeholder =
           "Rechercher un " +
           e.currentTarget.querySelector("input").dataset.searchType;
+        input.classList.add("big");
       }
     });
   });
