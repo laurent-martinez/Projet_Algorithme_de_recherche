@@ -47,7 +47,7 @@ export class Filter {
         });
         break;
 
-      case "utensils":
+      case "ustensils":
         this.recipes = this.recipes.filter((recipe) => {
           return recipe.ustensils.some((ustensil) => {
             return ustensil.toLowerCase().includes(tag.value.toLowerCase());

@@ -1658,7 +1658,7 @@ var Filter = /*#__PURE__*/function () {
           });
           break;
 
-        case "utensils":
+        case "ustensils":
           this.recipes = this.recipes.filter(function (recipe) {
             return recipe.ustensils.some(function (ustensil) {
               return ustensil.toLowerCase().includes(tag.value.toLowerCase());
@@ -2544,4 +2544,4 @@ module.exports = __webpack_require__.p + "magnifying_glass.svg";
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=4378c0de39a142efa37e.js.map
+//# sourceMappingURL=1f7b3181b22366805daf.js.map
