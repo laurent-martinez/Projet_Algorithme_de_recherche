@@ -2562,10 +2562,10 @@ var eraseTags = function eraseTags() {
  */
 
 
-var searchBarFilter = function searchBarFilter() {
+var searchBarFilter = function searchBarFilter(input) {
   filter.recipes = _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes;
   var result = filter.recipes;
-  var input = document.querySelector("#searchBar-input").value;
+  input = document.querySelector("#searchBar-input").value;
 
   if (input.length >= 3) {
     result = filter.bySearch(input);
@@ -2623,28 +2623,28 @@ var moyenne = [];
 setTimeout(function () {
   for (var i = 0; i < 50; i++) {
     var start = performance.now();
-    searchBarFilter();
+    searchBarFilter("citron");
     moyenne.push(performance.now() - start);
   }
 
   for (var _i = 0; _i < 100; _i++) {
     var _start = performance.now();
 
-    searchBarFilter();
+    searchBarFilter("citron");
     moyenne.push(performance.now() - _start);
   }
 
   for (var _i2 = 0; _i2 < 20; _i2++) {
     var _start2 = performance.now();
 
-    searchBarFilter();
+    searchBarFilter("citron");
     moyenne.push(performance.now() - _start2);
   }
 
   for (var _i3 = 0; _i3 < 150; _i3++) {
     var _start3 = performance.now();
 
-    searchBarFilter();
+    searchBarFilter("citron");
     moyenne.push(performance.now() - _start3);
   }
 
@@ -2664,4 +2664,4 @@ setTimeout(function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=09d44b7feb7844b8d134.js.map
+//# sourceMappingURL=6a0c5a9726e7a7f2c263.js.map
