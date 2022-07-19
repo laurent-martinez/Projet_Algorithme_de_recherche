@@ -8,7 +8,7 @@ import { dropdownOpen } from "./scripts/dropdownOpening";
 import { Filter } from "./scripts/Filters";
 
 // DOM
-const searchInput = document.querySelector("#search-input");
+const searchBarInput = document.querySelector("#searchBar-input");
 const searchResult = document.querySelector("#search-result");
 const searchIngredients = document.querySelector("#search-ingredients");
 const searchAppliance = document.querySelector("#search-appliance");
@@ -35,7 +35,7 @@ const buildCards = (recipes) => {
 /**
  * Search bar
  */
-searchInput.addEventListener("keyup", () => {
+searchBarInput.addEventListener("keyup", () => {
   searchResult.innerHTML = "";
   searchBarFilter();
 });
@@ -147,7 +147,7 @@ const eraseTags = () => {
 const searchBarFilter = () => {
   filter.recipes = recipes;
   let result = filter.recipes;
-  let input = document.querySelector("#search-input").value;
+  let input = document.querySelector("#searchBar-input").value;
   if (input.length >= 3) {
     result = filter.bySearch(input);
   }
