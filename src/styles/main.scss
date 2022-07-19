@@ -41,7 +41,7 @@ a {
 /***************************************************
 STRUCTURE
 ***************************************************/
-#container{
+#wrapper{
     display: flex;
     flex-direction: column;
     width: 85%;
@@ -83,7 +83,7 @@ MOBILE
     #list-ingredients-result {
         width: 300px !important;
     }
-    #list-utensils-result {
+    #list-ustensils-result {
         width: 280px !important;
     }
     #search-result {
@@ -174,12 +174,12 @@ MOBILE
   
   #search-ingredients:active::placeholder,
   #search-appliance:active::placeholder,
-  #search-utensils:active::placeholder {
+  #search-ustensils:active::placeholder {
     color: rgba(255, 255, 255, 0.5);
   }
   #search-ingredients::placeholder,
   #search-appliance::placeholder,
-  #search-utensils::placeholder {
+  #search-ustensils::placeholder {
     font-size: 18px;
     line-height: 21.6px;
     color: rgba(255, 255, 255, 1);
@@ -188,7 +188,7 @@ MOBILE
   }
   #search-ingredients,
   #search-appliance,
-  #search-utensils {
+  #search-ustensils {
     padding: 15px 15px 15px 10px;
     color: rgba(255, 255, 255, 1);
     font-weight: 600;
@@ -203,17 +203,17 @@ MOBILE
     background-color: var(--secondary);
   }
   
-  #search-utensils {
+  #search-ustensils {
     background-color: var(--tertiary);
   }
   
 
-  #ingredients, #appliance, #utensils {
+  #ingredients, #appliance, #ustensils {
     position: relative;
     cursor: pointer;
   }
   
-  #chevron-ingredients, #chevron-appliance, #chevron-utensils {
+  #chevron-ingredients, #chevron-appliance, #chevron-ustensils {
     position: absolute;
     right: 10px;
     top: 38px;
@@ -336,7 +336,7 @@ MOBILE
     height: 290px;
   }
   
-  #list-utensils-result {
+  #list-ustensils-result {
      background-color: var(--tertiary);
     width: 500px;
     height: 290px;
@@ -399,7 +399,7 @@ MOBILE
     background-color: var(--secondary-shade);
   }
   
-  .item-utensils:hover {
+  .item-ustensils:hover {
     background-color: var(--tertiary-shade);
   }
   
@@ -438,7 +438,7 @@ MOBILE
     background-color: var(--secondary);
   }
   
-  .tag-utensils {
+  .tag-ustensils {
     background-color: var(--tertiary);
   }
   

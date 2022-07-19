@@ -1,18 +1,18 @@
 import "./styles/main.scss";
 import { recipes } from "./data/recipes.js";
 import { buildCard } from "./views/buildCard";
-import { displayAppliance } from "./views/displayCategory";
-import { displayIngredients } from "./views/displayCategory";
-import { displayUtensils } from "./views/displayCategory";
-import { list } from "./scripts/list";
-import { Filter } from "./scripts/class/Filter";
+import { buildApplianceList } from "./views/buildDropdown";
+import { buildIngredientsList } from "./views/buildDropdown";
+import { buildUstensilsList } from "./views/buildDropdown";
+import { dropdownOpen } from "./scripts/dropdownOpening";
+import { Filter } from "./scripts/Filters";
 
 // DOM
 const searchInput = document.querySelector("#search-input");
 const searchResult = document.querySelector("#search-result");
 const searchIngredients = document.querySelector("#search-ingredients");
 const searchAppliance = document.querySelector("#search-appliance");
-const searchUtensils = document.querySelector("#search-utensils");
+const searchUstensils = document.querySelector("#search-ustensils");
 const tags = document.querySelector("#tags");
 const listResult = document.querySelectorAll(".list-result");
 
@@ -51,7 +51,7 @@ const manageTags = () => {
         const tag = {
           // objet tag avec une value et un type
           value: e.target.textContent, // la valeur sur laquelle je clique dans ma liste
-          type: e.target.closest(".list-result").dataset.type, // je vais chercher data-type de mon html(ingredients, apparatus ou utensils)
+          type: e.target.closest(".list-result").dataset.type, // je vais chercher data-type de mon html(ingredients, apparatus ou ustensils)
         };
         tagList.push(tag); // je mets dans mon tableau tous ce que je click
         tags.innerHTML += `
@@ -62,22 +62,22 @@ const manageTags = () => {
         searchResult.innerHTML = ""; // je vide les résultas qui ne correspondent pas
 
         buildCards(tagResult);
-        displayIngredients(
+        buildIngredientsList(
           tagResult,
           tagList
             .filter((tag) => tag.type == "ingredients")
             .map((tag) => tag.value)
         );
-        displayAppliance(
+        buildApplianceList(
           tagResult,
           tagList
             .filter((tag) => tag.type == "appliance")
             .map((tag) => tag.value)
         );
-        displayUtensils(
+        buildUstensilsList(
           tagResult,
           tagList
-            .filter((tag) => tag.type == "utensils")
+            .filter((tag) => tag.type == "ustensils")
             .map((tag) => tag.value)
         );
         manageTags();
@@ -155,33 +155,33 @@ const searchBarFilter = () => {
     result = filter.byTags(tag);
   });
   buildCards(result);
-  displayIngredients(
+  buildIngredientsList(
     result,
     tagList.filter((tag) => tag.type == "ingredients").map((tag) => tag.value)
   );
-  displayAppliance(
+  buildApplianceList(
     result,
     tagList.filter((tag) => tag.type == "appliance").map((tag) => tag.value)
   );
-  displayUtensils(
+  buildUstensilsList(
     result,
-    tagList.filter((tag) => tag.type == "utensils").map((tag) => tag.value)
+    tagList.filter((tag) => tag.type == "ustensils").map((tag) => tag.value)
   );
   manageTags();
 };
 
 searchIngredients.addEventListener("keyup", () => {
-  displayIngredients(recipes, tagList);
+  buildIngredientsList(recipes, tagList);
   manageTags();
 });
 
 searchAppliance.addEventListener("keyup", () => {
-  displayAppliance(recipes, tagList);
+  buildApplianceList(recipes, tagList);
   manageTags();
 });
 
-searchUtensils.addEventListener("keyup", () => {
-  displayUtensils(recipes, tagList);
+searchUstensils.addEventListener("keyup", () => {
+  buildUstensilsList(recipes, tagList);
   manageTags();
 });
 
@@ -189,10 +189,10 @@ searchUtensils.addEventListener("keyup", () => {
  * Initialisation
  */
 buildCards(recipes);
-displayIngredients(recipes, []);
-displayAppliance(recipes, []);
-displayUtensils(recipes, []);
-list();
+buildIngredientsList(recipes, []);
+buildApplianceList(recipes, []);
+buildUstensilsList(recipes, []);
+dropdownOpen();
 
 manageTags();
 
