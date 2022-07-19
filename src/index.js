@@ -32,6 +32,7 @@ let tagList = [];
 // display Cards ///
 
 const buildCards = (recipes) => {
+  searchResult.innerHTML = "";
   recipes?.forEach((recipe) => {
     buildCard(recipe);
   });
@@ -164,22 +165,22 @@ manageTags();
 // setTimeout(() => {
 //   for (let i = 0; i < 50; i++) {
 //     let start = performance.now();
-//     searchBarFilter();
+//     filterTagSearch();
 //     moyenne.push(performance.now() - start);
 //   }
 //   for (let i = 0; i < 100; i++) {
 //     let start = performance.now();
-//     searchBarFilter();
+//     filterTagSearch();
 //     moyenne.push(performance.now() - start);
 //   }
 //   for (let i = 0; i < 20; i++) {
 //     let start = performance.now();
-//     searchBarFilter();
+//     filterTagSearch();
 //     moyenne.push(performance.now() - start);
 //   }
 //   for (let i = 0; i < 150; i++) {
 //     let start = performance.now();
-//     searchBarFilter();
+//     filterTagSearch();
 //     moyenne.push(performance.now() - start);
 //   }
 
