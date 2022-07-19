@@ -2569,11 +2569,15 @@ var searchBarFilter = function searchBarFilter() {
 
   if (input.length >= 3) {
     result = filter.bySearch(input);
+  } // tagList.forEach((tag) => {
+  //   result = filter.byTags(tag);
+  // });
+
+
+  for (var i = 0; i < tagList.length; i++) {
+    result = filter.byTags(tagList[i]);
   }
 
-  tagList.forEach(function (tag) {
-    result = filter.byTags(tag);
-  });
   buildCards(result);
   (0,_views_buildDropdown__WEBPACK_IMPORTED_MODULE_3__.buildIngredientsList)(result, tagList.filter(function (tag) {
     return tag.type == "ingredients";
@@ -2660,4 +2664,4 @@ setTimeout(function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=3ff643d912c1715bf0d7.js.map
+//# sourceMappingURL=09d44b7feb7844b8d134.js.map

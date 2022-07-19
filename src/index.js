@@ -154,9 +154,12 @@ const searchBarFilter = () => {
   if (input.length >= 3) {
     result = filter.bySearch(input);
   }
-  tagList.forEach((tag) => {
-    result = filter.byTags(tag);
-  });
+  // tagList.forEach((tag) => {
+  //   result = filter.byTags(tag);
+  // });
+  for (let i = 0; i < tagList.length; i++) {
+    result = filter.byTags(tagList[i]);
+  }
   buildCards(result);
   buildIngredientsList(
     result,
