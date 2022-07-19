@@ -16,6 +16,13 @@ const searchUstensils = document.querySelector("#search-ustensils");
 const tags = document.querySelector("#tags");
 const listResult = document.querySelectorAll(".list-result");
 
+// UTILS //
+export const normalize = (variable) => {
+  return variable
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
+};
 // CLASS //
 const filter = new Filter(recipes);
 

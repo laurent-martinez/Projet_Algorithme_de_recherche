@@ -1387,6 +1387,203 @@ var recipes = [{
 
 /***/ }),
 
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "normalize": () => (/* binding */ normalize)
+/* harmony export */ });
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
+/* harmony import */ var _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data/recipes.js */ "./src/data/recipes.js");
+/* harmony import */ var _views_buildCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/buildCard */ "./src/views/buildCard.js");
+/* harmony import */ var _views_buildList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/buildList */ "./src/views/buildList.js");
+/* harmony import */ var _scripts_dropdownOpening__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scripts/dropdownOpening */ "./src/scripts/dropdownOpening.js");
+/* harmony import */ var _scripts_Filters__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scripts/Filters */ "./src/scripts/Filters.js");
+
+
+
+
+
+
+
+ // DOM
+
+var searchInput = document.querySelector("#searchBar-input");
+var searchResult = document.querySelector("#search-result");
+var searchIngredients = document.querySelector("#search-ingredients");
+var searchAppliance = document.querySelector("#search-appliance");
+var searchUstensils = document.querySelector("#search-ustensils");
+var tags = document.querySelector("#tags");
+var listResult = document.querySelectorAll(".list-result"); // UTILS //
+
+var normalize = function normalize(variable) {
+  return variable.toLowerCase().normalize("NFD").replace(/(?:[\^`\xA8\xAF\xB4\xB7\xB8\u02B0-\u034E\u0350-\u0357\u035D-\u0362\u0374\u0375\u037A\u0384\u0385\u0483-\u0487\u0559\u0591-\u05A1\u05A3-\u05BD\u05BF\u05C1\u05C2\u05C4\u064B-\u0652\u0657\u0658\u06DF\u06E0\u06E5\u06E6\u06EA-\u06EC\u0730-\u074A\u07A6-\u07B0\u07EB-\u07F5\u0818\u0819\u0898-\u089F\u08C9-\u08D2\u08E3-\u08FE\u093C\u094D\u0951-\u0954\u0971\u09BC\u09CD\u0A3C\u0A4D\u0ABC\u0ACD\u0AFD-\u0AFF\u0B3C\u0B4D\u0B55\u0BCD\u0C3C\u0C4D\u0CBC\u0CCD\u0D3B\u0D3C\u0D4D\u0DCA\u0E47-\u0E4C\u0E4E\u0EBA\u0EC8-\u0ECC\u0F18\u0F19\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F82-\u0F84\u0F86\u0F87\u0FC6\u1037\u1039\u103A\u1063\u1064\u1069-\u106D\u1087-\u108D\u108F\u109A\u109B\u135D-\u135F\u1714\u1715\u17C9-\u17D3\u17DD\u1939-\u193B\u1A75-\u1A7C\u1A7F\u1AB0-\u1ABE\u1AC1-\u1ACB\u1B34\u1B44\u1B6B-\u1B73\u1BAA\u1BAB\u1C36\u1C37\u1C78-\u1C7D\u1CD0-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1D2C-\u1D6A\u1DC4-\u1DCF\u1DF5-\u1DFF\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2CEF-\u2CF1\u2E2F\u302A-\u302F\u3099-\u309C\u30FC\uA66F\uA67C\uA67D\uA67F\uA69C\uA69D\uA6F0\uA6F1\uA700-\uA721\uA788-\uA78A\uA7F8\uA7F9\uA8C4\uA8E0-\uA8F1\uA92B-\uA92E\uA953\uA9B3\uA9C0\uA9E5\uAA7B-\uAA7D\uAABF-\uAAC2\uAAF6\uAB5B-\uAB5F\uAB69-\uAB6B\uABEC\uABED\uFB1E\uFE20-\uFE2F\uFF3E\uFF40\uFF70\uFF9E\uFF9F\uFFE3]|\uD800\uDEE0|\uD801[\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDEE5\uDEE6]|\uD803[\uDD22-\uDD27\uDF46-\uDF50\uDF82-\uDF85]|\uD804[\uDC46\uDC70\uDCB9\uDCBA\uDD33\uDD34\uDD73\uDDC0\uDDCA-\uDDCC\uDE35\uDE36\uDEE9\uDEEA\uDF3C\uDF4D\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC42\uDC46\uDCC2\uDCC3\uDDBF\uDDC0\uDE3F\uDEB6\uDEB7\uDF2B]|\uD806[\uDC39\uDC3A\uDD3D\uDD3E\uDD43\uDDE0\uDE34\uDE47\uDE99]|\uD807[\uDC3F\uDD42\uDD44\uDD45\uDD97]|\uD81A[\uDEF0-\uDEF4\uDF30-\uDF36]|\uD81B[\uDF8F-\uDF9F\uDFF0\uDFF1]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD833[\uDF00-\uDF2D\uDF30-\uDF46]|\uD834[\uDD67-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD]|\uD838[\uDD30-\uDD36\uDEAE\uDEEC-\uDEEF]|\uD83A[\uDCD0-\uDCD6\uDD44-\uDD46\uDD48-\uDD4A])/g, "");
+}; // CLASS //
+
+var filter = new _scripts_Filters__WEBPACK_IMPORTED_MODULE_5__.Filter(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes); // ARRAY //
+
+var tagList = []; // display Cards ///
+
+var buildCards = function buildCards(recipes) {
+  recipes === null || recipes === void 0 ? void 0 : recipes.forEach(function (recipe) {
+    (0,_views_buildCard__WEBPACK_IMPORTED_MODULE_2__.buildCard)(recipe);
+  });
+}; // eventListeners //
+
+
+searchInput.addEventListener("keyup", function () {
+  searchResult.innerHTML = "";
+  filterTagSearch();
+});
+searchIngredients.addEventListener("keyup", function () {
+  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildIngredients)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, tagList);
+  manageTags();
+});
+searchAppliance.addEventListener("keyup", function () {
+  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildAppliance)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, tagList);
+  manageTags();
+});
+searchUstensils.addEventListener("keyup", function () {
+  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildUstensils)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, tagList);
+  manageTags();
+});
+/**
+ * Gestion des tags
+ */
+
+var manageTags = function manageTags() {
+  listResult.forEach(function (list) {
+    list.querySelectorAll(".item-list").forEach(function (itemList) {
+      itemList.addEventListener("click", function (e) {
+        var tag = {
+          // objet tag avec une value et un type
+          value: e.target.textContent,
+          // la valeur sur laquelle je clique dans ma liste
+          type: e.target.closest(".list-result").dataset.type // je vais chercher data-type de mon html(ingredients, apparatus ou ustensils)
+
+        };
+        tagList.push(tag); // je mets dans mon tableau tous ce que je click
+
+        tags.innerHTML += "\n                    <button class=\"tag tag-".concat(tag.type, "\">").concat(tag.value, " <svg width=\"20\" class=\"close-tag\" data-value=\"").concat(tag.value, "\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z\" fill=\"white\"/>\n                    </svg>\n                    </button>\n                ");
+        var tagResult = filter.recipesByTags(tag); // je trie avec ma class Filter
+
+        searchResult.innerHTML = ""; // je vide les résultas qui ne correspondent pas
+
+        buildCards(tagResult);
+        (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildIngredients)(tagResult, tagList.filter(function (tag) {
+          return tag.type == "ingredients";
+        }).map(function (tag) {
+          return tag.value;
+        }));
+        (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildAppliance)(tagResult, tagList.filter(function (tag) {
+          return tag.type == "appliance";
+        }).map(function (tag) {
+          return tag.value;
+        }));
+        (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildUstensils)(tagResult, tagList.filter(function (tag) {
+          return tag.type == "ustensils";
+        }).map(function (tag) {
+          return tag.value;
+        }));
+        manageTags();
+        removeTag();
+      });
+    });
+  });
+};
+/**
+ * Suppression tag
+ */
+
+
+var removeTag = function removeTag() {
+  document.querySelectorAll(".close-tag").forEach(function (tag) {
+    tag.addEventListener("click", function (e) {
+      e.target.closest(".tag").remove();
+      tagList = tagList.filter(function (tag) {
+        return tag.value != e.target.dataset.value;
+      });
+      searchResult.innerHTML = "";
+      filterTagSearch();
+    });
+  });
+};
+/**
+ * Filtre par la barre de recherche et les tags (ensemble)
+ */
+
+
+var filterTagSearch = function filterTagSearch() {
+  filter.recipes = _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes;
+  var result = filter.recipes;
+  var input = document.querySelector("#searchBar-input").value;
+
+  if (input.length >= 3) {
+    result = filter.recipesByInput(input);
+  }
+
+  tagList.forEach(function (tag) {
+    result = filter.recipesByTags(tag);
+  });
+  buildCards(result);
+  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildIngredients)(result, tagList.filter(function (tag) {
+    return tag.type == "ingredients";
+  }).map(function (tag) {
+    return tag.value;
+  }));
+  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildAppliance)(result, tagList.filter(function (tag) {
+    return tag.type == "appliance";
+  }).map(function (tag) {
+    return tag.value;
+  }));
+  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildUstensils)(result, tagList.filter(function (tag) {
+    return tag.type == "ustensils";
+  }).map(function (tag) {
+    return tag.value;
+  }));
+  manageTags();
+};
+/**
+ * Initialisation
+ */
+
+
+buildCards(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
+(0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildIngredients)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
+(0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildAppliance)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
+(0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildUstensils)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
+(0,_scripts_dropdownOpening__WEBPACK_IMPORTED_MODULE_4__.dropdownOpen)();
+manageTags(); // let moyenne = [];
+// setTimeout(() => {
+//   for (let i = 0; i < 50; i++) {
+//     let start = performance.now();
+//     searchBarFilter();
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 100; i++) {
+//     let start = performance.now();
+//     searchBarFilter();
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 20; i++) {
+//     let start = performance.now();
+//     searchBarFilter();
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 150; i++) {
+//     let start = performance.now();
+//     searchBarFilter();
+//     moyenne.push(performance.now() - start);
+//   }
+//   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
+// }, 350);
+
+/***/ }),
+
 /***/ "./src/scripts/Filters.js":
 /*!********************************!*\
   !*** ./src/scripts/Filters.js ***!
@@ -1534,6 +1731,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "buildIngredients": () => (/* binding */ buildIngredients),
 /* harmony export */   "buildUstensils": () => (/* binding */ buildUstensils)
 /* harmony export */ });
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index */ "./src/index.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1546,7 +1744,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-// DOM
+ // DOM
+
 var ingredientsResult = document.querySelector("#list-ingredients-result");
 var applianceResult = document.querySelector("#list-appliance-result");
 var ustensilsResult = document.querySelector("#list-ustensils-result");
@@ -1559,7 +1758,7 @@ var buildIngredients = function buildIngredients(recipes, tagIngredients) {
       return ings.ingredient;
     });
     itemsIngredients.forEach(function (item) {
-      return ingredientsArray.push(item);
+      return ingredientsArray.push((0,_index__WEBPACK_IMPORTED_MODULE_0__.normalize)(item));
     });
   });
 
@@ -2324,195 +2523,12 @@ module.exports = __webpack_require__.p + "magnifying_glass.svg";
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
-/* harmony import */ var _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data/recipes.js */ "./src/data/recipes.js");
-/* harmony import */ var _views_buildCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/buildCard */ "./src/views/buildCard.js");
-/* harmony import */ var _views_buildList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/buildList */ "./src/views/buildList.js");
-/* harmony import */ var _scripts_dropdownOpening__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scripts/dropdownOpening */ "./src/scripts/dropdownOpening.js");
-/* harmony import */ var _scripts_Filters__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scripts/Filters */ "./src/scripts/Filters.js");
-
-
-
-
-
-
-
- // DOM
-
-var searchInput = document.querySelector("#searchBar-input");
-var searchResult = document.querySelector("#search-result");
-var searchIngredients = document.querySelector("#search-ingredients");
-var searchAppliance = document.querySelector("#search-appliance");
-var searchUstensils = document.querySelector("#search-ustensils");
-var tags = document.querySelector("#tags");
-var listResult = document.querySelectorAll(".list-result"); // CLASS //
-
-var filter = new _scripts_Filters__WEBPACK_IMPORTED_MODULE_5__.Filter(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes); // ARRAY //
-
-var tagList = []; // display Cards ///
-
-var buildCards = function buildCards(recipes) {
-  recipes === null || recipes === void 0 ? void 0 : recipes.forEach(function (recipe) {
-    (0,_views_buildCard__WEBPACK_IMPORTED_MODULE_2__.buildCard)(recipe);
-  });
-}; // eventListeners //
-
-
-searchInput.addEventListener("keyup", function () {
-  searchResult.innerHTML = "";
-  filterTagSearch();
-});
-searchIngredients.addEventListener("keyup", function () {
-  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildIngredients)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, tagList);
-  manageTags();
-});
-searchAppliance.addEventListener("keyup", function () {
-  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildAppliance)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, tagList);
-  manageTags();
-});
-searchUstensils.addEventListener("keyup", function () {
-  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildUstensils)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, tagList);
-  manageTags();
-});
-/**
- * Gestion des tags
- */
-
-var manageTags = function manageTags() {
-  listResult.forEach(function (list) {
-    list.querySelectorAll(".item-list").forEach(function (itemList) {
-      itemList.addEventListener("click", function (e) {
-        var tag = {
-          // objet tag avec une value et un type
-          value: e.target.textContent,
-          // la valeur sur laquelle je clique dans ma liste
-          type: e.target.closest(".list-result").dataset.type // je vais chercher data-type de mon html(ingredients, apparatus ou ustensils)
-
-        };
-        tagList.push(tag); // je mets dans mon tableau tous ce que je click
-
-        tags.innerHTML += "\n                    <button class=\"tag tag-".concat(tag.type, "\">").concat(tag.value, " <svg width=\"20\" class=\"close-tag\" data-value=\"").concat(tag.value, "\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z\" fill=\"white\"/>\n                    </svg>\n                    </button>\n                ");
-        var tagResult = filter.recipesByTags(tag); // je trie avec ma class Filter
-
-        searchResult.innerHTML = ""; // je vide les résultas qui ne correspondent pas
-
-        buildCards(tagResult);
-        (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildIngredients)(tagResult, tagList.filter(function (tag) {
-          return tag.type == "ingredients";
-        }).map(function (tag) {
-          return tag.value;
-        }));
-        (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildAppliance)(tagResult, tagList.filter(function (tag) {
-          return tag.type == "appliance";
-        }).map(function (tag) {
-          return tag.value;
-        }));
-        (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildUstensils)(tagResult, tagList.filter(function (tag) {
-          return tag.type == "ustensils";
-        }).map(function (tag) {
-          return tag.value;
-        }));
-        manageTags();
-        removeTag();
-      });
-    });
-  });
-};
-/**
- * Suppression tag
- */
-
-
-var removeTag = function removeTag() {
-  document.querySelectorAll(".close-tag").forEach(function (tag) {
-    tag.addEventListener("click", function (e) {
-      e.target.closest(".tag").remove();
-      tagList = tagList.filter(function (tag) {
-        return tag.value != e.target.dataset.value;
-      });
-      searchResult.innerHTML = "";
-      filterTagSearch();
-    });
-  });
-};
-/**
- * Filtre par la barre de recherche et les tags (ensemble)
- */
-
-
-var filterTagSearch = function filterTagSearch() {
-  filter.recipes = _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes;
-  var result = filter.recipes;
-  var input = document.querySelector("#searchBar-input").value;
-
-  if (input.length >= 3) {
-    result = filter.recipesByInput(input);
-  }
-
-  tagList.forEach(function (tag) {
-    result = filter.recipesByTags(tag);
-  });
-  buildCards(result);
-  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildIngredients)(result, tagList.filter(function (tag) {
-    return tag.type == "ingredients";
-  }).map(function (tag) {
-    return tag.value;
-  }));
-  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildAppliance)(result, tagList.filter(function (tag) {
-    return tag.type == "appliance";
-  }).map(function (tag) {
-    return tag.value;
-  }));
-  (0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildUstensils)(result, tagList.filter(function (tag) {
-    return tag.type == "ustensils";
-  }).map(function (tag) {
-    return tag.value;
-  }));
-  manageTags();
-};
-/**
- * Initialisation
- */
-
-
-buildCards(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
-(0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildIngredients)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
-(0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildAppliance)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
-(0,_views_buildList__WEBPACK_IMPORTED_MODULE_3__.buildUstensils)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
-(0,_scripts_dropdownOpening__WEBPACK_IMPORTED_MODULE_4__.dropdownOpen)();
-manageTags(); // let moyenne = [];
-// setTimeout(() => {
-//   for (let i = 0; i < 50; i++) {
-//     let start = performance.now();
-//     searchBarFilter();
-//     moyenne.push(performance.now() - start);
-//   }
-//   for (let i = 0; i < 100; i++) {
-//     let start = performance.now();
-//     searchBarFilter();
-//     moyenne.push(performance.now() - start);
-//   }
-//   for (let i = 0; i < 20; i++) {
-//     let start = performance.now();
-//     searchBarFilter();
-//     moyenne.push(performance.now() - start);
-//   }
-//   for (let i = 0; i < 150; i++) {
-//     let start = performance.now();
-//     searchBarFilter();
-//     moyenne.push(performance.now() - start);
-//   }
-//   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
-// }, 350);
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=0c7d997f06e30743b046.js.map
+//# sourceMappingURL=1047083f4c61a9c9d126.js.map

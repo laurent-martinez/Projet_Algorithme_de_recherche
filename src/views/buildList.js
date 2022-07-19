@@ -1,3 +1,5 @@
+import { normalize } from "../index";
+
 // DOM
 const ingredientsResult = document.querySelector("#list-ingredients-result");
 const applianceResult = document.querySelector("#list-appliance-result");
@@ -10,7 +12,7 @@ export const buildIngredients = (recipes, tagIngredients) => {
   recipes.forEach((recipe) => {
     const ingredients = recipe.ingredients;
     const itemsIngredients = ingredients.map((ings) => ings.ingredient);
-    itemsIngredients.forEach((item) => ingredientsArray.push(item));
+    itemsIngredients.forEach((item) => ingredientsArray.push(normalize(item)));
   });
 
   let ingredientsList = [...new Set(ingredientsArray)].sort();
