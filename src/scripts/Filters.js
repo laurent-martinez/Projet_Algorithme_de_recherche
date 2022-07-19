@@ -4,15 +4,15 @@ export class Filter {
   }
 
   // bySearch(input) {
-  //   this.recipes = this.recipes.filter((recipe) => {
-  //     return (
-  //       recipe.name.toLowerCase().includes(input.toLowerCase()) ||
-  //       recipe.description.toLowerCase().includes(input.toLowerCase()) ||
-  //       recipe.ingredients.some((ingredient) =>
-  //         ingredient.ingredient.toLowerCase().includes(input.toLowerCase())
-  //       )
-  //     );
-  //   });
+  // this.recipes = this.recipes.filter((recipe) => {
+  //   return (
+  //     recipe.name.toLowerCase().includes(input.toLowerCase()) ||
+  //     recipe.description.toLowerCase().includes(input.toLowerCase()) ||
+  //     recipe.ingredients.some((ingredient) =>
+  //       ingredient.ingredient.toLowerCase().includes(input.toLowerCase())
+  //     )
+  //   );
+  // });
   //   if (this.recipes.length == 0) {
   //     const searchResult = document.querySelector("#search-result");
   //     const result = document.createElement("p");

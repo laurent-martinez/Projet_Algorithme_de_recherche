@@ -1409,15 +1409,15 @@ var Filter = /*#__PURE__*/function () {
 
     this.recipes = recipes;
   } // bySearch(input) {
-  //   this.recipes = this.recipes.filter((recipe) => {
-  //     return (
-  //       recipe.name.toLowerCase().includes(input.toLowerCase()) ||
-  //       recipe.description.toLowerCase().includes(input.toLowerCase()) ||
-  //       recipe.ingredients.some((ingredient) =>
-  //         ingredient.ingredient.toLowerCase().includes(input.toLowerCase())
-  //       )
-  //     );
-  //   });
+  // this.recipes = this.recipes.filter((recipe) => {
+  //   return (
+  //     recipe.name.toLowerCase().includes(input.toLowerCase()) ||
+  //     recipe.description.toLowerCase().includes(input.toLowerCase()) ||
+  //     recipe.ingredients.some((ingredient) =>
+  //       ingredient.ingredient.toLowerCase().includes(input.toLowerCase())
+  //     )
+  //   );
+  // });
   //   if (this.recipes.length == 0) {
   //     const searchResult = document.querySelector("#search-result");
   //     const result = document.createElement("p");
@@ -2472,7 +2472,7 @@ var manageTags = function manageTags() {
         };
         tagList.push(tag); // je mets dans mon tableau tous ce que je click
 
-        tags.innerHTML += "\n        <button class=\"tag tag-".concat(tag.type, "\">").concat(tag.value, "<i class=\"fa-solid fa-xmark close-tag\" data-value=\"").concat(tag.value, "\"></i></button>\n        ");
+        tags.innerHTML += "\n        <button class=\"tag tag-".concat(tag.type, "\">").concat(tag.value, " <svg width=\"20\" class=\"close-tag\" data-value=\"").concat(tag.value, "\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z\" fill=\"white\"/>\n        </svg>\n        </button>\n        ");
         tags.style.display = "flex";
         var tagResult = filter.byTags(tag); // je trie avec ma class Filter
 
@@ -2660,4 +2660,4 @@ setTimeout(function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=f29393fae6925bb5558e.js.map
+//# sourceMappingURL=3ff643d912c1715bf0d7.js.map
