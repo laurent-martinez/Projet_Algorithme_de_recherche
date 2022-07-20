@@ -418,7 +418,7 @@ text-align: center;
 .close-tag {
   height: 20px;
   width: 20px;
-  padding-left: 3px;
+  padding-left: 4.5px;
   display: block;
   cursor: pointer;
   color: white;
@@ -442,11 +442,13 @@ text-align: center;
   border-radius: 50%;
   display: flex;
   margin-left: 10px;
+  font-size: 12px;
 }
 
 .fa-xmark::before {
   /* centrage */
-  line-height: 16px;
+  line-height: 17px;
+
 }
 
 /* je relie les deux class */
