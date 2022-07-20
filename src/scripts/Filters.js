@@ -41,7 +41,7 @@ export class Filter {
     }
     this.recipes = searchBarArray;
 
-    if (searchBarArray.length < 1) {
+    if (this.recipes.length == 0) {
       const searchResult = document.querySelector("#search-result");
       const result = document.createElement("div");
       const text = document.createElement("p");

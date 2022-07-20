@@ -22,6 +22,20 @@ const filter = new Filter(recipes);
 // ARRAY
 let tagList = [];
 
+/// UTILS /////
+
+const debounce = (fn, delay) => {
+  let timeOutId;
+  return (...args) => {
+    if (timeOutId) {
+      clearTimeout(timeOutId);
+    }
+    timeOutId = setTimeout(() => {
+      fn(...args);
+    }, delay);
+  };
+};
+
 /**
  * Affichage des recettes
  */
@@ -35,10 +49,13 @@ const buildCards = (recipes) => {
 /**
  * Search bar
  */
-searchBarInput.addEventListener("keyup", () => {
-  searchResult.innerHTML = "";
-  searchBarFilter();
-});
+searchBarInput.addEventListener(
+  "keyup",
+  debounce(() => {
+    searchResult.innerHTML = "";
+    searchBarFilter();
+  }, 350)
+);
 
 /**
  * Gestion des tags
@@ -135,12 +152,15 @@ const manageTags = () => {
 const eraseTags = () => {
   let clsTag = document.querySelectorAll(".close-tag");
   for (let i = 0; i < clsTag.length; i++) {
-    clsTag[i].addEventListener("click", (e) => {
-      e.target.closest(".tag").remove();
-      tagList = tagList.filter((tag) => tag.value != e.target.dataset.value);
-      searchResult.innerHTML = "";
-      searchBarFilter();
-    });
+    clsTag[i].addEventListener(
+      "click",
+      debounce((e) => {
+        e.target.closest(".tag").remove();
+        tagList = tagList.filter((tag) => tag.value != e.target.dataset.value);
+        searchResult.innerHTML = "";
+        searchBarFilter();
+      }, 350)
+    );
   }
 };
 
@@ -154,12 +174,15 @@ const searchBarFilter = (input) => {
   if (input.length >= 3) {
     result = filter.bySearch(input);
   }
-  // tagList.forEach((tag) => {
-  //   result = filter.byTags(tag);
-  // });
-  for (let i = 0; i < tagList.length; i++) {
-    result = filter.byTags(tagList[i]);
-  }
+  tagList.forEach((tag) => {
+    result = filter.byTags(tag);
+  });
+  // for (let i = 0; i < tagList.length; i++) {
+  //   result = filter.byTags(tagList[i]);
+  // }
+  // if (tagList.length == 0) {
+  //   buildCard(recipes);
+  // }
   buildCards(result);
   buildIngredientsList(
     result,
@@ -176,20 +199,29 @@ const searchBarFilter = (input) => {
   manageTags();
 };
 
-searchIngredients.addEventListener("keyup", () => {
-  buildIngredientsList(recipes, tagList);
-  manageTags();
-});
+searchIngredients.addEventListener(
+  "keyup",
+  debounce(() => {
+    buildIngredientsList(recipes, tagList);
+    manageTags();
+  }, 200)
+);
 
-searchAppliance.addEventListener("keyup", () => {
-  buildApplianceList(recipes, tagList);
-  manageTags();
-});
+searchAppliance.addEventListener(
+  "keyup",
+  debounce(() => {
+    buildApplianceList(recipes, tagList);
+    manageTags();
+  }, 200)
+);
 
-searchUstensils.addEventListener("keyup", () => {
-  buildUstensilsList(recipes, tagList);
-  manageTags();
-});
+searchUstensils.addEventListener(
+  "keyup",
+  debounce(() => {
+    buildUstensilsList(recipes, tagList);
+    manageTags();
+  }, 200)
+);
 
 /**
  * Initialisation

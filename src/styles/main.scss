@@ -167,7 +167,8 @@ input {
   padding: 15px 15px 15px 10px;
   color: rgba(255, 255, 255, 1);
   font-weight: 600;
-  width: 100%;
+  width: 170px;
+  height: 69px;
 }
 
 #search-ingredients {
@@ -190,8 +191,8 @@ input {
 
 #chevron-ingredients, #chevron-appliance, #chevron-ustensils {
   position: absolute;
-  right: 10px;
-  top: 38px;
+  right: 15px;
+  top: 45px;
 }
 
 .chevron-down {
@@ -226,7 +227,7 @@ input {
 
 .recipe-title h2 {
   font-family: 'Lato', sans-serif;
-  font-size: 400;
+  font-weight: 400;
   line-height: 21.6px;
   font-size: 20px;
 }
@@ -266,21 +267,19 @@ input {
   font-weight: 700;
 }
 
-$fontSize : 15px;
-$lineHeight : 15px;
-$lineToShow : 12;
+
 
 
 .recipe-describe {
   font-weight: 400;
   padding-left: 15px;
   font-family: 'Roboto', sans-serif;
-  font-size: $fontSize;
-  line-height: $lineHeight;
+  font-size: 15px;
+  line-height: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: $lineToShow;
+  -webkit-line-clamp: 12;
   -webkit-box-orient: vertical;
   
 }
@@ -292,9 +291,7 @@ ul #search-result {
 i {
   text-transform: lowercase;
 }
-input#search-ingredients {
-  width: 100%;
-}
+
 #list-ingredients-result {
    background-color: var(--primary);
   width: 500px;
@@ -384,19 +381,36 @@ text-align: center;
    color: white;
   display: inline-block;
   margin-bottom: 0;
+  position: relative;
+  &::after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 5px;
+  position: absolute;
+  background: #fff;
+  transition: width 0.1s ease 0s, left 0.1s ease 0s;
+  width: 0;
+  }
+  &:hover::after {
+    width: 60%;
+    left: 10%;
+  }
 }
 
-.item-ingredients:hover {
-  background-color: var(--primary-shade);
-}
 
-.item-appliance:hover {
-  background-color: var(--secondary-shade);
-}
+// .item-ingredients{
+//   background-color: var(--primary-shade);
+// }
 
-.item-ustensils:hover {
-  background-color: var(--tertiary-shade);
-}
+// .item-appliance {
+//   // background-color: var(--secondary-shade);
+// }
+
+// .item-ustensils {
+//   // background-color: var(--tertiary-shade);
+// }
 
 .show-list {
   display: block;
@@ -463,6 +477,7 @@ text-align: center;
 
 .combo-box.open input {
   border-radius: 5px 5px 0px 0px;
+ 
 }
 
 .combo-box.open .i::placeholder {
@@ -476,6 +491,16 @@ text-align: center;
   color: var(--tertiary-hue) !important;
 }
   
+.combo-box.open #search-ingredients {
+  width: 100%;
+}
+.combo-box.open #search-appliance {
+  width: 100%;
+}
+.combo-box.open #search-ustensils {
+  width: 100%;
+}
+
 @media screen and (min-width: 1294px) {
   #list-ingredients-result,#list-appliance-result,#list-ustensils-result {
     margin-bottom: -200px
@@ -492,6 +517,9 @@ text-align: center;
     width: 60%;
   }
   #list-ingredients-result,#list-appliance-result,#list-ustensils-result {
+    width: 100%;
+  }
+  #search-ingredients, #search-appliance, #search-ustensils {
     width: 100%;
   }
 }
