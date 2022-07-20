@@ -418,9 +418,10 @@ text-align: center;
 .close-tag {
   height: 20px;
   width: 20px;
-  margin-left: 5px;
+  padding-left: 3px;
   display: block;
   cursor: pointer;
+  color: white;
 }
 
 .tag-ingredients {
@@ -532,3 +533,8 @@ MOBILE
     font-size: 30px;
   }
 }
+
+
+
+
+
