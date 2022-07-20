@@ -379,18 +379,22 @@ text-align: center;
    color: white;
   display: inline-block;
   margin-bottom: 0;
-}
-
-.item-ingredients:hover {
-  background-color: var(--primary-shade);
-}
-
-.item-appliance:hover {
-  background-color: var(--secondary-shade);
-}
-
-.item-ustensils:hover {
-  background-color: var(--tertiary-shade);
+  position: relative;
+  &::after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 5px;
+    position: absolute;
+    background: #fff;
+    transition: width 0.1s ease 0s, left 0.1s ease 0s;
+    width: 0;
+    }
+    &:hover::after {
+      width: 60%;
+      left: 10%;
+    }
 }
 
 .show-list {
