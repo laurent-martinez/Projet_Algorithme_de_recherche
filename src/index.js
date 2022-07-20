@@ -164,22 +164,20 @@ const eraseTags = () => {
 /**
  * Filtre par la barre de recherche et les tags (ensemble)
  */
-const searchBarFilter = (input) => {
+const searchBarFilter = () => {
   filter.recipes = recipes;
   let result = filter.recipes;
-  input = document.querySelector("#searchBar-input").value;
+  let input = document.querySelector("#searchBar-input").value;
   if (input.length >= 3) {
     result = filter.bySearch(input);
   }
-  tagList.forEach((tag) => {
-    result = filter.byTags(tag);
-  });
-  // for (let i = 0; i < tagList.length; i++) {
-  //   result = filter.byTags(tagList[i]);
-  // }
-  // if (tagList.length == 0) {
-  //   buildCard(recipes);
-  // }
+  // tagList.forEach((tag) => {
+  //   result = filter.byTags(tag);
+  // });
+  for (let i = 0; i < tagList.length; i++) {
+    result = filter.byTags(tagList[i]);
+  }
+
   if (result.length == 0) {
     const searchResult = document.querySelector("#search-result");
     const result = document.createElement("div");
@@ -243,31 +241,31 @@ dropdownOpen();
 
 manageTags();
 
-let moyenne = [];
-setTimeout(() => {
-  for (let i = 0; i < 50; i++) {
-    let start = performance.now();
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - start);
-  }
-  for (let i = 0; i < 100; i++) {
-    let start = performance.now();
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - start);
-  }
-  for (let i = 0; i < 20; i++) {
-    let start = performance.now();
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - start);
-  }
-  for (let i = 0; i < 150; i++) {
-    let start = performance.now();
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - start);
-  }
+// let moyenne = [];
+// setTimeout(() => {
+//   for (let i = 0; i < 50; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 100; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 20; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 150; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
 
-  console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
-}, 350);
+//   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
+// }, 350);
 
 // score : 10.13,10.38,11.8,9.50,8.71
 

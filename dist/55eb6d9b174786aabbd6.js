@@ -2568,23 +2568,21 @@ var eraseTags = function eraseTags() {
  */
 
 
-var searchBarFilter = function searchBarFilter(input) {
+var searchBarFilter = function searchBarFilter() {
   filter.recipes = _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes;
   var result = filter.recipes;
-  input = document.querySelector("#searchBar-input").value;
+  var input = document.querySelector("#searchBar-input").value;
 
   if (input.length >= 3) {
     result = filter.bySearch(input);
-  }
+  } // tagList.forEach((tag) => {
+  //   result = filter.byTags(tag);
+  // });
 
-  tagList.forEach(function (tag) {
-    result = filter.byTags(tag);
-  }); // for (let i = 0; i < tagList.length; i++) {
-  //   result = filter.byTags(tagList[i]);
-  // }
-  // if (tagList.length == 0) {
-  //   buildCard(recipes);
-  // }
+
+  for (var i = 0; i < tagList.length; i++) {
+    result = filter.byTags(tagList[i]);
+  }
 
   if (result.length == 0) {
     var _searchResult = document.querySelector("#search-result");
@@ -2644,40 +2642,31 @@ buildCards(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes);
 (0,_views_buildDropdown__WEBPACK_IMPORTED_MODULE_3__.buildApplianceList)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
 (0,_views_buildDropdown__WEBPACK_IMPORTED_MODULE_3__.buildUstensilsList)(_data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes, []);
 (0,_scripts_dropdownOpening__WEBPACK_IMPORTED_MODULE_4__.dropdownOpen)();
-manageTags();
-var moyenne = [];
-setTimeout(function () {
-  for (var i = 0; i < 50; i++) {
-    var start = performance.now();
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - start);
-  }
-
-  for (var _i = 0; _i < 100; _i++) {
-    var _start = performance.now();
-
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - _start);
-  }
-
-  for (var _i2 = 0; _i2 < 20; _i2++) {
-    var _start2 = performance.now();
-
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - _start2);
-  }
-
-  for (var _i3 = 0; _i3 < 150; _i3++) {
-    var _start3 = performance.now();
-
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - _start3);
-  }
-
-  console.log(moyenne.reduce(function (a, b) {
-    return a + b;
-  }) / moyenne.length);
-}, 350); // score : 10.13,10.38,11.8,9.50,8.71
+manageTags(); // let moyenne = [];
+// setTimeout(() => {
+//   for (let i = 0; i < 50; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 100; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 20; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 150; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
+//   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
+// }, 350);
+// score : 10.13,10.38,11.8,9.50,8.71
 // setTimeout(() => {
 //   for (let i = 0; i < 50; i++) {
 //     let start = performance.now();
@@ -2690,4 +2679,4 @@ setTimeout(function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=631eb67b8ff4492e52f2.js.map
+//# sourceMappingURL=55eb6d9b174786aabbd6.js.map
