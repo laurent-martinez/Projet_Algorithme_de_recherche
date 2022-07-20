@@ -46,6 +46,7 @@ STRUCTURE
   flex-direction: column;
   width: 85%;
   margin: 0 auto; 
+  position: relative;
 }
 /***************************************************
 TYPO
@@ -353,28 +354,31 @@ i {
   grid-gap: 40px;
   border-radius: 20px;
   margin-top: 50px;
+  // position: relative;
 }
 
 
 .result {
-  top: 60%;
-  right: 40%;
+  top: 90%;
+  right: 50%;
+  left: 50%;
+ 
+position: absolute;
   display: flex;
 justify-content: center;
 text-align: center;
+
 }
 .no-result {
+  
   background-color: hsl(216, 29%, 84%);
   margin-top: 20px;
   padding: 20px;
   color: #d04f4f;
-  text-align: center;
   font-family: 'Roboto', sans-serif;
   font-size: 32px;
   white-space: nowrap;
   border-radius: 5px;
-  display: flex;
-  justify-content: center;
 }
 .item-list {
   padding: 5px 20px 5px 20px;
@@ -538,5 +542,8 @@ MOBILE
   }
   #title {
     font-size: 30px;
+  }
+  .no-result {
+    white-space: normal;
   }
 }

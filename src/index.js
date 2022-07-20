@@ -180,7 +180,19 @@ const searchBarFilter = (input) => {
   // if (tagList.length == 0) {
   //   buildCard(recipes);
   // }
-  buildCards(result);
+  if (result.length == 0) {
+    const searchResult = document.querySelector("#search-result");
+    const result = document.createElement("div");
+    const text = document.createElement("p");
+    result.classList.add("result");
+    text.classList.add("no-result");
+    text.textContent = "Aucune recette ne correspond à votre recherche";
+    result.appendChild(text);
+    searchResult.appendChild(result);
+  } else {
+    buildCards(result);
+  }
+
   buildIngredientsList(
     result,
     tagList.filter((tag) => tag.type == "ingredients").map((tag) => tag.value)
@@ -231,31 +243,31 @@ dropdownOpen();
 
 manageTags();
 
-let moyenne = [];
-setTimeout(() => {
-  for (let i = 0; i < 50; i++) {
-    let start = performance.now();
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - start);
-  }
-  for (let i = 0; i < 100; i++) {
-    let start = performance.now();
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - start);
-  }
-  for (let i = 0; i < 20; i++) {
-    let start = performance.now();
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - start);
-  }
-  for (let i = 0; i < 150; i++) {
-    let start = performance.now();
-    searchBarFilter("citron");
-    moyenne.push(performance.now() - start);
-  }
+// let moyenne = [];
+// setTimeout(() => {
+//   for (let i = 0; i < 50; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 100; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 20; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
+//   for (let i = 0; i < 150; i++) {
+//     let start = performance.now();
+//     searchBarFilter("citron");
+//     moyenne.push(performance.now() - start);
+//   }
 
-  console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
-}, 350);
+//   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
+// }, 350);
 
 // score : 10.13,10.38,11.8,9.50,8.71
 

@@ -41,18 +41,7 @@ export class Filter {
     }
     this.recipes = searchBarArray;
 
-    if (this.recipes.length == 0) {
-      const searchResult = document.querySelector("#search-result");
-      const result = document.createElement("div");
-      const text = document.createElement("p");
-      result.classList.add("result");
-      text.classList.add("no-result");
-      text.textContent = "Aucune recette ne correspond à votre recherche";
-      result.appendChild(text);
-      searchResult.appendChild(result);
-    } else {
-      return this.recipes;
-    }
+    return this.recipes;
   }
 
   byTags(tag) {
