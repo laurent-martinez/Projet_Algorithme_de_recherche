@@ -133,7 +133,18 @@ const filterTagSearch = () => {
   tagList.forEach((tag) => {
     result = filter.recipesByTags(tag);
   });
-  buildCards(result);
+  if (result.length == 0) {
+    const result = document.createElement("div");
+    const text = document.createElement("p");
+    result.classList.add("result");
+    text.classList.add("no-result");
+    text.textContent = "Aucune recette ne correspond à votre recherche";
+    console.log(text);
+    result.append(text);
+    searchResult.append(result);
+  } else {
+    buildCards(result);
+  }
   buildIngredients(
     result,
     tagList.filter((tag) => tag.type == "ingredients").map((tag) => tag.value)
