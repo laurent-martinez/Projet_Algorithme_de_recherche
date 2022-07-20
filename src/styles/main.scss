@@ -357,14 +357,12 @@ i {
 
 
 .result {
-  top: 60%;
-  right: 40%;
+
   display: flex;
 justify-content: center;
 text-align: center;
 }
 .no-result {
-  background-color: hsl(216, 29%, 84%);
   margin-top: 20px;
   padding: 20px;
   color: #d04f4f;
@@ -418,7 +416,7 @@ text-align: center;
 .close-tag {
   height: 20px;
   width: 20px;
-  padding-left: 4.5px;
+  padding-left: 4.3px;
   display: block;
   cursor: pointer;
   color: white;

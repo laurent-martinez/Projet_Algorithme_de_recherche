@@ -9,7 +9,7 @@ export const buildIngredients = (recipes, tagIngredients) => {
   ingredientsResult.innerHTML = "";
   let ingredientsArray = [];
 
-  recipes.forEach((recipe) => {
+  recipes?.forEach((recipe) => {
     const ingredients = recipe.ingredients;
     const itemsIngredients = ingredients.map((ings) => ings.ingredient);
     itemsIngredients.forEach((item) => ingredientsArray.push(normalize(item)));
@@ -36,7 +36,7 @@ export const buildAppliance = (recipes, tagAppliance) => {
   applianceResult.innerHTML = "";
   let applianceArray = [];
 
-  recipes.filter((recipe) => {
+  recipes?.filter((recipe) => {
     const appliance = recipe.appliance;
     applianceArray.push(appliance);
   });
@@ -62,7 +62,7 @@ export const buildUstensils = (recipes, tagUstensils) => {
   ustensilsResult.innerHTML = "";
   let ustensilsArray = [];
 
-  recipes.map((recipe) => {
+  recipes?.map((recipe) => {
     const ustensils = recipe.ustensils;
     ustensils.forEach((ustensil) => ustensilsArray.push(ustensil));
   });
