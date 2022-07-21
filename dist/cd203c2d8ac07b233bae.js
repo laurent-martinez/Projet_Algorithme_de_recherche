@@ -1608,7 +1608,7 @@ setTimeout(function () {
   console.log(moyenne.reduce(function (a, b) {
     return a + b;
   }) / moyenne.length);
-}, 350);
+}, 350); // score 4.2 * 3.9 * 4.02 * 3.94 * 4.02 * 3.8  score functional algo ///
 
 /***/ }),
 
@@ -2549,4 +2549,4 @@ module.exports = __webpack_require__.p + "magnifying_glass.svg";
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=0ffc7da751ff3a1e044e.js.map
+//# sourceMappingURL=cd203c2d8ac07b233bae.js.map

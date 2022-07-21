@@ -194,3 +194,5 @@ setTimeout(() => {
 
   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
 }, 350);
+
+// score 4.2 * 3.9 * 4.02 * 3.94 * 4.02 * 3.8  score functional algo ///
