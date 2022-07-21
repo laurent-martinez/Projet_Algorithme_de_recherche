@@ -184,7 +184,7 @@ const searchBarFilter = () => {
     const text = document.createElement("p");
     result.classList.add("result");
     text.classList.add("no-result");
-    text.textContent = "Aucune recette ne correspond à votre recherche";
+    text.textContent = "Aucune recette ne correspond à votre critère";
     result.appendChild(text);
     searchResult.appendChild(result);
   } else {

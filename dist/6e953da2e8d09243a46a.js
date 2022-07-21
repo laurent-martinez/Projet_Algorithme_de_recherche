@@ -2594,7 +2594,7 @@ var searchBarFilter = function searchBarFilter() {
     _result.classList.add("result");
 
     text.classList.add("no-result");
-    text.textContent = "Aucune recette ne correspond à votre recherche";
+    text.textContent = "Aucune recette ne correspond à votre critère";
 
     _result.appendChild(text);
 
@@ -2679,4 +2679,4 @@ manageTags(); // let moyenne = [];
 
 /******/ })()
 ;
-//# sourceMappingURL=55eb6d9b174786aabbd6.js.map
+//# sourceMappingURL=6e953da2e8d09243a46a.js.map
