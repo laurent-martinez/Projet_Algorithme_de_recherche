@@ -123,10 +123,9 @@ const removeTag = () => {
 /**
  * Filtre par la barre de recherche et les tags (ensemble)
  */
-const filterTagSearch = () => {
+const filterTagSearch = (input) => {
   filter.recipes = recipes;
   let result = filter.recipes;
-  let input = document.querySelector("#searchBar-input").value;
   if (input.length >= 3) {
     result = filter.recipesByInput(input);
   }
@@ -138,7 +137,7 @@ const filterTagSearch = () => {
     const text = document.createElement("p");
     result.classList.add("result");
     text.classList.add("no-result");
-    text.textContent = "Aucune recette ne correspond à votre recherche";
+    text.textContent = "Aucune recette ne correspond à votre critère";
     console.log(text);
     result.append(text);
     searchResult.append(result);
@@ -174,22 +173,22 @@ let moyenne = [];
 setTimeout(() => {
   for (let i = 0; i < 50; i++) {
     let start = performance.now();
-    filterTagSearch();
+    filterTagSearch("citron");
     moyenne.push(performance.now() - start);
   }
   for (let i = 0; i < 100; i++) {
     let start = performance.now();
-    filterTagSearch();
+    filterTagSearch("citron");
     moyenne.push(performance.now() - start);
   }
   for (let i = 0; i < 20; i++) {
     let start = performance.now();
-    filterTagSearch();
+    filterTagSearch("citron");
     moyenne.push(performance.now() - start);
   }
   for (let i = 0; i < 150; i++) {
     let start = performance.now();
-    filterTagSearch();
+    filterTagSearch("citron");
     moyenne.push(performance.now() - start);
   }
 

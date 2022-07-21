@@ -1518,10 +1518,9 @@ var removeTag = function removeTag() {
  */
 
 
-var filterTagSearch = function filterTagSearch() {
+var filterTagSearch = function filterTagSearch(input) {
   filter.recipes = _data_recipes_js__WEBPACK_IMPORTED_MODULE_1__.recipes;
   var result = filter.recipes;
-  var input = document.querySelector("#searchBar-input").value;
 
   if (input.length >= 3) {
     result = filter.recipesByInput(input);
@@ -1539,7 +1538,7 @@ var filterTagSearch = function filterTagSearch() {
     _result.classList.add("result");
 
     text.classList.add("no-result");
-    text.textContent = "Aucune recette ne correspond à votre recherche";
+    text.textContent = "Aucune recette ne correspond à votre critère";
     console.log(text);
 
     _result.append(text);
@@ -1581,28 +1580,28 @@ var moyenne = [];
 setTimeout(function () {
   for (var i = 0; i < 50; i++) {
     var start = performance.now();
-    filterTagSearch();
+    filterTagSearch("citron");
     moyenne.push(performance.now() - start);
   }
 
   for (var _i = 0; _i < 100; _i++) {
     var _start = performance.now();
 
-    filterTagSearch();
+    filterTagSearch("citron");
     moyenne.push(performance.now() - _start);
   }
 
   for (var _i2 = 0; _i2 < 20; _i2++) {
     var _start2 = performance.now();
 
-    filterTagSearch();
+    filterTagSearch("citron");
     moyenne.push(performance.now() - _start2);
   }
 
   for (var _i3 = 0; _i3 < 150; _i3++) {
     var _start3 = performance.now();
 
-    filterTagSearch();
+    filterTagSearch("citron");
     moyenne.push(performance.now() - _start3);
   }
 
@@ -2550,4 +2549,4 @@ module.exports = __webpack_require__.p + "magnifying_glass.svg";
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=04120e1efcfadddd992d.js.map
+//# sourceMappingURL=0ffc7da751ff3a1e044e.js.map
