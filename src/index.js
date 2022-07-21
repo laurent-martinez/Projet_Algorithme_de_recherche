@@ -102,45 +102,6 @@ const manageTags = () => {
       });
     }
   }
-  // listResult.forEach((list) => {
-  //   list.querySelectorAll(".item-list").forEach((itemList) => {
-  //     itemList.addEventListener("click", (e) => {
-  //       const tag = {
-  //         // objet tag avec une value et un type
-  //         value: e.target.textContent, // la valeur sur laquelle je clique dans ma liste
-  //         type: e.target.closest(".list-result").dataset.type, // je vais chercher data-type de mon html(ingredients, apparatus ou utensils)
-  //       };
-  //       tagList.push(tag); // je mets dans mon tableau tous ce que je click
-  //       tags.innerHTML += `
-  //                   <button class="tag tag-${tag.type}">${tag.value}<i class="fa-solid fa-xmark close-tag" data-value="${tag.value}"></i></button>
-  //               `;
-  //       const tagResult = filter.byTags(tag); // je trie avec ma class Filter
-  //       searchResult.innerHTML = ""; // je vide les résultas qui ne correspondent pas
-
-  //       displayCards(tagResult);
-  //       displayIngredients(
-  //         tagResult,
-  //         tagList
-  //           .filter((tag) => tag.type == "ingredients")
-  //           .map((tag) => tag.value)
-  //       );
-  //       displayAppliance(
-  //         tagResult,
-  //         tagList
-  //           .filter((tag) => tag.type == "appliance")
-  //           .map((tag) => tag.value)
-  //       );
-  //       displayUtensils(
-  //         tagResult,
-  //         tagList
-  //           .filter((tag) => tag.type == "utensils")
-  //           .map((tag) => tag.value)
-  //       );
-  //       eventTag();
-  //       removeTag();
-  //     });
-  //   });
-  // });
 };
 
 /**
@@ -267,13 +228,6 @@ setTimeout(() => {
   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
 }, 350);
 
-// score 2,13 *  3.8 * 3.4 * 3.5 * 3.9 * 3.7
+// score 2,13 *  3.8 * 3.4 * 3.5 * 3.9 * 3.7 score native loop algo  ///
 
-// setTimeout(() => {
-//   for (let i = 0; i < 50; i++) {
-//     let start = performance.now();
-//     filterTagSearch();
-//     moyenne.push(performance.now() - start);
-//   }
-//   console.log(moyenne.reduce((a, b) => a + b) / moyenne.length);
-// }, 350);
+// score 4.2 * 3.9 * 4.02 * 3.94 * 4.02 * 3.8  score functional algo ///
